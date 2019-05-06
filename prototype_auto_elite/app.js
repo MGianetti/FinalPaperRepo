@@ -19,6 +19,7 @@ const employeesRoute = require('./endpoints/employees/employees_controller');
 const homeRoute = require('./endpoints/home/home_controller');
 const indexRoute = require('./endpoints/index/index_controller');
 const inspectionRoute = require('./endpoints/inspection/inspection_controller');
+const inspectionPhotoRoute = require('./endpoints/inspectionPhoto/inpectionPhoto_controller');
 const servicesRoute = require('./endpoints/services/services_controller');
 const stockRoute = require('./endpoints/stock/stock_controller')
 
@@ -29,6 +30,7 @@ app.use('/clients', clientsRoute);
 app.use('/employees', employeesRoute);
 app.use('/home', homeRoute);
 app.use('/inspection', inspectionRoute);
+app.use('/inspectionPhoto', inspectionPhotoRoute);
 app.use('/services', servicesRoute);
 app.use('/stock', stockRoute);
 app.use('/', indexRoute);
