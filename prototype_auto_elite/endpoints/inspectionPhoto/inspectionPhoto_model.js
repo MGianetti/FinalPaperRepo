@@ -1,3 +1,5 @@
+const formatId = require('../../common/formatId');
+
 const inspectionPhotos = [
     {
         _id:"9a3f2332eb1c1d3a5f4a4a00",
@@ -653,7 +655,19 @@ function getInspectionPhotos(){
     return inspectionPhotos;
 };
 
-//getInspectionPhotoById
-//getInspectionPhotoByInspectionId
+function getInspectionPhotoById(id){
+    const formatedId = "9a3f2332eb1c1d3a5f4a4a" + formatId(id);
+    return inspectionPhotos.filter( photo => photo._id === formatedId);
+};
 
-module.exports = getInspectionPhotos;
+function getInspectionPhotoByInspectionId(inspectionId){
+    const formatedInspectionId = "31dfe4f3d5a051603acbc5" + formatId(inspectionId);
+    return inspectionPhotos.filter( photo => photo.inspection === formatedInspectionId);
+};
+
+
+module.exports = {
+    getInspectionPhotoById,
+    getInspectionPhotoByInspectionId,
+    getInspectionPhotos
+};

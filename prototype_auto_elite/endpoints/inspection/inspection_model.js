@@ -1,3 +1,5 @@
+const formatId = require('../../common/formatId');
+
 const inspections = [
     {
         _id:"31dfe4f3d5a051603acbc500",
@@ -150,6 +152,12 @@ function getInspections(){
     return inspections;
 }
 
-//getInspectionById
+function getInspectionsById(id){
+    const formatedId = "31dfe4f3d5a051603acbc5" + formatId(id);
+    return inspections.filter( inspection => inspection._id === formatedId);
+}
 
-module.exports = getInspections;
+module.exports = {
+    getInspections,
+    getInspectionsById,
+};

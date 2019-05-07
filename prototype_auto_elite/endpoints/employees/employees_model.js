@@ -140,5 +140,22 @@ const employees = [
 function getEmployees(){
     return employees;
 };
+function getEmployeeByCpf(cpf){
+    const formatedCpf = `${cpf.substring(0,3)}.${cpf.substring(3,6)}.${cpf.substring(6,9)}-${cpf.substring(9,11)}`;
+    
+    return employees.filter( employee => employee.cpf === formatedCpf );
+};
+function getEmployeeById(id){
+    const formatedId = "b7f6b2cd41ebcf5cd4ca3e718" + id;
+    return employees.filter( employee => employee._id === formatedId );
+};
+function getEmployeeByName(name){
+    return employees.filter( employee => employee.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
+};
 
-module.exports = employees;
+module.exports = {
+    getEmployees,
+    getEmployeeById,
+    getEmployeeByCpf,
+    getEmployeeByName
+};

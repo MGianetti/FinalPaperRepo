@@ -1,7 +1,8 @@
+const formatId = require('../../common/formatId');
 
 const servicesBudgets = [
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af00",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc00",
@@ -16,7 +17,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af01",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc01",
@@ -27,7 +28,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af02",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc02",
@@ -40,7 +41,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af03",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc03",
@@ -51,7 +52,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af04",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc04",
@@ -64,7 +65,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af05",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc05",
@@ -73,7 +74,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af06",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc06",
@@ -84,7 +85,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af07",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc07",
@@ -94,7 +95,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af08",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc08",
@@ -106,7 +107,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af09",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc09",
@@ -121,7 +122,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af10",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc10",
@@ -132,7 +133,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af11",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc11",
@@ -143,7 +144,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af12",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc12",
@@ -153,7 +154,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af13",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc13",
@@ -166,7 +167,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af14",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc14",
@@ -175,7 +176,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af15",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc15",
@@ -184,7 +185,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af16",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc16",
@@ -195,7 +196,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af17",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc17",
@@ -205,7 +206,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af18",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc18",
@@ -216,7 +217,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af19",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc19",
@@ -228,7 +229,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af20",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc20",
@@ -241,7 +242,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af21",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc21",
@@ -254,7 +255,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af22",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc22",
@@ -270,7 +271,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af23",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc23",
@@ -286,7 +287,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af24",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc24",
@@ -303,7 +304,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af25",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc25",
@@ -317,7 +318,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af26",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc26",
@@ -331,7 +332,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af27",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc27",
@@ -343,7 +344,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af28",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc28",
@@ -353,7 +354,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af29",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc29",
@@ -362,7 +363,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af30",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc30",
@@ -375,7 +376,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af31",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc31",
@@ -390,7 +391,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af32",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc32",
@@ -409,7 +410,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af33",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc33",
@@ -436,7 +437,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af34",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc34",
@@ -448,7 +449,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af35",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc35",
@@ -463,7 +464,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af36",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc36",
@@ -472,7 +473,7 @@ const servicesBudgets = [
         ]
     },
     {
-        _id:"",
+        _id:"5ef44c6a5s2e83acc654af37",
         createdAt:"",
         updatedAt:"",
         budget:"c3a2e3c3d1f25848a89dcc37",
@@ -483,3 +484,23 @@ const servicesBudgets = [
         ]
     },
 ];
+
+function getServicesBudgets(){
+    return servicesBudgets;
+};
+
+function getServiceBudgetById(id){
+    const formatedServiceBudgetId = "5ef44c6a5s2e83acc654af" + formatId(id);
+    return servicesBudgets.filter( serviceBudget => serviceBudget._id === formatedServiceBudgetId);
+};
+
+function getServiceBudgetByBudgetId(id){
+    const formatedServiceBudgetBudgetId = "c3a2e3c3d1f25848a89dcc" + formatId(id);
+    return servicesBudgets.filter( serviceBudget => serviceBudget.budget === formatedServiceBudgetBudgetId);
+};
+
+module.exports = {
+    getServicesBudgets,
+    getServiceBudgetById,
+    getServiceBudgetByBudgetId
+};

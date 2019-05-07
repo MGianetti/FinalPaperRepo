@@ -1,3 +1,5 @@
+const formatId = require("../../common/formatId");
+
 const billings = [
     {
         _id:"ff2d3e3c4a55564f8ea3c200",
@@ -267,4 +269,21 @@ const billings = [
     }
 ];
 
+function getBillings(){
+    return billings;
+};
 
+function getBillingsById(id){
+    const formatedId = "ff2d3e3c4a55564f8ea3c2" + formatId(id);
+    return billings.filter( bill => bill._id === formatedId);
+};
+
+function getBillingsByStatus(status){
+    return billings.filter( bill => status === bill.status);
+};
+
+module.exports = {
+    getBillings, 
+    getBillingsById, 
+    getBillingsByStatus
+};

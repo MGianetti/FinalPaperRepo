@@ -1,3 +1,5 @@
+const formatId = require("../../common/formatId");
+
 const budgets = [
     {
         _id:"c3a2e3c3d1f25848a89dcc00",
@@ -233,4 +235,17 @@ function getBudgets(){
     return budgets;
 };
 
-module.exports = getBudgets;
+function getBudgetById(id){
+    const formatedId = "c3a2e3c3d1f25848a89dcc" + formatId(id);
+    return budgets.filter( budget => budget._id === formatedId);
+};
+
+function getBudgetByCost(cost){
+    return budgets.filter( budget => budget.laborCost >= cost);
+};
+
+module.exports = { 
+    getBudgets,
+    getBudgetById,
+    getBudgetByCost
+};

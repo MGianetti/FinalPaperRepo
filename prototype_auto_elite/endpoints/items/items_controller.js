@@ -1,8 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
+const {
+    getItems,
+    getItemById,
+    getItemByCode
+} = require('./items_model');
+
 router.get('/', (req, res) => {
-    return res.send("Get on Items succesfuly accessed");
+    const { id, code } = req.query;
+
+    if(id) return res.send(getItemById(id));
+    if(code) return res.send(getItemByCode(code));
+    return res.send(getItems());
+    
 });
 
 router.post('/', (req, res) => {

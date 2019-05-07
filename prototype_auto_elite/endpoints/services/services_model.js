@@ -1,4 +1,4 @@
-
+const formatId = require('../../common/formatId');
 
 const services = [
     {
@@ -9,7 +9,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat",
         status:"Em execução", 
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d00",
         employee:"b7f6b2cd41ebcf5cd4ca3e71815",
         billing:"ff2d3e3c4a55564f8ea3c200",
@@ -37,7 +37,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Em execução",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d02",
         employee:"b7f6b2cd41ebcf5cd4ca3e71817",
         billing:"ff2d3e3c4a55564f8ea3c202",
@@ -65,7 +65,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Em execução",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d04",
         employee:"b7f6b2cd41ebcf5cd4ca3e71819",
         billing:"ff2d3e3c4a55564f8ea3c204",
@@ -93,7 +93,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Finalizado",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d06",
         employee:"b7f6b2cd41ebcf5cd4ca3e71821",
         billing:"ff2d3e3c4a55564f8ea3c206",
@@ -149,7 +149,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Em execução",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d10",
         employee:"b7f6b2cd41ebcf5cd4ca3e71817",
         billing:"ff2d3e3c4a55564f8ea3c210",
@@ -205,7 +205,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Em execução",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d14",
         employee:"b7f6b2cd41ebcf5cd4ca3e71821",
         billing:"ff2d3e3c4a55564f8ea3c214",
@@ -219,7 +219,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Em execução",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d15",
         employee:"b7f6b2cd41ebcf5cd4ca3e71822",
         billing:"ff2d3e3c4a55564f8ea3c215",
@@ -261,7 +261,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Em execução",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d18",
         employee:"b7f6b2cd41ebcf5cd4ca3e71817",
         billing:"ff2d3e3c4a55564f8ea3c218",
@@ -289,7 +289,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Finalizado",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d01",
         employee:"b7f6b2cd41ebcf5cd4ca3e71819",
         billing:"ff2d3e3c4a55564f8ea3c220",
@@ -317,7 +317,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Finalizado",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d03",
         employee:"b7f6b2cd41ebcf5cd4ca3e71821",
         billing:"ff2d3e3c4a55564f8ea3c222",
@@ -345,7 +345,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Em execução",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d05",
         employee:"b7f6b2cd41ebcf5cd4ca3e71822",
         billing:"ff2d3e3c4a55564f8ea3c224",
@@ -373,7 +373,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Finalizado",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d07",
         employee:"b7f6b2cd41ebcf5cd4ca3e71815",
         billing:"ff2d3e3c4a55564f8ea3c226",
@@ -429,7 +429,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Finalizado",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d11",
         employee:"b7f6b2cd41ebcf5cd4ca3e71818",
         billing:"ff2d3e3c4a55564f8ea3c230",
@@ -457,7 +457,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Em execução",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d13",
         employee:"b7f6b2cd41ebcf5cd4ca3e71820",
         billing:"ff2d3e3c4a55564f8ea3c232",
@@ -485,7 +485,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Em execução",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d15",
         employee:"b7f6b2cd41ebcf5cd4ca3e71821",
         billing:"ff2d3e3c4a55564f8ea3c234",
@@ -527,7 +527,7 @@ const services = [
         updatedAt:"2019-01-02 15:54:59.035554-05",
         summary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima commodi aliquam enim corrupti dolorem molestiae, voluptatem repudiandae sed laborum delectus corporis, doloribus inventore suscipit odio in animi earum soluta repellat", 
         status:"Em execução",
-        type:"Corretivo",
+        type:"Preventivo",
         car:"b6c5e4f1a33a1d5f51bc3d18",
         employee:"b7f6b2cd41ebcf5cd4ca3e71815",
         billing:"ff2d3e3c4a55564f8ea3c237",
@@ -535,15 +535,51 @@ const services = [
     },
     , ];
 
-function getServices() {
+function getServices(){
     return services;
 };
 
-//getServiceById
-//getServiceByEmployee
-//getServiceByStatus
-//getServiceByCarId
-//getServiceByType
+function getServiceById(id){
+    const formatedId = "c68a4fe3cd6a2b5cc4ef81" + formatId(id)
+    return services.filter( service => service._id === formatedId);
+};
+
+function getServiceByStatus(status){
+    return services.filter( service => service.status === status);
+};
+
+function getServiceByType(type){
+    return services.filter( service => service.type === type);
+};
+
+function getServiceByCar(carId){
+    const formatedCarId = "b6c5e4f1a33a1d5f51bc3d" + formatId(carId);
+    return services.filter( service => service.car === formatedCarId);
+};
+
+function getServiceByEmployee(employeeId){
+    const formatedEmployeeId = "b7f6b2cd41ebcf5cd4ca3e718" + employeeId;
+    return services.filter( service => service.employee === formatedEmployeeId);
+};
+
+function getServiceByBilling(billingId){
+    const formatedBillingId = "ff2d3e3c4a55564f8ea3c2" + formatId(billingId);
+    return services.filter( service => service.billing === formatedBillingId);
+};
+
+function getServiceByInspection(inspectionId){
+    const formatedInspectionId = "31dfe4f3d5a051603acbc5" + formatId(inspectionId);
+    return services.filter( service => service.inspection === formatedInspectionId);
+};
 
 
-module.exports = getServices;
+module.exports = {
+    getServiceById,
+    getServiceByStatus,
+    getServiceByType,
+    getServiceByCar,
+    getServiceByEmployee,
+    getServiceByBilling,
+    getServiceByInspection,
+    getServices
+};

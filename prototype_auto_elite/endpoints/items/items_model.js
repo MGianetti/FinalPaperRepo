@@ -1,3 +1,5 @@
+const formatId = require('../../common/formatId');
+
 const items = [
     {
         _id:"d3e3e3d2f2a45894c88e4a00",
@@ -775,4 +777,17 @@ function getItems(){
     return items;
 };
 
-module.exports = getItems;
+function getItemById(id){
+    const formatedId = "d3e3e3d2f2a45894c88e4a" + formatId(id);
+    return items.filter( item => item._id === formatedId);
+};
+
+function getItemByCode(code){
+    return items.filter( item => item.description.toLowerCase().includes(code.toLowerCase()));
+};
+
+module.exports = {
+    getItems,
+    getItemById,
+    getItemByCode
+};

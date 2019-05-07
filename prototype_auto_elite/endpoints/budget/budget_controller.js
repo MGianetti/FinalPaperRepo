@@ -1,8 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
+const { 
+    getBudgetById, 
+    getBudgetByCost, 
+    getBudgets
+} = require('./budget_model');
+
 router.get('/', (req, res) => {
-    return res.send('Get on budget succesfuly accessed');
+    const { id, cost } = req.query;  
+
+    if(id) return res.send(getBudgetById(id));    
+    if(cost) return res.send(getBudgetByCost(cost));
+    return res.send(getBudgets());
+
 });
 
 router.post('/', (req, res) => {

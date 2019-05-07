@@ -1,3 +1,5 @@
+const formatId = require("../../common/formatId");
+
 const cars = [
     {
         _id:"b6c5e4f1a33a1d5f51bc3d00",
@@ -308,5 +310,20 @@ const cars = [
 function getCars(){
     return cars;
 };
+function getCarById(id){
+    const formatedId = "b6c5e4f1a33a1d5f51bc3d" + formatId(id);
+    return cars.filter( car => car._id === formatedId );
+};
+function getCarByPlate(plate){
+    return cars.filter( car => car.plate === plate );
+};
+function getCarByClient(client){
+    return cars.filter( car => car.client === client );
+};
 
-module.exports = getCars;
+module.exports = {
+    getCars,
+    getCarById,
+    getCarByPlate,
+    getCarByClient
+};
