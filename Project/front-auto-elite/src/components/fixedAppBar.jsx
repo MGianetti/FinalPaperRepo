@@ -2,28 +2,36 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography';
+import '../App.css';
+import ClockComponent from './clock';
 
 const FixedAppBar = () => {
 
     return ( 
 		<React.Fragment>
-			<AppBar position="static">
+			<AppBar position="static" id="appBarFixed">
 				<Toolbar>
-					<Grid container spacing={0}  justify='space-evenly'>
-						<Grid item xs={2}>
-							Bem vindo(a) Micaela
+					<Grid container direction='row'>
+						<Grid id="appBarWelcome" xs={2} item>
+							<Typography align='left'>
+								Bem vindo(a) Micaela
+							</Typography>
 						</Grid>
-						<Grid item xs={6}>
-							Web Application Version 1.0
+						<Grid id="appBarVersion" xs={7} item>
+							<Typography align='center'>
+								Web Application Version 1.0
+							</Typography>
 						</Grid>
-						<Grid item xs={2}>
-							5/13/2019
+						<Grid id="appBarDate" xs={1} item>
+							<Typography align='right'>
+								5/13/2019
+							</Typography>
 						</Grid>
-						<Grid item xs={2}>
-							11:10
+						<Grid id="appBarHour" xs={1} item>
+							<ClockComponent/>
 						</Grid>
 					</Grid>
-
 				</Toolbar>
 			</AppBar>
 		</React.Fragment>

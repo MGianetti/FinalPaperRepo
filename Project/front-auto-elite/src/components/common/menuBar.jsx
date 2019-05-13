@@ -18,16 +18,23 @@ const MenuBar = ({ data, selectedIcon, onSelected }) => {
                     key={key + "MenuItem"}
                     onClick={() => onSelected(key)}
                     style={{background: bgColor, color: 'white'}}
-                >
-                    {data[key]}{key}
+                    >
+                    {data[key]}{key}                
                 </MenuItem>
             </Link>    
         );
     }
 
     return (
-        <MenuList>
+        <MenuList id="menuList">
             {menuItems.map( e => e )}
+            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
+            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
+            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
+            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
+            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
+            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
+            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
         </MenuList>
     );
 }

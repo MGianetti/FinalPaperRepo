@@ -2,8 +2,30 @@
   text-align: center;
 }
 
-
+html, 
 body {
-  background-color: 'black';
+    height: 100%;
+    background-color: white
 }
 
+#appBarFixed {
+  background-color: #b71c1c;
+  padding-bottom: 0px
+}
+
+#menuList{
+  padding-top: 0px
+}
+
+#appBarWelcome{
+  align-content: flex-end
+}
+#appBarVersion{
+
+}
+#appBarDate{
+
+}
+#appBarHour{
+
+}

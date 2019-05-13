@@ -13,7 +13,7 @@ import MenuBar from './common/menuBar';
 class FixedMenuBar extends React.Component {
     state = {
         icons:{
-            Inicio: <Home/>,
+            Início: <Home/>,
             Clientes: <SupervisorAccount/> ,
             Carros: <DirectionsCar/>,
             Serviços: <Build/>,
