@@ -1,6 +1,4 @@
 import React from "react";
-import MenuItem from "@material-ui/core/MenuItem";
-import MenuList from "@material-ui/core/MenuList";
 import Home from '@material-ui/icons/Home';
 import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
 import DirectionsCar from '@material-ui/icons/DirectionsCar';
@@ -12,27 +10,34 @@ import Payment from "@material-ui/icons/Payment"
 import Visibility from "@material-ui/icons/Visibility"
 import MenuBar from './common/menuBar';
 
-
 class FixedMenuBar extends React.Component {
     state = {
-        icons:[            
-            ["Início", <Home/>],
-            ["Clientes", <SupervisorAccount/>],
-            ["Carros", <DirectionsCar/>],
-            ["Serviços", <Build/>],
-            ["Orçamentos", <AttachMoney/>],
-            ["Mecânicos", <Person/>],
-            ["Estoque", <LocalMall/>],
-            ["Cobrança", <Payment/>],
-            ["Vistoria", <Visibility/>]
-        ]
+        icons:{
+            Inicio: <Home/>,
+            Clientes: <SupervisorAccount/> ,
+            Carros: <DirectionsCar/>,
+            Serviços: <Build/>,
+            Orçamentos: <AttachMoney/>,
+            Mecânicos: <Person/>,
+            Estoque: <LocalMall/>,
+            Cobrança: <Payment/>,
+            Vistoria: <Visibility/> 
+        },
+        selectedIcon: "Inicio"            
     };
+
+    handleSelectedChange = iconKey => {
+        this.setState( { selectedIcon: iconKey });
+    };
+
     render() {
-        const { icons } = this.state;
+        const { icons, selectedIcon } = this.state;
         return (
             <React.Fragment>
                 <MenuBar
                     data={icons}
+                    selectedIcon={selectedIcon}
+                    onSelected={this.handleSelectedChange}
                 />
             </React.Fragment>
         );
