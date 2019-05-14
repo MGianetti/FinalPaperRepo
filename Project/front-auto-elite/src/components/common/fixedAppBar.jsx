@@ -3,11 +3,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import ClockComponent from './appBarComponents/clock';
-import FixedAvatar from './appBarComponents/fixedAvatar'
-import FixedWelcome from './appBarComponents/fixedWelcome';
-import FixedDate from './appBarComponents/fixedDate';
-import FixedVersion from './appBarComponents/fixedVersion';
+import ClockComponent from '../clock';
+import FixedAvatar from '../appBarComponents/fixedAvatar'
+import FixedWelcome from '../appBarComponents/fixedWelcome';
 import '../App.css';
 
 
@@ -24,7 +22,9 @@ const FixedAppBar = () => {
 							<FixedWelcome/>
 						</Grid>
 						<Grid id="appBarVersion" xs={6} item>
-							<FixedVersion/>
+							<Typography align='center'>
+								Web Application Version 1.0
+							</Typography>
 						</Grid>
 						<Grid id="appBarDate" xs={1} item>
 							<FixedDate/>
