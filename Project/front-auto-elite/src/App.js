@@ -1,18 +1,10 @@
 import React from 'react';
-import FixedAppBar from './components/fixedAppBar';
-import FixedMenuBar from './components/fixedMenuBar';
-import Grid from '@material-ui/core/Grid';
-import Clients from './components/clients';
-import Cars from './components/cars';
-import Services from './components/services';
-import Budget from './components/budget';
-import Employees from './components/employees';
-import Stock from './components/stock';
-import Billing from './components/billing';
-import Inspection from './components/inspection';
-import NotFound from './components/notFound';
-import Home from './components/home'
 import { Switch, Route, Redirect } from 'react-router-dom'
+import Grid from '@material-ui/core/Grid';
+import Clients from './components/clients/clients';
+import NotFound from './components/notFound/notFound';
+import UiAppBar from './components/appBar/uiAppBar'
+import UiMenuBar from './components/menu/uiMenuBar'
 import './App.css';
 
 function App() {
@@ -22,22 +14,22 @@ function App() {
 				<title>Auto Elite</title>
 			</head>
 			<body>
-				<FixedAppBar />
-					<Grid container direction='row'>
-						<Grid item direction='column'>
-							<FixedMenuBar/>
+				<UiAppBar />
+					<Grid container spacing={25}>
+						<Grid item xl={6}>
+							<UiMenuBar style={{flex: 1}}/>
 						</Grid>
-						<Grid item direction='column'>
+						<Grid item xl={6} style={{flex: 1}}>
 							<Switch>
-								<Route path="/Início" component={Home} />
+								<Route path="/Início" component={NotFound} />
 								<Route path="/Clientes" component={Clients} />
-								<Route path="/Carros" component={Cars} />
-								<Route path="/Serviços" component={Services} />
-								<Route path="/Orçamentos" component={Budget} />
-								<Route path="/Mecânicos" component={Employees} />
-								<Route path="/Estoque" component={Stock} />
-								<Route path="/Cobrança" component={Billing} />
-								<Route path="/Vistoria" component={Inspection} />
+								<Route path="/Carros" component={NotFound} />
+								<Route path="/Serviços" component={NotFound} />
+								<Route path="/Orçamentos" component={NotFound} />
+								<Route path="/Mecânicos" component={NotFound} />
+								<Route path="/Estoque" component={NotFound} />
+								<Route path="/Cobrança" component={NotFound} />
+								<Route path="/Vistoria" component={NotFound} />
 								<Route path="/not-found" component={NotFound} />
 								<Redirect from="/" exact to="/movies" />
 								<Redirect to="/not-found" />
@@ -47,6 +39,6 @@ function App() {
 			</body>
 		</React.Fragment>
     );
-}
+};
 
 export default App;

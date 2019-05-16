@@ -8,9 +8,9 @@ import Person from '@material-ui/icons/Person'
 import LocalMall from "@material-ui/icons/LocalMall"
 import Payment from "@material-ui/icons/Payment"
 import Visibility from "@material-ui/icons/Visibility"
-import MenuBar from './common/menuBar';
+import ItemsDrawer from './subComponents/itemsDrawer'
 
-class FixedMenuBar extends React.Component {
+class UiMenuBar extends React.Component {
     state = {
         icons:{
             Início: <Home/>,
@@ -34,7 +34,7 @@ class FixedMenuBar extends React.Component {
         const { icons, selectedIcon } = this.state;
         return (
             <React.Fragment>
-                <MenuBar
+                <ItemsDrawer
                     data={icons}
                     selectedIcon={selectedIcon}
                     onSelected={this.handleSelectedChange}
@@ -44,4 +44,4 @@ class FixedMenuBar extends React.Component {
     }
 }
 
-export default FixedMenuBar;
+export default UiMenuBar;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ClockComponent extends Component {
+class UiClock extends Component {
     state = {now: new Date()}
 
     poolingClock = () => {
@@ -17,4 +17,4 @@ class ClockComponent extends Component {
     };
 };
 
-export default ClockComponent;
+export default UiClock;

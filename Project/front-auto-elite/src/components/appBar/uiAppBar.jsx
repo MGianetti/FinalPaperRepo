@@ -3,34 +3,33 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import ClockComponent from '../clock';
-import FixedAvatar from '../appBarComponents/fixedAvatar'
-import FixedWelcome from '../appBarComponents/fixedWelcome';
-import '../App.css';
+import UiAvatar from './subComponents/uiAvatar'
+import UiWelcome from './subComponents/uiWelcome'
+import UiVersion from './subComponents/uiVersion'
+import UiDate from './subComponents/uiDate'
+import '../../App.css';
 
 
-const FixedAppBar = () => {
+const UiAppBar = () => {
     return ( 
 		<React.Fragment>
 			<AppBar position="static" id="appBarFixed">
 				<Toolbar>
 					<Grid container direction='row'>
 						<Grid id="appBarAvatar" xs={2} item>
-							<FixedAvatar/>
-						</Grid>
+							<UiAvatar/>
+						</Grid> 
 						<Grid id="appBarWelcome" xs={2} item>
-							<FixedWelcome/>
+							<UiWelcome/>
 						</Grid>
 						<Grid id="appBarVersion" xs={6} item>
-							<Typography align='center'>
-								Web Application Version 1.0
-							</Typography>
+							<UiVersion/>
 						</Grid>
 						<Grid id="appBarDate" xs={1} item>
-							<FixedDate/>
+							<UiDate/>
 						</Grid>
 						<Grid id="appBarHour" xs={1} item>
-							<ClockComponent/>
+							<uiClock/>
 						</Grid>
 					</Grid>
 				</Toolbar>
@@ -39,4 +38,4 @@ const FixedAppBar = () => {
     );
 }
 
-export default FixedAppBar;
+export default UiAppBar;

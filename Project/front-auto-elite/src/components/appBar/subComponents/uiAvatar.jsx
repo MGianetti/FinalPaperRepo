@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Avatar from '@material-ui/core/Avatar';;
 
 
-class fixedAvatar extends Component {
+class UiAvatar extends Component {
     state = {
         
     };
@@ -18,4 +18,4 @@ class fixedAvatar extends Component {
     }
 }
  
-export default fixedAvatar;
+export default UiAvatar;

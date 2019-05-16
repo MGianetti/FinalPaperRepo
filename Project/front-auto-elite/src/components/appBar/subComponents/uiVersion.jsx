@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
+import { Typography } from '@material-ui/core';
 
-class FixedWelcome extends Component {
+class UiVersion extends Component {
     state = {  }
     render() { 
         return (  
             <Typography>
-            Bem vindo(a) Micaela
+                Web Application Version 0.1
             </Typography>
         );
     }
 }
  
-export default FixedWelcome;
+export default UiVersion;

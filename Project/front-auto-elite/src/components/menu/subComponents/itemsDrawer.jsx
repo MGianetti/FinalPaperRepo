@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import red from '@material-ui/core/colors/red';
-import { Link } from "react-router-dom";
 
-const MenuBar = ({ data, selectedIcon, onSelected }) => {
+const ItemsDrawer = ({ data, selectedIcon, onSelected }) => {
     
     const menuItems = [];
     
@@ -39,4 +39,4 @@ const MenuBar = ({ data, selectedIcon, onSelected }) => {
     );
 }
 
-export default MenuBar;
+export default ItemsDrawer;

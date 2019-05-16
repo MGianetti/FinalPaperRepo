@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography'
 
-class FixedDate extends Component {
+class UiDate extends Component {
     state = {  }
     render() { 
         return ( 
@@ -12,4 +12,4 @@ class FixedDate extends Component {
     }
 }
  
-export default FixedDate;
+export default UiDate;
