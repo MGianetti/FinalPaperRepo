@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Grid from '@material-ui/core/Grid'
 import CreateClient from './subComponents/createClient';
 import SearchClient from './subComponents/searchClient';
 
@@ -29,17 +30,23 @@ class Clients extends Component {
         return (
             <div>
                 <AppBar position="static">
-                    <Tabs value={value} onChange={this.handleChange} >
+                    <Tabs value={value} onChange={this.handleChange} centered>
                         <Tab label="Criar"  />
                         <Tab label="Buscar" />
                     </Tabs>
                 </AppBar>
-                {value === 0 && <TabContainer>
-                    <CreateClient/>
-                </TabContainer>}
-                {value === 1 && <TabContainer>
-                    <SearchClient/>
-                </TabContainer>}
+                <Grid container justify='center'>
+                    <Grid item>
+                        {value === 0 && <TabContainer>
+                            <CreateClient/>
+                        </TabContainer>}
+                    </Grid>
+                    <Grid item>
+                        {value === 1 && <TabContainer>
+                            <SearchClient/>
+                        </TabContainer>}
+                    </Grid>
+                </Grid>
             </div>
         );
     };
