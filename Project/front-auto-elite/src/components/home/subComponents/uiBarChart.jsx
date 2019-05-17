@@ -55,7 +55,7 @@ const UiBarChart = () => {
             }
         ];
     return (  
-        <BarChart width={440} height={352} data={data3}>
+        <BarChart width={440} height={352} data={data3}> 
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />

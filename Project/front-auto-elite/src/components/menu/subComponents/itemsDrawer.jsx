@@ -2,22 +2,21 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
-import red from '@material-ui/core/colors/red';
 
 const ItemsDrawer = ({ data, selectedIcon, onSelected }) => {
     
     const menuItems = [];
     
     for(let key in data){
-        let bgColor = red[900];
-        if(selectedIcon === key) bgColor = red[700];
+        let bgColor = 'LightCyan';
+        if(selectedIcon === key) bgColor = 'PaleTurquoise';
         menuItems.push(
             <Link to={key} style={{textDecoration: 'none'}}>
                 <MenuItem 
                     selected={selectedIcon === key}
                     key={key + "MenuItem"}
                     onClick={() => onSelected(key)}
-                    style={{background: bgColor, color: 'white'}}
+                    style={{background: bgColor}}
                     >
                     {data[key]}{key}                
                 </MenuItem>

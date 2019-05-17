@@ -29,23 +29,19 @@ class Clients extends Component {
     render() {
         const { tabs, tabSelected } = this.state;
         return (
-            <div>
-                <UiTabs data={tabs} onChange={this.handleChange}/>
-                <Grid container justify='center'>
-                    {tabSelected === 0 && <Grid item>
-                            <TabContainer>
-                                <CreateClient/>
-                            </TabContainer>
-                        </Grid>
-                    }
-                    {tabSelected === 1 && <Grid item>
-                            <TabContainer>
-                                <SearchClient/>
-                            </TabContainer>
-                        </Grid>
-                    }
+            <Grid container>
+                <Grid container>
+                    <Grid item style={{width:'100%'}}>
+                        <UiTabs data={tabs} onChange={this.handleChange}/>
+                    </Grid>
                 </Grid>
-            </div>
+                <Grid container>
+                    <Grid container styles={{width:'100%', height:'100%'}}>
+                        {tabSelected === 0 && <CreateClient/>}
+                        {tabSelected === 1 && <SearchClient/>}
+                    </Grid>
+                </Grid>
+            </Grid>
         );
     };
 };
@@ -53,7 +49,7 @@ class Clients extends Component {
 export default Clients;
 
 
-/*Nome:'',
+/*      Nome:'',
         CPF:'',
         Celular:'',
         Telefone:'',

@@ -11,7 +11,7 @@ class Home extends Component {
     render() { 
         return (  
             <React.Fragment>
-                <Grid style={{margin:25, marginTop:15,borderRadius:10, background:'grey'}}>
+                <Grid container style={{margin:25, marginTop:15,borderRadius:10, background:'grey'}}>
                     <Typography variant="h3">
                         Auto Elite gráficos de gerência
                     </Typography>

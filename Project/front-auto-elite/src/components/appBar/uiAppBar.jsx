@@ -15,8 +15,8 @@ const UiAppBar = () => {
 		<React.Fragment>
 			<AppBar position="static" id="appBarFixed">
 				<Toolbar>
-					<Grid container style={{width:'100%'}}  alignItems='center'>
-						<Grid item style={{width:'10%'}} >
+					<Grid container style={{width:'100%'}} alignItems='center'>
+						<Grid item style={{width:'10%'}}>
 							<Grid item style={{height:'100%'}}>
 								<UiAvatar/>
 							</Grid>

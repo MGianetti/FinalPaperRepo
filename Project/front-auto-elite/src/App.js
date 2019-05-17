@@ -10,22 +10,18 @@ import './App.css';
 
 function App() {
 	return (
-		<React.Fragment >
-			<head>
-				<title>Auto Elite</title>
-			</head>
-			<body>
-				<Grid container>
+		<div style={{width: '100vw', height: '100vh'}}>
+				<Grid container style={{height:'100%'}}>
 					<Grid container>
 						<Grid item style={{width:'100%'}}>
 							<UiAppBar />
 						</Grid>
 					</Grid>
-					<Grid container>
-						<Grid item style={{width:'15%', background: 'grey'}}>
+					<Grid container style={{height:'100%', width:'100%', background:'Snow'}}>
+						<Grid item style={{width:'15%', background:'Azure'}}>
 							<UiMenuBar/>
 						</Grid>
-						<Grid item style={{width:'75%'}}>
+						<Grid item style={{width:'85%'}}>
 							<Switch>
 								<Route path="/Início" component={Home} />
 								<Route path="/Clientes" component={Clients} />
@@ -43,8 +39,7 @@ function App() {
 						</Grid>
 					</Grid>
 				</Grid>
-			</body>
-		</React.Fragment>
+		</div>
     );
 };
 
