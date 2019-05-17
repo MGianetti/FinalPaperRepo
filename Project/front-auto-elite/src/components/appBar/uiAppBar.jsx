@@ -2,11 +2,11 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import UiAvatar from './subComponents/uiAvatar'
 import UiWelcome from './subComponents/uiWelcome'
 import UiVersion from './subComponents/uiVersion'
 import UiDate from './subComponents/uiDate'
+import UiClock from './subComponents/uiClock';
 import '../../App.css';
 
 
@@ -29,13 +29,13 @@ const UiAppBar = () => {
 							<UiDate/>
 						</Grid>
 						<Grid id="appBarHour" xs={1} item>
-							<uiClock/>
+							<UiClock/>
 						</Grid>
 					</Grid>
 				</Toolbar>
 			</AppBar>
 		</React.Fragment>
     );
-}
+};
 
 export default UiAppBar;

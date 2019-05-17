@@ -6,10 +6,10 @@ class UiWelcome extends Component {
     render() { 
         return (  
             <Typography>
-            Bem vindo(a) Micaela
+                Bem vindo(a) Micaela
             </Typography>
         );
-    }
-}
- 
+    };
+};
+
 export default UiWelcome;

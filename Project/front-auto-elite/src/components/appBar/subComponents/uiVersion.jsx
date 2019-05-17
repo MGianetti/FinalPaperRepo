@@ -9,7 +9,7 @@ class UiVersion extends Component {
                 Web Application Version 0.1
             </Typography>
         );
-    }
-}
- 
+    };
+};
+
 export default UiVersion;

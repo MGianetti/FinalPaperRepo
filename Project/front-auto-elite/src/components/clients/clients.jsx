@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid'
 import CreateClient from './subComponents/createClient';
 import SearchClient from './subComponents/searchClient';
+import UiTabs from './../common/uiTabs';
 
 function TabContainer(props) {
     return (
@@ -18,34 +15,35 @@ function TabContainer(props) {
 
 class Clients extends Component {
     state = { 
-        value: 0
+        tabs:[
+            {0: "Criar"},
+            {1: "Buscar"}
+        ],
+        tabSelected: 0
     };
 
-    handleChange = (event, value) => {
-        this.setState({ value });
+    handleChange = (event, tabSelected) => {
+        this.setState({ tabSelected });
     };
     
     render() {
-        const { value } = this.state;
+        const { tabs, tabSelected } = this.state;
         return (
             <div>
-                <AppBar position="static">
-                    <Tabs value={value} onChange={this.handleChange} centered>
-                        <Tab label="Criar"  />
-                        <Tab label="Buscar" />
-                    </Tabs>
-                </AppBar>
+                <UiTabs data={tabs} onChange={this.handleChange}/>
                 <Grid container justify='center'>
-                    <Grid item>
-                        {value === 0 && <TabContainer>
-                            <CreateClient/>
-                        </TabContainer>}
-                    </Grid>
-                    <Grid item>
-                        {value === 1 && <TabContainer>
-                            <SearchClient/>
-                        </TabContainer>}
-                    </Grid>
+                    {tabSelected === 0 && <Grid item>
+                            <TabContainer>
+                                <CreateClient/>
+                            </TabContainer>
+                        </Grid>
+                    }
+                    {tabSelected === 1 && <Grid item>
+                            <TabContainer>
+                                <SearchClient/>
+                            </TabContainer>
+                        </Grid>
+                    }
                 </Grid>
             </div>
         );

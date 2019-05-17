@@ -3,9 +3,6 @@ import Avatar from '@material-ui/core/Avatar';;
 
 
 class UiAvatar extends Component {
-    state = {
-        
-    };
     render() { 
         const styles = {
             avatar:{
@@ -15,7 +12,7 @@ class UiAvatar extends Component {
         return (  
             <Avatar src={'https://cinema10.com.br/upload/noticias/2018/13962cd976.jpg'} style={styles.avatar}/>
         );
-    }
-}
- 
+    };
+};
+
 export default UiAvatar;

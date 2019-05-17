@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
 import Clients from './components/clients/clients';
+import Home from './components/home/home';
 import NotFound from './components/notFound/notFound';
 import UiAppBar from './components/appBar/uiAppBar'
 import UiMenuBar from './components/menu/uiMenuBar'
@@ -21,7 +22,7 @@ function App() {
 						</Grid>
 						<Grid item xl={6} style={{flex: 1}}>
 							<Switch>
-								<Route path="/Início" component={NotFound} />
+								<Route path="/Início" component={Home} />
 								<Route path="/Clientes" component={Clients} />
 								<Route path="/Carros" component={NotFound} />
 								<Route path="/Serviços" component={NotFound} />

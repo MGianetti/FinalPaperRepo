@@ -9,7 +9,7 @@ class UiDate extends Component {
                 5/13/2019
             </Typography>
         );
-    }
-}
- 
+    };
+};
+
 export default UiDate;

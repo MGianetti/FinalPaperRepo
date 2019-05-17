@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-
+import Clock from 'react-live-clock';
 class UiClock extends Component {
-    state = {now: new Date()}
-
-    poolingClock = () => {
-        this.setState({now: new Date()});
-    }
 
     render() {
-        const { now } = this.state;
         return (  
-            <div>
-                {now.getHours()}:{now.getMinutes()}
-            </div>
+            <React.Fragment>
+                <Clock format="HH:mm" ticking={true} interval={1000} />
+            </React.Fragment>
         );
     };
 };
