@@ -28,13 +28,6 @@ const ItemsDrawer = ({ data, selectedIcon, onSelected }) => {
     return (
         <MenuList id="menuList">
             {menuItems.map( e => e )}
-            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
-            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
-            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
-            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
-            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
-            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
-            <MenuItem disabled style={{background: red[900], color: 'white'}}></MenuItem>
         </MenuList>
     );
 }

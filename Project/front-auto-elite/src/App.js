@@ -15,12 +15,17 @@ function App() {
 				<title>Auto Elite</title>
 			</head>
 			<body>
-				<UiAppBar />
-					<Grid container spacing={25}>
-						<Grid item xl={6}>
-							<UiMenuBar style={{flex: 1}}/>
+				<Grid container>
+					<Grid container>
+						<Grid item style={{width:'100%'}}>
+							<UiAppBar />
 						</Grid>
-						<Grid item xl={6} style={{flex: 1}}>
+					</Grid>
+					<Grid container>
+						<Grid item style={{width:'15%', background: 'grey'}}>
+							<UiMenuBar/>
+						</Grid>
+						<Grid item style={{width:'75%'}}>
 							<Switch>
 								<Route path="/Início" component={Home} />
 								<Route path="/Clientes" component={Clients} />
@@ -36,7 +41,8 @@ function App() {
 								<Redirect to="/not-found" />
 							</Switch>
 						</Grid>
-					</Grid>				
+					</Grid>
+				</Grid>
 			</body>
 		</React.Fragment>
     );

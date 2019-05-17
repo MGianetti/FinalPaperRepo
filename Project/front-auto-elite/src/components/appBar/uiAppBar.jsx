@@ -15,21 +15,31 @@ const UiAppBar = () => {
 		<React.Fragment>
 			<AppBar position="static" id="appBarFixed">
 				<Toolbar>
-					<Grid container direction='row'>
-						<Grid id="appBarAvatar" xs={2} item>
-							<UiAvatar/>
-						</Grid> 
-						<Grid id="appBarWelcome" xs={2} item>
-							<UiWelcome/>
+					<Grid container style={{width:'100%'}}  alignItems='center'>
+						<Grid item style={{width:'10%'}} >
+							<Grid item style={{height:'100%'}}>
+								<UiAvatar/>
+							</Grid>
 						</Grid>
-						<Grid id="appBarVersion" xs={6} item>
-							<UiVersion/>
+						<Grid item style={{width:'15%'}} >
+							<Grid item>
+								<UiWelcome/>
+							</Grid>
 						</Grid>
-						<Grid id="appBarDate" xs={1} item>
-							<UiDate/>
+						<Grid item style={{width:'60%'}}>
+							<Grid item style={{height:'100%'}}>
+								<UiVersion/>
+							</Grid>
 						</Grid>
-						<Grid id="appBarHour" xs={1} item>
-							<UiClock/>
+						<Grid item style={{width:'10%'}}>
+							<Grid item style={{height:'100%'}}>
+								<UiDate/>
+							</Grid>
+						</Grid>
+						<Grid item style={{width:'5%'}}>
+							<Grid item style={{height:'100%'}}>
+								<UiClock/>
+							</Grid>
 						</Grid>
 					</Grid>
 				</Toolbar>
