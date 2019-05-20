@@ -21,7 +21,7 @@ function App() {
 						<Grid item style={{width:'15%', background:'Azure'}}>
 							<UiMenuBar/>
 						</Grid>
-						<Grid item style={{width:'85%'}}>
+						<Grid container style={{width:'85%'}}>
 							<Switch>
 								<Route path="/Início" component={Home} />
 								<Route path="/Clientes" component={Clients} />
@@ -33,7 +33,7 @@ function App() {
 								<Route path="/Cobrança" component={NotFound} />
 								<Route path="/Vistoria" component={NotFound} />
 								<Route path="/not-found" component={NotFound} />
-								<Redirect from="/" exact to="/movies" />
+								<Redirect from="/" exact to="/Início" />
 								<Redirect to="/not-found" />
 							</Switch>
 						</Grid>

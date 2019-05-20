@@ -11,7 +11,7 @@ const ItemsDrawer = ({ data, selectedIcon, onSelected }) => {
         let bgColor = 'LightCyan';
         if(selectedIcon === key) bgColor = 'PaleTurquoise';
         menuItems.push(
-            <Link to={key} style={{textDecoration: 'none'}}>
+            <Link to={key} key={'Link' + key} style={{textDecoration: 'none'}}>
                 <MenuItem 
                     selected={selectedIcon === key}
                     key={key + "MenuItem"}

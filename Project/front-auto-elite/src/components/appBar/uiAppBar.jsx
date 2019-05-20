@@ -26,7 +26,7 @@ const UiAppBar = () => {
 								<UiWelcome/>
 							</Grid>
 						</Grid>
-						<Grid item style={{width:'60%'}}>
+						<Grid item style={{width:'53%'}}>
 							<Grid item style={{height:'100%'}}>
 								<UiVersion/>
 							</Grid>
@@ -36,7 +36,7 @@ const UiAppBar = () => {
 								<UiDate/>
 							</Grid>
 						</Grid>
-						<Grid item style={{width:'5%'}}>
+						<Grid item style={{width:'12%'}}>
 							<Grid item style={{height:'100%'}}>
 								<UiClock/>
 							</Grid>
