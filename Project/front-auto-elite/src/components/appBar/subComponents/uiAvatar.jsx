@@ -12,7 +12,7 @@ class UiAvatar extends Component {
         };
         return (
             <Grid container justify="center">
-                <Avatar src={'https://cinema10.com.br/upload/noticias/2018/13962cd976.jpg'} style={styles.avatar}/>
+                <Avatar src={''} style={styles.avatar}/>
             </Grid>
         );
     };
