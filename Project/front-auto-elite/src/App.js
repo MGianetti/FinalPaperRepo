@@ -6,6 +6,7 @@ import Home from './components/home/home';
 import NotFound from './components/notFound/notFound';
 import UiAppBar from './components/appBar/uiAppBar'
 import UiMenuBar from './components/menu/uiMenuBar'
+import Cars from './components/cars/cars';
 import './App.css';
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
 							<Switch>
 								<Route path="/Início" component={Home} />
 								<Route path="/Clientes" component={Clients} />
-								<Route path="/Carros" component={NotFound} />
+								<Route path="/Carros" component={Cars} />
 								<Route path="/Serviços" component={NotFound} />
 								<Route path="/Orçamentos" component={NotFound} />
 								<Route path="/Mecânicos" component={NotFound} />
