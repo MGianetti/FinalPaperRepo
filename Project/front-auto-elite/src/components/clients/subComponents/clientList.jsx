@@ -12,7 +12,7 @@ class ClientList extends Component {
                 <Grid container style={{padding:10, paddingBottom:40}}>
                     <Grid item style={{paddingTop:35}}>
                         <Paper>
-                            <List style={{maxHeight: 300, overflow: 'auto'}}>
+                            <List style={{maxHeight: 400, overflow: 'auto'}}>
                                 <ListItem>
                                     <ClientEntity/>
                                 </ListItem>

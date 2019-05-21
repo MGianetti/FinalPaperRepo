@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import ClientList from './clientList';
-import DropDown from '../../common/dropDown';
+import { Grid, Paper } from '@material-ui/core';
+import DropDown from './../../common/dropDown';
 import SearchBar from './../../common/searchBar';
-import { Paper, Grid } from '@material-ui/core';
 
-class SearchClient extends Component {
+class SearchService extends Component {
     state = {
         dropDown:{
-            items: ["Placa", 'CPF', 'Nome', 'Telefone', 'Celular', 'CEP'],
-            helpText: "Busca cliente baseado em parâmetro",
-            defaultText: "Buscar cliente...",
+            items: ["ID", 'Resumo', 'Cliente', 'Carro'],
+            helpText: "Busca serviço baseado em parâmetro",
+            defaultText: "Buscar serviço...",
             selected: ''
         },
         searchField:''
@@ -28,7 +27,7 @@ class SearchClient extends Component {
     };
 
     render() {
-        const { dropDown, searchField } = this.state;
+        const { dropDown, searchField } = this.state; 
         return ( 
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
@@ -52,7 +51,7 @@ class SearchClient extends Component {
                             </Paper>
                             <Grid container justify='center'>
                                 <Grid item style={{paddingTop:50}}>                                
-                                    <ClientList/>
+                                    {/*Must do a list component*/}
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -63,4 +62,4 @@ class SearchClient extends Component {
     };
 };
 
-export default SearchClient;
+export default SearchService;

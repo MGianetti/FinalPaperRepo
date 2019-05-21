@@ -7,10 +7,10 @@ import SearchCar from './subComponents/searchCar';
 class Cars extends Component {
     state = {
         tabs:[
-        {0: "Criar"},
-        {1: "Buscar"}
+            {0: "Criar"},
+            {1: "Buscar"}
         ],
-        tabSelected: 0,
+        tabSelected: 1,
     };
 
     handleChange = (event, tabSelected) => {
