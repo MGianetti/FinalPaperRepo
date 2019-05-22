@@ -119,7 +119,7 @@ class CreateCar extends Component {
                 </Grid>
             </Grid>
             <Grid container justify='center'>
-                <Grid item style={{width:'80%'}}>                                
+                <Grid item style={{width:'90%'}}>                                
                     <UiList data={searchedClients}/>
                 </Grid>
             </Grid>

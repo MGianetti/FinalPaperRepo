@@ -9,7 +9,7 @@ class Clients extends Component {
             {0: "Criar"},
             {1: "Buscar"}
         ],
-        tabSelected: 1,
+        tabSelected: 0,
     };
 
     handleChange = (event, tabSelected) => {

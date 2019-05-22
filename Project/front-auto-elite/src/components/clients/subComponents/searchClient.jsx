@@ -16,22 +16,16 @@ class SearchClient extends Component {
         searchField:'',
         searchedClients:[
             {'5b21ca3eeb7f6fbccd471815': <ClientEntity key='5b21ca3eeb7f6fbccd471815'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ClientEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471817': <ClientEntity key='5b21ca3eeb7f6fbccd471817'/>},
-            {'5b21ca3eeb7f6fbccd471818': <ClientEntity key='5b21ca3eeb7f6fbccd471818'/>},
-            {'5b21ca3eeb7f6fbccd471819': <ClientEntity key='5b21ca3eeb7f6fbccd471819'/>},
-            {'5b21ca3eeb7f6fbccd471820': <ClientEntity key='5b21ca3eeb7f6fbccd471820'/>},
-            {'5b21ca3eeb7f6fbccd471821': <ClientEntity key='5b21ca3eeb7f6fbccd471821'/>},
-            {'5b21ca3eeb7f6fbccd471822': <ClientEntity key='5b21ca3eeb7f6fbccd471822'/>},
-            {'5b21ca3eeb7f6fbccd471823': <ClientEntity key='5b21ca3eeb7f6fbccd471823'/>}
+            {'5b21ca3eeb7f6fbccd471816': <ClientEntity key='5b21ca3eeb7f6fbccd471816'/>}
         ]
     };
 
     //improve performance
     handleDropMenuChange = event => {
-        let dropDown = this.state.dropDown;
-        dropDown['selected'] = event.target.value;
-        this.setState({dropDown});
+        const dropDownName = event.target.name;
+        let newDropDownState = this.state[dropDownName];
+        newDropDownState['selected'] = event.target.value;
+        this.setState({ [dropDownName]: newDropDownState});
     };
 
     //improve performance
@@ -50,7 +44,7 @@ class SearchClient extends Component {
                                 <Grid container style={{padding: 20}}>
                                     <Grid item style={{width:'50%'}}>
                                         <DropDown                                        
-                                            data={dropDown}
+                                            data={{dropDown}}
                                             onChange={this.handleDropMenuChange}
                                         />
                                     </Grid>

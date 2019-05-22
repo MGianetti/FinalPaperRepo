@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Paper } from '@material-ui/core';
 import DropDown from './../../common/dropDown';
 import SearchBar from './../../common/searchBar';
+import UiList from './../../common/uiList';
 
 class SearchCar extends Component {
     state = {
@@ -11,23 +12,28 @@ class SearchCar extends Component {
             defaultText: "Buscar carro...",
             selected: ''
         },
-        searchField:''
+        searchField:'',
+        searchedCars:[
+            {'5b21ca3eeb7f6fbccd471815': <h1>CarEntity</h1>},
+            {'5b21ca3eeb7f6fbccd471816': <h1>CarEntity</h1>}
+        ]
     };
 
     //improve performance
     handleDropMenuChange = event => {
-        let dropDown = this.state.dropDown;
-        dropDown['selected'] = event.target.value;
-        this.setState({dropDown});
+        const dropDownName = event.target.name;
+        let newDropDownState = this.state[dropDownName];
+        newDropDownState['selected'] = event.target.value;
+        this.setState({ [dropDownName]: newDropDownState});
     };
-
+    
     //improve performance
     handleSearchBarChange = event => {
         this.setState({searchField: event.target.value})
     };
 
     render() {
-        const { dropDown, searchField } = this.state; 
+        const { dropDown, searchField, searchedCars } = this.state; 
         return ( 
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
@@ -37,7 +43,7 @@ class SearchCar extends Component {
                                 <Grid container style={{padding: 20}}>
                                     <Grid item style={{width:'50%'}}>
                                         <DropDown                                        
-                                            data={dropDown}
+                                            data={{dropDown}}
                                             onChange={this.handleDropMenuChange}
                                         />
                                     </Grid>
@@ -51,7 +57,9 @@ class SearchCar extends Component {
                             </Paper>
                             <Grid container justify='center'>
                                 <Grid item style={{paddingTop:50}}>                                
-                                    {/*Must do a list component*/}
+                                    <UiList
+                                        data={searchedCars}
+                                    />
                                 </Grid>
                             </Grid>
                         </Grid>

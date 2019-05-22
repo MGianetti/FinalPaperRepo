@@ -16,11 +16,12 @@ class SearchStock extends Component {
 
     //improve performance
     handleDropMenuChange = event => {
-        let dropDown = this.state.dropDown;
-        dropDown['selected'] = event.target.value;
-        this.setState({dropDown});
+        const dropDownName = event.target.name;
+        let newDropDownState = this.state[dropDownName];
+        newDropDownState['selected'] = event.target.value;
+        this.setState({ [dropDownName]: newDropDownState});
     };
-
+    
     //improve performance
     handleSearchBarChange = event => {
         this.setState({searchField: event.target.value})
@@ -37,7 +38,7 @@ class SearchStock extends Component {
                                 <Grid container style={{padding: 20}}>
                                     <Grid item style={{width:'50%'}}>
                                         <DropDown                                        
-                                            data={dropDown}
+                                            data={{dropDown}}
                                             onChange={this.handleDropMenuChange}
                                         />
                                     </Grid>
