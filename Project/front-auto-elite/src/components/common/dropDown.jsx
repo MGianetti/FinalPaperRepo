@@ -10,12 +10,12 @@ const DropDown = ({ data, onChange }) => {
                 <Select value={selected} onChange={onChange}>
                     <MenuItem value="">
                         <em>Nenhum</em>
-                    </MenuItem>
-                    
-                    <MenuItem key={1} value={0}>{items[0]}</MenuItem>
-                    <MenuItem key={2} value={1}>{items[1]}</MenuItem>
-                    <MenuItem key={3} value={2}>{items[2]}</MenuItem>
-                    <MenuItem key={4} value={3}>{items[3]}</MenuItem>
+                    </MenuItem>                    
+                    {Object.values(items).map( i => {
+                        return (
+                            <MenuItem value={Object.values(items).indexOf(i)}>{i}</MenuItem>
+                        )
+                    })}
                 </Select>
                 <FormHelperText> {helpText} </FormHelperText>
             </FormControl>

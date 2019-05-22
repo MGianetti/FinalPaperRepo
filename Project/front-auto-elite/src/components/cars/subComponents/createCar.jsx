@@ -3,24 +3,25 @@ import TextField from '@material-ui/core/TextField';
 import {Grid, MenuItem} from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import ClientList from '../../clients/subComponents/clientList';
+import UiList from '../../common/uiList';
+import ClientEntity from './../../clients/subComponents/clientEntity';
 
 const currencies = [
     {
-      value: 'JEM-4556',
-      label: 'Placa',
+        value: 'JEM-4556',
+        label: 'Placa',
     },
     {
-      value: '1186548123',
-      label: 'CPF',
+        value: '1186548123',
+        label: 'CPF',
     },
     {
-      value: 'João das Neves',
-      label: 'Nome',
+        value: 'João das Neves',
+        label: 'Nome',
     },
     {
-      value: '35 32228946',
-      label: 'Telefone',
+        value: '35 32228946',
+        label: 'Telefone',
     },
     {
         value: '35 998453215',
@@ -30,18 +31,31 @@ const currencies = [
         value: '37664-984',
         label: 'CEP',
     },
-  ];
+];
 class CreateCar extends Component {
     state = {
         checkedA: true,
         checkedB: true,
         currency: 'Placa',
-      };
+        searchedClients:[
+            {'5b21ca3eeb7f6fbccd471815': <ClientEntity key='5b21ca3eeb7f6fbccd471815'/>},
+            {'5b21ca3eeb7f6fbccd471816': <ClientEntity key='5b21ca3eeb7f6fbccd471816'/>},
+            {'5b21ca3eeb7f6fbccd471817': <ClientEntity key='5b21ca3eeb7f6fbccd471817'/>},
+            {'5b21ca3eeb7f6fbccd471818': <ClientEntity key='5b21ca3eeb7f6fbccd471818'/>},
+            {'5b21ca3eeb7f6fbccd471819': <ClientEntity key='5b21ca3eeb7f6fbccd471819'/>},
+            {'5b21ca3eeb7f6fbccd471820': <ClientEntity key='5b21ca3eeb7f6fbccd471820'/>},
+            {'5b21ca3eeb7f6fbccd471821': <ClientEntity key='5b21ca3eeb7f6fbccd471821'/>},
+            {'5b21ca3eeb7f6fbccd471822': <ClientEntity key='5b21ca3eeb7f6fbccd471822'/>},
+            {'5b21ca3eeb7f6fbccd471823': <ClientEntity key='5b21ca3eeb7f6fbccd471823'/>}
+        ]
+    };
 
-      handleChange = name => event => {
+    handleChange = name => event => {
         this.setState({ [name]: event.target.checked });
-      };
-    render() { 
+    };
+    
+    render() {
+        const { searchedClients } = this.state;
         return ( 
         <React.Fragment>    
             <Grid container justify='center' alignItems='center'>
@@ -105,18 +119,13 @@ class CreateCar extends Component {
                 </Grid>
             </Grid>
             <Grid container justify='center'>
-                <Grid item style={{width:'50%'}}>                                
-                    <ClientList/>
+                <Grid item style={{width:'80%'}}>                                
+                    <UiList data={searchedClients}/>
                 </Grid>
             </Grid>
-           
-
-
         </React.Fragment>
         );
     };
-    
-
 };
- 
+
 export default CreateCar;

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import ClientList from './clientList';
 import DropDown from '../../common/dropDown';
 import SearchBar from './../../common/searchBar';
 import { Paper, Grid } from '@material-ui/core';
+import UiList from './../../common/uiList';
+import ClientEntity from './clientEntity';
 
 class SearchClient extends Component {
     state = {
@@ -12,7 +13,18 @@ class SearchClient extends Component {
             defaultText: "Buscar cliente...",
             selected: ''
         },
-        searchField:''
+        searchField:'',
+        searchedClients:[
+            {'5b21ca3eeb7f6fbccd471815': <ClientEntity key='5b21ca3eeb7f6fbccd471815'/>},
+            {'5b21ca3eeb7f6fbccd471816': <ClientEntity key='5b21ca3eeb7f6fbccd471816'/>},
+            {'5b21ca3eeb7f6fbccd471817': <ClientEntity key='5b21ca3eeb7f6fbccd471817'/>},
+            {'5b21ca3eeb7f6fbccd471818': <ClientEntity key='5b21ca3eeb7f6fbccd471818'/>},
+            {'5b21ca3eeb7f6fbccd471819': <ClientEntity key='5b21ca3eeb7f6fbccd471819'/>},
+            {'5b21ca3eeb7f6fbccd471820': <ClientEntity key='5b21ca3eeb7f6fbccd471820'/>},
+            {'5b21ca3eeb7f6fbccd471821': <ClientEntity key='5b21ca3eeb7f6fbccd471821'/>},
+            {'5b21ca3eeb7f6fbccd471822': <ClientEntity key='5b21ca3eeb7f6fbccd471822'/>},
+            {'5b21ca3eeb7f6fbccd471823': <ClientEntity key='5b21ca3eeb7f6fbccd471823'/>}
+        ]
     };
 
     //improve performance
@@ -28,7 +40,7 @@ class SearchClient extends Component {
     };
 
     render() {
-        const { dropDown, searchField } = this.state;
+        const { dropDown, searchField, searchedClients } = this.state;
         return ( 
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
@@ -52,7 +64,9 @@ class SearchClient extends Component {
                             </Paper>
                             <Grid container justify='center'>
                                 <Grid item style={{paddingTop:50}}>                                
-                                    <ClientList/>
+                                    <UiList
+                                        data={searchedClients}
+                                    />
                                 </Grid>
                             </Grid>
                         </Grid>
