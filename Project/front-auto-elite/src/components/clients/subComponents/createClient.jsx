@@ -23,10 +23,13 @@ class CreateClient extends Component {
     };
 
     handleFormChange = (event) => {
-        console.log(event.target.name)
+        let newClientForm = this.state;
+        newClienteForm[event.target.name] = event.target.value;
+        this.setState 
     };
 
-    render() { 
+    render() {
+        const { name, telDDD, tel, celDDD, cel, cpf, cep, houseNumber, carPlate, carIsMercosul, carObservations} = this.state.newClientForm; 
         return (
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
@@ -43,7 +46,7 @@ class CreateClient extends Component {
                                         margin='normal'
                                         label="Nome"
                                         placeholder="Nome do novo cliente"
-                                        defaultValue=""
+                                        value={name}
                                         variant="outlined"
                                         style={{backgroundColor:'#dfdfdf', width:'100%'}}    
                                     />
@@ -54,7 +57,7 @@ class CreateClient extends Component {
                                         margin='normal'
                                         label="DDD"
                                         placeholder="DDD do celular"
-                                        defaultValue=""
+                                        value={celDDD}
                                         variant="outlined"
                                         style={{backgroundColor:'#dfdfdf', width:'15%'}}    
                                     />
@@ -63,7 +66,7 @@ class CreateClient extends Component {
                                         margin='normal'
                                         label="Celular"
                                         placeholder="Número do celular do cliente"
-                                        defaultValue=""
+                                        value={cel}
                                         variant="outlined"
                                         style={{backgroundColor:'#dfdfdf', width:'35%'}}    
                                     />
@@ -73,7 +76,7 @@ class CreateClient extends Component {
                                         margin='normal'
                                         label="DDD"
                                         placeholder="DDD do telefone"
-                                        defaultValue=""
+                                        value={telDDD}
                                         variant="outlined"
                                         style={{backgroundColor:'#dfdfdf', width:'15%'}}    
                                     />
@@ -82,7 +85,7 @@ class CreateClient extends Component {
                                         margin='normal'
                                         label="Telefone"
                                         placeholder="Número do telefone do cliente"
-                                        defaultValue=""
+                                        value={tel}
                                         variant="outlined"
                                         style={{backgroundColor:'#dfdfdf', width:'35%'}}    
                                     />
@@ -93,7 +96,7 @@ class CreateClient extends Component {
                                         margin='normal'
                                         label="CPF"
                                         placeholder="CPF do cliente"
-                                        defaultValue=""
+                                        value={cpf}
                                         variant="outlined"
                                         style={{backgroundColor:'#dfdfdf', width:'30%'}}    
                                     />
@@ -103,7 +106,7 @@ class CreateClient extends Component {
                                         margin='normal'
                                         label="CEP"
                                         placeholder="CEP do cliente"
-                                        defaultValue=""
+                                        value={cep}
                                         variant="outlined"
                                         style={{backgroundColor:'#dfdfdf', width:'40%'}}    
                                     />
@@ -112,7 +115,7 @@ class CreateClient extends Component {
                                         margin='normal'
                                         label="Casa"
                                         placeholder="Número da casa do cliente"
-                                        defaultValue=""
+                                        value={houseNumber}
                                         variant="outlined"
                                         style={{backgroundColor:'#dfdfdf', width:'30%'}}    
                                     />
@@ -126,12 +129,12 @@ class CreateClient extends Component {
                                         margin='normal'
                                         label="Placa"
                                         placeholder="Placa do carro do cliente"
-                                        defaultValue=""
+                                        value={carPlate}
                                         variant="outlined"
                                         style={{backgroundColor:'#dfdfdf', width:'20%'}}    
                                     />
-                                    <Typography style={{paddingLeft:60}} variant='h7'>Mercosul:</Typography>
-                                    <Switch/>
+                                    <Typography style={{paddingLeft:60}} variant='h6'>Mercosul:</Typography>
+                                    <Switch value={carIsMercosul}/>
                                 </Grid>
                                 <Grid container style={{paddingBottom:20}} alignItems='center' justify='center'>
                                     <TextField
@@ -139,7 +142,7 @@ class CreateClient extends Component {
                                         margin='normal'
                                         label="Observações"
                                         placeholder="Observações sobre o carro do cliente"
-                                        defaultValue=""
+                                        value={carObservations}
                                         variant="outlined"
                                         style={{backgroundColor:'#dfdfdf',width:'80%'}} 
                                         rowsMax='5'
@@ -147,7 +150,7 @@ class CreateClient extends Component {
                                     />
                                 </Grid>    
                                 <Grid container style={{paddingBottom:50}} alignItems='center' justify='center'>
-                                    <Button variant="contained" color="#2a2a2a">Criar</Button>
+                                    <Button variant="contained" color='default'>Criar</Button>
                                 </Grid> 
                             </Paper>
                         </Grid>

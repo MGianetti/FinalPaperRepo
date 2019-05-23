@@ -122,7 +122,7 @@ class ClientEntity extends Component {
                                         />
                                     </Grid>
                                     <Grid item style={{padding: 8}}>                                    
-                                        <Button variant="contained" color="#2a2a2a">Ver</Button>
+                                        <Button variant="contained" color='default'>Ver</Button>
                                     </Grid>
                                 </Grid>
                                 <Grid container alignItems='center' style={{padding:4, paddingTop:10, paddingBottom:10, width:'50%'}}>
@@ -139,7 +139,7 @@ class ClientEntity extends Component {
                                         />
                                     </Grid>
                                     <Grid item style={{padding: 8}}>                                    
-                                        <Button variant="contained" color="#2a2a2a">Ver</Button>
+                                        <Button variant="contained" color='default'>Ver</Button>
                                     </Grid>
                                 </Grid>
                             </Grid>
