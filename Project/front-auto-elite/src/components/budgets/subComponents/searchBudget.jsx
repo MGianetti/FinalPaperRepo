@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Grid, Paper } from '@material-ui/core';
 import DropDown from './../../common/dropDown';
 import SearchBar from './../../common/searchBar';
+import UiList from './../../common/uiList';
+import BudgetEntity from './budgetEntity';
 
 class SearchBudget extends Component {
     state = {
@@ -11,7 +13,13 @@ class SearchBudget extends Component {
             defaultText: "Buscar orçamento...",
             selected: ''
         },
-        searchField:''
+        searchField:'',
+        searchedBudgets:[
+            {'5b21ca3eeb7f6fbccd471815': <BudgetEntity/>},
+            {'5b21ca3eeb7f6fbccd471816': <BudgetEntity/>},
+            {'5b21ca3eeb7f6fbccd471817': <BudgetEntity/>},
+            {'5b21ca3eeb7f6fbccd471818': <BudgetEntity/>}
+        ]
     };
 
     //improve performance
@@ -28,35 +36,37 @@ class SearchBudget extends Component {
     };
 
     render() {
-        const { dropDown, searchField } = this.state; 
+        const { dropDown, searchField, searchedBudgets } = this.state; 
         return ( 
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
-                    <Paper style={{width:'90%'}}>
-                        <Grid justify='center' container style={{width:'100%'}} >
-                            <Paper style={{width:'80%'}}>
-                                <Grid container style={{padding: 20}}>
-                                    <Grid item style={{width:'50%'}}>
-                                        <DropDown                                        
-                                            data={{dropDown}}
-                                            onChange={this.handleDropMenuChange}
-                                        />
-                                    </Grid>
-                                    <Grid item style={{width:'50%'}}>
-                                        <SearchBar 
-                                            value={searchField} 
-                                            onChange={this.handleSearchBarChange}
-                                            />
-                                    </Grid>
+                    <Grid justify='center' container style={{width:'100%'}} >
+                        <Paper elevation='5' style={{width:'90%', marginTop:10}}>
+                            <Grid container style={{padding: 20}}>
+                                <Grid item style={{width:'50%'}}>
+                                    <DropDown                                        
+                                        data={{dropDown}}
+                                        onChange={this.handleDropMenuChange}
+                                    />
                                 </Grid>
-                            </Paper>
-                            <Grid container justify='center'>
-                                <Grid item style={{paddingTop:50}}>                                
-                                    {/*Must do a list component*/}
+                                <Grid item style={{width:'50%'}}>
+                                    <SearchBar 
+                                        value={searchField} 
+                                        onChange={this.handleSearchBarChange}
+                                        />
                                 </Grid>
                             </Grid>
-                        </Grid>
-                    </Paper>
+                        </Paper>
+                        <Paper elevation='5' style={{width:'90%', marginTop:15}}>
+                            <Grid container justify='center'>
+                                <Grid item style={{paddingTop:50}}>                                
+                                    <UiList
+                                        data={searchedBudgets}
+                                    />
+                                </Grid>
+                            </Grid>
+                        </Paper>
+                    </Grid>
                 </Grid>
             </React.Fragment> 
         );

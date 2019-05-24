@@ -3,6 +3,7 @@ import { Grid, Paper } from '@material-ui/core';
 import DropDown from './../../common/dropDown';
 import SearchBar from './../../common/searchBar';
 import UiList from './../../common/uiList';
+import CarEntity from './carEntity';
 
 class SearchCar extends Component {
     state = {
@@ -14,8 +15,8 @@ class SearchCar extends Component {
         },
         searchField:'',
         searchedCars:[
-            {'5b21ca3eeb7f6fbccd471815': <h1>CarEntity</h1>},
-            {'5b21ca3eeb7f6fbccd471816': <h1>CarEntity</h1>}
+            {'5b21ca3eeb7f6fbccd471815': <CarEntity/>},
+            {'5b21ca3eeb7f6fbccd471816': <CarEntity/>}
         ]
     };
 
@@ -37,24 +38,24 @@ class SearchCar extends Component {
         return ( 
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
-                    <Paper style={{width:'90%'}}>
-                        <Grid justify='center' container style={{width:'100%'}} >
-                            <Paper style={{width:'80%'}}>
-                                <Grid container style={{padding: 20}}>
-                                    <Grid item style={{width:'50%'}}>
-                                        <DropDown                                        
-                                            data={{dropDown}}
-                                            onChange={this.handleDropMenuChange}
-                                        />
-                                    </Grid>
-                                    <Grid item style={{width:'50%'}}>
-                                        <SearchBar 
-                                            value={searchField} 
-                                            onChange={this.handleSearchBarChange}
-                                            />
-                                    </Grid>
+                    <Grid justify='center' container style={{width:'100%'}} >
+                        <Paper elevation='5' style={{width:'90%', marginTop:10}}>
+                            <Grid container style={{padding: 20}}>
+                                <Grid item style={{width:'50%'}}>
+                                    <DropDown                                        
+                                        data={{dropDown}}
+                                        onChange={this.handleDropMenuChange}
+                                    />
                                 </Grid>
-                            </Paper>
+                                <Grid item style={{width:'50%'}}>
+                                    <SearchBar 
+                                        value={searchField} 
+                                        onChange={this.handleSearchBarChange}
+                                        />
+                                </Grid>
+                            </Grid>
+                        </Paper>
+                        <Paper elevation='5' style={{width:'90%', marginTop:15}}>
                             <Grid container justify='center'>
                                 <Grid item style={{paddingTop:50}}>                                
                                     <UiList
@@ -62,8 +63,8 @@ class SearchCar extends Component {
                                     />
                                 </Grid>
                             </Grid>
-                        </Grid>
-                    </Paper>
+                        </Paper>
+                    </Grid>
                 </Grid>
             </React.Fragment> 
         );
