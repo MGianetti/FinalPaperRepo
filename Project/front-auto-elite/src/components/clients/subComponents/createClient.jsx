@@ -23,9 +23,15 @@ class CreateClient extends Component {
     };
 
     handleFormChange = (event) => {
-        let newClientForm = this.state;
-        newClienteForm[event.target.name] = event.target.value;
-        this.setState 
+        let { newClientForm } = this.state;
+        newClientForm[event.target.name] = event.target.value;
+        this.setState({ newClientForm })
+    };
+
+    handleSwitchCheckChange = (event) => {
+        let { newClientForm } = this.state;
+        newClientForm[event.target.name] = event.target.checked;
+        this.setState({ newClientForm })
     };
 
     render() {
@@ -39,85 +45,93 @@ class CreateClient extends Component {
                                 <Grid style={{paddingTop:20}} container justify='center'>
                                     <Person fontSize='large'/>
                                 </Grid>
-                                <Grid container>
+                                <Grid container justify='space-evenly'>
                                     <TextField
                                         onChange={this.handleFormChange}
+                                        autoFocus
                                         name='name'
                                         margin='normal'
                                         label="Nome"
                                         placeholder="Nome do novo cliente"
                                         value={name}
                                         variant="outlined"
-                                        style={{backgroundColor:'#dfdfdf', width:'100%'}}    
+                                        style={{backgroundColor:'#dfdfdf', width:'99.4%'}}    
                                     />
                                 </Grid>
-                                <Grid container>
+                                <Grid container justify='space-evenly'>
                                     <TextField
+                                        onChange={this.handleFormChange}
                                         name='celDDD'
                                         margin='normal'
                                         label="DDD"
                                         placeholder="DDD do celular"
                                         value={celDDD}
                                         variant="outlined"
-                                        style={{backgroundColor:'#dfdfdf', width:'15%'}}    
+                                        style={{backgroundColor:'#dfdfdf', width:'14.7%'}}    
                                     />
                                     <TextField
+                                        onChange={this.handleFormChange}
                                         name='cel'
                                         margin='normal'
                                         label="Celular"
                                         placeholder="Número do celular do cliente"
                                         value={cel}
                                         variant="outlined"
-                                        style={{backgroundColor:'#dfdfdf', width:'35%'}}    
+                                        style={{backgroundColor:'#dfdfdf', width:'34.3%'}}    
                                     />
                                     
                                     <TextField
+                                        onChange={this.handleFormChange}
                                         name='telDDD'
                                         margin='normal'
                                         label="DDD"
                                         placeholder="DDD do telefone"
                                         value={telDDD}
                                         variant="outlined"
-                                        style={{backgroundColor:'#dfdfdf', width:'15%'}}    
+                                        style={{backgroundColor:'#dfdfdf', width:'14.7%'}}    
                                     />
                                     <TextField
+                                        onChange={this.handleFormChange}
                                         name='tel'
                                         margin='normal'
                                         label="Telefone"
                                         placeholder="Número do telefone do cliente"
                                         value={tel}
                                         variant="outlined"
-                                        style={{backgroundColor:'#dfdfdf', width:'35%'}}    
+                                        style={{backgroundColor:'#dfdfdf', width:'34.3%'}}    
                                     />
                                 </Grid>
-                                <Grid container>
+                                <Grid container justify='space-evenly'>
                                     <TextField
+                                        onChange={this.handleFormChange}
                                         name='cpf'
                                         margin='normal'
                                         label="CPF"
                                         placeholder="CPF do cliente"
                                         value={cpf}
                                         variant="outlined"
-                                        style={{backgroundColor:'#dfdfdf', width:'30%'}}    
+                                        style={{backgroundColor:'#dfdfdf', width:'29.4%'}}    
                                     />
     
                                     <TextField
+                                        onChange={this.handleFormChange}
                                         name='cep'
                                         margin='normal'
                                         label="CEP"
                                         placeholder="CEP do cliente"
                                         value={cep}
                                         variant="outlined"
-                                        style={{backgroundColor:'#dfdfdf', width:'40%'}}    
+                                        style={{backgroundColor:'#dfdfdf', width:'39.2%'}}    
                                     />
                                     <TextField
+                                        onChange={this.handleFormChange}
                                         name='houseNumber'
                                         margin='normal'
                                         label="Casa"
                                         placeholder="Número da casa do cliente"
                                         value={houseNumber}
                                         variant="outlined"
-                                        style={{backgroundColor:'#dfdfdf', width:'30%'}}    
+                                        style={{backgroundColor:'#dfdfdf', width:'29.4%'}}    
                                     />
                                 </Grid>
                                     <Grid style={{paddingTop:20}} container justify='center'>
@@ -125,6 +139,7 @@ class CreateClient extends Component {
                                     </Grid>
                                 <Grid container alignItems='center' justify='center'>
                                     <TextField
+                                        onChange={this.handleFormChange}
                                         name='carPlate'
                                         margin='normal'
                                         label="Placa"
@@ -134,10 +149,11 @@ class CreateClient extends Component {
                                         style={{backgroundColor:'#dfdfdf', width:'20%'}}    
                                     />
                                     <Typography style={{paddingLeft:60}} variant='h6'>Mercosul:</Typography>
-                                    <Switch value={carIsMercosul}/>
+                                    <Switch name='carIsMercosul' checked={carIsMercosul} onChange={this.handleSwitchCheckChange}/>
                                 </Grid>
                                 <Grid container style={{paddingBottom:20}} alignItems='center' justify='center'>
                                     <TextField
+                                        onChange={this.handleFormChange}
                                         name='carObservations'
                                         margin='normal'
                                         label="Observações"
