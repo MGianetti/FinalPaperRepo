@@ -61,6 +61,7 @@ class SearchClient extends Component {
                             <Grid container justify='center'>
                                 <Grid item style={{paddingTop:50}}>                                
                                     <UiList
+                                        maxHeight={600}
                                         data={searchedClients}
                                     />
                                 </Grid>

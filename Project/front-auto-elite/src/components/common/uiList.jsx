@@ -1,12 +1,12 @@
 import React from 'react';
 import { Grid, List, ListItem } from '@material-ui/core';
 
-const UiList = ({ data }) => {
+const UiList = ({ data, maxHeight }) => {
     return (  
         <React.Fragment>    
             <Grid container style={{padding:10, paddingBottom:40}}>
                 <Grid item>
-                    <List style={{maxHeight: 600, overflow: 'auto'}}>                            
+                    <List style={{maxHeight: maxHeight, overflow: 'auto'}}>                            
                         {data.map( d => {
                             return (
                                 <ListItem  key={Object.keys(d)+1}>
