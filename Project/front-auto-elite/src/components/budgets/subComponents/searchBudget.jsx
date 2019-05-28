@@ -61,7 +61,7 @@ class SearchBudget extends Component {
                             <Grid container justify='center'>
                                 <Grid item style={{paddingTop:50}}>                                
                                     <UiList
-                                        maxHeight={600}
+                                        maxHeight={800}
                                         data={searchedBudgets}
                                     />
                                 </Grid>

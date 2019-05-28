@@ -33,8 +33,8 @@ class ItemEntity extends Component {
                 <ExpansionPanelDetails>
                     <Paper>
                         <Grid container style={{padding: 20}}>
-                            <Grid container alignItems='center'>
-                                <Grid container style={{width:'85%'}} alignItems='center'>
+                            <Grid container alignItems='center' direction='row'>
+                                <Grid container style={{width:'75%'}} alignItems='center'>
                                     <Grid item style={{padding: 5}}>
                                         <Avatar src="https://i.ibb.co/12ktmtW/item-avatar.png"/>
                                     </Grid>
@@ -42,15 +42,15 @@ class ItemEntity extends Component {
                                         <Typography variant='title'style={{paddingLeft:10}}>{`${name}`}</Typography>
                                     </Grid>
                                 </Grid>
-                                <Grid container style={{width:'15%'}}>
-                                    <Grid container style={{width:'50%'}}>
+                                <Grid container style={{width:'25%'}}>
+                                    <Grid container style={{padding:5, width:'50%'}}>
                                         <Grid item>
                                             <Fab style={{backgroundColor:'#FA8072'}} size='small'>
                                                 <Delete/>
                                             </Fab>
                                         </Grid>
                                     </Grid>
-                                    <Grid container style={{width:'50%'}}>
+                                    <Grid container style={{padding:5, width:'50%'}}>
                                         <Grid item>
                                             <Fab style={{backgroundColor:'#00FF7F'}} size='small'>
                                                 <Edit/>
@@ -60,7 +60,7 @@ class ItemEntity extends Component {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid container alignItems="center" justify='center' style={{padding: 20}}>
+                        <Grid container alignItems="center" justify='center' direction='row' style={{padding: 20}}>
                             <Grid item style={{padding:15}}>
                                 <Typography variant='display2'>
                                     Quantidade:                                 
@@ -68,7 +68,7 @@ class ItemEntity extends Component {
                             </Grid>
                             <Grid item style={{padding:15}}>
                                 <Button variant="contained" color='default'>
-                                    <Typography variant='display2'>
+                                    <Typography variant='h6'>
                                         -                                 
                                     </Typography>
                                 </Button>
@@ -80,20 +80,20 @@ class ItemEntity extends Component {
                             </Grid>
                             <Grid item>
                                 <Button variant="contained" color='default'>
-                                    <Typography variant='display2'>
+                                    <Typography variant='h6'>
                                         +                                  
                                     </Typography>
                                 </Button>
                             </Grid>
                         </Grid>
                         <Grid container alignItems="center" justify='center' style={{padding: 20}}>
-                            <Grid item style={{padding:15}}>
-                                <Typography variant='display2'>
+                            <Grid container style={{padding:15}}>
+                                <Typography style={{padding:15}} variant='display2'>
                                     Código:  
-                                    <Typography style={{color:'#000000'}} variant='display2'>
-                                        {code}                           
-                                    </Typography>                         
                                 </Typography>
+                                <Typography style={{color:'#000000', padding:15}} variant='display2'>
+                                    {code}                           
+                                </Typography>                         
                             </Grid>                    
                         </Grid>
                     </Paper>

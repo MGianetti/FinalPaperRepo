@@ -82,7 +82,7 @@ class BudgetEntity extends Component {
                             <Grid container alignItems='center'>
                                 <Grid container style={{width:'80%'}} alignItems='center'>
                                     <UiList
-                                        maxHeight={100}
+                                        maxHeight={300}
                                         data={searchedItems}
                                     />
                                 </Grid>
