@@ -4,22 +4,31 @@ import SearchBar from './../../common/searchBar';
 import { Paper, Grid } from '@material-ui/core';
 import UiList from './../../common/uiList';
 import ClientEntity from './clientEntity';
+import EditClient from './editClient';
 
 class SearchClient extends Component {
+
     state = {
+
         dropDown:{
             items: ["Placa", 'CPF', 'Nome', 'Telefone', 'Celular', 'CEP'],
             helpText: "Busca cliente baseado em parâmetro",
             defaultText: "Buscar cliente...",
             selected: ''
         },
+
         searchField:'',
+
         searchedClients:[
             {'5b21ca3eeb7f6fbccd471815': <ClientEntity key='5b21ca3eeb7f6fbccd471815'/>},
             {'5b21ca3eeb7f6fbccd471816': <ClientEntity key='5b21ca3eeb7f6fbccd471816'/>},
             {'5b21ca3eeb7f6fbccd471817': <ClientEntity key='5b21ca3eeb7f6fbccd471817'/>},
             {'5b21ca3eeb7f6fbccd471818': <ClientEntity key='5b21ca3eeb7f6fbccd471818'/>}
-        ]
+        ],
+        
+        editingMode: false,
+
+        editingData: null,
     };
 
     //improve performance
@@ -36,12 +45,13 @@ class SearchClient extends Component {
     };
 
     render() {
-        const { dropDown, searchField, searchedClients } = this.state;
+        const { dropDown, searchField, searchedClients, editingMode, editingData } = this.state;
         return ( 
             <React.Fragment>
+                {editingMode && <EditClient data={editingData}/>}
                 <Grid container justify='center' style={{paddingTop:15}}>
                     <Grid justify='center' container style={{width:'100%'}} >
-                        <Paper elevation='5' style={{width:'90%', marginTop:10}}>
+                        <Paper elevation={5} style={{width:'90%', marginTop:10}}>
                             <Grid container style={{padding: 20}}>
                                 <Grid item style={{width:'50%'}}>
                                     <DropDown                                        
@@ -57,7 +67,7 @@ class SearchClient extends Component {
                                 </Grid>
                             </Grid>
                         </Paper>
-                        <Paper elevation='5' style={{width:'90%', marginTop:15}}>
+                        <Paper elevation={5} style={{width:'90%', marginTop:15}}>
                             <Grid container justify='center'>
                                 <Grid item style={{paddingTop:50}}>                                
                                     <UiList

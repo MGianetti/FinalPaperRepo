@@ -10,6 +10,7 @@ class Clients extends Component {
             {1: "Buscar"}
         ],
         tabSelected: 0,
+        editingMode: false
     };
 
     handleChange = (event, tabSelected) => {
