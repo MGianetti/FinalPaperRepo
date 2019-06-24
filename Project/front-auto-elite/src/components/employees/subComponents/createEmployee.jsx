@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
-import Switch from '@material-ui/core/Switch';
-import { Typography, Button } from '@material-ui/core';
-import { Person, DirectionsCar } from '@material-ui/icons'
+import { Button } from '@material-ui/core';
+import { Person } from '@material-ui/icons'
 
 class CreateEmployee extends Component {
     state = {

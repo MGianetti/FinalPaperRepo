@@ -4,15 +4,11 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Paper, Avatar, Grid, Fab, Button } from '@material-ui/core';
+import { Paper, Avatar, Grid, Fab } from '@material-ui/core';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
-import ThumbUp from '@material-ui/icons/ThumbUp';
-import ThumbDown from '@material-ui/icons/ThumbDown';
 import UiList from '../../common/uiList';
-import ItemEntity from '../../stock/subComponents/itemEntity';
 import ServiceEntity from './../../services/subComponents/serviceEntity';
-import { Person, DriveEta } from '@material-ui/icons';
 
 
 
