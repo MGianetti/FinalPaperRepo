@@ -32,31 +32,31 @@ class SearchInspection extends Component {
         return ( 
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
-                    <Paper style={{width:'90%'}}>
-                        <Grid justify='center' container style={{width:'100%'}} >
-                            <Paper style={{width:'80%'}}>
-                                <Grid container style={{padding: 20}}>
-                                    <Grid item style={{width:'50%'}}>
-                                        <DropDown                                        
-                                            data={{dropDown}}
-                                            onChange={this.handleDropMenuChange}
-                                        />
-                                    </Grid>
-                                    <Grid item style={{width:'50%'}}>
-                                        <SearchBar 
-                                            value={searchField} 
-                                            onChange={this.handleSearchBarChange}
-                                            />
-                                    </Grid>
+                    <Grid justify='center' container style={{width:'100%'}} >
+                        <Paper elevation='5' style={{width:'90%', marginTop:10}}>
+                            <Grid container style={{padding: 20}}>
+                                <Grid item style={{width:'50%'}}>
+                                    <DropDown                                        
+                                        data={{dropDown}}
+                                        onChange={this.handleDropMenuChange}
+                                    />
                                 </Grid>
-                            </Paper>
+                                <Grid item style={{width:'50%'}}>
+                                    <SearchBar 
+                                        value={searchField} 
+                                        onChange={this.handleSearchBarChange}
+                                        />
+                                </Grid>
+                            </Grid>
+                        </Paper>
+                        <Paper elevation='5' style={{width:'90%', marginTop:15}}>  
                             <Grid container justify='center'>
                                 <Grid item style={{paddingTop:50}}>                                
                                     {/*Must do a list component*/}
                                 </Grid>
                             </Grid>
-                        </Grid>
-                    </Paper>
+                        </Paper>
+                    </Grid>
                 </Grid>
             </React.Fragment> 
         );

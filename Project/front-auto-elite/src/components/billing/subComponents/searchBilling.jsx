@@ -40,7 +40,7 @@ class SearchBilling extends Component {
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
                     <Grid justify='center' container style={{width:'100%'}} >
-                        <Paper style={{width:'80%'}}>
+                        <Paper elevation='5' style={{width:'90%', marginTop:10}}>
                             <Grid container style={{padding: 20}}>
                                 <Grid item style={{width:'50%'}}>
                                     <DropDown                                        
@@ -59,10 +59,10 @@ class SearchBilling extends Component {
                         <Paper elevation='5' style={{width:'90%', marginTop:15}}>                
                             <Grid container justify='center'>
                                 <Grid item style={{paddingTop:50}}>                                
-                                    <UiList
+                                    {/* <UiList
                                         data={searchedBillings}
                                         maxHeight={600}
-                                    />
+                                    /> */}
                                 </Grid>
                             </Grid>
                         </Paper>

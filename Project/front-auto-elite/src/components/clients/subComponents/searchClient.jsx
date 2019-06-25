@@ -25,10 +25,7 @@ class SearchClient extends Component {
             {'5b21ca3eeb7f6fbccd471817': <ClientEntity key='5b21ca3eeb7f6fbccd471817'/>},
             {'5b21ca3eeb7f6fbccd471818': <ClientEntity key='5b21ca3eeb7f6fbccd471818'/>}
         ],
-        
-        editingMode: false,
 
-        editingData: null,
     };
 
     //improve performance
@@ -45,10 +42,9 @@ class SearchClient extends Component {
     };
 
     render() {
-        const { dropDown, searchField, searchedClients, editingMode, editingData } = this.state;
+        const { dropDown, searchField, searchedClients } = this.state;
         return ( 
             <React.Fragment>
-                {editingMode && <EditClient data={editingData}/>}
                 <Grid container justify='center' style={{paddingTop:15}}>
                     <Grid justify='center' container style={{width:'100%'}} >
                         <Paper elevation={5} style={{width:'90%', marginTop:10}}>

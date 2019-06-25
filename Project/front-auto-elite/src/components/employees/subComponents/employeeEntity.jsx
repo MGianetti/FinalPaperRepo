@@ -9,6 +9,7 @@ import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
 import UiList from '../../common/uiList';
 import ServiceEntity from './../../services/subComponents/serviceEntity';
+import EditEmployee from './editEmployee';
 
 
 
@@ -23,72 +24,94 @@ class EmployeeEntity extends Component {
             {'5b21ca3eeb7f6fbccd471816': <ServiceEntity key='5b21ca3eeb7f6fbccd471816'/>},
             {'5b21ca3eeb7f6fbccd471816': <ServiceEntity key='5b21ca3eeb7f6fbccd471816'/>}
         ],
-        approved: true
+
+        employeeInfos:{
+            name:"Tiago Diego Assunção",
+            cpf:"856.250.028-35",
+            celDDD:"35",
+            cel:"99550-8505",
+            telDDD:"35",
+            tel:"2818-1127",
+            cep:"69086-280",
+            houseNumber:"206",
+            bankAccount:"0165 737290-6",
+            employeeObservation:"Donec magna lorem, varius in mattis sit amet"
+        },
+
+        editingMode: false
     };
 
-    handleApprovedChanging = () => {
-        let state = this.state;
-        state.approved = !state.approved;
-        this.setState(state);
+    handleEdit = () => {
+        const editingMode = true;
+        this.setState({ editingMode });
+    };
+
+    handleModalClose = () => {
+        const editingMode = false;
+        this.setState({ editingMode });
     };
 
     render() {
-        const { searchedServices, approved } = this.state; 
-        return (  
-            <ExpansionPanel>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Grid container justify='space-between'>
-                        <Grid item>
-                            <Typography variant='title'>Tiago</Typography>
-                        </Grid>
-                    </Grid>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <Paper>
-                        <Grid container style={{padding: 20}}>
-                            <Grid container alignItems='center'>
-                                <Grid container style={{width:'85%'}} alignItems='center'>
-                                    <Grid item style={{padding: 5}}>
-                                        <Avatar src="https://thesocietypages.org/socimages/files/2009/05/vimeo.jpg"/>
-                                    </Grid>
-                                    <Grid item>
-                                        <Typography variant='title'style={{paddingLeft:10}}>Tiago</Typography>
-                                    </Grid>
-                                </Grid>
-                                <Grid container style={{width:'15%'}}>
-                                    <Grid container style={{width:'50%'}}>
-                                        <Grid item>
-                                            <Fab style={{backgroundColor:'#FA8072'}} size='small'>
-                                                <Delete/>
-                                            </Fab>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid container style={{width:'50%'}}>
-                                        <Grid item>
-                                            <Fab style={{backgroundColor:'#00FF7F'}} size='small'>
-                                                <Edit/>
-                                            </Fab>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                            <Grid container alignItems='center'>
-                                <Grid container style={{width:'100%'}} alignItems='center'>
-                                    <Typography>Serviços Ativos:</Typography>
-                                </Grid>
-                            </Grid>
-                            <Grid container alignItems='center'>
-                                <Grid container style={{width:'100%'}} alignItems='center'>
-                                    <UiList
-                                        maxHeight={500}
-                                        data={searchedServices}
-                                    />
-                                </Grid>
+        const { searchedServices, employeeInfos, editingMode } = this.state; 
+        const { name } = this.state.employeeInfos; 
+        return (
+            <React.Fragment>
+                <EditEmployee data={employeeInfos} modalEnable={editingMode} onClose={this.handleModalClose}/>  
+                <ExpansionPanel>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                        <Grid container justify='space-between'>
+                            <Grid item>
+                                <Typography variant='title'>{name}</Typography>
                             </Grid>
                         </Grid>
-                    </Paper>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        <Paper>
+                            <Grid container style={{padding: 20}}>
+                                <Grid container alignItems='center'>
+                                    <Grid container style={{width:'85%'}} alignItems='center'>
+                                        <Grid item style={{padding: 5}}>
+                                            <Avatar src="https://thesocietypages.org/socimages/files/2009/05/vimeo.jpg"/>
+                                        </Grid>
+                                        <Grid item>
+                                            <Typography variant='title'style={{paddingLeft:10}}>{name}</Typography>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid container style={{width:'15%'}}>
+                                        <Grid container style={{width:'50%'}}>
+                                            <Grid item>
+                                                <Fab style={{backgroundColor:'#FA8072'}} size='small'>
+                                                    <Delete/>
+                                                </Fab>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid container style={{width:'50%'}}>
+                                            <Grid item>
+                                                <Fab onClick={this.handleEdit} style={{backgroundColor:'#00FF7F'}} size='small'>
+                                                    <Edit/>
+                                                </Fab>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                                <Grid container alignItems='center'>
+                                    <Grid container style={{width:'100%'}} alignItems='center'>
+                                        <Typography>Serviços Ativos:</Typography>
+                                    </Grid>
+                                </Grid>
+                                <Grid container alignItems='center'>
+                                    <Grid container style={{width:'100%'}} alignItems='center'>
+                                        <UiList
+                                            maxHeight={500}
+                                            data={searchedServices}
+                                        />
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Paper>
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
+            </React.Fragment>
         );
     };
 };

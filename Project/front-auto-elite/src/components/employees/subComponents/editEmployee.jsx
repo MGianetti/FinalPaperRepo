@@ -1,44 +1,27 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import { Button } from '@material-ui/core';
-import { Person } from '@material-ui/icons'
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { Grid } from '@material-ui/core/';
+import Person from '@material-ui/icons/Person';
 
-class CreateEmployee extends Component {
-    state = {
-        newEmployeeForm:{
-            name:"",
-            cpf:"",
-            celDDD:"",
-            cel:"",
-            telDDD:"",
-            tel:"",
-            cep:"",
-            houseNumber:"",
-            bankAccount:"",
-            employeeObservation:""
-        }
-    };
-
-    handleFormChange = (event) => {
-        let { newEmployeeForm } = this.state;
-        newEmployeeForm[event.target.name] = event.target.value;
-        this.setState({ newEmployeeForm })
-    };
-
-    handleSwitchCheckChange = (event) => {
-        let { newEmployeeForm } = this.state;
-        newEmployeeForm[event.target.name] = event.target.checked;
-        this.setState({ newEmployeeForm })
-    };
+class EditEmployee extends Component {
 
     render() {
-        const { name, telDDD, tel, celDDD, cel, cpf, cep, houseNumber, employeeObservations} = this.state.newEmployeeForm; 
-        return (
-            <React.Fragment>
-                <Grid container justify='center' style={{paddingTop:25}}>
-                    <Paper style={{width:'90%', backgroundColor:'#e0e0e0'}}>
+        const { name, cpf, celDDD, cel, telDDD, tel, cep, houseNumber, bankAccount, observation } = this.props.data;  
+        const { modalEnable } = this.props; 
+        return ( 
+            <Dialog onClose={this.props.onClose} open={modalEnable}  maxWidth='md' aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Editar Funcionário</DialogTitle>
+                <DialogContent >
+                    <DialogContentText>
+                        Para editar os dados de um funcionário, modifique os campos desejados e clique em salvar.
+                    </DialogContentText>
+                    <Grid container justify='center' style={{paddingTop:25}}>
                         <Grid container justify='center' style={{width:'100%'}} >
                             <Grid style={{paddingTop:20, width:'90%'}} container justify='center'>
                                 <Person fontSize='large'/>
@@ -170,11 +153,11 @@ class CreateEmployee extends Component {
                             <Grid container style={{paddingBottom:20}} alignItems='center' justify='center'>
                                 <TextField
                                     onChange={this.handleFormChange}
-                                    name='employeeObservations'
+                                    name='carObservations'
                                     margin='normal'
                                     label="Observações"
-                                    placeholder="Observações sobre o funcionário"
-                                    value={employeeObservations}
+                                    placeholder="Observações sobre o carro do funcionário"
+                                    value={observation}
                                     variant="outlined"
                                     style={{backgroundColor:'#efefef',width:'80%'}} 
                                     rowsMax='5'
@@ -185,11 +168,19 @@ class CreateEmployee extends Component {
                                 <Button variant="contained" color='default'>Criar</Button>
                             </Grid> 
                         </Grid>
-                    </Paper>
-                </Grid>
-            </React.Fragment>
+                    </Grid>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={this.props.onClose} style={{color: 'red'}}>
+                        Cancelar
+                    </Button>
+                    <Button style={{color: 'green'}}>
+                        Salvar
+                    </Button>
+                </DialogActions>
+            </Dialog>
         );
     }
-};
+}
 
-export default CreateEmployee;
+export default EditEmployee;
