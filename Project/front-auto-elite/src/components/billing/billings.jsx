@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import UiTabs from './../common/uiTabs';
-import SearchBilling from './subComponents/searchBilling';
-import CreateBilling from './subComponents/createBilling';
+import ClosedBilling from './subComponents/closedBilling';
+import PendentBilling from './subComponents/pendentBilling';
 
 class Billing extends Component {
     state = { 
         tabs:[
-            {0: "Criar"},
-            {1: "Buscar"}
+            {0: "Pendentes"},
+            {1: "Concluídas"}
         ],
         tabSelected: 0,
     };
@@ -32,8 +32,8 @@ class Billing extends Component {
                 </Grid>
                 <Grid container>
                     <Grid container styles={{width:'100%'}}>
-                        {tabSelected === 0 && <CreateBilling/>}
-                        {tabSelected === 1 && <SearchBilling/>}
+                        {tabSelected === 0 && <PendentBilling/>}
+                        {tabSelected === 1 && <ClosedBilling/>}
                     </Grid>
                 </Grid>
             </Grid>

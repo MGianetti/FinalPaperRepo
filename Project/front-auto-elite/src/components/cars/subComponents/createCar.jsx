@@ -5,38 +5,26 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import UiList from '../../common/uiList';
 import ClientEntity from './../../clients/subComponents/clientEntity';
+import Paper from '@material-ui/core/Paper';
+import DropDown from './../../common/dropDown';
+import SearchBar from './../../common/searchBar';
+import { Person, DirectionsCar } from '@material-ui/icons'
+import { Typography, Button } from '@material-ui/core';
 
-const currencies = [
-    {
-        value: 'JEM-4556',
-        label: 'Placa',
-    },
-    {
-        value: '1186548123',
-        label: 'CPF',
-    },
-    {
-        value: 'João das Neves',
-        label: 'Nome',
-    },
-    {
-        value: '35 32228946',
-        label: 'Telefone',
-    },
-    {
-        value: '35 998453215',
-        label: 'Celular',
-    },
-    {
-        value: '37664-984',
-        label: 'CEP',
-    },
-];
 class CreateCar extends Component {
     state = {
-        checkedA: true,
-        checkedB: true,
-        currency: 'Placa',
+        dropDown:{
+            items: ["Placa", 'CPF', 'Nome', 'Telefone', 'Celular', 'CEP'],
+            helpText: "Digite a informação do cliente",
+            defaultText: "Associar Cliente...",
+            selected: ''
+        },
+        newCarForm:{
+            carPlate:'',
+            carIsMercosul:false,
+            carObservations:''
+        },
+        searchField:'',
         searchedClients:[
             {'5b21ca3eeb7f6fbccd471815': <ClientEntity key='5b21ca3eeb7f6fbccd471815'/>},
             {'5b21ca3eeb7f6fbccd471816': <ClientEntity key='5b21ca3eeb7f6fbccd471816'/>},
@@ -47,85 +35,111 @@ class CreateCar extends Component {
             {'5b21ca3eeb7f6fbccd471821': <ClientEntity key='5b21ca3eeb7f6fbccd471821'/>},
             {'5b21ca3eeb7f6fbccd471822': <ClientEntity key='5b21ca3eeb7f6fbccd471822'/>},
             {'5b21ca3eeb7f6fbccd471823': <ClientEntity key='5b21ca3eeb7f6fbccd471823'/>}
-        ]
+        ],
+             
     };
 
     handleChange = name => event => {
-        this.setState({ [name]: event.target.checked });
+        let { newCarForm } = this.state;
+        newCarForm[event.target.name] = event.target.value;
+        this.setState({ newCarForm })
     };
-    
+
+    handleSwitchCheckChange = (event) => {
+        let { newCarForm } = this.state;
+        newCarForm[event.target.name] = event.target.checked;
+        this.setState({ newCarForm })
+    };
+
+    handleDropMenuChange = event => {
+        const dropDownName = event.target.name;
+        let newDropDownState = this.state[dropDownName];
+        newDropDownState['selected'] = event.target.value;
+        this.setState({ [dropDownName]: newDropDownState});
+    };
+
+    handleSearchBarChange = event => {
+        this.setState({searchField: event.target.value})
+    };
+
     render() {
-        const { searchedClients } = this.state;
+        const { searchField, searchedClients, dropDown } = this.state;
+        const { carPlate,carIsMercosul } = this.state.newCarForm;
+        
         return ( 
-        <React.Fragment>    
-            <Grid container justify='center' alignItems='center'>
-                    <TextField
-                        id="filled-name"
-                        label="Placa"
-                        value="JEM-2446"
-                        margin="normal"
-                        variant="filled"
-                    />
-                    <FormControlLabel
-                            control={
-                                <Switch
-                                    checked={this.state.checkedA}
-                                    onChange={this.handleChange('checkedA')}
-                                    value="checkedA"
+        <React.Fragment>  
+            <Grid container justify='center' style={{paddingTop:25}}>
+                <Paper style={{width:'90%',backgroundColor:'#e0e0e0'}}>
+                    <Grid container justify='center' style={{width:'100%'}}>
+                        <Grid container style={{paddingTop:20}} justify='center'>
+                            <DirectionsCar fontSize='large'/>
+                        </Grid>
+                        <Grid container style={{width:'90%'}} justify='center' alignItems='center'>
+                            <TextField
+                                onChange={this.handleChange}
+                                autoFocus
+                                name='carPlate'
+                                margin='normal'
+                                label="Placa"
+                                placeholder="Placa do carro"
+                                value={carPlate}
+                                variant="outlined"
+                                style={{backgroundColor:'#efefef', width:'30%'}}    
+                            />
+                            <Typography style={{paddingLeft:40}} variant='h6'>Mercosul:</Typography>
+                            <Switch
+                                name="carIsMercosul"
+                                value={carIsMercosul}
+                                control={<Switch color="primary" />}
+                                onChange= {this.handleSwitchCheckChange}
+                            />
+                        </Grid>
+                        <Grid container style={{width:'90%'}} justify='space-evenly'>
+                                <TextField
+                                    onChange={this.handleChange}
+                                    name="carObservations"
+                                    margin="normal"
+                                    label="Observações"
+                                    placeholder="Observações..."
+                                    fullWidth
+                                    multiline
+                                    rowsMax = '5'
+                                    variant="outlined"
+                                    style={{backgroundColor:'#efefef', width:'60%'}}  
                                 />
-                            }
-                            label="Mercosul"
-                    />
-            </Grid>
-            <Grid container justify='center' alignContent='center'>
-                <Grid item style={{width:'50%'}}>
-                    <TextField
-                        id="observations"
-                        value="Observações..."
-                        margin="normal"
-                        fullWidth
-                        multiline
-                        rowsMax = '5'
-                        variant="filled"
-                    />
-                </Grid>
-            </Grid>
-            <Grid container justify='center' alignContent='center'>
-                <Grid item justify='center'>
-                    <TextField
-                        id="outlined-select-currency"
-                        select
-                        label="Associar Cliente"
-                        value={this.state.currency}
-                        onChange={this.handleChange('currency')}
-                        helperText="Digite a informação do cliente"
-                        margin="normal"
-                        variant="filled"
-                        >{currencies.map(option => (
-                            <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                </Grid>
-                <Grid item justify='center'>
-                    <TextField
-                        id="search"
-                        type="search"
-                        label="Buscar"
-                        margin="normal"
-                        variant="filled"
-                    />
-                </Grid>
-            </Grid>
-            <Grid container justify='center'>
-                <Grid item style={{width:'90%'}}>                                
-                    <UiList data={searchedClients}/>
-                </Grid>
+                        </Grid>
+                        <Grid container style={{paddingTop:20}} justify='center'>
+                            <Person fontSize='large'/>
+                        </Grid>
+                        <Grid container style={{width:'70%', paddingBottom:20}} justify='center'>
+                                <DropDown
+                                    data={{dropDown}}
+                                    onChange={this.handleDropMenuChange}
+                                    style={{width:"50%"}}
+                                />
+                            <Grid item justify='center' style={{paddingLeft:40}}>
+                                <SearchBar 
+                                    value={searchField} 
+                                    onChange={this.handleSearchBarChange}
+                                    />
+                            </Grid>
+                        </Grid>
+                        <Grid container style={{paddingBottom:50}} alignItems='center' justify='center'>
+                            <Button variant="contained" color='default'>Criar</Button>
+                        </Grid> 
+                    </Grid>
+                </Paper>
+                <Paper elevation='5' style={{width:'60%', marginTop:15}}>
+                        <Grid container justify='center' style={{width:'100%'}}>
+                            <Grid item style={{paddingTop:30}}>                                  
+                                <UiList data={searchedClients}/>
+                            </Grid>
+                        </Grid> 
+                </Paper>
             </Grid>
         </React.Fragment>
         );
-    };
-};
+    }
+}
 
 export default CreateCar;

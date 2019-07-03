@@ -8,7 +8,7 @@ const SearchBar = ({ onChange, searchField }) => {
                 <SearchIcon/>  
                 <InputBase 
                     placeholder="Buscar…" 
-                    style={{background: '#E0FFFF', borderRadius: 5,borderStyle:'solid', borderWidth:1}} 
+                    style={{background: '#efefef', borderRadius: 5,borderStyle:'solid', borderWidth:1}} 
                     onChange={onChange}
                     value={searchField}
                 />

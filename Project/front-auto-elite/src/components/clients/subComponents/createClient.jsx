@@ -136,7 +136,7 @@ class CreateClient extends Component {
                                 <Grid style={{paddingTop:20}} container justify='center'>
                                     <DirectionsCar fontSize='large'/>
                                 </Grid>
-                            <Grid style={{width:'90%'}} container alignItems='center' justify='center'>
+                            <Grid container style={{width:'90%'}} alignItems='center' justify='center'>
                                 <TextField
                                     onChange={this.handleFormChange}
                                     name='carPlate'
