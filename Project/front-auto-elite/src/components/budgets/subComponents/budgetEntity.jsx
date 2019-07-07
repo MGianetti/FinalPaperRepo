@@ -17,6 +17,7 @@ import { Person, DriveEta } from '@material-ui/icons';
 
 
 class BudgetEntity extends Component {
+
     state = {
         searchedItems:[
             {'5b21ca3eeb7f6fbccd471815': <ItemEntity key='5b21ca3eeb7f6fbccd471815'/>},
@@ -43,10 +44,10 @@ class BudgetEntity extends Component {
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Grid container justify='space-between'>
                         <Grid item>
-                            <Typography variant='title'>Farol de neblina não funciona</Typography>
+                            <Typography variant='title'>{this.props.description}</Typography>
                         </Grid>
                         <Grid item>
-                            <Typography variant='subtitle1'>S0A32000E1F</Typography>
+                            <Typography variant='subtitle1'>{this.props.key}</Typography>
                         </Grid>
                     </Grid>
                 </ExpansionPanelSummary>
@@ -59,7 +60,7 @@ class BudgetEntity extends Component {
                                         <Avatar src="https://thesocietypages.org/socimages/files/2009/05/vimeo.jpg"/>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant='title'style={{paddingLeft:10}}>João Pedro Batista Borges</Typography>
+                                        <Typography variant='title'style={{paddingLeft:10}}>{this.props.client}</Typography>
                                     </Grid>
                                 </Grid>
                                 <Grid container style={{width:'15%'}}>
@@ -107,7 +108,7 @@ class BudgetEntity extends Component {
                                         <Person/>
                                     </Grid>
                                     <Grid item style={{paddingRight: 15}} >                                    
-                                        <Typography variant='subtitle1'>Dono: João Pedro Batista Borges</Typography>
+                                        <Typography variant='subtitle1'>Dono: {this.props.client}</Typography>
                                     </Grid>
                                     <Grid item style={{padding: 8}}>                                    
                                         <Button variant="contained" color='default'>Ver</Button>
@@ -118,7 +119,7 @@ class BudgetEntity extends Component {
                                         <DriveEta/>
                                     </Grid>
                                     <Grid item style={{paddingRight: 15}} >                                    
-                                        <Typography variant='subtitle1'>Carro: JEM-2446 (Fox City)</Typography>
+                                        <Typography variant='subtitle1'>Carro: {this.props.car}</Typography>
                                     </Grid>
                                     <Grid item style={{padding: 8}}>                                    
                                         <Button variant="contained" color='default'>Ver</Button>
@@ -135,5 +136,12 @@ class BudgetEntity extends Component {
         );
     };
 };
+
+BudgetEntity.defaultProps = {
+    key: "KEY123456",
+    client: "client_name",
+    car: "AAA-1234 (car_model)",
+    description: "description"
+}
 
 export default BudgetEntity;

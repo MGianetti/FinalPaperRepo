@@ -14,12 +14,7 @@ class SearchBudget extends Component {
             selected: ''
         },
         searchField:'',
-        searchedBudgets:[
-            {'5b21ca3eeb7f6fbccd471815': <BudgetEntity/>},
-            {'5b21ca3eeb7f6fbccd471816': <BudgetEntity/>},
-            {'5b21ca3eeb7f6fbccd471817': <BudgetEntity/>},
-            {'5b21ca3eeb7f6fbccd471818': <BudgetEntity/>}
-        ]
+        searchedBudgets: this.getBudgets()
     };
 
     //improve performance
@@ -72,6 +67,28 @@ class SearchBudget extends Component {
             </React.Fragment> 
         );
     };
+
+    getBudgets()
+    {
+        let budgets = [];
+        const searchedBudgets = this.searchBudgets();
+        for(let i = 0; i < searchedBudgets.length; i++)
+        {
+            const key = searchedBudgets[i].key;
+            budgets.push({key: <BudgetEntity key={key} client={searchedBudgets[i].client} car={searchedBudgets[i].car} description={searchedBudgets[i].description} />});
+        }
+        return budgets; 
+    }
+
+    searchBudgets()
+    {
+        //TODO: make this function return an array of BudgetEntities from the backend
+        return [
+            {key: '5b21ca3eeb7f6fbccd471815', client:'Lucas', car:'AAA-1234', description:'Orçamento placeholder número 1'},
+            {key: '5b21ca3eeb7f6fbccd471816', client:'Carla', car:'BBB-1234', description:'Orçamento placeholder número 2'},
+            {key: '5b21ca3eeb7f6fbccd471817', client:'Mateus', car:'CCC-1234', description:'Orçamento placeholder número 3'},
+        ]
+    }
 };
 
 export default SearchBudget;
