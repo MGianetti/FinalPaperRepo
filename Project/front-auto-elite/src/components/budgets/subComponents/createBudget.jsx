@@ -7,12 +7,20 @@ import DropDown from './../../common/dropDown';
 import SearchBar from './../../common/searchBar';
 import { Person, DirectionsCar } from '@material-ui/icons'
 import { Typography, Button } from '@material-ui/core';
+import ServiceEntity from '../../services/subComponents/serviceEntity';
+import TextField from '@material-ui/core/TextField';
 
 class CreateBudget extends Component {
     state = {
-        dropDown:{
+        carDropDown:{
             items: ["Placa", 'Cliente', 'Modelo'],
             helpText: "Digite a informação do carro",
+            defaultText: "Procurar por...",
+            selected: ''
+        },
+        serviceDropDown:{
+            items: ["Placa", 'Cliente', 'Modelo'],
+            helpText: "Digite a informação do serviço",
             defaultText: "Procurar por...",
             selected: ''
         },
@@ -42,11 +50,17 @@ class CreateBudget extends Component {
     };
 
     handleSearchBarChange = event => {
-        this.setState({clientSearchField: event.target.value})
+        this.setState({carSearchField: event.target.value})
+    };
+
+    handleFormChange = (event) => {
+        let { newBudgetForm } = this.state;
+        newBudgetForm[event.target.name] = event.target.value;
+        this.setState({ newBudgetForm })
     };
 
     render() {
-        const { clientSearchField, searchedCars, dropDown } = this.state;
+        const { carDropDown, serviceDropDown, carSearchField, searchedCars, dropDown } = this.state;
         const { car } = this.state.newBudgetForm;
         
         return ( 
@@ -59,15 +73,64 @@ class CreateBudget extends Component {
                         </Grid>
                         <Grid container style={{width:'70%', paddingBottom:20}} justify='center'>
                             <DropDown
-                                data={{dropDown}}
+                                data={{carDropDown}}
                                 onChange={this.handleDropMenuChange}
                                 style={{width:"50%"}}
                             />
                             <Grid item justify='center' style={{paddingLeft:40}}>
                                 <SearchBar 
-                                    value={clientSearchField} 
+                                    value={carSearchField} 
                                     onChange={this.handleSearchBarChange}
                                     />
+                            </Grid>
+                        </Grid>
+                        <Grid container justify='center'>
+                            <Typography>
+                                Adicionar Serviço
+                            </Typography>
+                        </Grid>
+                        <Grid container style={{width:'70%', paddingBottom:20}} justify='center'>
+                            <DropDown
+                                data={{serviceDropDown}}
+                                onChange={this.handleDropMenuChange}
+                                style={{width:"50%"}}
+                            />
+                            <Grid item justify='center' style={{paddingLeft:40}}>
+                                <SearchBar 
+                                    value={carSearchField} 
+                                    onChange={this.handleSearchBarChange}
+                                    />
+                            </Grid>
+                        </Grid>
+                        <Grid container justify='center'>
+                            <Typography>
+                                Adicionar Item
+                            </Typography>
+                        </Grid>
+                        <Grid container style={{width:'70%', paddingBottom:20}} justify='center'>
+                            <DropDown
+                                data={{serviceDropDown}}
+                                onChange={this.handleDropMenuChange}
+                                style={{width:"50%"}}
+                            />
+                            <Grid item justify='center' style={{paddingLeft:10, paddingRight:10}}>
+                                <SearchBar 
+                                    value={carSearchField} 
+                                    onChange={this.handleSearchBarChange}
+                                    />
+                            </Grid>
+                            <Grid item style={{width:'10%'}} justify='space-evenly'>
+                                <TextField
+                                    onChange={this.handleFormChange}
+                                    autoFocus
+                                    name='name'
+                                    margin='normal'
+                                    label="Quantidade"
+                                    placeholder="Quantidade"
+                                    value={'1'}
+                                    variant="outlined"
+                                    style={{backgroundColor:'#efefef', width:'99.4%'}}
+                                />
                             </Grid>
                         </Grid>
                     </Grid>
