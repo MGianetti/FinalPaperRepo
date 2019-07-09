@@ -19,21 +19,22 @@ class CreateBudget extends Component {
             selected: ''
         },
         serviceDropDown:{
-            items: ["Placa", 'Cliente', 'Modelo'],
+            items: ["Tipo", 'Nome', 'Modelo'],
             helpText: "Digite a informação do serviço",
+            defaultText: "Procurar por...",
+            selected: ''
+        },
+        itemDropDown:{
+            items: ["Placa", 'Cliente', 'Modelo'],
+            helpText: "Digite a informação do item",
             defaultText: "Procurar por...",
             selected: ''
         },
         newBudgetForm:{
             car: ''
         },
-        carSearchField:'',
-        searchedCars:[
-            {'5b21ca3eeb7f6fbccd471815': <CarEntity key='5b21ca3eeb7f6fbccd471815'/>},
-            {'5b21ca3eeb7f6fbccd471816': <CarEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471817': <CarEntity key='5b21ca3eeb7f6fbccd471817'/>},
-        ],
-             
+        searchField:'',
+        search: [],
     };
 
     handleChange = event => {
@@ -50,7 +51,8 @@ class CreateBudget extends Component {
     };
 
     handleSearchBarChange = event => {
-        this.setState({carSearchField: event.target.value})
+        this.setState({searchField: event.target.value});
+        this.updateSearch(event.target.value);
     };
 
     handleFormChange = (event) => {
@@ -60,7 +62,7 @@ class CreateBudget extends Component {
     };
 
     render() {
-        const { carDropDown, serviceDropDown, carSearchField, searchedCars, dropDown } = this.state;
+        const { carDropDown, serviceDropDown, itemDropDown, searchField, search } = this.state;
         const { car } = this.state.newBudgetForm;
         
         return ( 
@@ -79,7 +81,7 @@ class CreateBudget extends Component {
                             />
                             <Grid item justify='center' style={{paddingLeft:40}}>
                                 <SearchBar 
-                                    value={carSearchField} 
+                                    value={searchField} 
                                     onChange={this.handleSearchBarChange}
                                     />
                             </Grid>
@@ -97,7 +99,7 @@ class CreateBudget extends Component {
                             />
                             <Grid item justify='center' style={{paddingLeft:40}}>
                                 <SearchBar 
-                                    value={carSearchField} 
+                                    value={searchField} 
                                     onChange={this.handleSearchBarChange}
                                     />
                             </Grid>
@@ -109,13 +111,13 @@ class CreateBudget extends Component {
                         </Grid>
                         <Grid container style={{width:'70%', paddingBottom:20}} justify='center'>
                             <DropDown
-                                data={{serviceDropDown}}
+                                data={{itemDropDown}}
                                 onChange={this.handleDropMenuChange}
                                 style={{width:"50%"}}
                             />
                             <Grid item justify='center' style={{paddingLeft:10, paddingRight:10}}>
                                 <SearchBar 
-                                    value={carSearchField} 
+                                    value={searchField} 
                                     onChange={this.handleSearchBarChange}
                                     />
                             </Grid>
@@ -138,13 +140,29 @@ class CreateBudget extends Component {
                 <Paper elevation='5' style={{width:'60%', marginTop:15}}>
                     <Grid container justify='center' style={{width:'100%'}}>
                         <Grid item style={{paddingTop:30}}>                                  
-                            <UiList data={searchedCars}/>
+                            <UiList data={search}/>
                         </Grid>
                     </Grid> 
                 </Paper>
             </Grid>
         </React.Fragment>
         );
+    }
+
+    updateSearch(searchString)
+    {
+        let search = this.search(searchString);
+        this.setState({ search });
+    }
+
+    search(searchString)
+    {
+        //TODO: make this function search and return cars, services and items
+        return [
+            {'5b21ca3eeb7f6fbccd471815': <CarEntity key='5b21ca3eeb7f6fbccd471815'/>},
+            {'5b21ca3eeb7f6fbccd471816': <CarEntity key='5b21ca3eeb7f6fbccd471816'/>},
+            {'5b21ca3eeb7f6fbccd471817': <CarEntity key='5b21ca3eeb7f6fbccd471817'/>},
+        ] //placeholder search
     }
 }
 
