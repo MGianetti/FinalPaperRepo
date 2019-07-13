@@ -14,7 +14,7 @@ class SearchBudget extends Component {
             selected: ''
         },
         searchField:'',
-        searchedBudgets: this.getBudgets()
+        searchedBudgets: this.getBudgets('')
     };
 
     //improve performance
@@ -68,10 +68,10 @@ class SearchBudget extends Component {
         );
     };
 
-    getBudgets()
+    getBudgets(searchString)
     {
         let budgets = [];
-        const searchedBudgets = this.searchBudgets();
+        const searchedBudgets = this.searchBudgets(searchString);
         for(let i = 0; i < searchedBudgets.length; i++)
         {
             const key = searchedBudgets[i].key;
@@ -80,7 +80,7 @@ class SearchBudget extends Component {
         return budgets; 
     }
 
-    searchBudgets()
+    searchBudgets(searchString)
     {
         //TODO: make this function return an array of BudgetEntities from the backend
         return [

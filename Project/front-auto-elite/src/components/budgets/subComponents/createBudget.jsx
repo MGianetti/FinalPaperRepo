@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import {Grid, MenuItem} from '@material-ui/core';
 import UiList from '../../common/uiList';
-import CarEntity from './../../cars/subComponents/carEntity'
+import CarEntityMiniature from './../../cars/subComponents/carEntityMiniature'
+import ServiceEntity from '../../services/subComponents/serviceEntity';
+import ItemEntity from '../../stock/subComponents/itemEntity'
 import Paper from '@material-ui/core/Paper';
 import DropDown from './../../common/dropDown';
 import SearchBar from './../../common/searchBar';
 import { Person, DirectionsCar } from '@material-ui/icons'
 import { Typography, Button } from '@material-ui/core';
-import ServiceEntity from '../../services/subComponents/serviceEntity';
 import TextField from '@material-ui/core/TextField';
+
+const SearchType = {
+    NoSearch: 0,
+    Car: 1,
+    Service: 2,
+    Item: 3
+}
 
 class CreateBudget extends Component {
     state = {
@@ -19,13 +27,13 @@ class CreateBudget extends Component {
             selected: ''
         },
         serviceDropDown:{
-            items: ["Tipo", 'Nome', 'Modelo'],
+            items: ["Tipo", 'Nome'],
             helpText: "Digite a informação do serviço",
             defaultText: "Procurar por...",
             selected: ''
         },
         itemDropDown:{
-            items: ["Placa", 'Cliente', 'Modelo'],
+            items: ["Nome"],
             helpText: "Digite a informação do item",
             defaultText: "Procurar por...",
             selected: ''
@@ -33,8 +41,9 @@ class CreateBudget extends Component {
         newBudgetForm:{
             car: ''
         },
+        searchType: SearchType.NoSearch,
         searchField:'',
-        search: [],
+        search: this.searchCars()//[],
     };
 
     handleChange = event => {
@@ -82,7 +91,10 @@ class CreateBudget extends Component {
                             <Grid item justify='center' style={{paddingLeft:40}}>
                                 <SearchBar 
                                     value={searchField} 
-                                    onChange={this.handleSearchBarChange}
+                                    onChange={(e) => {
+                                        this.state.searchType = SearchType.Car;
+                                        this.handleSearchBarChange(e);
+                                    }}
                                     />
                             </Grid>
                         </Grid>
@@ -100,7 +112,10 @@ class CreateBudget extends Component {
                             <Grid item justify='center' style={{paddingLeft:40}}>
                                 <SearchBar 
                                     value={searchField} 
-                                    onChange={this.handleSearchBarChange}
+                                    onChange={(e) => {
+                                        this.state.searchType = SearchType.Service;
+                                        this.handleSearchBarChange(e);
+                                    }}
                                     />
                             </Grid>
                         </Grid>
@@ -118,7 +133,10 @@ class CreateBudget extends Component {
                             <Grid item justify='center' style={{paddingLeft:10, paddingRight:10}}>
                                 <SearchBar 
                                     value={searchField} 
-                                    onChange={this.handleSearchBarChange}
+                                    onChange={(e) => {
+                                        this.state.searchType = SearchType.Item;
+                                        this.handleSearchBarChange(e);
+                                    }}
                                     />
                             </Grid>
                             <Grid item style={{width:'10%'}} justify='space-evenly'>
@@ -137,9 +155,12 @@ class CreateBudget extends Component {
                         </Grid>
                     </Grid>
                 </Paper>
-                <Paper elevation='5' style={{width:'60%', marginTop:15}}>
-                    <Grid container justify='center' style={{width:'100%'}}>
-                        <Grid item style={{paddingTop:30}}>                                  
+                <Paper elevation='5' style={{width:'90%', marginTop:15}}>
+                    <Grid container justify='center' style={{width:'100%'}} direction='column' alignItems='center'>
+                        <Typography>
+                            Search Results
+                        </Typography>
+                        <Grid item style={{paddingTop:30}}>
                             <UiList data={search}/>
                         </Grid>
                     </Grid> 
@@ -151,17 +172,52 @@ class CreateBudget extends Component {
 
     updateSearch(searchString)
     {
-        let search = this.search(searchString);
+        let search;
+        switch(this.state.searchType)
+        {
+            case SearchType.Car:
+                search = this.searchCars(searchString);
+                break;
+            case SearchType.Service:
+                search = this.searchServices(searchString);
+                break;
+            case SearchType.Item:
+                search = this.searchItems(searchString);
+                break;
+            default:
+                search = [];
+                break;
+        }
         this.setState({ search });
     }
 
-    search(searchString)
+    searchCars(searchString)
     {
-        //TODO: make this function search and return cars, services and items
+        //TODO: make this function search and return cars
         return [
-            {'5b21ca3eeb7f6fbccd471815': <CarEntity key='5b21ca3eeb7f6fbccd471815'/>},
-            {'5b21ca3eeb7f6fbccd471816': <CarEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471817': <CarEntity key='5b21ca3eeb7f6fbccd471817'/>},
+            {'carPlaceholder1': <CarEntityMiniature key='carPlaceholder1'/>},
+            {'carPlaceholder2': <CarEntityMiniature key='carPlaceholder2'/>},
+            {'carPlaceholder3': <CarEntityMiniature key='carPlaceholder3'/>},
+        ] //placeholder search
+    }
+
+    searchServices(searchString)
+    {
+        //TODO: make this function search and return services
+        return [
+            {'servicePlaceholder1': <ServiceEntity key='servicePlaceholder1'/>},
+            {'servicePlaceholder2': <ServiceEntity key='servicePlaceholder2'/>},
+            {'servicePlaceholder3': <ServiceEntity key='servicePlaceholder3'/>},
+        ] //placeholder search
+    }
+
+    searchItems(searchString)
+    {
+        //TODO: make this function search and return items
+        return [
+            {'itemPlaceholder1': <ItemEntity key='itemPlaceholder1'/>},
+            {'itemPlaceholder2': <ItemEntity key='itemPlaceholder2'/>},
+            {'itemPlaceholder3': <ItemEntity key='itemPlaceholder3'/>},
         ] //placeholder search
     }
 }
