@@ -4,7 +4,9 @@ class NotFound extends Component {
     state = {  }
     render() { 
         return (  
-            <h1>Not Found or Not implemented yet</h1>
+            <h1 style={{paddingTop: 35}}>
+                Not Found or Not implemented yet
+            </h1>
         );
     };
 };
