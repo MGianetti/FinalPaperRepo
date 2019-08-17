@@ -3,21 +3,19 @@ import { Grid, Paper } from '@material-ui/core';
 import DropDown from './../../common/dropDown';
 import SearchBar from './../../common/searchBar';
 import UiList from './../../common/uiList';
-import CarEntity from './carEntity';
+import Enums from '../../../helpers/Enums';
+import Queries from '../../../helpers/Queries';
 
 class SearchCar extends Component {
     state = {
         dropDown:{
-            items: ["Placa", 'Dono', 'Modelo', 'Ano'],
+            items: [Enums.CarDropdown.Plate, Enums.CarDropdown.Client],
             helpText: "Busca carro baseado em parâmetro",
             defaultText: "Buscar carro...",
             selected: ''
         },
         searchField:'',
-        searchedCars:[
-            {'5b21ca3eeb7f6fbccd471815': <CarEntity/>},
-            {'5b21ca3eeb7f6fbccd471816': <CarEntity/>}
-        ]
+        search: []
     };
 
     //improve performance
@@ -30,46 +28,34 @@ class SearchCar extends Component {
     
     //improve performance
     handleSearchBarChange = event => {
-        this.setState({searchField: event.target.value})
+        this.setState({searchField: event.target.value});
+        this.updateSearch();
     };
 
     render() {
-        const { dropDown, searchField, searchedCars } = this.state; 
+        const { dropDown, searchField, search } = this.state; 
         return ( 
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
-                    <Grid justify='center' container style={{width:'100%'}} >
-                        <Paper elevation='5' style={{width:'90%', marginTop:10}}>
-                            <Grid container style={{padding: 20}}>
-                                <Grid item style={{width:'50%'}}>
-                                    <DropDown                                        
-                                        data={{dropDown}}
-                                        onChange={this.handleDropMenuChange}
-                                    />
-                                </Grid>
-                                <Grid item style={{width:'50%'}}>
-                                    <SearchBar 
-                                        value={searchField} 
-                                        onChange={this.handleSearchBarChange}
-                                        />
-                                </Grid>
-                            </Grid>
-                        </Paper>
-                        <Paper elevation='5' style={{width:'90%', marginTop:15}}>
-                            <Grid container justify='center'>
-                                <Grid item style={{paddingTop:50}}>                                
-                                    <UiList
-                                        maxHeight={600}
-                                        data={searchedCars}
-                                    />
-                                </Grid>
-                            </Grid>
-                        </Paper>
-                    </Grid>
+                    <Paper elevation='5' style={{width:'90%', marginTop:10, backgroundColor:'#e0e0e0'}}>
+                        <Grid container direction='row' justify='center'>
+                            <Grid item style={{padding:20}}> <DropDown data={{dropDown}} onChange={this.handleDropMenuChange} /> </Grid>
+                            <Grid item style={{padding:20}}> <SearchBar value={searchField} onChange={this.handleSearchBarChange} /> </Grid>
+                        </Grid>
+                    </Paper>
+                    <Paper elevation='5' style={{width:'90%', marginTop:15}}>
+                        <UiList maxHeight={600} data={search} />
+                    </Paper>
                 </Grid>
             </React.Fragment> 
-        );
-    };
-};
+        )
+    }
+
+    updateSearch(searchString) {
+        let search;
+        search = Queries.searchCars(searchString, this.state.dropDown.selected);
+        this.setState({ search });
+    }
+}
 
 export default SearchCar;

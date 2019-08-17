@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import {Grid, MenuItem} from '@material-ui/core';
+import {Grid} from '@material-ui/core';
 import UiList from '../../common/uiList';
 import CarEntityMiniature from './../../cars/subComponents/carEntityMiniature'
-import ServiceEntity from '../../services/subComponents/serviceEntity';
-import ItemEntity from '../../stock/subComponents/itemEntity'
 import Paper from '@material-ui/core/Paper';
 import DropDown from './../../common/dropDown';
 import SearchBar from './../../common/searchBar';
-import { Person, DirectionsCar } from '@material-ui/icons'
-import { Typography, Button } from '@material-ui/core';
+import { DirectionsCar } from '@material-ui/icons'
+import { Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-import Enums from './../../../Enums';
+import Enums from './../../../helpers/Enums';
+import Queries from './../../../helpers/Queries';
 
 class CreateBudget extends Component {
     state = {
@@ -170,13 +169,13 @@ class CreateBudget extends Component {
         switch(this.state.searchType)
         {
             case Enums.SearchType.Car:
-                search = this.searchCars(searchString, this.state.carDropDown.selected);
+                search = Queries.searchCars(searchString, this.state.carDropDown.selected);
                 break;
             case Enums.SearchType.Service:
-                search = this.searchServices(searchString, this.serviceDropDown.selected);
+                search = Queries.searchServices(searchString, this.serviceDropDown.selected);
                 break;
             case Enums.SearchType.Item:
-                search = this.searchItems(searchString, this.itemDropDown.selected);
+                search = Queries.searchItems(searchString, this.itemDropDown.selected);
                 break;
             default:
                 search = [];
@@ -195,25 +194,7 @@ class CreateBudget extends Component {
         ] //placeholder search
     }
 
-    searchServices(searchString, searchType)
-    {
-        //TODO: make this function search and return services
-        return [
-            {'servicePlaceholder1': <ServiceEntity key='servicePlaceholder1'/>},
-            {'servicePlaceholder2': <ServiceEntity key='servicePlaceholder2'/>},
-            {'servicePlaceholder3': <ServiceEntity key='servicePlaceholder3'/>},
-        ] //placeholder search
-    }
-
-    searchItems(searchString, searchType)
-    {
-        //TODO: make this function search and return items
-        return [
-            {'itemPlaceholder1': <ItemEntity key='itemPlaceholder1'/>},
-            {'itemPlaceholder2': <ItemEntity key='itemPlaceholder2'/>},
-            {'itemPlaceholder3': <ItemEntity key='itemPlaceholder3'/>},
-        ] //placeholder search
-    }
+    
 }
 
 export default CreateBudget;

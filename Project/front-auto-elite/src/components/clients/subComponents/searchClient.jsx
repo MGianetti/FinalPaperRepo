@@ -4,8 +4,7 @@ import SearchBar from './../../common/searchBar';
 import { Paper, Grid } from '@material-ui/core';
 import UiList from './../../common/uiList';
 import ClientEntity from './clientEntity';
-import EditClient from './editClient';
-import Enums from './../../../Enums'
+import Enums from './../../../helpers/Enums'
 
 class SearchClient extends Component {
     state = {

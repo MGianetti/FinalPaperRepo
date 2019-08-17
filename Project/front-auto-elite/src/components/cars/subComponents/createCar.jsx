@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
-import {Grid, MenuItem} from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import {Grid} from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import UiList from '../../common/uiList';
-import ClientEntity from './../../clients/subComponents/clientEntity';
 import Paper from '@material-ui/core/Paper';
 import DropDown from './../../common/dropDown';
 import SearchBar from './../../common/searchBar';
 import { Person, DirectionsCar } from '@material-ui/icons'
 import { Typography, Button } from '@material-ui/core';
-import Enums from './../../../Enums';
+import Enums from '../../../helpers/Enums';
+import Queries from '../../../helpers/Queries';
 
 class CreateCar extends Component {
     state = {
@@ -116,21 +115,10 @@ class CreateCar extends Component {
         );
     }
 
-    updateSearch(searchString)
-    {
+    updateSearch(searchString) {
         let search;
-        search = this.searchClients(searchString, this.state.dropDown.selected);
+        search = Queries.searchClients(searchString, this.state.dropDown.selected);
         this.setState({ search });
-    }
-
-    searchClients(searchString, searchType)
-    {
-        //TODO: make this function search and return clients
-        return [
-            {'clientPlaceholder1': <ClientEntity key='clientPlaceholder1'/>},
-            {'clientPlaceholder2': <ClientEntity key='clientPlaceholder2'/>},
-            {'clientPlaceholder3': <ClientEntity key='clientPlaceholder3'/>},
-        ] //placeholder search
     }
 }
 
