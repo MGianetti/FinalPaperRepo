@@ -28,17 +28,7 @@ class CreateService extends Component {
             defaultText: "Buscar cliente...",
             selected: ''
         },
-        searchedCars:[
-            {'5b21ca3eeb7f6fbccd471815': <CarEntity key='5b21ca3eeb7f6fbccd471815'/>},
-            {'5b21ca3eeb7f6fbccd471816': <CarEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471817': <CarEntity key='5b21ca3eeb7f6fbccd471817'/>},
-            {'5b21ca3eeb7f6fbccd471818': <CarEntity key='5b21ca3eeb7f6fbccd471818'/>},
-            {'5b21ca3eeb7f6fbccd471819': <CarEntity key='5b21ca3eeb7f6fbccd471819'/>},
-            {'5b21ca3eeb7f6fbccd471820': <CarEntity key='5b21ca3eeb7f6fbccd471820'/>},
-            {'5b21ca3eeb7f6fbccd471821': <CarEntity key='5b21ca3eeb7f6fbccd471821'/>},
-            {'5b21ca3eeb7f6fbccd471822': <CarEntity key='5b21ca3eeb7f6fbccd471822'/>},
-            {'5b21ca3eeb7f6fbccd471823': <CarEntity key='5b21ca3eeb7f6fbccd471823'/>}
-        ]
+        search:[]
     };
 
     handleDropMenuChange = event => {
@@ -150,8 +140,12 @@ class CreateService extends Component {
                     </Paper>
                 </Grid>
             </React.Fragment>
-        );
-    };
-};
+        )
+    }
+
+    updateSearch() {
+        let search;
+    }
+}
 
 export default CreateService;
