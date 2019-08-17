@@ -62,71 +62,54 @@ class CreateCar extends Component {
             <React.Fragment>  
                 <Grid container justify='center' style={{paddingTop:25}}>
                     <Paper style={{width:'90%',backgroundColor:'#e0e0e0'}}>
-                        <Grid container justify='center' style={{width:'100%'}}>
-                            <Grid container style={{paddingTop:20}} justify='center'>
-                                <DirectionsCar fontSize='large'/>
-                            </Grid>
-                            <Grid container style={{width:'90%'}} justify='center' alignItems='center'>
+                        <Grid container justify='center' alignContent='center' alignItems='center' style={{width:'100%'}} direction='column'>
+                            <Grid container justify='center' alignItems='center' alignContent='center' direction='row'>
+                                <DirectionsCar fontSize='large' style={{padding:20}}/>
                                 <TextField
+                                    style={{padding:20}}
                                     onChange={this.handleChange}
                                     autoFocus
                                     name='carPlate'
                                     margin='normal'
-                                    label="Placa"
+                                    label={Enums.CarDropdown.Plate}
                                     placeholder="Placa do carro"
                                     value={carPlate}
                                     variant="outlined"
                                     style={{backgroundColor:'#efefef', width:'30%'}}    
                                 />
-                                <Typography style={{paddingLeft:40}} variant='h6'>Mercosul:</Typography>
+                                <Typography style={{padding:20}} variant='h6'>Mercosul:</Typography>
                                 <Switch
+                                    style={{padding:20}}
                                     name="carIsMercosul"
                                     value={carIsMercosul}
-                                    control={<Switch color="primary" />}
-                                    onChange= {this.handleSwitchCheckChange}
+                                    control={<Switch color="primary"/>}
+                                    onChange={this.handleSwitchCheckChange}
                                 />
                             </Grid>
-                            <Grid container style={{width:'90%'}} justify='space-evenly'>
-                                    <TextField
-                                        onChange={this.handleChange}
-                                        name="carObservations"
-                                        margin="normal"
-                                        label="Observações"
-                                        placeholder="Observações..."
-                                        fullWidth
-                                        multiline
-                                        rowsMax = '5'
-                                        variant="outlined"
-                                        style={{backgroundColor:'#efefef', width:'60%'}}  
-                                    />
+                            <Grid item justify='center' alignContent='center' alignItems='center' style={{width:'80%'}}>
+                                <TextField
+                                    onChange={this.handleChange}
+                                    name="carObservations"
+                                    margin="normal"
+                                    label="Observações"
+                                    placeholder="Observações..."
+                                    fullWidth
+                                    multiline
+                                    rowsMax = '5'
+                                    variant="outlined"
+                                    style={{backgroundColor:'#efefef', width:'100%'}}  
+                                />
                             </Grid>
-                            <Grid container style={{paddingTop:20}} justify='center'>
-                                <Person fontSize='large'/>
+                            <Grid container justify='center' alignItems='center' alignContent='center' direction='row'>
+                                <Grid item style={{padding:20}}> <Person fontSize='large'/> </Grid>
+                                <Grid item style={{padding:20}}> <DropDown data={{dropDown}} onChange={this.handleDropMenuChange}/> </Grid>
+                                <Grid item style={{padding:20}}> <SearchBar value={searchField} onChange={this.handleSearchBarChange}/> </Grid>
                             </Grid>
-                            <Grid container style={{width:'70%', paddingBottom:20}} justify='center'>
-                                    <DropDown
-                                        data={{dropDown}}
-                                        onChange={this.handleDropMenuChange}
-                                        style={{width:"50%"}}
-                                    />
-                                <Grid item justify='center' style={{paddingLeft:40}}>
-                                    <SearchBar 
-                                        value={searchField} 
-                                        onChange={this.handleSearchBarChange}
-                                        />
-                                </Grid>
-                            </Grid>
-                            <Grid container style={{paddingBottom:50}} alignItems='center' justify='center'>
-                                <Button variant="contained" color='default'>Criar</Button>
-                            </Grid> 
+                            <Grid item style={{padding:20}}> <Button variant="contained" color='default'>Criar</Button> </Grid>
                         </Grid>
                     </Paper>
                     <Paper elevation='5' style={{width:'90%', marginTop:15}}>
-                        <Grid container justify='center' style={{width:'100%'}}>
-                            <Grid item style={{paddingTop:30}}>                                  
-                                <UiList data={search}/>
-                            </Grid>
-                        </Grid> 
+                        <UiList data={search}/>
                     </Paper>
                 </Grid>
             </React.Fragment>
