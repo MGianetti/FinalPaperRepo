@@ -43,7 +43,7 @@ class CreateBudget extends Component {
         },
         searchType: SearchType.NoSearch,
         searchField:'',
-        search: this.searchCars()//[],
+        search: [],
     };
 
     handleChange = event => {
@@ -176,13 +176,13 @@ class CreateBudget extends Component {
         switch(this.state.searchType)
         {
             case SearchType.Car:
-                search = this.searchCars(searchString);
+                search = this.searchCars(searchString, this.state.carDropDown.selected);
                 break;
             case SearchType.Service:
-                search = this.searchServices(searchString);
+                search = this.searchServices(searchString, this.serviceDropDown.selected);
                 break;
             case SearchType.Item:
-                search = this.searchItems(searchString);
+                search = this.searchItems(searchString, this.itemDropDown.selected);
                 break;
             default:
                 search = [];
@@ -191,7 +191,7 @@ class CreateBudget extends Component {
         this.setState({ search });
     }
 
-    searchCars(searchString)
+    searchCars(searchString, searchType)
     {
         //TODO: make this function search and return cars
         return [
@@ -201,7 +201,7 @@ class CreateBudget extends Component {
         ] //placeholder search
     }
 
-    searchServices(searchString)
+    searchServices(searchString, searchType)
     {
         //TODO: make this function search and return services
         return [
@@ -211,7 +211,7 @@ class CreateBudget extends Component {
         ] //placeholder search
     }
 
-    searchItems(searchString)
+    searchItems(searchString, searchType)
     {
         //TODO: make this function search and return items
         return [
