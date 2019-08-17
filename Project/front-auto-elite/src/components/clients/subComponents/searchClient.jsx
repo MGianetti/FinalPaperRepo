@@ -5,12 +5,12 @@ import { Paper, Grid } from '@material-ui/core';
 import UiList from './../../common/uiList';
 import ClientEntity from './clientEntity';
 import EditClient from './editClient';
+import Enums from './../../../Enums'
 
 class SearchClient extends Component {
-
     state = {
         dropDown:{
-            items: ["Placa", 'CPF', 'Nome', 'Telefone', 'Celular', 'CEP'],
+            items: [Enums.ClientDropdown.Name, Enums.ClientDropdown.CPF, Enums.ClientDropdown.Phone],
             helpText: "Busca cliente baseado em parâmetro",
             defaultText: "Buscar cliente...",
             selected: ''

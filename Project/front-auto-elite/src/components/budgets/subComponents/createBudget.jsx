@@ -10,30 +10,24 @@ import SearchBar from './../../common/searchBar';
 import { Person, DirectionsCar } from '@material-ui/icons'
 import { Typography, Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-
-const SearchType = {
-    NoSearch: 0,
-    Car: 1,
-    Service: 2,
-    Item: 3
-}
+import Enums from './../../../Enums';
 
 class CreateBudget extends Component {
     state = {
         carDropDown:{
-            items: ["Placa", 'Cliente', 'Modelo'],
+            items: [Enums.CarDropdown.Plate, Enums.CarDropdown.Client],
             helpText: "Digite a informação do carro",
             defaultText: "Procurar por...",
             selected: ''
         },
         serviceDropDown:{
-            items: ["Tipo", 'Nome'],
+            items: [Enums.ServiceDropdown.Type, Enums.ServiceDropdown.Name],
             helpText: "Digite a informação do serviço",
             defaultText: "Procurar por...",
             selected: ''
         },
         itemDropDown:{
-            items: ["Nome"],
+            items: [Enums.ItemDropdown.Name],
             helpText: "Digite a informação do item",
             defaultText: "Procurar por...",
             selected: ''
@@ -41,7 +35,7 @@ class CreateBudget extends Component {
         newBudgetForm:{
             car: ''
         },
-        searchType: SearchType.NoSearch,
+        searchType: Enums.SearchType.NoSearch,
         searchField:'',
         search: [],
     };
@@ -92,7 +86,7 @@ class CreateBudget extends Component {
                                 <SearchBar 
                                     value={searchField} 
                                     onChange={(e) => {
-                                        this.state.searchType = SearchType.Car;
+                                        this.state.searchType = Enums.SearchType.Car;
                                         this.handleSearchBarChange(e);
                                     }}
                                     />
@@ -113,7 +107,7 @@ class CreateBudget extends Component {
                                 <SearchBar 
                                     value={searchField} 
                                     onChange={(e) => {
-                                        this.state.searchType = SearchType.Service;
+                                        this.state.searchType = Enums.SearchType.Service;
                                         this.handleSearchBarChange(e);
                                     }}
                                     />
@@ -134,7 +128,7 @@ class CreateBudget extends Component {
                                 <SearchBar 
                                     value={searchField} 
                                     onChange={(e) => {
-                                        this.state.searchType = SearchType.Item;
+                                        this.state.searchType = Enums.SearchType.Item;
                                         this.handleSearchBarChange(e);
                                     }}
                                     />
@@ -175,13 +169,13 @@ class CreateBudget extends Component {
         let search;
         switch(this.state.searchType)
         {
-            case SearchType.Car:
+            case Enums.SearchType.Car:
                 search = this.searchCars(searchString, this.state.carDropDown.selected);
                 break;
-            case SearchType.Service:
+            case Enums.SearchType.Service:
                 search = this.searchServices(searchString, this.serviceDropDown.selected);
                 break;
-            case SearchType.Item:
+            case Enums.SearchType.Item:
                 search = this.searchItems(searchString, this.itemDropDown.selected);
                 break;
             default:
