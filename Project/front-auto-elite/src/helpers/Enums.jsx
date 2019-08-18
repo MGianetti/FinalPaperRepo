@@ -48,6 +48,14 @@ export default class Enums {
         Car: "Carro"
     }
 
+    static BillingDropdownType = {
+        Car: "Carro", 
+        Service: "Serviço",
+        Budget: "Orçamento",
+        Value: "Valor",
+        Date: "Data"
+    }
+
     static ClientDropdown = [
         Enums.ClientDropdownType.CPF,
         Enums.ClientDropdownType.Name,
@@ -88,5 +96,13 @@ export default class Enums {
         Enums.InspectionDropdownType.Summary,
         Enums.InspectionDropdownType.Client,
         Enums.InspectionDropdownType.Car,
+    ]
+
+    static BillingDropdown = [
+        Enums.BillingDropdownType.Car, 
+        Enums.BillingDropdownType.Service,
+        Enums.BillingDropdownType.Budget,
+        Enums.BillingDropdownType.Value,
+        Enums.BillingDropdownType.Date,
     ]
 }

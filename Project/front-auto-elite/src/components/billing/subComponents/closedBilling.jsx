@@ -3,23 +3,19 @@ import { Grid, Paper, Typography } from '@material-ui/core';
 import DropDown from '../../common/dropDown';
 import SearchBar from '../../common/searchBar';
 import UiList from '../../common/uiList';
-import BillingClosedEntity from './billingClosedEntity';
+import Enums from '../../../helpers/Enums';
+import Queries from '../../../helpers/Queries';
 
 class closedBilling extends Component {
     state = {
         dropDown:{
-            items: ["Carro", 'Orçamento', 'Valor', 'Serviço'],
+            items: Enums.BillingDropdown,
             helpText: "Busca cobrança baseada em parâmetro",
             defaultText: "Buscar cobrança...",
             selected: ''
         },
         searchField:'',
-        search:[
-            {'5b21ca3eeb7f6fbccd471815': <BillingClosedEntity data={{plate:"JYX-6432", service:"S0005445", value:"R$612", budget:'K0088987'}}/>},
-            {'5b21ca3eeb7f6fbccd471816': <BillingClosedEntity data={{plate:"AOB-2190", service:"S0085477", value:"R$900", budget:'K0086574'}}/>},
-            {'5b21ca3eeb7f6fbccd471817': <BillingClosedEntity data={{plate:"JUW-0295", service:"S0000411", value:"R$7350", budget:'K0046545'}}/>},
-            {'5b21ca3eeb7f6fbccd471818': <BillingClosedEntity data={{plate:"JYX-6432", service:"S0009912", value:"R$230", budget:'K0081321'}}/>}
-        ]
+        search: []
     };
 
     //improve performance
@@ -32,7 +28,8 @@ class closedBilling extends Component {
 
     //improve performance
     handleSearchBarChange = event => {
-        this.setState({searchField: event.target.value})
+        this.setState({searchField: event.target.value});
+        this.updateSearch(event.target.value);
     };
 
     render() {
@@ -91,6 +88,12 @@ class closedBilling extends Component {
             </React.Fragment> 
         );
     };
+
+    updateSearch(searchString) {
+        let search;
+        search = Queries.searchClosedBillings(searchString, this.state.dropDown.selected);
+        this.setState({ search });
+    }
 };
 
 export default closedBilling;

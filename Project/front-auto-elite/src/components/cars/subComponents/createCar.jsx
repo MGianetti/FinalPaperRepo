@@ -27,31 +27,31 @@ class CreateCar extends Component {
         searchField:'',
         search: [],
              
-    };
+    }
 
     handleChange = name => event => {
         let { newCarForm } = this.state;
         newCarForm[event.target.name] = event.target.value;
         this.setState({ newCarForm })
-    };
+    }
 
     handleSwitchCheckChange = (event) => {
         let { newCarForm } = this.state;
         newCarForm[event.target.name] = event.target.checked;
         this.setState({ newCarForm })
-    };
+    }
 
     handleDropMenuChange = event => {
         const dropDownName = event.target.name;
         let newDropDownState = this.state[dropDownName];
         newDropDownState['selected'] = event.target.value;
         this.setState({ [dropDownName]: newDropDownState});
-    };
+    }
 
     handleSearchBarChange = event => {
         this.setState({searchField: event.target.value});
         this.updateSearch(event.target.value);
-    };
+    }
 
     render() {
         const { searchField, search, dropDown } = this.state;
