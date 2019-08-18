@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CarEntityMiniature from './../components/cars/subComponents/carEntityMiniature';
 import ClientEntity from './../components/clients/subComponents/clientEntity';
 import ServiceEntity from './../components/services/subComponents/serviceEntity';
 import ItemEntity from './../components/stock/subComponents/itemEntity';
 import BudgetEntity from './../components/budgets/subComponents/budgetEntity';
+import EmployeeEntity from './../components/employees/subComponents/employeeEntity';
+import InspectionEntity from './../components/inspection/subComponents/InspectionEntity';
 
 export default class Queries {
     static searchCars(searchString, searchType) {
@@ -58,5 +60,25 @@ export default class Queries {
             budgets.push({key: <BudgetEntity key={key} client={searchedBudgets[i].client} car={searchedBudgets[i].car} description={searchedBudgets[i].description} />});
         }
         return budgets; 
+    }
+
+    static searchEmployees(searchString, searchType) {
+        //TODO: make this function search and return employees
+        return [
+            {'6b21ca3eeb7f6fbccd471815': <EmployeeEntity key='5b21ca3eeb7f6fbccd471815'/>},
+            {'6b21ca3eeb7f6fbccd471816': <EmployeeEntity key='5b21ca3eeb7f6fbccd471816'/>},
+            {'6b21ca3eeb7f6fbccd471817': <EmployeeEntity key='5b21ca3eeb7f6fbccd471817'/>},
+            {'6b21ca3eeb7f6fbccd471818': <EmployeeEntity key='5b21ca3eeb7f6fbccd471818'/>}
+        ] //placeholder search
+    }
+
+    static searchInspections(searchString, searchType) {
+        //TODO: make this function search and return employees
+        return [
+            {'6b21ca3eeb7f6fbccd471815': <InspectionEntity key='5b21ca3eeb7f6fbccd471815'/>},
+            {'6b21ca3eeb7f6fbccd471816': <InspectionEntity key='5b21ca3eeb7f6fbccd471816'/>},
+            {'6b21ca3eeb7f6fbccd471817': <InspectionEntity key='5b21ca3eeb7f6fbccd471817'/>},
+            {'6b21ca3eeb7f6fbccd471818': <InspectionEntity key='5b21ca3eeb7f6fbccd471818'/>}
+        ] //placeholder search
     }
 }

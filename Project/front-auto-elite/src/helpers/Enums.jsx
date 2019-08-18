@@ -32,6 +32,22 @@ export default class Enums {
         Client: "Cliente",
     }
 
+    static EmployeeDropdownType = {
+        Name: "Nome",
+    }
+
+    static StockDropdownType = {
+        Name: "Nome",
+        Price: "Preço",
+    }
+
+    static InspectionDropdownType = {
+        ID: "ID", 
+        Summary: "Resumo",
+        Client: "Cliente",
+        Car: "Carro"
+    }
+
     static ClientDropdown = [
         Enums.ClientDropdownType.CPF,
         Enums.ClientDropdownType.Name,
@@ -56,5 +72,21 @@ export default class Enums {
         Enums.BudgetDropdownType.Summary,
         Enums.BudgetDropdownType.Car,
         Enums.BudgetDropdownType.Client,
+    ]
+
+    static EmployeeDropdown = [
+        Enums.EmployeeDropdownType.Name,
+    ]
+
+    static StockDropdown = [
+        Enums.StockDropdownType.Name,
+        Enums.StockDropdownType.Price,
+    ]
+
+    static InspectionDropdown = [
+        Enums.InspectionDropdownType.ID, 
+        Enums.InspectionDropdownType.Summary,
+        Enums.InspectionDropdownType.Client,
+        Enums.InspectionDropdownType.Car,
     ]
 }

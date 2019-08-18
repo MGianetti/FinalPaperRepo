@@ -14,7 +14,7 @@ class closedBilling extends Component {
             selected: ''
         },
         searchField:'',
-        searchedBillings:[
+        search:[
             {'5b21ca3eeb7f6fbccd471815': <BillingClosedEntity data={{plate:"JYX-6432", service:"S0005445", value:"R$612", budget:'K0088987'}}/>},
             {'5b21ca3eeb7f6fbccd471816': <BillingClosedEntity data={{plate:"AOB-2190", service:"S0085477", value:"R$900", budget:'K0086574'}}/>},
             {'5b21ca3eeb7f6fbccd471817': <BillingClosedEntity data={{plate:"JUW-0295", service:"S0000411", value:"R$7350", budget:'K0046545'}}/>},
@@ -36,7 +36,7 @@ class closedBilling extends Component {
     };
 
     render() {
-        const { dropDown, searchField, searchedBillings } = this.state; 
+        const { dropDown, searchField, search } = this.state; 
         return ( 
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
@@ -81,7 +81,7 @@ class closedBilling extends Component {
                             <Grid container justify='center'>
                                 <Grid item style={{paddingTop:50}}>                                
                                     {<UiList
-                                        data={searchedBillings}
+                                        data={search}
                                         maxHeight={600}
                                     />}
                                 </Grid>
