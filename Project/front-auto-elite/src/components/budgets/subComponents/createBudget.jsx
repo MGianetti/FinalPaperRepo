@@ -68,71 +68,48 @@ class CreateBudget extends Component {
         const { car } = this.state.newBudgetForm;
         
         return ( 
-        <React.Fragment>  
-            <Grid container justify='center' style={{paddingTop:25}}>
-                <Paper style={{width:'90%',backgroundColor:'#e0e0e0'}}>
-                    <Grid container justify='center' style={{width:'100%'}}>
-                        <Grid container style={{paddingTop:20}} justify='center'>
-                            <DirectionsCar fontSize='large'/>
-                        </Grid>
-                        <Grid container style={{width:'70%', paddingBottom:20}} justify='center'>
-                            <DropDown
-                                data={{carDropDown}}
-                                onChange={this.handleDropMenuChange}
-                                style={{width:"50%"}}
-                            />
-                            <Grid item justify='center' style={{paddingLeft:40}}>
+            <React.Fragment>  
+                <Grid container justify='center' style={{paddingTop:25}}>
+                    <Paper style={{width:'90%',backgroundColor:'#e0e0e0'}}>
+                        <Grid container direction='row' justify='center' alignContent='center' alignItems='center'>
+                            <Grid item style={{padding:15}}> <DirectionsCar fontSize='large'/> </Grid>
+                            <Grid item style={{padding:15}}> <DropDown data={{carDropDown}} onChange={this.handleDropMenuChange} style={{width:"50%"}} /> </Grid>
+                            <Grid item style={{padding:15}}>
                                 <SearchBar 
                                     value={searchField} 
                                     onChange={(e) => {
                                         this.state.searchType = Enums.SearchType.Car;
                                         this.handleSearchBarChange(e);
                                     }}
-                                    />
+                                />
                             </Grid>
                         </Grid>
-                        <Grid container justify='center'>
-                            <Typography>
-                                Adicionar Serviço
-                            </Typography>
-                        </Grid>
-                        <Grid container style={{width:'70%', paddingBottom:20}} justify='center'>
-                            <DropDown
-                                data={{serviceDropDown}}
-                                onChange={this.handleDropMenuChange}
-                                style={{width:"50%"}}
-                            />
-                            <Grid item justify='center' style={{paddingLeft:40}}>
+                        <Grid container direction='row' justify='center' alignContent='center' alignItems='center'>
+                            <Grid item style={{padding:15}}> <Typography> Adicionar Serviço </Typography> </Grid>
+                            <Grid item style={{padding:15}}> <DropDown data={{serviceDropDown}} onChange={this.handleDropMenuChange} style={{width:"50%"}} /> </Grid>
+                            <Grid item style={{padding:15}}>
                                 <SearchBar 
                                     value={searchField} 
                                     onChange={(e) => {
                                         this.state.searchType = Enums.SearchType.Service;
                                         this.handleSearchBarChange(e);
                                     }}
-                                    />
+                                />
                             </Grid>
                         </Grid>
-                        <Grid container justify='center'>
-                            <Typography>
-                                Adicionar Item
-                            </Typography>
-                        </Grid>
-                        <Grid container style={{width:'70%', paddingBottom:20}} justify='center'>
-                            <DropDown
-                                data={{itemDropDown}}
-                                onChange={this.handleDropMenuChange}
-                                style={{width:"50%"}}
-                            />
-                            <Grid item justify='center' style={{paddingLeft:10, paddingRight:10}}>
+                        <Grid container direction='row' justify='center' alignContent='center' alignItems='center'>
+                            <Grid item style={{padding:15}}> <Typography> Adicionar Item </Typography> </Grid>
+                            <Grid item style={{padding:15}}> <DropDown data={{itemDropDown}} onChange={this.handleDropMenuChange} style={{width:"50%"}} /> </Grid>
+                            <Grid item style={{padding:15}}>
                                 <SearchBar 
                                     value={searchField} 
                                     onChange={(e) => {
                                         this.state.searchType = Enums.SearchType.Item;
                                         this.handleSearchBarChange(e);
                                     }}
-                                    />
+                                />
                             </Grid>
-                            <Grid item style={{width:'10%'}} justify='space-evenly'>
+                            <Grid item style={{padding:15}}>
                                 <TextField
                                     onChange={this.handleFormChange}
                                     autoFocus
@@ -146,20 +123,19 @@ class CreateBudget extends Component {
                                 />
                             </Grid>
                         </Grid>
-                    </Grid>
-                </Paper>
-                <Paper elevation='5' style={{width:'90%', marginTop:15}}>
-                    <Grid container justify='center' style={{width:'100%'}} direction='column' alignItems='center'>
-                        <Typography>
-                            Search Results
-                        </Typography>
-                        <Grid item style={{paddingTop:30}}>
-                            <UiList data={search}/>
-                        </Grid>
-                    </Grid> 
-                </Paper>
-            </Grid>
-        </React.Fragment>
+                    </Paper>
+                    <Paper elevation='5' style={{width:'90%', marginTop:15}}>
+                        <Grid container justify='center' style={{width:'100%'}} direction='column' alignItems='center'>
+                            <Typography>
+                                Search Results
+                            </Typography>
+                            <Grid item style={{paddingTop:30}}>
+                                <UiList data={search}/>
+                            </Grid>
+                        </Grid> 
+                    </Paper>
+                </Grid>
+            </React.Fragment>
         );
     }
 
@@ -172,10 +148,10 @@ class CreateBudget extends Component {
                 search = Queries.searchCars(searchString, this.state.carDropDown.selected);
                 break;
             case Enums.SearchType.Service:
-                search = Queries.searchServices(searchString, this.serviceDropDown.selected);
+                search = Queries.searchServices(searchString, this.state.serviceDropDown.selected);
                 break;
             case Enums.SearchType.Item:
-                search = Queries.searchItems(searchString, this.itemDropDown.selected);
+                search = Queries.searchItems(searchString, this.state.itemDropDown.selected);
                 break;
             default:
                 search = [];
@@ -183,17 +159,6 @@ class CreateBudget extends Component {
         }
         this.setState({ search });
     }
-
-    searchCars(searchString, searchType)
-    {
-        //TODO: make this function search and return cars
-        return [
-            {'carPlaceholder1': <CarEntityMiniature key='carPlaceholder1'/>},
-            {'carPlaceholder2': <CarEntityMiniature key='carPlaceholder2'/>},
-            {'carPlaceholder3': <CarEntityMiniature key='carPlaceholder3'/>},
-        ] //placeholder search
-    }
-
     
 }
 
