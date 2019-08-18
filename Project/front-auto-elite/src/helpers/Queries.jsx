@@ -3,6 +3,7 @@ import CarEntityMiniature from './../components/cars/subComponents/carEntityMini
 import ClientEntity from './../components/clients/subComponents/clientEntity';
 import ServiceEntity from './../components/services/subComponents/serviceEntity';
 import ItemEntity from './../components/stock/subComponents/itemEntity';
+import BudgetEntity from './../components/budgets/subComponents/budgetEntity';
 
 export default class Queries {
     static searchCars(searchString, searchType) {
@@ -41,5 +42,21 @@ export default class Queries {
             {'itemPlaceholder2': <ItemEntity key='itemPlaceholder2'/>},
             {'itemPlaceholder3': <ItemEntity key='itemPlaceholder3'/>},
         ] //placeholder search
+    }
+
+    static searchBudgets(searchString, searchType) {
+        let searchedBudgets = [
+            {key: '5b21ca3eeb7f6fbccd471815', client:'Lucas', car:'AAA-1234', description:'Budget placeholder 1'},
+            {key: '5b21ca3eeb7f6fbccd471816', client:'Carla', car:'BBB-1234', description:'Budget placeholder 2'},
+            {key: '5b21ca3eeb7f6fbccd471817', client:'Mateus', car:'CCC-1234', description:'Budget placeholder 3'},
+        ];//placeholder info
+
+        let budgets = [];
+        for(let i = 0; i < searchedBudgets.length; i++)
+        {
+            const key = searchedBudgets[i].key;
+            budgets.push({key: <BudgetEntity key={key} client={searchedBudgets[i].client} car={searchedBudgets[i].car} description={searchedBudgets[i].description} />});
+        }
+        return budgets; 
     }
 }

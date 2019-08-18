@@ -14,7 +14,7 @@ import Queries from '../../../helpers/Queries';
 class CreateCar extends Component {
     state = {
         dropDown:{
-            items: [Enums.ClientDropdown.Name, Enums.ClientDropdown.CPF, Enums.ClientDropdown.Phone],
+            items: Enums.ClientDropdownType,
             helpText: "Digite a informação do cliente",
             defaultText: "Associar Cliente...",
             selected: ''

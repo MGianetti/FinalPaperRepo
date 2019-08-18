@@ -9,7 +9,7 @@ import Queries from '../../../helpers/Queries';
 class SearchService extends Component {
     state = {
         dropDown:{
-            items: [Enums.ServiceDropdown.Name, Enums.ServiceDropdown.Type],
+            items: Enums.ServiceDropdown,
             helpText: "Busca serviço baseado em parâmetro",
             defaultText: "Buscar serviço...",
             selected: ''

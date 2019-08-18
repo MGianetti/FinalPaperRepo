@@ -9,7 +9,7 @@ import Queries from '../../../helpers/Queries';
 class SearchCar extends Component {
     state = {
         dropDown:{
-            items: [Enums.CarDropdown.Plate, Enums.CarDropdown.Client],
+            items: Enums.CarDropdown,
             helpText: "Busca carro baseado em parâmetro",
             defaultText: "Buscar carro...",
             selected: ''

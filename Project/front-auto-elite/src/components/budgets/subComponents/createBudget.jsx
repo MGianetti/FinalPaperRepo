@@ -14,19 +14,19 @@ import Queries from './../../../helpers/Queries';
 class CreateBudget extends Component {
     state = {
         carDropDown:{
-            items: [Enums.CarDropdown.Plate, Enums.CarDropdown.Client],
+            items: Enums.CarDropdown,
             helpText: "Digite a informação do carro",
             defaultText: "Procurar por...",
             selected: ''
         },
         serviceDropDown:{
-            items: [Enums.ServiceDropdown.Type, Enums.ServiceDropdown.Name],
+            items: Enums.ServiceDropdown,
             helpText: "Digite a informação do serviço",
             defaultText: "Procurar por...",
             selected: ''
         },
         itemDropDown:{
-            items: [Enums.ItemDropdown.Name],
+            items: Enums.ItemDropdown,
             helpText: "Digite a informação do item",
             defaultText: "Procurar por...",
             selected: ''

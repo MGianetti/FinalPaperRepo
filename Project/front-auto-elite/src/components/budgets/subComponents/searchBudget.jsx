@@ -3,19 +3,20 @@ import { Grid, Paper } from '@material-ui/core';
 import DropDown from './../../common/dropDown';
 import SearchBar from './../../common/searchBar';
 import UiList from './../../common/uiList';
-import BudgetEntity from './budgetEntity';
+import Queries from './../../../helpers/Queries';
+import Enums from '../../../helpers/Enums';
 
 class SearchBudget extends Component {
     state = {
         dropDown:{
-            items: ["ID", 'Resumo', 'Cliente', 'Carro'],
+            items: Enums.BudgetDropdown,
             helpText: "Busca orçamento baseado em parâmetro",
             defaultText: "Buscar orçamento...",
             selected: ''
         },
         searchField:'',
-        searchedBudgets: this.getBudgets('')
-    };
+        search: [],
+    }
 
     //improve performance
     handleDropMenuChange = event => {
@@ -23,72 +24,38 @@ class SearchBudget extends Component {
         let newDropDownState = this.state[dropDownName];
         newDropDownState['selected'] = event.target.value;
         this.setState({ [dropDownName]: newDropDownState});
-    };
+    }
     
     //improve performance
     handleSearchBarChange = event => {
-        this.setState({searchField: event.target.value})
-    };
+        this.setState({searchField: event.target.value});
+        this.updateSearch(event.target.value);
+    }
 
     render() {
-        const { dropDown, searchField, searchedBudgets } = this.state; 
+        const { dropDown, searchField, search } = this.state; 
         return ( 
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
-                    <Grid justify='center' container style={{width:'100%'}} >
-                        <Paper elevation='5' style={{width:'90%', marginTop:10}}>
-                            <Grid container style={{padding: 20}}>
-                                <Grid item style={{width:'50%'}}>
-                                    <DropDown                                        
-                                        data={{dropDown}}
-                                        onChange={this.handleDropMenuChange}
-                                    />
-                                </Grid>
-                                <Grid item style={{width:'50%'}}>
-                                    <SearchBar 
-                                        value={searchField} 
-                                        onChange={this.handleSearchBarChange}
-                                        />
-                                </Grid>
-                            </Grid>
-                        </Paper>
-                        <Paper elevation='5' style={{width:'90%', marginTop:15}}>
-                            <Grid container justify='center'>
-                                <Grid item style={{paddingTop:50}}>                                
-                                    <UiList
-                                        maxHeight={800}
-                                        data={searchedBudgets}
-                                    />
-                                </Grid>
-                            </Grid>
-                        </Paper>
-                    </Grid>
+                    <Paper elevation='5' style={{width:'90%', marginTop:10, backgroundColor:'#e0e0e0'}}>
+                        <Grid container direction='row' justify='center'>
+                            <Grid item style={{padding:20}}> <DropDown data={{dropDown}} onChange={this.handleDropMenuChange} /> </Grid>
+                            <Grid item style={{padding:20}}> <SearchBar value={searchField} onChange={this.handleSearchBarChange} /> </Grid>
+                        </Grid>
+                    </Paper>
+                    <Paper elevation='5' style={{width:'90%', marginTop:15}}>
+                        <UiList maxHeight={600} data={search} />
+                    </Paper>
                 </Grid>
             </React.Fragment> 
-        );
-    };
-
-    getBudgets(searchString)
-    {
-        let budgets = [];
-        const searchedBudgets = this.searchBudgets(searchString);
-        for(let i = 0; i < searchedBudgets.length; i++)
-        {
-            const key = searchedBudgets[i].key;
-            budgets.push({key: <BudgetEntity key={key} client={searchedBudgets[i].client} car={searchedBudgets[i].car} description={searchedBudgets[i].description} />});
-        }
-        return budgets; 
+        )
     }
 
-    searchBudgets(searchString)
+    updateSearch(searchString, searchType)
     {
-        //TODO: make this function return an array of BudgetEntities from the backend
-        return [
-            {key: '5b21ca3eeb7f6fbccd471815', client:'Lucas', car:'AAA-1234', description:'Orçamento placeholder número 1'},
-            {key: '5b21ca3eeb7f6fbccd471816', client:'Carla', car:'BBB-1234', description:'Orçamento placeholder número 2'},
-            {key: '5b21ca3eeb7f6fbccd471817', client:'Mateus', car:'CCC-1234', description:'Orçamento placeholder número 3'},
-        ]
+        const search = Queries.searchBudgets(searchString, searchType);
+        this.setState({ search });
     }
-};
+}
 
 export default SearchBudget;

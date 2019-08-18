@@ -15,17 +15,18 @@ import Home from '@material-ui/icons/Home';
 import DriveEta from '@material-ui/icons/DriveEta';
 import Build from '@material-ui/icons/Build';
 import EditClient from './editClient';
+import Enums from '../../../helpers/Enums';
 
 class ClientEntity extends Component {
     state = {
         dropDownCars:{
-            items: ["JEM-2446"],
+            items: [],
             helpText: "Busca carro de um cliente",
             defaultText: "Buscar carro...",
             selected: ''
         },
         dropDownServices:{
-            items: [''],
+            items: [],
             helpText: "Busca serviço de um cliente",
             defaultText: "Buscar serviço...",
             selected: ''

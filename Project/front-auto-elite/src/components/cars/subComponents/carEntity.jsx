@@ -12,11 +12,12 @@ import Button from '@material-ui/core/Button';
 import DriveEta from '@material-ui/icons/DriveEta';
 import Build from '@material-ui/icons/Build';
 import Category from '@material-ui/icons/Category';
+import Enums from '../../../helpers/Enums';
 
 class CarEntity extends Component {
     state = {
         dropDownServices:{
-            items: [''],
+            items: Enums.CarDropdown,
             helpText: "Busca serviços de um carro",
             defaultText: "Buscar serviço...",
             selected: ''
