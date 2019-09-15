@@ -31,9 +31,7 @@ class ClientEntity extends Component {
             selected: ''
         },
         info: this.props.info,
-
         editingMode: false,
-
     };
 
     handleEdit = () => {

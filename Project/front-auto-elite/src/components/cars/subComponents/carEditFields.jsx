@@ -6,52 +6,74 @@ import { Typography, Button } from '@material-ui/core';
 import { DirectionsCar } from '@material-ui/icons'
 
 class CarEditFields extends Component {
+
+    state = {
+        info: {
+            isMercosul: false,
+            plate: "",
+            obs: ""
+        }
+    }
+
+    handleChange = name => event => {
+        console.log(event.target.name);
+        console.log(info[event.target.name]);
+        let { info } = this.state;
+        info[event.target.name] = event.target.value;
+        this.props.info[event.target.name] = info[event.target.name];
+        this.setState({ info })
+    }
+
+    handleSwitchCheckChange = (event) => {
+        let { isMercosul } = this.state.info;
+        isMercosul = event.target.checked;
+        this.props.info.isMercosul = isMercosul;
+        this.setState({ isMercosul });
+    }
+
     render() {
-        const {carPlate, carIsMercosul, carObservations} = this.props.info; 
+        const {plate, isMercosul, obs} = this.props.info; 
         return <React.Fragment>
             <Grid style={{paddingTop:20}} container justify='center'>
                 <DirectionsCar fontSize='large'/>
             </Grid>
             <Grid container style={{width:'90%'}} alignItems='center' justify='center'>
                 <TextField
-                    onChange={this.handleFormChange}
-                    name='carPlate'
+                    onChange={this.handleChange}
+                    name='plate'
                     margin='normal'
                     label="Placa"
                     placeholder="Placa do carro do cliente"
-                    value={carPlate}
+                    value={plate}
                     variant="outlined"
                     style={{backgroundColor:'#efefef', width:'20%'}}    
                 />
                 <Typography style={{paddingLeft:60}} variant='h6'>Mercosul:</Typography>
-                <Switch name='carIsMercosul' checked={carIsMercosul} onChange={this.handleSwitchCheckChange}/>
+                <Switch name='isMercosul' checked={isMercosul} onChange={this.handleSwitchCheckChange}/>
             </Grid>
             <Grid container style={{paddingBottom:20}} alignItems='center' justify='center'>
                 <TextField
-                    onChange={this.handleFormChange}
-                    name='carObservations'
+                    onChange={this.handleChange}
+                    name='obs'
                     margin='normal'
                     label="Observações"
                     placeholder="Observações sobre o carro do cliente"
-                    value={carObservations}
+                    value={obs}
                     variant="outlined"
                     style={{backgroundColor:'#efefef',width:'80%'}} 
                     rowsMax='5'
                     multiline   
                 />
-            </Grid>    
-            <Grid container style={{paddingBottom:50}} alignItems='center' justify='center'>
-                <Button variant="contained" color='default'>Criar</Button>
-            </Grid> 
+            </Grid>     
         </React.Fragment>
     }
 }
 
 CarEditFields.defaultProps = {
     info: {
-        carPlate: "",
-        carIsMercosul: "",
-        carObservation: ""
+        plate: "",
+        isMercosul: true,
+        obs: ""
     }
 }
 

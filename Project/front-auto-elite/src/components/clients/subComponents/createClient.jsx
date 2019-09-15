@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import ClientEditFields from './clientEditFields';
 import CarEditFields from '../../cars/subComponents/carEditFields';
+import Button from '@material-ui/core/Button';
 
 class CreateClient extends Component {
     state = {
@@ -41,6 +42,9 @@ class CreateClient extends Component {
                         <Grid container justify='center' style={{width:'100%'}} >
                             <ClientEditFields></ClientEditFields>
                             <CarEditFields></CarEditFields>
+                            <Grid container style={{paddingBottom:50}} alignItems='center' justify='center'>
+                                <Button variant="contained" color='default'>Criar</Button>
+                            </Grid>
                         </Grid>
                     </Paper>
                 </Grid>

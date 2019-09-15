@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import DriveEta from '@material-ui/icons/DriveEta';
 import Build from '@material-ui/icons/Build';
 import Category from '@material-ui/icons/Category';
+import EditCar from './editCar';
 
 class CarEntity extends Component {
     state = {
@@ -21,12 +22,32 @@ class CarEntity extends Component {
             defaultText: "Buscar serviço...",
             selected: ''
         },
-        info: this.props.info
+        info: this.props.info,
+        editingMode: false,
     };
+
+    handleEdit = () => {
+        const editingMode = true;
+        this.setState({ editingMode });
+    }
+
+    handleModalClose = () => {
+        const editingMode = false;
+        this.setState({ editingMode });
+    }
+
+    handleModalSave = () => {
+        //TODO: implement save button
+
+        const editingMode = false;
+        this.setState({ editingMode });
+    }
+    
     render() {
-        const { dropDownServices, info} = this.state; 
+        const {dropDownServices, info, editingMode} = this.state; 
         return (  
             <ExpansionPanel>
+                <EditCar info={info} modalEnable={editingMode} onClose={this.handleModalClose} onSave={this.handleModalSave}/>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Grid container justify='space-between'>
                         <Grid item>
@@ -70,7 +91,7 @@ class CarEntity extends Component {
                                 </Grid>
                                 <Grid container style={{width:'50%'}}>
                                     <Grid item>
-                                        <Fab style={{backgroundColor:'#00FF7F'}} size='small'>
+                                        <Fab onClick={this.handleEdit} style={{backgroundColor:'#00FF7F'}} size='small'>
                                             <Edit/>
                                         </Fab>
                                     </Grid>
@@ -139,9 +160,11 @@ class CarEntity extends Component {
 CarEntity.defaultProps = {
     services: ['Service not found'],
     info: {
-        name: 'Fox City 1.0 prata 4p',
         plate: 'JEM-2446',
-        owner: 'João Pedro Batista Borges',
+        isMercosul: true,
+        obs: "",
+        name: 'Fox City 1.0 prata 4p',
+        owner: '',
         isServiceActive: 'No',
         completedServices: 0,
         year: 2004
