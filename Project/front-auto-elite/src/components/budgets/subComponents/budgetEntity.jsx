@@ -16,16 +16,8 @@ import { Person, DriveEta } from '@material-ui/icons';
 class BudgetEntity extends Component {
 
     state = {
-        searchedItems:[
-            {'5b21ca3eeb7f6fbccd471815': <ItemEntity key='5b21ca3eeb7f6fbccd471815'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ItemEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ItemEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ItemEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ItemEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ItemEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ItemEntity key='5b21ca3eeb7f6fbccd471816'/>}
-        ],
-        approved: true
+        searchedItems: this.props.items,
+        info: this.props.info
     };
 
     handleApprovedChanging = () => {
@@ -35,16 +27,16 @@ class BudgetEntity extends Component {
     };
 
     render() {
-        const { searchedItems, approved } = this.state; 
+        const { searchedItems, info } = this.state; 
         return (  
             <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Grid container justify='space-between'>
                         <Grid item>
-                            <Typography variant='title'>{this.props.description}</Typography>
+                            <Typography variant='title'>{info.description}</Typography>
                         </Grid>
                         <Grid item>
-                            <Typography variant='subtitle1'>{this.props.key}</Typography>
+                            <Typography variant='subtitle1'>{info.key}</Typography>
                         </Grid>
                     </Grid>
                 </ExpansionPanelSummary>
@@ -57,7 +49,7 @@ class BudgetEntity extends Component {
                                         <Avatar src="https://thesocietypages.org/socimages/files/2009/05/vimeo.jpg"/>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant='title'style={{paddingLeft:10}}>{this.props.client}</Typography>
+                                        <Typography variant='title'style={{paddingLeft:10}}>{info.client}</Typography>
                                     </Grid>
                                 </Grid>
                                 <Grid container style={{width:'15%'}}>
@@ -85,13 +77,13 @@ class BudgetEntity extends Component {
                                     />
                                 </Grid>
                                 <Grid container style={{width:'20%'}}>
-                                    {approved && 
+                                    {info.approved && 
                                         <Grid container  onClick={this.handleApprovedChanging} alignItems='center' style={{cursor: 'pointer', borderRadius:20, background:'#00ff00', width:130, height:100}}>
                                             <Typography style={{padding: 15}}>Aprovado!</Typography>
                                             <ThumbUp/>
                                         </Grid>
                                     }
-                                    {!approved && 
+                                    {!info.approved && 
                                         <Grid container  onClick={this.handleApprovedChanging} alignItems='center' style={{cursor: 'pointer', borderRadius:20, background:'#ff0000', width:130, height:100}}>
                                             <Typography style={{padding: 15}}>Negado!</Typography>
                                             <ThumbDown/>
@@ -105,7 +97,7 @@ class BudgetEntity extends Component {
                                         <Person/>
                                     </Grid>
                                     <Grid item style={{paddingRight: 15}} >                                    
-                                        <Typography variant='subtitle1'>Dono: {this.props.client}</Typography>
+                                        <Typography variant='subtitle1'>Dono: {info.client}</Typography>
                                     </Grid>
                                     <Grid item style={{padding: 8}}>                                    
                                         <Button variant="contained" color='default'>Ver</Button>
@@ -116,7 +108,7 @@ class BudgetEntity extends Component {
                                         <DriveEta/>
                                     </Grid>
                                     <Grid item style={{paddingRight: 15}} >                                    
-                                        <Typography variant='subtitle1'>Carro: {this.props.car}</Typography>
+                                        <Typography variant='subtitle1'>Carro: {info.car}</Typography>
                                     </Grid>
                                     <Grid item style={{padding: 8}}>                                    
                                         <Button variant="contained" color='default'>Ver</Button>
@@ -135,10 +127,14 @@ class BudgetEntity extends Component {
 };
 
 BudgetEntity.defaultProps = {
-    key: "KEY123456",
-    client: "client_name",
-    car: "AAA-1234 (car_model)",
-    description: "description"
+    items: ['Items not found'],
+    info: {
+        key: "KEY123456",
+        client: "client_name",
+        car: "AAA-1234 (car_model)",
+        description: "description",
+        approved: false
+    }
 }
 
 export default BudgetEntity;

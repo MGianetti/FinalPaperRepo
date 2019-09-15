@@ -11,25 +11,21 @@ import { RemoveRedEye, AttachMoney, Assignment, Delete, Edit, Person, DriveEta }
 class ServiceEntity extends Component {
     state = {
         dropDownBudgets:{
-            items: [''],
+            items: this.props.budgets,
             helpText: "Busca orçamentos de um serviço",
             defaultText: "Buscar orçamento...",
             selected: ''
         },
-        serviceObservations:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
+        info: this.props.info
     };
     render() {
-        const { dropDownBudgets, serviceObservations } = this.state; 
+        const { dropDownBudgets, info } = this.state; 
         return (  
             <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Grid container justify='space-between'>
-                        <Grid item>
-                            <Typography variant='title'>Farol de neblina não funciona</Typography>
-                        </Grid>
-                        <Grid item>
-                            <Typography variant='subtitle1'>SA34F5C6</Typography>
-                        </Grid>
+                        <Grid item> <Typography variant='title'>{info.description}</Typography> </Grid>
+                        <Grid item> <Typography variant='subtitle1'>{info.code}</Typography> </Grid>
                     </Grid>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
@@ -65,13 +61,13 @@ class ServiceEntity extends Component {
                                 <Person/>
                             </Grid>
                             <Grid item style={{padding:4, paddingTop:30}}>
-                                <Typography variant='h6'>Mecânico: {'Tiago'}</Typography>
+                                <Typography variant='h6'>Mecânico: {info.employee}</Typography>
                             </Grid>
                             <Grid item style={{padding:4, paddingTop:30, paddingLeft:20}}>
                                 <RemoveRedEye/>
                             </Grid>
                             <Grid item style={{padding:4, paddingTop:30}}>
-                                <Typography variant='h6'>Vistoria: {'Obrigatória'}</Typography>
+                                <Typography variant='h6'>Vistoria: {info.inspection}</Typography>
                             </Grid>
                         </Grid>
                         <Grid container alignItems='center' style={{paddingTop:5}}>
@@ -79,7 +75,7 @@ class ServiceEntity extends Component {
                                 <DriveEta/>
                             </Grid>
                             <Grid item style={{padding:4, paddingTop:30}}>
-                                <Typography variant='h6'>Carro: {'Fox City 1.0 prata 4p'}</Typography>
+                                <Typography variant='h6'>Carro: {info.car}</Typography>
                             </Grid>
                         </Grid>
                         <Grid container alignItems='center'>
@@ -88,7 +84,7 @@ class ServiceEntity extends Component {
                                     <Person/>
                                 </Grid>
                                 <Grid item style={{paddingRight: 6}} >                                    
-                                    <Typography variant='title2'>Dono: João Pedro Batista Borges</Typography>
+                                    <Typography variant='title2'>Dono: {info.owner}</Typography>
                                 </Grid>
                             </Grid>
                             <Grid container alignItems='center' variant='row' style={{padding:4, paddingTop:10, paddingBottom:10, width:'60%'}}>
@@ -119,7 +115,7 @@ class ServiceEntity extends Component {
                                         margin='normal'
                                         label="Observações"
                                         placeholder="Observações sobre o carro do cliente"
-                                        value={serviceObservations}
+                                        value={info.obs}
                                         variant="outlined"
                                         style={{backgroundColor:'#efefef', width:'100%', justify:'center'}} 
                                         rowsMax='5'
@@ -131,8 +127,21 @@ class ServiceEntity extends Component {
                     </Grid>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
-        );
-    };
-};
+        )
+    }
+}
+
+ServiceEntity.defaultProps = {
+    budgets: ['Budget not found'],
+    info: {
+        obs: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+        inspection: 'Obrigatória',
+        description: 'Farol de neblina não funciona',
+        code: 'SA34F5C6',
+        employee: 'Tiago',
+        car: 'Fox City 1.0 prata 4p',
+        owner: 'João Pedro Batista Borges'
+    }
+}
 
 export default ServiceEntity;

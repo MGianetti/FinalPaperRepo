@@ -15,32 +15,22 @@ import Home from '@material-ui/icons/Home';
 import DriveEta from '@material-ui/icons/DriveEta';
 import Build from '@material-ui/icons/Build';
 import EditClient from './editClient';
-import Enums from '../../../helpers/Enums';
 
 class ClientEntity extends Component {
     state = {
         dropDownCars:{
-            items: [],
+            items: this.props.cars,
             helpText: "Busca carro de um cliente",
             defaultText: "Buscar carro...",
             selected: ''
         },
         dropDownServices:{
-            items: [],
+            items: this.props.services,
             helpText: "Busca serviço de um cliente",
             defaultText: "Buscar serviço...",
             selected: ''
         },
-        clientInfos:{
-            name:"João Pedro Batista Borges",
-            cpf:"464.399.448-39",
-            celDDD:'35',
-            cel:"9 7595-6532",
-            houseNumber:"3569",
-            telDDD:'35',
-            tel:"3666-8954",
-            cep:"37500-013"
-        },
+        info: this.props.info,
 
         editingMode: false,
 
@@ -56,6 +46,13 @@ class ClientEntity extends Component {
         this.setState({ editingMode });
     }
 
+    handleModalSave = () => {
+        //TODO: implement save button
+
+        const editingMode = false;
+        this.setState({ editingMode });
+    }
+
     handleDropMenuChange = event => {
         const dropDownName = event.target.name;
         let newDropDownState = this.state[dropDownName];
@@ -64,20 +61,16 @@ class ClientEntity extends Component {
     };
 
     render() { 
-        const { dropDownCars, dropDownServices, clientInfos, editingMode } = this.state;
-        const { name, cpf, cel, celDDD, tel, telDDD, houseNumber, cep } = this.state.clientInfos;
+        const { dropDownCars, dropDownServices, info, editingMode } = this.state;
+        const { name, cpf, cel, celDDD, tel, telDDD, houseNumber, cep } = this.state.info;
         return (
             <React.Fragment>
-                <EditClient data={clientInfos} modalEnable={editingMode} onClose={this.handleModalClose}/>
+                <EditClient info={info} modalEnable={editingMode} onClose={this.handleModalClose} onSave={this.handleModalSave}/>
                 <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                         <Grid container justify='space-between'>
-                            <Grid item>
-                                <Typography variant='title'>{name}</Typography>
-                            </Grid>
-                            <Grid item>
-                                <Typography variant='subtitle1'>{cpf}</Typography>
-                            </Grid>
+                            <Grid item> <Typography variant='title'>{name}</Typography> </Grid>
+                            <Grid item> <Typography variant='subtitle1'>{cpf}</Typography> </Grid>
                         </Grid>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
@@ -176,8 +169,23 @@ class ClientEntity extends Component {
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
             </React.Fragment>
-        );
-    };
-};
+        )
+    }
+}
+
+ClientEntity.defaultProps = {
+    cars: ['Car not found'],
+    services: ['Service not found'],
+    info: {
+        name:"João Pedro Batista Borges",
+        cpf:"464.399.448-39",
+        celDDD:'35',
+        cel:"9 7595-6532",
+        houseNumber:"3569",
+        telDDD:'35',
+        tel:"3666-8954",
+        cep:"37500-013"
+    }
+}
 
 export default ClientEntity;

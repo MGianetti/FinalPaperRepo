@@ -1,5 +1,5 @@
 import React from 'react';
-import CarEntityMiniature from './../components/cars/subComponents/carEntityMiniature';
+import CarEntity from './../components/cars/subComponents/carEntity';
 import ClientEntity from './../components/clients/subComponents/clientEntity';
 import ServiceEntity from './../components/services/subComponents/serviceEntity';
 import ItemEntity from './../components/stock/subComponents/itemEntity';
@@ -13,9 +13,9 @@ export default class Queries {
     static searchCars(searchString, searchType) {
         //TODO: make this function search and return clients
         return [
-            {'carPlaceholder1': <CarEntityMiniature key='carPlaceholder1'/>},
-            {'carPlaceholder2': <CarEntityMiniature key='carPlaceholder2'/>},
-            {'carPlaceholder3': <CarEntityMiniature key='carPlaceholder3'/>},
+            {'carPlaceholder1': <CarEntity key='carPlaceholder1'/>},
+            {'carPlaceholder2': <CarEntity key='carPlaceholder2'/>},
+            {'carPlaceholder3': <CarEntity key='carPlaceholder3'/>},
         ] //placeholder search
     }
 

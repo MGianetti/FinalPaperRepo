@@ -12,7 +12,7 @@ import Edit from '@material-ui/icons/Edit';
 class ItemEntity extends Component {
 
     render() { 
-        const { cost, quantity, code, name } = this.props;
+        const { cost, quantity, code, name } = this.props.info;
         return (  
             <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
@@ -103,10 +103,12 @@ class ItemEntity extends Component {
 };
 
 ItemEntity.defaultProps = {
-    cost: 20,
-    quantity: 20,
-    code:'SV3E500',
-    name:'item_name',
+    info: {
+        cost: 20,
+        quantity: 20,
+        code:'SV3E500',
+        name:'item_name'
+    }
 }
 
 export default ItemEntity;

@@ -11,32 +11,11 @@ import UiList from '../../common/uiList';
 import ServiceEntity from './../../services/subComponents/serviceEntity';
 import EditEmployee from './editEmployee';
 
-
-
 class EmployeeEntity extends Component {
     state = {
-        searchedServices:[
-            {'5b21ca3eeb7f6fbccd471815': <ServiceEntity key='5b21ca3eeb7f6fbccd471815'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ServiceEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ServiceEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ServiceEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ServiceEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ServiceEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'5b21ca3eeb7f6fbccd471816': <ServiceEntity key='5b21ca3eeb7f6fbccd471816'/>}
-        ],
+        services: this.props.services,
 
-        employeeInfos:{
-            name:"Tiago Diego Assunção",
-            cpf:"856.250.028-35",
-            celDDD:"35",
-            cel:"99550-8505",
-            telDDD:"35",
-            tel:"2818-1127",
-            cep:"69086-280",
-            houseNumber:"206",
-            bankAccount:"0165 737290-6",
-            employeeObservation:"Donec magna lorem, varius in mattis sit amet"
-        },
+        info: this.props.info,
 
         editingMode: false
     };
@@ -52,7 +31,7 @@ class EmployeeEntity extends Component {
     };
 
     render() {
-        const { searchedServices, employeeInfos, editingMode } = this.state; 
+        const { services, employeeInfos, editingMode } = this.state; 
         const { name } = this.state.employeeInfos; 
         return (
             <React.Fragment>
@@ -103,7 +82,7 @@ class EmployeeEntity extends Component {
                                     <Grid container style={{width:'100%'}} alignItems='center'>
                                         <UiList
                                             maxHeight={500}
-                                            data={searchedServices}
+                                            data={services}
                                         />
                                     </Grid>
                                 </Grid>
@@ -115,5 +94,21 @@ class EmployeeEntity extends Component {
         );
     };
 };
+
+EmployeeEntity.defaultProps = {
+    services: ['Service not found'],
+    info: {
+        name:"Tiago Diego Assunção",
+        cpf:"856.250.028-35",
+        celDDD:"35",
+        cel:"99550-8505",
+        telDDD:"35",
+        tel:"2818-1127",
+        cep:"69086-280",
+        houseNumber:"206",
+        bankAccount:"0165 737290-6",
+        employeeObservation:"Donec magna lorem, varius in mattis sit amet"
+    }
+}
 
 export default EmployeeEntity;
