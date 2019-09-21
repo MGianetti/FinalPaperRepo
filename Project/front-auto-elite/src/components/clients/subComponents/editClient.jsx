@@ -7,8 +7,24 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import ClientEditFields from './clientEditFields';
 import Grid from '@material-ui/core/Grid';
+import Queries from './../../../helpers/Queries';
 
 class EditClient extends Component {
+
+    state = {
+        info: this.props.info 
+    }
+
+    handleFormChange = (event) => {
+        let { info } = this.state;
+        info[event.target.name] = event.target.value;
+        this.setState({info})
+    };
+
+    handleModalSave = (info) => {
+        Queries.updateClient(info, () => this.props.sucessCallBack(info), this.props.failCallBack);
+        this.props.onClose();
+    };
 
     render() { 
         return (
@@ -19,14 +35,14 @@ class EditClient extends Component {
                         Para editar os dados de um cliente, modifique os campos desejados e clique em salvar.
                     </DialogContentText>
                     <Grid container alignItems='center' justify='center'>
-                        <ClientEditFields info={this.props.info}></ClientEditFields>
+                        <ClientEditFields onChange={this.props.handleEdit} info={this.props.info}></ClientEditFields>
                     </Grid>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.props.onClose} style={{color: 'red'}}>
                         Cancelar
                     </Button>
-                    <Button onClick={this.props.onSave} style={{color: 'green'}}>
+                    <Button onClick={() => this.handleModalSave(this.props.info)} style={{color: 'green'}}>
                         Salvar
                     </Button>
                 </DialogActions>
@@ -39,13 +55,12 @@ EditClient.defaultProps = {
     info: {
         name:"João Pedro Batista Borges",
         cpf:"464.399.448-39",
-        celDDD:'35',
-        cel:"9 7595-6532",
-        houseNumber:"3569",
-        telDDD:'35',
-        tel:"3666-8954",
+        cellPhone:"9 7595-6532",
+        telephone:"3666-8954",
         cep:"37500-013"
-    }
+    },
+    sucessCallBack: () => console.log("Sucess"),
+    failCallBack: () => console.log("Fail")
 }
 
 export default EditClient;

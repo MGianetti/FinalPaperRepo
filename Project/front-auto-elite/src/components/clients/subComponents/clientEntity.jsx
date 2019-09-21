@@ -34,19 +34,16 @@ class ClientEntity extends Component {
         editingMode: false,
     };
 
+    handleEditSave = (info) => {
+        this.setState({info});
+    }
+
     handleEdit = () => {
         const editingMode = true;
         this.setState({ editingMode });
     }
 
     handleModalClose = () => {
-        const editingMode = false;
-        this.setState({ editingMode });
-    }
-
-    handleModalSave = () => {
-        //TODO: implement save button
-
         const editingMode = false;
         this.setState({ editingMode });
     }
@@ -60,7 +57,7 @@ class ClientEntity extends Component {
 
     render() { 
         const { dropDownCars, dropDownServices, info, editingMode } = this.state;
-        const { name, cpf, cellPhone, telephone, cep } = this.state.info;
+        const { name, cpf, cellPhone, telephone, cep, id } = this.state.info;
         const cel = cellPhone;
         const houseNumber = telephone;
         const celDDD = cellPhone.match('\\(.*\\)')[0] || '';
@@ -68,7 +65,7 @@ class ClientEntity extends Component {
         let tel
         return (
             <React.Fragment>
-                <EditClient info={info} modalEnable={editingMode} onClose={this.handleModalClose} onSave={this.handleModalSave}/>
+                <EditClient info={{ id, name, cpf, cellPhone, telephone, cep }} sucessCallBack={this.handleEditSave} modalEnable={editingMode} onClose={this.handleModalClose} />
                 <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                         <Grid container justify='space-between'>

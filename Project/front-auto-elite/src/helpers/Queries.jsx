@@ -41,6 +41,17 @@ export default class Queries {
         return clientEntities
     }
 
+    static async updateClient(updatedClient, successCallBack, failCallBack){
+        console.log(updatedClient)
+        await axios.put(`${SERVER_URL}/clients/${updatedClient.id}`, updatedClient).then( () =>{
+            console.log(`Updated client ${updatedClient.id} succesfully`)
+            successCallBack();
+        }).catch(error => {
+            console.log(`Fail to update client ${updatedClient.id}`);
+            failCallBack();
+        });
+    }
+
     static async searchServices(searchString, searchType)
     {
         //TODO: make this function search and return services

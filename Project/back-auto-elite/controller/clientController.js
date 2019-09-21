@@ -80,7 +80,7 @@ exports.update = (req, res, next) => {
     if(req.body.cpf)values.cpf = req.body.cpf;
     if(req.body.cellPhone)values.cellPhone = req.body.cellPhone;
     if(req.body.telephone)values.telephone = req.body.telephone;
-    if(req.body.name)values.name = req.body.telephone;
+    if(req.body.name)values.name = req.body.name;
     if(req.body.cep)values.cep = req.body.cep;
 
 

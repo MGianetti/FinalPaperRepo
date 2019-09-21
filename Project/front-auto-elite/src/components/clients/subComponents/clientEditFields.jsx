@@ -4,8 +4,18 @@ import TextField from '@material-ui/core/TextField';
 import { Person } from '@material-ui/icons'
 
 class ClientEditFields extends Component {
+    state = {
+        info: this.props.info 
+    }
+
+    handleFormChange = (event) => {
+        let { info } = this.state;
+        info[event.target.name] = event.target.value;
+        this.setState({info})
+    };
+
     render() {
-        const { name, telDDD, tel, celDDD, cel, cpf, cep, houseNumber} = this.props.info; 
+        const { name, telephone, cellPhone, cpf, cep, houseNumber} = this.state.info; 
         return <React.Fragment>
             <Grid style={{paddingTop:20, width:'90%'}} container justify='center'>
                 <Person fontSize='large'/>
@@ -26,43 +36,23 @@ class ClientEditFields extends Component {
             <Grid container style={{width:'90%'}} justify='space-evenly'>
                 <TextField
                     onChange={this.handleFormChange}
-                    name='celDDD'
-                    margin='normal'
-                    label="DDD"
-                    placeholder="DDD do celular"
-                    value={celDDD}
-                    variant="outlined"
-                    style={{backgroundColor:'#efefef', width:'14.7%'}}    
-                />
-                <TextField
-                    onChange={this.handleFormChange}
-                    name='cel'
+                    name='cellPhone'
                     margin='normal'
                     label="Celular"
                     placeholder="Número do celular do cliente"
-                    value={cel}
+                    value={cellPhone}
                     variant="outlined"
-                    style={{backgroundColor:'#efefef', width:'34.3%'}}    
+                    style={{backgroundColor:'#efefef', width:'49%'}}    
                 />
                 <TextField
                     onChange={this.handleFormChange}
-                    name='telDDD'
-                    margin='normal'
-                    label="DDD"
-                    placeholder="DDD do telefone"
-                    value={telDDD}
-                    variant="outlined"
-                    style={{backgroundColor:'#efefef', width:'14.7%'}}    
-                />
-                <TextField
-                    onChange={this.handleFormChange}
-                    name='tel'
+                    name='telephone'
                     margin='normal'
                     label="Telefone"
                     placeholder="Número do telefone do cliente"
-                    value={tel}
+                    value={telephone}
                     variant="outlined"
-                    style={{backgroundColor:'#efefef', width:'34.3%'}}    
+                    style={{backgroundColor:'#efefef', width:'49%'}}    
                 />
             </Grid>
             <Grid style={{width:'90%'}} container justify='space-evenly'>
@@ -92,12 +82,11 @@ class ClientEditFields extends Component {
                     margin='normal'
                     label="Casa"
                     placeholder="Número da casa do cliente"
-                    value={houseNumber}
+                    value={'000'}
                     variant="outlined"
                     style={{backgroundColor:'#efefef', width:'29.4%'}}    
                 />
             </Grid>
-
         </React.Fragment>
     }
 }
@@ -105,10 +94,8 @@ class ClientEditFields extends Component {
 ClientEditFields.defaultProps = {
     info: {
         name: "",
-        telDDD: "",
-        tel: "",
-        celDDD: "",
-        cel: "",
+        telephone: "",
+        cellPhone: "",
         cpf: "",
         cep: "",
         houseNumber: ""
