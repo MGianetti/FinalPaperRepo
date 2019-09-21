@@ -10,6 +10,7 @@ export default class Enums {
         CPF: "CPF",
         Name: "Nome",
         Phone: "Telefone",
+        Plate: "Car Plate"
     }
 
     static CarDropdownType = {

@@ -60,7 +60,12 @@ class ClientEntity extends Component {
 
     render() { 
         const { dropDownCars, dropDownServices, info, editingMode } = this.state;
-        const { name, cpf, cel, celDDD, tel, telDDD, houseNumber, cep } = this.state.info;
+        const { name, cpf, cellPhone, telephone, cep } = this.state.info;
+        const cel = cellPhone;
+        const houseNumber = telephone;
+        const celDDD = cellPhone.match('\\(.*\\)')[0] || '';
+        const telDDD = telephone.match('\\(.*\\)')[0] || '';
+        let tel
         return (
             <React.Fragment>
                 <EditClient info={info} modalEnable={editingMode} onClose={this.handleModalClose} onSave={this.handleModalSave}/>
@@ -177,11 +182,8 @@ ClientEntity.defaultProps = {
     info: {
         name:"João Pedro Batista Borges",
         cpf:"464.399.448-39",
-        celDDD:'35',
-        cel:"9 7595-6532",
-        houseNumber:"3569",
-        telDDD:'35',
-        tel:"3666-8954",
+        cellPhone:"(35) 97595-6532",
+        telephone:"(35) 3666-8954",
         cep:"37500-013"
     }
 }

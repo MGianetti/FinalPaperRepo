@@ -9,9 +9,15 @@ import InspectionEntity from './../components/inspection/subComponents/Inspectio
 import BillingEntity from './../components/billing/subComponents/billingEntity';
 import BillingClosedEntity from './../components/billing/subComponents/billingClosedEntity';
 import axios from 'axios'
+import Enums from './Enums';
+
+const SERVER_URL = 'http://192.168.0.190:8000';
+const config = {
+    headers: {'Access-Control-Allow-Origin': '*'}
+}
 
 export default class Queries {
-    static searchCars(searchString, searchType) {
+    static async searchCars(searchString, searchType) {
         //TODO: make this function search and return clients
         return [
             {'carPlaceholder1': <CarEntity key='carPlaceholder1'/>},
@@ -20,16 +26,22 @@ export default class Queries {
         ] //placeholder search
     }
 
-    static searchClients(searchString, searchType) {
+    static async searchClients(searchString, searchType) {
         //TODO: make this function search and return clients
-        return [
-            {'clientPlaceholder1': <ClientEntity key='clientPlaceholder1'/>},
-            {'clientPlaceholder2': <ClientEntity key='clientPlaceholder2'/>},
-            {'clientPlaceholder3': <ClientEntity key='clientPlaceholder3'/>},
-        ] //placeholder search
+        let clientJsons = [];
+        await axios.get(`${SERVER_URL}/clients`).then(response => {
+            clientJsons = response.data;
+        }).catch(error => {
+            console.log(error.message);
+        });
+        let clientEntities = [];
+        for (let i in clientJsons) {
+            clientEntities.push(<ClientEntity key={clientJsons[i].name} info={clientJsons[i]}/>)
+        }
+        return clientEntities
     }
 
-    static searchServices(searchString, searchType)
+    static async searchServices(searchString, searchType)
     {
         //TODO: make this function search and return services
         return [
@@ -39,7 +51,7 @@ export default class Queries {
         ] //placeholder search
     }
 
-    static searchItems(searchString, searchType)
+    static async searchItems(searchString, searchType)
     {
         //TODO: make this function search and return items
         return [
@@ -49,7 +61,7 @@ export default class Queries {
         ] //placeholder search
     }
 
-    static searchBudgets(searchString, searchType) {
+    static async searchBudgets(searchString, searchType) {
         let searchedBudgets = [
             {key: '5b21ca3eeb7f6fbccd471815', client:'Lucas', car:'AAA-1234', description:'Budget placeholder 1'},
             {key: '5b21ca3eeb7f6fbccd471816', client:'Carla', car:'BBB-1234', description:'Budget placeholder 2'},
@@ -65,7 +77,7 @@ export default class Queries {
         return budgets; 
     }
 
-    static searchEmployees(searchString, searchType) {
+    static async searchEmployees(searchString, searchType) {
         //TODO: make this function search and return employees
         return [
             {'6b21ca3eeb7f6fbccd471815': <EmployeeEntity key='5b21ca3eeb7f6fbccd471815'/>},
@@ -75,7 +87,7 @@ export default class Queries {
         ] //placeholder search
     }
 
-    static searchInspections(searchString, searchType) {
+    static async searchInspections(searchString, searchType) {
         //TODO: make this function search and return employees
         return [
             {'6b21ca3eeb7f6fbccd471815': <InspectionEntity key='5b21ca3eeb7f6fbccd471815'/>},
@@ -85,7 +97,7 @@ export default class Queries {
         ] //placeholder search
     }
 
-    static searchPendentBillings(searchString, searchType) {
+    static async searchPendentBillings(searchString, searchType) {
         return [
             {'1': <BillingEntity data={{date:"Vencido" , plate:"CBH-6554", name:"Gabriela Correia Santos", value:"R$596", remain:0}}/>},
             {'2': <BillingEntity data={{date:"3 dias" , plate:"AOB-2190", name:"José Lima Alves", value:"R$923,50", remain:3}}/>},
@@ -94,7 +106,7 @@ export default class Queries {
         ]
     }
 
-    static searchClosedBillings(searchString, searchType) {
+    static async searchClosedBillings(searchString, searchType) {
         return [
             {'5b21ca3eeb7f6fbccd471815': <BillingClosedEntity data={{plate:"JYX-6432", service:"S0005445", value:"R$612", budget:'K0088987'}}/>},
             {'5b21ca3eeb7f6fbccd471816': <BillingClosedEntity data={{plate:"AOB-2190", service:"S0085477", value:"R$900", budget:'K0086574'}}/>},

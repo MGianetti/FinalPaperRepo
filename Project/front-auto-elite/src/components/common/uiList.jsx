@@ -9,8 +9,8 @@ const UiList = ({ data, maxHeight }) => {
                     <List style={{maxHeight: maxHeight, overflow: 'auto'}}>                            
                         {data.map( d => {
                             return (
-                                <ListItem  key={Object.keys(d)+1}>
-                                    {Object.values(d)}
+                                <ListItem key={d.key}>
+                                    {d}
                                 </ListItem>
                             )
                         })}
