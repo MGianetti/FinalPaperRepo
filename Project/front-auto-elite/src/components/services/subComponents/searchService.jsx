@@ -29,7 +29,7 @@ class SearchService extends Component {
     //improve performance
     handleSearchBarChange = event => {
         this.setState({searchField: event.target.value});
-        this.updateSearch();
+        this.updateSearch(event.target.value);
     };
 
     render() {

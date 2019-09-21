@@ -39,7 +39,7 @@ class CarEditFields extends Component {
             </Grid>
             <Grid container style={{width:'90%'}} alignItems='center' justify='center'>
                 <TextField
-                    onChange={this.handleChange}
+                    // onChange={this.handleChange}
                     name='plate'
                     margin='normal'
                     label="Placa"
@@ -53,7 +53,7 @@ class CarEditFields extends Component {
             </Grid>
             <Grid container style={{paddingBottom:20}} alignItems='center' justify='center'>
                 <TextField
-                    onChange={this.handleChange}
+                    // onChange={this.handleChange}
                     name='obs'
                     margin='normal'
                     label="Observações"

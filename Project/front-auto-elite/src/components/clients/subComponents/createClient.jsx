@@ -6,33 +6,6 @@ import CarEditFields from '../../cars/subComponents/carEditFields';
 import Button from '@material-ui/core/Button';
 
 class CreateClient extends Component {
-    state = {
-        newClientForm:{
-            name:'',
-            telDDD:'',
-            tel:'',
-            celDDD:'',
-            cel:'',
-            cpf:'',
-            cep:'',
-            houseNumber:'',
-            carPlate:'',
-            carIsMercosul:false,
-            carObservations:''
-        }
-    };
-
-    handleFormChange = (event) => {
-        let { newClientForm } = this.state;
-        newClientForm[event.target.name] = event.target.value;
-        this.setState({ newClientForm })
-    };
-
-    handleSwitchCheckChange = (event) => {
-        let { newClientForm } = this.state;
-        newClientForm[event.target.name] = event.target.checked;
-        this.setState({ newClientForm })
-    };
 
     render() {
         return (
