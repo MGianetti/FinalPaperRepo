@@ -9,7 +9,8 @@ export default class Enums {
     static ClientDropdownType = {
         CPF: "CPF",
         Name: "Nome",
-        Phone: "Telefone",
+        Telephone: "Telefone",
+        Cellphone: "Celular",
         Plate: "Car Plate"
     }
 
@@ -60,7 +61,9 @@ export default class Enums {
     static ClientDropdown = [
         Enums.ClientDropdownType.CPF,
         Enums.ClientDropdownType.Name,
-        Enums.ClientDropdownType.Phone,
+        Enums.ClientDropdownType.Telephone,
+        Enums.ClientDropdownType.Cellphone,
+        Enums.ClientDropdownType.Plate
     ]
 
     static CarDropdown = [

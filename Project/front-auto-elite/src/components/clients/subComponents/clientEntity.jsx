@@ -19,7 +19,7 @@ import EditClient from './editClient';
 class ClientEntity extends Component {
     state = {
         dropDownCars:{
-            items: this.props.cars,
+            items: this.getCarPlates(),
             helpText: "Busca carro de um cliente",
             defaultText: "Buscar carro...",
             selected: ''
@@ -55,14 +55,20 @@ class ClientEntity extends Component {
         this.setState({ [dropDownName]: newDropDownState});
     };
 
+    getCarPlates() {
+        let plates = [];
+        for(let i in this.props.info.Cars) {
+            plates.push(this.props.info.Cars[i].plate);
+        }
+        return plates;
+    }
+
     render() { 
         const { dropDownCars, dropDownServices, info, editingMode } = this.state;
         const { name, cpf, cellPhone, telephone, cep, id } = this.state.info;
         const cel = cellPhone;
-        const houseNumber = telephone;
-        const celDDD = cellPhone.match('\\(.*\\)')[0] || '';
-        const telDDD = telephone.match('\\(.*\\)')[0] || '';
-        let tel
+        const tel = telephone;
+        const houseNumber = '';
         return (
             <React.Fragment>
                 <EditClient info={{ id, name, cpf, cellPhone, telephone, cep }} sucessCallBack={this.handleEditSave} modalEnable={editingMode} onClose={this.handleModalClose} />
@@ -101,20 +107,19 @@ class ClientEntity extends Component {
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                    
                                 </Grid>
                                 <Grid container alignItems='center' style={{paddingTop:20}}>
                                     <Grid item style={{padding:4}}>
                                         <Phone/>
                                     </Grid>
                                     <Grid item style={{padding:4}}>
-                                        <Typography variant='inherit'>{telDDD + ' '}{tel}</Typography>
+                                        <Typography variant='inherit'>{tel}</Typography>
                                     </Grid>
                                     <Grid item style={{padding:4, paddingLeft:20}}>
                                         <Smartphone/>
                                     </Grid>
                                     <Grid item style={{padding:4}}>
-                                        <Typography variant='inherit'>{celDDD + ' '}{cel}</Typography>
+                                        <Typography variant='inherit'>{cel}</Typography>
                                     </Grid>
                                 </Grid>
                                 <Grid container alignItems='center' style={{paddingTop:5}}>
@@ -177,11 +182,13 @@ ClientEntity.defaultProps = {
     cars: ['Car not found'],
     services: ['Service not found'],
     info: {
+        id: -1,
         name:"João Pedro Batista Borges",
         cpf:"464.399.448-39",
         cellPhone:"(35) 97595-6532",
         telephone:"(35) 3666-8954",
-        cep:"37500-013"
+        cep:"37500-013",
+        Cars: []
     }
 }
 

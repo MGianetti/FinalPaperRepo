@@ -12,9 +12,6 @@ import axios from 'axios'
 import Enums from './Enums';
 
 const SERVER_URL = 'http://192.168.0.190:8000';
-const config = {
-    headers: {'Access-Control-Allow-Origin': '*'}
-}
 
 export default class Queries {
     static async searchCars(searchString, searchType) {
@@ -34,9 +31,31 @@ export default class Queries {
         }).catch(error => {
             console.log(error.message);
         });
+        switch(Enums.ClientDropdown[searchType]) {
+            case Enums.ClientDropdownType.Plate:
+                clientJsons = clientJsons.filter(client => {
+                    for (let i in client.Cars) {
+                        if(client.Cars[i].plate.toLowerCase().includes(searchString.toLowerCase())) { return true }
+                    }
+                    return false;
+                });
+                break;
+            case Enums.ClientDropdownType.CPF:
+                clientJsons = clientJsons.filter(client => client.cpf.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+            case Enums.ClientDropdownType.Telephone:
+                clientJsons = clientJsons.filter(client => client.telephone.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+            case Enums.ClientDropdownType.Cellphone:
+                clientJsons = clientJsons.filter(client => client.cellPhone.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+            case Enums.ClientDropdownType.Name:
+                clientJsons = clientJsons.filter(client => client.name.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+        }
         let clientEntities = [];
         for (let i in clientJsons) {
-            clientEntities.push(<ClientEntity key={clientJsons[i].name} info={clientJsons[i]}/>)
+            clientEntities.push(<ClientEntity key={clientJsons[i].id} info={clientJsons[i]}/>)
         }
         return clientEntities
     }

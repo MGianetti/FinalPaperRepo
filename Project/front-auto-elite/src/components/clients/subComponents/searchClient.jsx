@@ -53,8 +53,7 @@ class SearchClient extends Component {
 
     async updateSearch(searchString)
     {
-        let search;
-        search = await Queries.searchClients(searchString, this.state.dropDown.selected);
+        let search = await Queries.searchClients(searchString, this.state.dropDown.selected);
         this.setState({ search });
     }
 }
