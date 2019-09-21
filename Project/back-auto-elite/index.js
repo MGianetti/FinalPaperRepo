@@ -2,10 +2,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+
 const app = express();
 const authCtrl = require('./controller/authenticationController')
+const cors = require('cors')
+app.use(cors())
 app.use(bodyParser.json())
 app.use(cookieParser())
+
 // app.use((req,res,next) => {
 //     if(req.cookies.authToken){
 //         authCtrl.validadeCookie(req.cookies.authToken, res, next);
