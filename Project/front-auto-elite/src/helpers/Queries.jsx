@@ -8,6 +8,7 @@ import EmployeeEntity from './../components/employees/subComponents/employeeEnti
 import InspectionEntity from './../components/inspection/subComponents/InspectionEntity';
 import BillingEntity from './../components/billing/subComponents/billingEntity';
 import BillingClosedEntity from './../components/billing/subComponents/billingClosedEntity';
+import axios from 'axios'
 
 export default class Queries {
     static searchCars(searchString, searchType) {
