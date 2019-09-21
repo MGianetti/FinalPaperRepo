@@ -16,7 +16,8 @@ export default class Enums {
 
     static CarDropdownType = {
         Plate: "Placa",
-        Client: "Cliente",
+        ClientName: "Nome do Cliente",
+        ClientCPF: "CPF do Cliente"
     }
 
     static ServiceDropdownType = {
@@ -68,7 +69,8 @@ export default class Enums {
 
     static CarDropdown = [
         Enums.CarDropdownType.Plate,
-        Enums.CarDropdownType.Client,
+        Enums.CarDropdownType.ClientName,
+        Enums.CarDropdownType.ClientCPF
     ]
 
     static ServiceDropdown = [

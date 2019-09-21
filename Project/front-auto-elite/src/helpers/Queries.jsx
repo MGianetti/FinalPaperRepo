@@ -15,22 +15,25 @@ const SERVER_URL = 'http://192.168.0.190:8000';
 
 export default class Queries {
     static async searchCars(searchString, searchType) {
-        //TODO: make this function search and return clients
-        return [
-            {'carPlaceholder1': <CarEntity key='carPlaceholder1'/>},
-            {'carPlaceholder2': <CarEntity key='carPlaceholder2'/>},
-            {'carPlaceholder3': <CarEntity key='carPlaceholder3'/>},
-        ] //placeholder search
+        let carJsons = [];
+        switch(Enums.CarDropdown[searchType]) {
+            case Enums.CarDropdownType.Plate:
+                await axios.get(`${SERVER_URL}/cars`).then(response => carJsons = response.data).catch(error => console.log(error.message));
+                carJsons = carJsons.filter(car => car.plate.toLowerCase().includes(searchString.toLowerCase()));                
+                break;
+            // case Enums.CarDropdownType.ClientName:
+            //     await axios.get(`${SERVER_URL}/clients/byName`).then(response => carJsons = response.data).catch(error => console.log(error.message));
+            //     carJsons = carJsons.filter(car => car.plate.toLowerCase().includes(searchString.toLowerCase()));                
+            //     break;
+        }
+
+        let carEntities = [];
+        return carEntities;
     }
 
     static async searchClients(searchString, searchType) {
-        //TODO: make this function search and return clients
         let clientJsons = [];
-        await axios.get(`${SERVER_URL}/clients`).then(response => {
-            clientJsons = response.data;
-        }).catch(error => {
-            console.log(error.message);
-        });
+        await axios.get(`${SERVER_URL}/clients`).then(response => clientJsons = response.data).catch(error => console.log(error.message));
         switch(Enums.ClientDropdown[searchType]) {
             case Enums.ClientDropdownType.Plate:
                 clientJsons = clientJsons.filter(client => {
