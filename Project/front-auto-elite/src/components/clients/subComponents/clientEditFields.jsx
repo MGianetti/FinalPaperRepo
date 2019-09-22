@@ -3,26 +3,16 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { Person } from '@material-ui/icons'
 
-class ClientEditFields extends Component {
-    state = {
-        info: this.props.info 
-    }
-
-    handleFormChange = (event) => {
-        let { info } = this.state;
-        info[event.target.name] = event.target.value;
-        this.setState({info})
-    };
-
-    render() {
-        const { name, telephone, cellPhone, cpf, cep, houseNumber} = this.state.info; 
-        return <React.Fragment>
+const ClientEditFields = ({info, onFormChange}) => {
+    const { name, telephone, cellPhone, cpf, cep} = info;
+    return ( 
+        <React.Fragment>
             <Grid style={{paddingTop:20, width:'90%'}} container justify='center'>
                 <Person fontSize='large'/>
             </Grid>
             <Grid container style={{width:'90%'}} justify='space-evenly'>
                 <TextField
-                    onChange={this.handleFormChange}
+                    onChange={onFormChange}
                     autoFocus
                     name='name'
                     margin='normal'
@@ -35,7 +25,7 @@ class ClientEditFields extends Component {
             </Grid>
             <Grid container style={{width:'90%'}} justify='space-evenly'>
                 <TextField
-                    onChange={this.handleFormChange}
+                    onChange={onFormChange}
                     name='cellPhone'
                     margin='normal'
                     label="Celular"
@@ -45,7 +35,7 @@ class ClientEditFields extends Component {
                     style={{backgroundColor:'#efefef', width:'49%'}}    
                 />
                 <TextField
-                    onChange={this.handleFormChange}
+                    onChange={onFormChange}
                     name='telephone'
                     margin='normal'
                     label="Telefone"
@@ -57,7 +47,7 @@ class ClientEditFields extends Component {
             </Grid>
             <Grid style={{width:'90%'}} container justify='space-evenly'>
                 <TextField
-                    onChange={this.handleFormChange}
+                    onChange={onFormChange}
                     name='cpf'
                     margin='normal'
                     label="CPF"
@@ -67,7 +57,7 @@ class ClientEditFields extends Component {
                     style={{backgroundColor:'#efefef', width:'29.4%'}}    
                 />
                 <TextField
-                    onChange={this.handleFormChange}
+                    onChange={onFormChange}
                     name='cep'
                     margin='normal'
                     label="CEP"
@@ -77,7 +67,7 @@ class ClientEditFields extends Component {
                     style={{backgroundColor:'#efefef', width:'39.2%'}}    
                 />
                 <TextField
-                    onChange={this.handleFormChange}
+                    onChange={onFormChange}
                     name='houseNumber'
                     margin='normal'
                     label="Casa"
@@ -88,18 +78,7 @@ class ClientEditFields extends Component {
                 />
             </Grid>
         </React.Fragment>
-    }
+    );
 }
-
-ClientEditFields.defaultProps = {
-    info: {
-        name: "",
-        telephone: "",
-        cellPhone: "",
-        cpf: "",
-        cep: "",
-        houseNumber: ""
-    }
-}
-
-export default ClientEditFields
+ 
+export default ClientEditFields;

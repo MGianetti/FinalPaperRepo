@@ -19,8 +19,23 @@ class CreateClient extends Component {
         }
     };
 
-    handleCreate = (info) => {
-        Queries.createClient(info);
+    handleFormChange = (event) => {
+        let { info } = this.state;
+        info[event.target.name] = event.target.value;
+        this.setState({info})
+    };
+
+    handleCreate = async (createInfo) => {
+        await Queries.createClient(createInfo);
+            const info = {  cpf: "",
+                            cellPhone: "",
+                            telephone: "",
+                            name: "",
+                            cep: "",
+                            plate:"",
+                            is_Mercosul:true
+        }
+        this.setState({info});
     };
 
     render() {
@@ -29,7 +44,7 @@ class CreateClient extends Component {
                 <Grid container justify='center' style={{paddingTop:25}}>
                     <Paper style={{width:'90%', backgroundColor:'#e0e0e0'}}>
                         <Grid container justify='center' style={{width:'100%'}} >
-                            <ClientEditFields info={this.state.info}></ClientEditFields>
+                            <ClientEditFields onFormChange={this.handleFormChange} info={this.state.info} ></ClientEditFields>
                             <CarEditFields info={this.state.info}></CarEditFields>
                             <Grid container style={{paddingBottom:50}} alignItems='center' justify='center'>
                                 <Button onClick={() => this.handleCreate(this.state.info)} variant="contained" color='default'>Criar</Button>

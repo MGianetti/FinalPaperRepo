@@ -11,7 +11,7 @@ import BillingEntity from './../components/billing/subComponents/billingEntity';
 import BillingClosedEntity from './../components/billing/subComponents/billingClosedEntity';
 import Enums from './Enums';
 
-const SERVER_URL = 'http://192.168.0.190:8000';
+const SERVER_URL = 'http://localhost:8000';
 
 export default class Queries {
     static async searchCars(searchString, searchType) {
@@ -42,15 +42,18 @@ export default class Queries {
         const {cpf, cellPhone, telephone, name, cep} = clientFormInfo;
         const {plate, is_Mercosul} = clientFormInfo;
         var client_id;
+        //create client
         await axios.post(`${SERVER_URL}/clients`, {cpf, cellPhone, telephone, name, cep}).then( (response) =>{
             console.log(`Created client ${response.data.name} succesfully`);
             client_id = response.data.id;
         }).catch(error => {
             console.log(`Fail to create ${clientFormInfo.name} with erro: ${error}`);
         });
+        //after create car
         await axios.post(`${SERVER_URL}/cars`, {plate, is_Mercosul, client_id}).then( (response) =>{
             console.log(`Created car ${response.data.plate} succesfully`);
             client_id = response.data.id;
+            //if succesfuly created car and client -> clean form and show alert
         }).catch(error => {
             console.log(`Fail to create ${clientFormInfo.plate} with erro: ${error}`);
         });
