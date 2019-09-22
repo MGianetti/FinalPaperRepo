@@ -45,17 +45,13 @@ class CarEntity extends Component {
     
     render() {
         const {dropDownServices, info, editingMode} = this.state; 
-        return (  
+        return (
             <ExpansionPanel>
                 <EditCar info={info} modalEnable={editingMode} onClose={this.handleModalClose} onSave={this.handleModalSave}/>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Grid container justify='space-between'>
-                        <Grid item>
-                            <Typography variant='title'>{info.name}</Typography>
-                        </Grid>
-                        <Grid item>
-                            <Typography variant='subtitle1'>{info.plate}</Typography>
-                        </Grid>
+                        <Grid item> <Typography variant='title'>{info.model}</Typography> </Grid>
+                        <Grid item> <Typography variant='subtitle1'>{info.plate}</Typography> </Grid>
                     </Grid>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
@@ -66,7 +62,7 @@ class CarEntity extends Component {
                                     <Avatar src={"https://i.ibb.co/NnTpQtM/car-avatar.png"}/>
                                 </Grid>
                                 <Grid item style={{padding: 5, width:'40%'}}>
-                                    <Typography variant='headline'>{info.name}</Typography>
+                                    <Typography variant='headline'>{info.model}</Typography>
                                 </Grid>
                                 <Grid item style={{ backgroundColor:'#e0e0e0', borderRadius:8, borderStyle:'solid', borderWidth: 1, borderColor:'#b0b0b0'}}>
                                     <Grid container direction='column' style={{padding: 20}}>
@@ -126,7 +122,7 @@ class CarEntity extends Component {
                                     <DriveEta/>
                                 </Grid>
                                 <Grid item style={{paddingRight: 15}} >                                    
-                                    <Typography variant='subtitle1'>Dono: {info.owner}</Typography>
+                                    <Typography variant='subtitle1'>Dono: {info.Client.name}</Typography>
                                 </Grid>
                                 <Grid item style={{padding: 8}}>                                    
                                     <Button variant="contained" color='default'>Ver</Button>
@@ -160,14 +156,20 @@ class CarEntity extends Component {
 CarEntity.defaultProps = {
     services: ['Service not found'],
     info: {
-        plate: 'JEM-2446',
-        isMercosul: true,
-        obs: "",
-        name: 'Fox City 1.0 prata 4p',
-        owner: '',
-        isServiceActive: 'No',
-        completedServices: 0,
-        year: 2004
+        id: -1,
+        plate: "",
+        is_Mercosul: false,
+        model: "",
+        year: 2013,
+        client_id: 178,
+        Client: {
+            id: 178,
+            cpf: "",
+            cellPhone: "",
+            telephone: "",
+            name: "",
+            cep: "",
+        }
     }
 }
 

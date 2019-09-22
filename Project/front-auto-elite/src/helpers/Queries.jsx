@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import CarEntity from './../components/cars/subComponents/carEntity';
 import ClientEntity from './../components/clients/subComponents/clientEntity';
 import ServiceEntity from './../components/services/subComponents/serviceEntity';
@@ -8,7 +9,6 @@ import EmployeeEntity from './../components/employees/subComponents/employeeEnti
 import InspectionEntity from './../components/inspection/subComponents/InspectionEntity';
 import BillingEntity from './../components/billing/subComponents/billingEntity';
 import BillingClosedEntity from './../components/billing/subComponents/billingClosedEntity';
-import axios from 'axios'
 import Enums from './Enums';
 
 const SERVER_URL = 'http://192.168.0.190:8000';
@@ -16,18 +16,26 @@ const SERVER_URL = 'http://192.168.0.190:8000';
 export default class Queries {
     static async searchCars(searchString, searchType) {
         let carJsons = [];
+        await axios.get(`${SERVER_URL}/cars`).then(response => carJsons = response.data).catch(error => console.log(error.message));
+        let addCarsByClientProperty = async (property) => {
+            carJsons = carJsons.filter(car => car.Client[property].toLowerCase().includes(searchString.toLowerCase()));
+        }
         switch(Enums.CarDropdown[searchType]) {
             case Enums.CarDropdownType.Plate:
-                await axios.get(`${SERVER_URL}/cars`).then(response => carJsons = response.data).catch(error => console.log(error.message));
-                carJsons = carJsons.filter(car => car.plate.toLowerCase().includes(searchString.toLowerCase()));                
+                carJsons = carJsons.filter(car => car.plate.toLowerCase().includes(searchString.toLowerCase()));
                 break;
-            // case Enums.CarDropdownType.ClientName:
-            //     await axios.get(`${SERVER_URL}/clients/byName`).then(response => carJsons = response.data).catch(error => console.log(error.message));
-            //     carJsons = carJsons.filter(car => car.plate.toLowerCase().includes(searchString.toLowerCase()));                
-            //     break;
+            case Enums.CarDropdownType.ClientName:
+                await addCarsByClientProperty('name');
+                break;
+            case Enums.CarDropdownType.ClientCPF:
+                await addCarsByClientProperty('cpf');
+                break;
         }
 
         let carEntities = [];
+        for (let i in carJsons) {
+            carEntities.push(<CarEntity key={carJsons[i].id} info={carJsons[i]}/>)
+        }
         return carEntities;
     }
 

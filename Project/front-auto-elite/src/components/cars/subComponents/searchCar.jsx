@@ -29,7 +29,7 @@ class SearchCar extends Component {
     //improve performance
     handleSearchBarChange = event => {
         this.setState({searchField: event.target.value});
-        this.updateSearch();
+        this.updateSearch(event.target.value);
     };
 
     render() {
@@ -37,13 +37,13 @@ class SearchCar extends Component {
         return ( 
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
-                    <Paper elevation='5' style={{width:'90%', marginTop:10, backgroundColor:'#e0e0e0'}}>
+                    <Paper style={{width:'90%', marginTop:10, backgroundColor:'#e0e0e0'}}>
                         <Grid container direction='row' justify='center'>
                             <Grid item style={{padding:20}}> <DropDown data={{dropDown}} onChange={this.handleDropMenuChange} /> </Grid>
                             <Grid item style={{padding:20}}> <SearchBar value={searchField} onChange={this.handleSearchBarChange} /> </Grid>
                         </Grid>
                     </Paper>
-                    <Paper elevation='5' style={{width:'90%', marginTop:15}}>
+                    <Paper style={{width:'90%', marginTop:15}}>
                         <UiList maxHeight={600} data={search} />
                     </Paper>
                 </Grid>
@@ -51,9 +51,8 @@ class SearchCar extends Component {
         )
     }
 
-    updateSearch(searchString) {
-        let search;
-        search = Queries.searchCars(searchString, this.state.dropDown.selected);
+    async updateSearch(searchString) {
+        let search = await Queries.searchCars(searchString, this.state.dropDown.selected);
         this.setState({ search });
     }
 }
