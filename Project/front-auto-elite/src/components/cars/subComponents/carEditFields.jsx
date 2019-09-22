@@ -8,21 +8,14 @@ import { DirectionsCar } from '@material-ui/icons'
 class CarEditFields extends Component {
 
     state = {
-        info: {
-            isMercosul: false,
-            plate: "",
-            obs: ""
-        }
+        info: this.props.info 
     }
 
-    handleChange = name => event => {
-        console.log(event.target.name);
-        console.log(info[event.target.name]);
+    handleFormChange = (event) => {
         let { info } = this.state;
         info[event.target.name] = event.target.value;
-        this.props.info[event.target.name] = info[event.target.name];
-        this.setState({ info })
-    }
+        this.setState({info})
+    };
 
     handleSwitchCheckChange = (event) => {
         let { isMercosul } = this.state.info;
@@ -39,12 +32,12 @@ class CarEditFields extends Component {
             </Grid>
             <Grid container style={{width:'90%'}} alignItems='center' justify='center'>
                 <TextField
-                    // onChange={this.handleChange}
+                    onChange={this.handleFormChange}
                     name='plate'
                     margin='normal'
                     label="Placa"
                     placeholder="Placa do carro do cliente"
-                    value={plate}
+                    value={this.state.info.plate}
                     variant="outlined"
                     style={{backgroundColor:'#efefef', width:'20%'}}    
                 />
@@ -53,7 +46,7 @@ class CarEditFields extends Component {
             </Grid>
             <Grid container style={{paddingBottom:20}} alignItems='center' justify='center'>
                 <TextField
-                    // onChange={this.handleChange}
+                    //onChange={this.handleChange}
                     name='obs'
                     margin='normal'
                     label="Observações"
