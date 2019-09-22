@@ -7,26 +7,42 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CarEditFields from './carEditFields';
 import Grid from '@material-ui/core/Grid';
+import Queries from './../../../helpers/Queries';
 
 class EditCar extends Component {
+
+    state = {
+        info: this.props.info 
+    }
+
+    handleFormChange = (event) => {
+        let { info } = this.state;
+        info[event.target.name] = event.target.value;
+        this.setState({info})
+    };
+
+    handleModalSave = (info) => {
+        Queries.updateCar(info, () => this.props.sucessCallBack(info), this.props.failCallBack);
+        this.props.onClose();
+    };
 
     render() { 
         return (
             <Dialog onClose={this.props.onClose} open={this.props.modalEnable}  maxWidth='md' aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Editar Cliente</DialogTitle>
+                <DialogTitle id="form-dialog-title">Editar Carro</DialogTitle>
                 <DialogContent >
                     <DialogContentText>
-                        Para editar os dados de um cliente, modifique os campos desejados e clique em salvar.
+                        Para editar os dados do carro, modifique os campos desejados e clique em salvar.
                     </DialogContentText>
                     <Grid container alignItems='center' justify='center'>
-                        <CarEditFields info={this.props.info}></CarEditFields>
+                        <CarEditFields onChange={this.props.handleEdit} info={this.props.info}></CarEditFields>
                     </Grid>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.props.onClose} style={{color: 'red'}}>
                         Cancelar
                     </Button>
-                    <Button onClick={this.props.onSave} style={{color: 'green'}}>
+                    <Button onClick={() => this.handleModalSave(this.props.info)} style={{color: 'green'}}>
                         Salvar
                     </Button>
                 </DialogActions>
@@ -37,15 +53,19 @@ class EditCar extends Component {
 
 EditCar.defaultProps = {
     info: {
-        name:"João Pedro Batista Borges",
-        cpf:"464.399.448-39",
-        celDDD:'35',
-        cel:"9 7595-6532",
-        houseNumber:"3569",
-        telDDD:'35',
-        tel:"3666-8954",
-        cep:"37500-013"
-    }
+        id: -1,
+        plate: "",
+        model: "model",
+        year: "2000",
+        is_Mercosul: false,
+        obs: "",
+        Client: {
+            name: "",
+            cpf: ""
+        }
+    },
+    sucessCallBack: () => console.log("Sucess"),
+    failCallBack: () => console.log("Fail")
 }
 
 export default EditCar;

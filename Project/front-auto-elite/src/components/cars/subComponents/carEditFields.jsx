@@ -46,7 +46,7 @@ class CarEditFields extends Component {
             </Grid>
             <Grid container style={{paddingBottom:20}} alignItems='center' justify='center'>
                 <TextField
-                    //onChange={this.handleChange}
+                    onChange={this.handleFormChange}
                     name='obs'
                     margin='normal'
                     label="Observações"

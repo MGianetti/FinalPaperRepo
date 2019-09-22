@@ -71,17 +71,6 @@ export default class Queries {
         return clientEntities
     }
 
-    static async updateClient(updatedClient, successCallBack, failCallBack){
-        console.log(updatedClient)
-        await axios.put(`${SERVER_URL}/clients/${updatedClient.id}`, updatedClient).then( () =>{
-            console.log(`Updated client ${updatedClient.id} succesfully`)
-            successCallBack();
-        }).catch(error => {
-            console.log(`Fail to update client ${updatedClient.id}`);
-            failCallBack();
-        });
-    }
-
     static async searchServices(searchString, searchType)
     {
         //TODO: make this function search and return services
@@ -154,5 +143,25 @@ export default class Queries {
             {'5b21ca3eeb7f6fbccd471817': <BillingClosedEntity data={{plate:"JUW-0295", service:"S0000411", value:"R$7350", budget:'K0046545'}}/>},
             {'5b21ca3eeb7f6fbccd471818': <BillingClosedEntity data={{plate:"JYX-6432", service:"S0009912", value:"R$230", budget:'K0081321'}}/>}
         ]
+    }
+
+    static async updateClient(updatedClient, successCallBack, failCallBack){
+        await axios.put(`${SERVER_URL}/clients/${updatedClient.id}`, updatedClient).then( () =>{
+            console.log(`Updated client ${updatedClient.id} succesfully`)
+            successCallBack();
+        }).catch(error => {
+            console.log(`Fail to update client ${updatedClient.id}`);
+            failCallBack();
+        });
+    }
+
+    static async updateCar(updatedCar, successCallBack, failCallBack){
+        await axios.put(`${SERVER_URL}/cars/${updatedCar.id}`, updatedCar).then( () =>{
+            console.log(`Updated car ${updatedCar.id} succesfully`)
+            successCallBack();
+        }).catch(error => {
+            console.log(`Fail to update car ${updatedCar.id}`);
+            failCallBack();
+        });
     }
 }

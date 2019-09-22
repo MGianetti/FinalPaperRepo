@@ -64,7 +64,7 @@ class ClientEntity extends Component {
     }
 
     render() { 
-        const { dropDownCars, dropDownServices, info, editingMode } = this.state;
+        const { dropDownCars, dropDownServices, editingMode } = this.state;
         const { name, cpf, cellPhone, telephone, cep, id } = this.state.info;
         const cel = cellPhone;
         const tel = telephone;
