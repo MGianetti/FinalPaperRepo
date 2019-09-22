@@ -38,7 +38,23 @@ export default class Queries {
         }
         return carEntities;
     }
-
+    static async createClient(clientFormInfo){
+        const {cpf, cellPhone, telephone, name, cep} = clientFormInfo;
+        const {plate, is_Mercosul} = clientFormInfo;
+        var client_id;
+        await axios.post(`${SERVER_URL}/clients`, {cpf, cellPhone, telephone, name, cep}).then( (response) =>{
+            console.log(`Created client ${response.data.name} succesfully`);
+            client_id = response.data.id;
+        }).catch(error => {
+            console.log(`Fail to create ${clientFormInfo.name} with erro: ${error}`);
+        });
+        await axios.post(`${SERVER_URL}/cars`, {plate, is_Mercosul, client_id}).then( (response) =>{
+            console.log(`Created car ${response.data.plate} succesfully`);
+            client_id = response.data.id;
+        }).catch(error => {
+            console.log(`Fail to create ${clientFormInfo.plate} with erro: ${error}`);
+        });
+    };
     static async searchClients(searchString, searchType) {
         let clientJsons = [];
         await axios.get(`${SERVER_URL}/clients`).then(response => clientJsons = response.data).catch(error => console.log(error.message));
