@@ -35,6 +35,7 @@ class CreateClient extends Component {
                             plate:"",
                             is_Mercosul:true
         }
+        alert("Cliente criado com sucesso!")
         this.setState({info});
     };
 

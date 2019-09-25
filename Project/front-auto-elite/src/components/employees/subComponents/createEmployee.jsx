@@ -10,14 +10,12 @@ class CreateEmployee extends Component {
         newEmployeeForm:{
             name:"",
             cpf:"",
-            celDDD:"",
-            cel:"",
-            telDDD:"",
-            tel:"",
+            cellPhone:"",
+            telephone:"",
             cep:"",
             houseNumber:"",
             bankAccount:"",
-            employeeObservation:""
+            observation:""
         }
     };
 
@@ -34,7 +32,7 @@ class CreateEmployee extends Component {
     };
 
     render() {
-        const { name, telDDD, tel, celDDD, cel, cpf, cep, houseNumber, employeeObservations} = this.state.newEmployeeForm; 
+        const { name, telephone, cellPhone, cpf, cep, observation, bankAccount} = this.state.newEmployeeForm; 
         return (
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:25}}>
@@ -54,7 +52,7 @@ class CreateEmployee extends Component {
                                     value={name}
                                     variant="outlined"
                                     inputProps={{maxLength: 100}}
-                                    style={{backgroundColor:'#efefef', width:'99.4%'}}    
+                                    style={{backgroundColor:'#efefef', width:'100%'}}    
                                 />
                             </Grid>
                             <Grid container style={{width:'90%'}} justify='space-evenly'>
@@ -67,52 +65,29 @@ class CreateEmployee extends Component {
                                     value={cpf}
                                     variant="outlined"
                                     inputProps={{maxLength: 11}}
-                                    style={{backgroundColor:'#efefef', width:'41.65%'}}    
+                                    style={{backgroundColor:'#efefef', width:'40%'}}    
                                 />
                                 <TextField
                                     onChange={this.handleFormChange}
-                                    name='celDDD'
-                                    margin='normal'
-                                    label="DDD"
-                                    placeholder="DDD do celular"
-                                    value={celDDD}
-                                    variant="outlined"
-                                    inputProps={{maxLength: 2}}
-                                    style={{backgroundColor:'#efefef', width:'14.7%'}}  
-                                />
-                                <TextField
-                                    onChange={this.handleFormChange}
-                                    name='cel'
+                                    name='cellPhone'
                                     margin='normal'
                                     label="Celular"
                                     placeholder="Número do celular do funcionário"
-                                    value={cel}
+                                    value={cellPhone}
                                     variant="outlined"
-                                    style={{backgroundColor:'#efefef', width:'41.65%'}}    
+                                    style={{backgroundColor:'#efefef', width:'40%'}}    
                                 />
-                                
-
                             </Grid>
                             <Grid style={{width:'90%'}} container justify='space-evenly'>
                                 <TextField
                                     onChange={this.handleFormChange}
-                                    name='telDDD'
-                                    margin='normal'
-                                    label="DDD"
-                                    placeholder="DDD do telefone"
-                                    value={telDDD}
-                                    variant="outlined"
-                                    style={{backgroundColor:'#efefef', width:'14.7%'}} 
-                                />
-                                <TextField
-                                    onChange={this.handleFormChange}
-                                    name='tel'
+                                    name='telephone'
                                     margin='normal'
                                     label="Telefone"
                                     placeholder="Número do telefone do funcionário"
-                                    value={tel}
+                                    value={telephone}
                                     variant="outlined"
-                                    style={{backgroundColor:'#efefef', width:'34.3%'}}    
+                                    style={{backgroundColor:'#efefef', width:'40%'}}    
                                 />
                                 <TextField
                                     onChange={this.handleFormChange}
@@ -122,59 +97,29 @@ class CreateEmployee extends Component {
                                     placeholder="CEP do funcionário"
                                     value={cep}
                                     variant="outlined"
-                                    style={{backgroundColor:'#efefef', width:'34.3%'}}    
-                                />
-                                <TextField
-                                    onChange={this.handleFormChange}
-                                    name='houseNumber'
-                                    margin='normal'
-                                    label="Casa"
-                                    placeholder="Número da casa do funcionário"
-                                    value={houseNumber}
-                                    variant="outlined"
-                                    style={{backgroundColor:'#efefef', width:'14.7%'}}     
+                                    style={{backgroundColor:'#efefef', width:'40%'}}    
                                 />
                             </Grid>
                             <Grid style={{width:'90%'}} container alignItems='center' justify='center'>
                                 <TextField
                                     onChange={this.handleFormChange}
-                                    name='agency'
-                                    margin='normal'
-                                    label="Agência"
-                                    placeholder="Agência"
-                                    value={houseNumber}
-                                    variant="outlined"
-                                    style={{backgroundColor:'#efefef', width:'25%'}}    
-                                />
-                                <TextField
-                                    onChange={this.handleFormChange}
-                                    name='account'
+                                    name='bankAccount'
                                     margin='normal'
                                     label="Conta"
                                     placeholder="Conta"
-                                    value={houseNumber}
+                                    value={bankAccount}
                                     variant="outlined"
                                     style={{backgroundColor:'#efefef', width:'25%'}}    
-                                />
-                                <TextField
-                                    onChange={this.handleFormChange}
-                                    name='digit'
-                                    margin='normal'
-                                    label="Dígito"
-                                    placeholder="Dígito"
-                                    value={houseNumber}
-                                    variant="outlined"
-                                    style={{backgroundColor:'#efefef', width:'10%'}}    
                                 />
                             </Grid>
                             <Grid container style={{paddingBottom:20}} alignItems='center' justify='center'>
                                 <TextField
                                     onChange={this.handleFormChange}
-                                    name='employeeObservations'
+                                    name='observation'
                                     margin='normal'
                                     label="Observações"
                                     placeholder="Observações sobre o funcionário"
-                                    value={employeeObservations}
+                                    value={observation}
                                     variant="outlined"
                                     style={{backgroundColor:'#efefef',width:'80%'}} 
                                     rowsMax='5'

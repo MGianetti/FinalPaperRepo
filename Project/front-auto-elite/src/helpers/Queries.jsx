@@ -109,10 +109,10 @@ export default class Queries {
     static async searchEmployees(searchString, searchType) {
         //TODO: make this function search and return employees
         return [
-            {'6b21ca3eeb7f6fbccd471815': <EmployeeEntity key='5b21ca3eeb7f6fbccd471815'/>},
-            {'6b21ca3eeb7f6fbccd471816': <EmployeeEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'6b21ca3eeb7f6fbccd471817': <EmployeeEntity key='5b21ca3eeb7f6fbccd471817'/>},
-            {'6b21ca3eeb7f6fbccd471818': <EmployeeEntity key='5b21ca3eeb7f6fbccd471818'/>}
+            <EmployeeEntity key='5b21ca3eeb7f6fbccd471815'/>,
+            <EmployeeEntity key='5b21ca3eeb7f6fbccd471816'/>,
+            <EmployeeEntity key='5b21ca3eeb7f6fbccd471817'/>,
+            <EmployeeEntity key='5b21ca3eeb7f6fbccd471818'/>
         ] //placeholder search
     }
 
