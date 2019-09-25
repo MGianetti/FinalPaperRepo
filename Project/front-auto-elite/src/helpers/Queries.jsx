@@ -14,48 +14,7 @@ import Enums from './Enums';
 const SERVER_URL = 'http://localhost:8000';
 
 export default class Queries {
-    static async searchCars(searchString, searchType) {
-        let carJsons = [];
-        await axios.get(`${SERVER_URL}/cars`).then(response => carJsons = response.data).catch(error => console.log(error.message));
-        let addCarsByClientProperty = property => carJsons = carJsons.filter(car => car.Client[property].toLowerCase().includes(searchString.toLowerCase()));
-        switch(Enums.CarDropdown[searchType]) {
-            case Enums.CarDropdownType.Plate:
-                carJsons = carJsons.filter(car => car.plate.toLowerCase().includes(searchString.toLowerCase()));
-                break;
-            case Enums.CarDropdownType.ClientName:
-                addCarsByClientProperty('name');
-                break;
-            case Enums.CarDropdownType.ClientCPF:
-                addCarsByClientProperty('cpf');
-                break;
-        }
 
-        let carEntities = [];
-        for (let car of carJsons) {
-            carEntities.push(<CarEntity key={car.id} info={car}/>)
-        }
-        return carEntities;
-    }
-    static async createClient(clientFormInfo){
-        const {cpf, cellPhone, telephone, name, cep} = clientFormInfo;
-        const {plate, is_Mercosul} = clientFormInfo;
-        var client_id;
-        //create client
-        await axios.post(`${SERVER_URL}/clients`, {cpf, cellPhone, telephone, name, cep}).then( (response) =>{
-            console.log(`Created client ${response.data.name} succesfully`);
-            client_id = response.data.id;
-        }).catch(error => {
-            console.log(`Fail to create ${clientFormInfo.name} with erro: ${error}`);
-        });
-        //after create car
-        await axios.post(`${SERVER_URL}/cars`, {plate, is_Mercosul, client_id}).then( (response) =>{
-            console.log(`Created car ${response.data.plate} succesfully`);
-            client_id = response.data.id;
-            //if succesfuly created car and client -> clean form and show alert
-        }).catch(error => {
-            console.log(`Fail to create ${clientFormInfo.plate} with erro: ${error}`);
-        });
-    };
     static async searchClients(searchString, searchType) {
         let clientJsons = [];
         await axios.get(`${SERVER_URL}/clients`).then(response => clientJsons = response.data).catch(error => console.log(error.message));
@@ -86,6 +45,29 @@ export default class Queries {
             clientEntities.push(<ClientEntity key={clientJsons[i].id} info={clientJsons[i]}/>)
         }
         return clientEntities
+    }
+
+    static async searchCars(searchString, searchType) {
+        let carJsons = [];
+        await axios.get(`${SERVER_URL}/cars`).then(response => carJsons = response.data).catch(error => console.log(error.message));
+        let addCarsByClientProperty = property => carJsons = carJsons.filter(car => car.Client[property].toLowerCase().includes(searchString.toLowerCase()));
+        switch(Enums.CarDropdown[searchType]) {
+            case Enums.CarDropdownType.Plate:
+                carJsons = carJsons.filter(car => car.plate.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+            case Enums.CarDropdownType.ClientName:
+                addCarsByClientProperty('name');
+                break;
+            case Enums.CarDropdownType.ClientCPF:
+                addCarsByClientProperty('cpf');
+                break;
+        }
+
+        let carEntities = [];
+        for (let car of carJsons) {
+            carEntities.push(<CarEntity key={car.id} info={car}/>)
+        }
+        return carEntities;
     }
 
     static async searchServices(searchString, searchType)
@@ -162,6 +144,27 @@ export default class Queries {
         ]
     }
 
+    static async createClient(clientFormInfo){
+        const {cpf, cellPhone, telephone, name, cep} = clientFormInfo;
+        const {plate, is_Mercosul} = clientFormInfo;
+        var client_id;
+        //create client
+        await axios.post(`${SERVER_URL}/clients`, {cpf, cellPhone, telephone, name, cep}).then( (response) =>{
+            console.log(`Created client ${response.data.name} succesfully`);
+            client_id = response.data.id;
+        }).catch(error => {
+            console.log(`Fail to create ${clientFormInfo.name} with erro: ${error}`);
+        });
+        //after create car
+        await axios.post(`${SERVER_URL}/cars`, {plate, is_Mercosul, client_id}).then( (response) =>{
+            console.log(`Created car ${response.data.plate} succesfully`);
+            client_id = response.data.id;
+            //if succesfuly created car and client -> clean form and show alert
+        }).catch(error => {
+            console.log(`Fail to create ${clientFormInfo.plate} with erro: ${error}`);
+        });
+    };
+
     static async updateClient(updatedClient, successCallBack, failCallBack){
         await axios.put(`${SERVER_URL}/clients/${updatedClient.id}`, updatedClient).then( () =>{
             console.log(`Updated client ${updatedClient.id} succesfully`)
@@ -170,6 +173,10 @@ export default class Queries {
             console.log(`Fail to update client ${updatedClient.id}`);
             failCallBack();
         });
+    }
+
+    static async createCar(carFormInfo) {
+
     }
 
     static async updateCar(updatedCar, successCallBack, failCallBack){
@@ -182,7 +189,4 @@ export default class Queries {
         });
     }
 
-    static async crateCar(carFormInfo) {
-
-    }
 }
