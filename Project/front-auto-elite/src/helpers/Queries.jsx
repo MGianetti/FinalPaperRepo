@@ -17,24 +17,22 @@ export default class Queries {
     static async searchCars(searchString, searchType) {
         let carJsons = [];
         await axios.get(`${SERVER_URL}/cars`).then(response => carJsons = response.data).catch(error => console.log(error.message));
-        let addCarsByClientProperty = async (property) => {
-            carJsons = carJsons.filter(car => car.Client[property].toLowerCase().includes(searchString.toLowerCase()));
-        }
+        let addCarsByClientProperty = property => carJsons = carJsons.filter(car => car.Client[property].toLowerCase().includes(searchString.toLowerCase()));
         switch(Enums.CarDropdown[searchType]) {
             case Enums.CarDropdownType.Plate:
                 carJsons = carJsons.filter(car => car.plate.toLowerCase().includes(searchString.toLowerCase()));
                 break;
             case Enums.CarDropdownType.ClientName:
-                await addCarsByClientProperty('name');
+                addCarsByClientProperty('name');
                 break;
             case Enums.CarDropdownType.ClientCPF:
-                await addCarsByClientProperty('cpf');
+                addCarsByClientProperty('cpf');
                 break;
         }
 
         let carEntities = [];
-        for (let i in carJsons) {
-            carEntities.push(<CarEntity key={carJsons[i].id} info={carJsons[i]}/>)
+        for (let car of carJsons) {
+            carEntities.push(<CarEntity key={car.id} info={car}/>)
         }
         return carEntities;
     }
@@ -182,5 +180,9 @@ export default class Queries {
             console.log(`Fail to update car ${updatedCar.id}`);
             failCallBack();
         });
+    }
+
+    static async crateCar(carFormInfo) {
+
     }
 }
