@@ -27,13 +27,14 @@ class CreateClient extends Component {
 
     handleCreate = async (createInfo) => {
         await Queries.createClient(createInfo);
-            const info = {  cpf: "",
-                            cellPhone: "",
-                            telephone: "",
-                            name: "",
-                            cep: "",
-                            plate:"",
-                            is_Mercosul:true
+        const info = {  
+            cpf: "",
+            cellPhone: "",
+            telephone: "",
+            name: "",
+            cep: "",
+            plate: "",
+            is_Mercosul: true
         }
         alert("Cliente criado com sucesso!")
         this.setState({info});

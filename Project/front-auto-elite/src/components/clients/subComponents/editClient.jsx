@@ -35,14 +35,14 @@ class EditClient extends Component {
                         Para editar os dados de um cliente, modifique os campos desejados e clique em salvar.
                     </DialogContentText>
                     <Grid container alignItems='center' justify='center'>
-                        <ClientEditFields onChange={this.props.handleEdit} info={this.props.info}></ClientEditFields>
+                        <ClientEditFields onFormChange={this.handleFormChange} info={this.state.info}></ClientEditFields>
                     </Grid>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.props.onClose} style={{color: 'red'}}>
                         Cancelar
                     </Button>
-                    <Button onClick={() => this.handleModalSave(this.props.info)} style={{color: 'green'}}>
+                    <Button onClick={() => this.handleModalSave(this.state.info)} style={{color: 'green'}}>
                         Salvar
                     </Button>
                 </DialogActions>
