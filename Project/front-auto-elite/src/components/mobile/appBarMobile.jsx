@@ -6,15 +6,20 @@ import { Typography, Grid, Button } from '@material-ui/core';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import HomeMobile from './homeMobile';
 import NotFound from './../notFound/notFound';
-import CreateBudgetMobile from './createBudgetMobile';
 import SearchBudgetMobile from './searchBudgetMobile';
-import CreateInspectionMobile from './createInspectionMobile';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import '../../fonts.css'
+import SearchClientsMobile from './searchClientsMobile';
+import SearchCarsMobile from './searchCarsMobile';
+import SearchServicesMobile from './searchServicesMobile';
+import SearchEmployeesMobile from './searchEmployeesMobile';
+import SearchStockMobile from './searchStockMobile';
+import SearchBillingMobile from './searchBillingMobile';
+import SearchInspectionMobile from './searchInspectionMobile';
 
 
 class AppBarMobile extends Component {
@@ -37,9 +42,14 @@ class AppBarMobile extends Component {
                     <Switch>
                         <Redirect from="/Login" exact to="/Início" />
                         <Route path="/Início" component={HomeMobile} />
-                        <Route path="/OrçamentoCriar" component={CreateBudgetMobile} />
-                        <Route path="/OrçamentoBuscar" component={SearchBudgetMobile} />
-                        <Route path="/Vistoria" component={CreateInspectionMobile} />
+                        <Route path="/Clientes" component={SearchClientsMobile} />
+                        <Route path="/Carros" component={SearchCarsMobile} />
+                        <Route path="/Serviços" component={SearchServicesMobile} />
+                        <Route path="/Orçamentos" component={SearchBudgetMobile} />
+                        <Route path="/Mecânicos" component={SearchEmployeesMobile} />
+                        <Route path="/Estoque" component={SearchStockMobile} />
+                        <Route path="/Cobrança" component={SearchBillingMobile} />
+                        <Route path="/Vistoria" component={SearchInspectionMobile} />
                         <Route path="/not-found" component={NotFound} />
                         <Redirect from="/" exact to="/Início" />
                         <Redirect to="/not-found" />
