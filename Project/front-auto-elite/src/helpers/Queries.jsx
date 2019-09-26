@@ -146,7 +146,7 @@ export default class Queries {
 
     static async createClient(clientFormInfo){
         const {cpf, cellPhone, telephone, name, cep} = clientFormInfo;
-        const {plate, is_Mercosul} = clientFormInfo;
+        const {model, year, plate, is_Mercosul} = clientFormInfo;
         var client_id;
         //create client
         await axios.post(`${SERVER_URL}/clients`, {cpf, cellPhone, telephone, name, cep}).then( (response) =>{
@@ -155,15 +155,22 @@ export default class Queries {
         }).catch(error => {
             console.log(`Fail to create ${clientFormInfo.name} with erro: ${error}`);
         });
-        //after create car
-        await axios.post(`${SERVER_URL}/cars`, {plate, is_Mercosul, client_id}).then( (response) =>{
+        //after create client
+        await axios.post(`${SERVER_URL}/cars`, {model, year, plate, is_Mercosul, client_id}).then( (response) =>{
             console.log(`Created car ${response.data.plate} succesfully`);
-            client_id = response.data.id;
-            //if succesfuly created car and client -> clean form and show alert
         }).catch(error => {
             console.log(`Fail to create ${clientFormInfo.plate} with erro: ${error}`);
         });
-    };
+    }
+
+    static async createCar(carFormInfo) {
+        const {model, year, plate, is_Mercosul, client_id} = carFormInfo;
+        await axios.post(`${SERVER_URL}/cars`, {model, year, plate, is_Mercosul, client_id}).then( (response) =>{
+            console.log(`Created car ${response.data.plate} succesfully`);
+        }).catch(error => {
+            console.log(`Fail to create ${carFormInfo.plate} with erro: ${error}`);
+        });
+    }
 
     static async updateClient(updatedClient, successCallBack, failCallBack){
         await axios.put(`${SERVER_URL}/clients/${updatedClient.id}`, updatedClient).then( () =>{
@@ -173,10 +180,6 @@ export default class Queries {
             console.log(`Fail to update client ${updatedClient.id}`);
             failCallBack();
         });
-    }
-
-    static async createCar(carFormInfo) {
-
     }
 
     static async updateCar(updatedCar, successCallBack, failCallBack){

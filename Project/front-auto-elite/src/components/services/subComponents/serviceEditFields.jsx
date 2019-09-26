@@ -141,7 +141,7 @@ class ServiceEditFields extends Component {
                         </Grid>   
                     </Grid>
                 </Paper>
-                <Paper elevation='5' style={{width:'90%', marginTop:15}}>
+                <Paper style={{width:'90%', marginTop:15}}>
                     <UiList maxHeight={600} data={search} />
                 </Paper>
             </React.Fragment>

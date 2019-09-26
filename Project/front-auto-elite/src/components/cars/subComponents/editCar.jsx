@@ -21,6 +21,12 @@ class EditCar extends Component {
         this.setState({info})
     };
 
+    handleSwitchCheckChange = (event) => {
+        let { info } = this.state;
+        info.is_Mercosul = event.target.checked;
+        this.setState({ info });
+    }
+
     handleModalSave = (info) => {
         Queries.updateCar(info, () => this.props.sucessCallBack(info), this.props.failCallBack);
         this.props.onClose();
@@ -30,19 +36,19 @@ class EditCar extends Component {
         return (
             <Dialog onClose={this.props.onClose} open={this.props.modalEnable}  maxWidth='md' aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Editar Carro</DialogTitle>
-                <DialogContent >
+                <DialogContent>
                     <DialogContentText>
                         Para editar os dados do carro, modifique os campos desejados e clique em salvar.
                     </DialogContentText>
                     <Grid container alignItems='center' justify='center'>
-                        <CarEditFields onChange={this.props.handleEdit} info={this.props.info}></CarEditFields>
+                        <CarEditFields info={this.state.info} onFormChange={this.handleFormChange} onSwitchCheckChange={this.handleSwitchCheckChange}></CarEditFields>
                     </Grid>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.props.onClose} style={{color: 'red'}}>
                         Cancelar
                     </Button>
-                    <Button onClick={() => this.handleModalSave(this.props.info)} style={{color: 'green'}}>
+                    <Button onClick={() => this.handleModalSave(this.state.info)} style={{color: 'green'}}>
                         Salvar
                     </Button>
                 </DialogActions>

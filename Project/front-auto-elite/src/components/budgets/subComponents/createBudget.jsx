@@ -124,7 +124,7 @@ class CreateBudget extends Component {
                             </Grid>
                         </Grid>
                     </Paper>
-                    <Paper elevation='5' style={{width:'90%', marginTop:15}}>
+                    <Paper style={{width:'90%', marginTop:15}}>
                         <Grid container justify='center' style={{width:'100%'}} direction='column' alignItems='center'>
                             <Typography>
                                 Search Results

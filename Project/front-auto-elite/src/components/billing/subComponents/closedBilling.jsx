@@ -38,7 +38,7 @@ class closedBilling extends Component {
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:15}}>
                     <Grid container justify='center'style={{width:'100%'}} >
-                        <Paper elevation='5' style={{width:'90%', marginTop:10}}>
+                        <Paper style={{width:'90%', marginTop:10}}>
                             <Grid container style={{padding: 20}}>
                                 <Grid item style={{width:'50%'}}>
                                     <DropDown                                        
@@ -55,7 +55,7 @@ class closedBilling extends Component {
                             </Grid>
                         </Paper>
                     </Grid>
-                    <Paper elevation='5' style={{width:'90%', marginTop:15}}>
+                    <Paper style={{width:'90%', marginTop:15}}>
                         <Grid container justify='center' alignItems='center' style={{width:'100%',padding:20}}>
                                 <Grid item align='center' style={{width:"20%"}}>
                                     <Typography variant='h7'>Carro</Typography>
@@ -74,7 +74,7 @@ class closedBilling extends Component {
                                 </Grid>
                         </Grid>
                     </Paper>
-                        <Paper elevation='5' style={{width:'90%', marginTop:15}}>                
+                        <Paper style={{width:'90%', marginTop:15}}>                
                             <Grid container justify='center'>
                                 <Grid item style={{paddingTop:50}}>                                
                                     {<UiList

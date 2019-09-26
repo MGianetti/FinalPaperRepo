@@ -15,6 +15,7 @@ class CreateClient extends Component {
             name: "",
             cep: "",
             plate:"",
+            obs: "",
             is_Mercosul:true
         }
     };
@@ -25,6 +26,12 @@ class CreateClient extends Component {
         this.setState({info})
     };
 
+    handleSwitchCheckChange = (event) => {
+        let { info } = this.state;
+        info.is_Mercosul = event.target.checked;
+        this.setState({ info });
+    }
+
     handleCreate = async (createInfo) => {
         await Queries.createClient(createInfo);
         const info = {  
@@ -33,12 +40,13 @@ class CreateClient extends Component {
             telephone: "",
             name: "",
             cep: "",
+            obs: "",
             plate: "",
             is_Mercosul: true
         }
         alert("Cliente criado com sucesso!")
         this.setState({info});
-    };
+    }
 
     render() {
         return (
@@ -46,8 +54,8 @@ class CreateClient extends Component {
                 <Grid container justify='center' style={{paddingTop:25}}>
                     <Paper style={{width:'90%', backgroundColor:'#e0e0e0'}}>
                         <Grid container justify='center' style={{width:'100%'}} >
-                            <ClientEditFields onFormChange={this.handleFormChange} info={this.state.info} ></ClientEditFields>
-                            <CarEditFields info={this.state.info}></CarEditFields>
+                            <ClientEditFields info={this.state.info} onFormChange={this.handleFormChange}></ClientEditFields>
+                            <CarEditFields info={this.state.info} onFormChange={this.handleFormChange} onSwitchCheckChange={this.handleSwitchCheckChange}></CarEditFields>
                             <Grid container style={{paddingBottom:50}} alignItems='center' justify='center'>
                                 <Button onClick={() => this.handleCreate(this.state.info)} variant="contained" color='default'>Criar</Button>
                             </Grid>
