@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Paper, Grid, Avatar, Typography} from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
-import Phone from '@material-ui/icons/Phone';
-import Smartphone from '@material-ui/icons/Smartphone';
-import Home from '@material-ui/icons/Home';
-import DriveEta from '@material-ui/icons/DriveEta';
 import Build from '@material-ui/icons/Build';
+import Done from '@material-ui/icons/Done';
+import HourglassEmpty from '@material-ui/icons/HourglassEmpty'
+import Star from '@material-ui/icons/Star'
+import Face from '@material-ui/icons/Face'
 import DropDown from '../common/dropDown';
+import Enums from '../../helpers/Enums';
+import SearchBar from '../common/searchBar';
 
 class SearchCarsMobile extends Component {
     state = {
@@ -27,7 +29,20 @@ class SearchCarsMobile extends Component {
             helpText: "Busca serviços de um carro",
             defaultText: "Buscar serviço...",
             selected: ''
-        }
+        }, 
+        dropDownSearch:{
+            items: Enums.CarDropdown,
+            helpText: "Busca carro baseado em parâmetro",
+            defaultText: "Buscar carro...",
+            selected: ''
+        },
+        searchField:'',
+        search: []
+    };
+
+    handleSearchBarChange = event => {
+        this.setState({searchField: event.target.value});
+        this.updateSearch(event.target.value);
     };
 
     handleDropMenuChange = event => {
@@ -38,17 +53,21 @@ class SearchCarsMobile extends Component {
     };
     
     render() { 
-        const { dropDownCars, dropDownServices } = this.state;
+        const { dropDownCars, dropDownServices, dropDownSearch, searchField } = this.state;
         return ( 
-            <Grid container justify='center' style={{paddingTop: 100}}>
+            <Grid container justify='center'>
+                <Paper style={{width: '80%'}}>
+                    <Grid container direction='row' justify='center' style={{paddingTop: 50, paddingBottom:50}}>
+                        <Grid item > <DropDown data={{dropDownSearch}} onChange={this.handleDropMenuChange} /> </Grid>
+                        <Grid item > <SearchBar value={searchField} onChange={this.hndleSearchBarChange} /> </Grid>
+                    </Grid>
+                </Paper>
                 <Paper style={{width: '80%'}}>
                     <Grid  container justify='center' style={{padding: 10}}  >
-                        <Grid container justify='space-evenly' alignItems='center' style={{width: "100%"}}>
-                            <Grid container justify='flex-end' style={{width: "20%"}}>
+                        <Grid container justify='center' alignItems='center' style={{width: "100%"}}>
+                            <Grid container direction='row' justify='center' style={{width: "60%"}}>
                                 <Avatar src={"https://i.ibb.co/NnTpQtM/car-avatar.png"}/>
-                            </Grid>
-                            <Grid container justify='flex-start' style={{width: "70%"}}>
-                                <Typography variant='headline'>JEM-2446</Typography>                                                                
+                                <Typography style={{paddingLeft: 10}} variant='headline'>JEM-2446</Typography>                                                                
                             </Grid>
                         </Grid>
                         <Divider style={{margin:10,width: '80%'}}/>
@@ -57,37 +76,42 @@ class SearchCarsMobile extends Component {
                         </Grid>
                         <Divider style={{margin:10,width: '80%'}}/>
                         <Grid container alignItems='center' justify='center' style={{padding: 5, width: "100%"}}>
-                            <Typography variant='headline'>Ano: {this.state.info.year}</Typography>                                                                
+                            <Typography variant='headline'>
+                                <Star/>Ano: {this.state.info.year}
+                            </Typography>                                                                
                         </Grid>
                         <Divider style={{margin:10,width: '80%'}}/>
                         <Grid container alignItems='center' justify='center' style={{padding: 5, width: "100%"}}>
-                            <Typography variant='headline'>Serviço ativo:{1}</Typography>                                                                
+                            <Typography variant='headline'>
+                                <HourglassEmpty/>Serviço ativo:{1}
+                            </Typography>                                                                
                         </Grid>
                         <Divider style={{margin:10,width: '80%'}}/>
                         <Grid container alignItems='center' justify='center' style={{padding: 0, width: "100%"}}>
                             <Typography variant='headline'>
+                                <Done/>
                                 Serviços já feitos:
-                                <Grid container justify='center'>
-                                    <p>{this.state.dropDownServices.items.length}</p>
-                                </Grid>
                             </Typography>                                                                
+                            <Grid container justify='center' >
+                                <p>{this.state.dropDownServices.items.length}</p>
+                            </Grid>
                         </Grid>
                         <Divider style={{margin:10,width: '80%'}}/>
                         <Grid container alignItems='center' justify='center' style={{padding: 5, width: "100%"}}>
                             <Typography variant='headline'>
-                                Dono:
-                                <Grid container justify='center'>
-                                    <p>{this.state.info.Client.name}</p>
-                                </Grid>
+                                <Face/>Dono:
                             </Typography>                                                                
+                            <Grid container justify='center'>
+                                {this.state.info.Client.name}
+                            </Grid>
                         </Grid>
                         <Divider style={{margin:10,width: '80%'}}/>
-                        <Grid container alignItems='center' justify='center' style={{padding: 5, width: "100%"}}>
-                            <DriveEta/>
-                            {/* <DropDown 
-                                data={{dropDownCars}}
+                        <Grid alignItems='center' container justify='center' style={{padding: 5, width: "100%"}}>
+                            <Build/>
+                            <DropDown 
+                                data={{dropDownServices}}
                                 onChange={this.handleDropMenuChange}
-                            />*/}
+                            />
                         </Grid>
                         <Divider style={{margin:10,width: '80%'}}/>
                     </Grid>
