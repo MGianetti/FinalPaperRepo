@@ -7,14 +7,9 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import HomeMobile from './homeMobile';
 import NotFound from './../notFound/notFound';
 import SearchBudgetMobile from './searchBudgetMobile';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import '../../fonts.css'
-import SearchClientsMobile from './searchClientsMobile';
-import SearchCarsMobile from './searchCarsMobile';
+import SearchClientsMobile from './clients/searchClientsMobile';
+import SearchCarsMobile from './cars/searchCarsMobile';
 import SearchServicesMobile from './searchServicesMobile';
 import SearchEmployeesMobile from './searchEmployeesMobile';
 import SearchStockMobile from './searchStockMobile';

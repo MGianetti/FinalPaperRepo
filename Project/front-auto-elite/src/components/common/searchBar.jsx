@@ -4,7 +4,7 @@ import SearchIcon from '@material-ui/icons/Search'
 
 const SearchBar = ({ onChange, searchField }) => {
     return (
-            <Grid container style={{alignItems:'center', display:'flex', paddingTop:25}}>
+            <Grid container justify='center' style={{alignItems:'center', display:'flex', paddingTop:25}}>
                 <SearchIcon/>  
                 <InputBase 
                     placeholder="Buscar…" 
