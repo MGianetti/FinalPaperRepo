@@ -3,20 +3,20 @@ import { Paper, Grid } from '@material-ui/core';
 import DropDown from '../../common/dropDown';
 import SearchBar from '../../common/searchBar';
 import UiList from './../../common/uiList';
-import ClientEntityMobile from './clientEntityMobile'
+import ServiceEntityMobile from './serviceEntityMobile'
 import Enums from './../../../helpers/Enums';
 
-class SearchClientsMobile extends Component {
+class SearchServicesMobile extends Component {
     state = {
         dropDownSearch:{
-            items: Enums.ClientDropdown,
-            helpText: "Busca cliente baseado em parâmetro",
-            defaultText: "Buscar cliente...",
+            items: Enums.ServiceDropdown,
+            helpText: "Busca serviço baseado em parâmetro",
+            defaultText: "Buscar serviço...",
             selected: ''
         },
         searchField:'',
-        search: [<ClientEntityMobile/>, <ClientEntityMobile/>, <ClientEntityMobile/>, <ClientEntityMobile/>, <ClientEntityMobile/>,
-             <ClientEntityMobile/>, <ClientEntityMobile/>, <ClientEntityMobile/>, <ClientEntityMobile/>, <ClientEntityMobile/>]
+        search: [<ServiceEntityMobile/>, <ServiceEntityMobile/>, <ServiceEntityMobile/>, <ServiceEntityMobile/>, <ServiceEntityMobile/>,
+             <ServiceEntityMobile/>, <ServiceEntityMobile/>, <ServiceEntityMobile/>, <ServiceEntityMobile/>, <ServiceEntityMobile/>]
     };
 
     handleDropMenuChange = event => {
@@ -45,5 +45,5 @@ class SearchClientsMobile extends Component {
 
 }
  
-export default SearchClientsMobile;
+export default SearchServicesMobile;
 

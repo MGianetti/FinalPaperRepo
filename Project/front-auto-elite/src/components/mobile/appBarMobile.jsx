@@ -10,7 +10,7 @@ import SearchBudgetMobile from './searchBudgetMobile';
 import '../../fonts.css'
 import SearchClientsMobile from './clients/searchClientsMobile';
 import SearchCarsMobile from './cars/searchCarsMobile';
-import SearchServicesMobile from './searchServicesMobile';
+import SearchServicesMobile from './services/searchServicesMobile';
 import SearchEmployeesMobile from './searchEmployeesMobile';
 import SearchStockMobile from './searchStockMobile';
 import SearchBillingMobile from './searchBillingMobile';

@@ -46,47 +46,50 @@ class CarEntity extends Component {
 
             <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Grid container> <Typography variant='title'>{plate}</Typography> </Grid>
+                    <Grid container> <Typography variant='subtitle1'>{plate}</Typography> </Grid>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Paper style={{width: '100%'}}>
                         <Grid  container justify='center' style={{padding: 5}}  >
                             <Grid container justify='center' alignItems='center' style={{width: "100%"}}>
-                                <Grid container direction='row' justify='center' style={{width: "60%"}}>
+                                <Grid container direction='row' justify='center' alignItems='center' style={{width: "60%"}}>
                                     <Avatar src={"https://i.ibb.co/NnTpQtM/car-avatar.png"}/>
-                                    <Typography style={{paddingLeft: 10}} variant='headline'>{plate}</Typography>                                                                
+                                    <Typography style={{paddingLeft: 10}} variant='subtitle2'>{plate}</Typography>                                                                
                                 </Grid>
                             </Grid>
                             <Divider style={{margin:10,width: '80%'}}/>
                             <Grid container alignItems='center' justify='center' style={{paddingTop:10, width: "100%"}}>
-                                <Typography align='center' variant='headline'><p>{this.state.info.model}</p></Typography>                                                                
+                                <Typography align='center' variant='subtitle2'><p>{this.state.info.model}</p></Typography>                                                                
                             </Grid>
                             <Divider style={{margin:10,width: '80%'}}/>
                             <Grid container alignItems='center' justify='center' style={{padding: 5, width: "100%"}}>
-                                <Typography variant='headline'>
-                                    <Star/>Ano: {year}
+                                <Star/>
+                                <Typography variant='subtitle2'>
+                                    Ano: {year}
                                 </Typography>                                                                
                             </Grid>
                             <Divider style={{margin:10,width: '80%'}}/>
                             <Grid container alignItems='center' justify='center' style={{padding: 5, width: "100%"}}>
-                                <Typography variant='headline'>
-                                    <HourglassEmpty/>Serviço ativo:{1}
+                                <HourglassEmpty/>
+                                <Typography variant='subtitle2'>
+                                    Serviço ativo:{1}
                                 </Typography>                                                                
                             </Grid>
                             <Divider style={{margin:10,width: '80%'}}/>
                             <Grid container alignItems='center' justify='center' style={{padding: 0, width: "100%"}}>
-                                <Typography variant='headline'>
+                                <Grid container justify='center' alignItems='center'>
                                     <Done/>
-                                    Serviços já feitos:
-                                </Typography>                                                                
-                                <Grid container justify='center' >
-                                    <p>{this.state.dropDownServices.items.length}</p>
+                                    <Typography variant='subtitle2'>
+                                        Serviços já feitos:
+                                    </Typography>                                                                
+                                    {this.state.dropDownServices.items.length}
                                 </Grid>
                             </Grid>
                             <Divider style={{margin:10,width: '80%'}}/>
                             <Grid container alignItems='center' justify='center' style={{padding: 5, width: "100%"}}>
-                                <Typography variant='headline'>
-                                    <Face/>Dono:
+                                <Face/>
+                                <Typography variant='subtitle2'>
+                                    Dono:
                                 </Typography>                                                                
                                 <Grid container justify='center'>
                                     {Client.name}
