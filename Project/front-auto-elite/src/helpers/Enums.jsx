@@ -36,7 +36,10 @@ export default class Enums {
     }
 
     static EmployeeDropdownType = {
+        CPF: "CPF",
         Name: "Nome",
+        Telephone: "Telefone",
+        Cellphone: "Celular",
     }
 
     static StockDropdownType = {
@@ -89,7 +92,10 @@ export default class Enums {
     ]
 
     static EmployeeDropdown = [
-        Enums.EmployeeDropdownType.Name,
+        Enums.ClientDropdownType.CPF,
+        Enums.ClientDropdownType.Name,
+        Enums.ClientDropdownType.Telephone,
+        Enums.ClientDropdownType.Cellphone,
     ]
 
     static StockDropdown = [

@@ -7,41 +7,70 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Paper, Avatar, Grid, Fab } from '@material-ui/core';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
-import UiList from '../../common/uiList';
-import ServiceEntity from './../../services/subComponents/serviceEntity';
+import Phone from '@material-ui/icons/Phone';
+import Smartphone from '@material-ui/icons/Smartphone';
+import DropDown from '../../common/dropDown';
+import Button from '@material-ui/core/Button';
+import Home from '@material-ui/icons/Home';
+import DriveEta from '@material-ui/icons/DriveEta';
+import Build from '@material-ui/icons/Build';
 import EditEmployee from './editEmployee';
 
 class EmployeeEntity extends Component {
     state = {
-        services: this.props.services,
-
+        dropDownServices:{
+            items: this.props.services,
+            helpText: "Busca serviço de um cliente",
+            defaultText: "Buscar serviço...",
+            selected: ''
+        },
         info: this.props.info,
-
-        editingMode: false
+        editingMode: false,
     };
+
+    handleEditSave = (info) => {
+        this.setState({info});
+    }
 
     handleEdit = () => {
         const editingMode = true;
         this.setState({ editingMode });
-    };
+    }
 
     handleModalClose = () => {
         const editingMode = false;
         this.setState({ editingMode });
+    }
+
+    handleDropMenuChange = event => {
+        const dropDownName = event.target.name;
+        let newDropDownState = this.state[dropDownName];
+        newDropDownState['selected'] = event.target.value;
+        this.setState({ [dropDownName]: newDropDownState});
     };
 
-    render() {
-        const { services, employeeInfos, editingMode } = this.state; 
-        const { name } = this.state.employeeInfos; 
+    getCarPlates() {
+        let plates = [];
+        for(let i in this.props.info.Cars) {
+            plates.push(this.props.info.Cars[i].plate);
+        }
+        return plates;
+    }
+
+    render() { 
+        const { dropDownServices, editingMode } = this.state;
+        const { name, cpf, cellPhone, telephone, cep, id, observations, bankAccount } = this.state.info;
+        const cel = cellPhone;
+        const tel = telephone;
+        const houseNumber = '';
         return (
             <React.Fragment>
-                <EditEmployee data={employeeInfos} modalEnable={editingMode} onClose={this.handleModalClose}/>  
+                <EditEmployee info={{ id, name, cpf, cellPhone, telephone, cep, observations, bankAccount }} sucessCallBack={this.handleEditSave} modalEnable={editingMode} onClose={this.handleModalClose} />
                 <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                         <Grid container justify='space-between'>
-                            <Grid item>
-                                <Typography variant='title'>{name}</Typography>
-                            </Grid>
+                            <Grid item> <Typography variant='title'>{name}</Typography> </Grid>
+                            <Grid item> <Typography variant='subtitle1'>{cpf}</Typography> </Grid>
                         </Grid>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
@@ -73,17 +102,48 @@ class EmployeeEntity extends Component {
                                         </Grid>
                                     </Grid>
                                 </Grid>
-                                <Grid container alignItems='center'>
-                                    <Grid container style={{width:'100%'}} alignItems='center'>
-                                        <Typography>Serviços Ativos:</Typography>
+                                <Grid container alignItems='center' style={{paddingTop:20}}>
+                                    <Grid item style={{padding:4}}>
+                                        <Phone/>
+                                    </Grid>
+                                    <Grid item style={{padding:4}}>
+                                        <Typography variant='inherit'>{tel}</Typography>
+                                    </Grid>
+                                    <Grid item style={{padding:4, paddingLeft:20}}>
+                                        <Smartphone/>
+                                    </Grid>
+                                    <Grid item style={{padding:4}}>
+                                        <Typography variant='inherit'>{cel}</Typography>
+                                    </Grid>
+                                </Grid>
+                                <Grid container alignItems='center' style={{paddingTop:5}}>
+                                    <Grid item style={{padding:4}}>
+                                        <Home/>
+                                    </Grid>
+                                    <Grid item style={{padding:4}}>
+                                        <Typography variant='subtitle2'>
+                                            {cep + ', '} 
+                                            {houseNumber}
+                                        </Typography>
                                     </Grid>
                                 </Grid>
                                 <Grid container alignItems='center'>
-                                    <Grid container style={{width:'100%'}} alignItems='center'>
-                                        <UiList
-                                            maxHeight={500}
-                                            data={services}
-                                        />
+                                    <Grid container alignItems='center' style={{padding:4, paddingTop:10, paddingBottom:10, width:'50%'}}>
+                                        <Grid item style={{paddingRight: 4}}>
+                                            <Build/>
+                                        </Grid>
+                                        <Grid item style={{paddingRight: 15}} >                                    
+                                            <Typography variant='title'>Serviços:</Typography>
+                                        </Grid>
+                                        <Grid item>                                    
+                                            <DropDown 
+                                                data={{ dropDownServices }}
+                                                onChange={this.handleDropMenuChange}
+                                            />
+                                        </Grid>
+                                        <Grid item style={{padding: 8}}>                                    
+                                            <Button variant="contained" color='default'>Ver</Button>
+                                        </Grid>
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -91,23 +151,21 @@ class EmployeeEntity extends Component {
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
             </React.Fragment>
-        );
-    };
-};
+        )
+    }
+}
 
 EmployeeEntity.defaultProps = {
     services: ['Service not found'],
     info: {
-        name:"Tiago Diego Assunção",
-        cpf:"856.250.028-35",
-        celDDD:"35",
-        cel:"99550-8505",
-        telDDD:"35",
-        tel:"2818-1127",
-        cep:"69086-280",
-        houseNumber:"206",
-        bankAccount:"0165 737290-6",
-        employeeObservation:"Donec magna lorem, varius in mattis sit amet"
+        id: -1,
+        name:"João Pedro Batista Borges",
+        cpf:"464.399.448-39",
+        cellPhone:"(35) 97595-6532",
+        telephone:"(35) 3666-8954",
+        cep:"37500-013",
+        observations:"obs",
+        bankAccount:"account"
     }
 }
 

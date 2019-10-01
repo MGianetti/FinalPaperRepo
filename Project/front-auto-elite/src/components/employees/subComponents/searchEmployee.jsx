@@ -51,9 +51,9 @@ class SearchEmployee extends Component {
         )
     }
 
-    updateSearch(searchString) {
+    async updateSearch(searchString) {
         let search;
-        search = Queries.searchEmployees(searchString, this.state.dropDown.selected);
+        search = await Queries.searchEmployees(searchString, this.state.dropDown.selected);
         this.setState({ search });
     }
 }

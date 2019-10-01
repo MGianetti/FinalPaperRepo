@@ -73,11 +73,12 @@ export default class Queries {
     static async searchServices(searchString, searchType)
     {
         //TODO: make this function search and return services
-        return [
-            {'servicePlaceholder1': <ServiceEntity key='servicePlaceholder1'/>},
-            {'servicePlaceholder2': <ServiceEntity key='servicePlaceholder2'/>},
-            {'servicePlaceholder3': <ServiceEntity key='servicePlaceholder3'/>},
-        ] //placeholder search
+        let services = [];
+        services.push(<ServiceEntity key='servicePlaceholder1'/>);
+        services.push(<ServiceEntity key='servicePlaceholder2'/>);
+        services.push(<ServiceEntity key='servicePlaceholder3'/>);
+
+        return services;
     }
 
     static async searchItems(searchString, searchType)
@@ -107,13 +108,27 @@ export default class Queries {
     }
 
     static async searchEmployees(searchString, searchType) {
-        //TODO: make this function search and return employees
-        return [
-            <EmployeeEntity key='5b21ca3eeb7f6fbccd471815'/>,
-            <EmployeeEntity key='5b21ca3eeb7f6fbccd471816'/>,
-            <EmployeeEntity key='5b21ca3eeb7f6fbccd471817'/>,
-            <EmployeeEntity key='5b21ca3eeb7f6fbccd471818'/>
-        ] //placeholder search
+        let employeeJsons = [];
+        await axios.get(`${SERVER_URL}/employees`).then(response => employeeJsons = response.data).catch(error => console.log(error.message));
+        switch(Enums.EmployeeDropdown[searchType]) {
+            case Enums.EmployeeDropdownType.CPF:
+                employeeJsons = employeeJsons.filter(employee => employee.cpf.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+            case Enums.EmployeeDropdownType.Telephone:
+                employeeJsons = employeeJsons.filter(employee => employee.telephone.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+            case Enums.EmployeeDropdownType.Cellphone:
+                employeeJsons = employeeJsons.filter(employee => employee.cellPhone.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+            case Enums.EmployeeDropdownType.Name:
+                employeeJsons = employeeJsons.filter(employee => employee.name.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+        }
+        let employeeEntities = [];
+        for (let i in employeeJsons) {
+            employeeEntities.push(<EmployeeEntity key={employeeJsons[i].id} info={employeeJsons[i]}/>);
+        }
+        return employeeEntities;
     }
 
     static async searchInspections(searchString, searchType) {
@@ -164,11 +179,22 @@ export default class Queries {
     }
 
     static async createCar(carFormInfo) {
-        const {model, year, plate, is_Mercosul, client_id} = carFormInfo;
+        let {model, year, plate, is_Mercosul, client_id} = carFormInfo;
+        year = Number.parseInt(year);
         await axios.post(`${SERVER_URL}/cars`, {model, year, plate, is_Mercosul, client_id}).then( (response) =>{
             console.log(`Created car ${response.data.plate} succesfully`);
         }).catch(error => {
             console.log(`Fail to create ${carFormInfo.plate} with erro: ${error}`);
+        });
+    }
+
+    static async createEmployee(employeeFormInfo){
+        const {cpf, cellPhone, telephone, name, cep, bankAccount, observation} = employeeFormInfo;
+        //create employee
+        await axios.post(`${SERVER_URL}/employees`, {cpf, cellPhone, telephone, name, cep, bankAccount, observation}).then( (response) =>{
+            console.log(`Created employee ${response.data.name} succesfully`);
+        }).catch(error => {
+            console.log(`Fail to create ${employeeFormInfo.name} with erro: ${error}`);
         });
     }
 
@@ -188,6 +214,16 @@ export default class Queries {
             successCallBack();
         }).catch(error => {
             console.log(`Fail to update car ${updatedCar.id}`);
+            failCallBack();
+        });
+    }
+
+    static async updateEmployee(updatedEmployee, successCallBack, failCallBack){
+        await axios.put(`${SERVER_URL}/employees/${updatedEmployee.id}`, updatedEmployee).then( () =>{
+            console.log(`Updated employee ${updatedEmployee.id} succesfully`)
+            successCallBack();
+        }).catch(error => {
+            console.log(`Fail to update employee ${updatedEmployee.id}`);
             failCallBack();
         });
     }

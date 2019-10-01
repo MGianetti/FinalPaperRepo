@@ -97,7 +97,6 @@ class CreateCar extends Component {
     }
 
     async createCar(carInfo) {
-        console.log(carInfo);
         await Queries.createCar(carInfo);
         const info = {
             plate: "",
