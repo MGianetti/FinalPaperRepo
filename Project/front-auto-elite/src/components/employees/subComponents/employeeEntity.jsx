@@ -12,7 +12,6 @@ import Smartphone from '@material-ui/icons/Smartphone';
 import DropDown from '../../common/dropDown';
 import Button from '@material-ui/core/Button';
 import Home from '@material-ui/icons/Home';
-import DriveEta from '@material-ui/icons/DriveEta';
 import Build from '@material-ui/icons/Build';
 import EditEmployee from './editEmployee';
 

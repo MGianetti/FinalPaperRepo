@@ -1,0 +1,27 @@
+.animate
+{
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+.action-button
+{
+    width:75vw;
+    position: relative;
+    padding: 10px 40px;
+    margin: 0px 10px 10px 0px;
+    border-radius: 3px;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    color: #FFF;
+    text-decoration: none; }
+    .blue
+{
+    background-color: #53d8d1;
+    border-bottom: 5px solid #44b1ab;
+}
+.action-button:active
+{
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
+}

@@ -62,13 +62,13 @@ class ClientEntityMobile extends Component {
                             </Grid>
                             <Divider style={{margin:10,width: '80%'}}/>
                             <Grid container alignItems='center' justify='center' style={{padding: 5, width: "100%"}}>
-                                <Phone/>
-                                <Typography variant='subtitle2'>Tel: {this.state.info.telephone}</Typography>                                                                
+                                <Smartphone/>
+                                <Typography variant='subtitle2'>Cel: {this.state.info.cellPhone}</Typography>                                                                
                             </Grid>
                             <Divider style={{margin:10,width: '80%'}}/>
                             <Grid container alignItems='center' justify='center' style={{padding: 5, width: "100%"}}>
-                                <Smartphone/>
-                                <Typography variant='subtitle2'>Cel: {this.state.info.cellPhone}</Typography>                                                                
+                                <Phone/>
+                                <Typography variant='subtitle2'>Tel: {this.state.info.telephone}</Typography>                                                                
                             </Grid>
                             <Divider style={{margin:10,width: '80%'}}/>
                             <Grid container alignItems='center' justify='center' style={{padding: 5, width: "100%"}}>

@@ -1,130 +1,68 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid'
+import { Grid } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
+import '../../button.css';
 
 class HomeMobile extends Component {
     state = {  }
+
     render() { 
         return ( 
-            <Grid container direction='column' style={{background:'azure', paddingTop:'25vh', paddingBottom:'20vh'}} alignContent='space-around'>
-                <Grid item>
-                    <a style={{textDecoration: 'none'}} href='/Clientes'>
-                        <div style={{fontSize:'5vw', 
-                                    color: 'white',
-                                    fontFamily: 'Montserrat', 
-                                    textAlign: 'center', 
-                                    width: '50vw', 
-                                    height: '20vw', 
-                                    background:'#78C3FB', 
-                                    boxShadow:'0.5px 0.5px 2px #404040',
-                                    cursor:'pointer'}}>
+            <Grid container direction='column' justify='center' style={{background:'azure', paddingTop:'25vh'}}>
+                <Grid container justify='center'>
+                    <a href='/Clientes'>
+                        <Button class="action-button shadow animate blue" style={{color: 'black'}}>
                             Clientes
-                        </div>
+                        </Button>
                     </a>
                 </Grid>
-                <Grid item style={{paddingTop: 10}}>
-                    <a style={{textDecoration: 'none'}} href='/Carros'>
-                        <div 
-                            style={{fontSize:'5vw',
-                                    color: 'white',
-                                    fontFamily: 'Montserrat',
-                                    textAlign: 'center', 
-                                    width: '50vw', 
-                                    height: '20vw', 
-                                    background:'#78C3FB', 
-                                    boxShadow:'0.5px 0.5px 2px #404040',
-                                    cursor:'pointer'}}>
-                            Carros
-                        </div>
+                <Grid container justify='center'>
+                    <a href='/Carros'>
+                        <Button class="action-button shadow animate blue" style={{color: 'black'}}>
+                            Carros  
+                        </Button>
                     </a>
                 </Grid>
-                <Grid item style={{paddingTop: 10}}>
-                    <a style={{textDecoration: 'none'}} href='/Serviços'>
-                        <div style={{fontSize:'5vw', 
-                                    color: 'white',
-                                    fontFamily: 'Montserrat', 
-                                    textAlign: 'center', 
-                                    width: '50vw', 
-                                    height: '20vw', 
-                                    background:'#78C3FB', 
-                                    boxShadow:'0.5px 0.5px 2px #404040',
-                                    cursor:'pointer'}}>
-                            Serviços
-                        </div>
+                <Grid container justify='center'>
+                    <a href='/Serviços'>
+                        <Button class="action-button shadow animate blue" style={{color: 'black'}}>
+                            Serviços  
+                        </Button>   
+                    </a>     
+                </Grid>
+                <Grid container justify='center'>
+                    <a href='/Orçamentos'>
+                        <Button class="action-button shadow animate blue" style={{color: 'black'}}>
+                            Orçamentos    
+                        </Button>  
                     </a>
                 </Grid>
-                <Grid item style={{paddingTop: 10}}>
-                    <a style={{textDecoration: 'none'}} href='/Orçamentos'>
-                        <div style={{fontSize:'5vw', 
-                                    color: 'white',
-                                    fontFamily: 'Montserrat', 
-                                    textAlign: 'center', 
-                                    width: '50vw', 
-                                    height: '20vw', 
-                                    background:'#78C3FB', 
-                                    boxShadow:'0.5px 0.5px 2px #404040',
-                                    cursor:'pointer'}}>
-                            Orçamentos
-                        </div>
+                <Grid container justify='center'>
+                    <a href='/Mecânicos'>
+                        <Button class="action-button shadow animate blue" style={{color: 'black'}}>
+                            Mecânicos       
+                        </Button>
                     </a>
                 </Grid>
-                <Grid item style={{paddingTop: 10}}>
-                    <a style={{textDecoration: 'none'}} href='/Mecânicos'>
-                        <div style={{fontSize:'5vw', 
-                                    color: 'white',
-                                    fontFamily: 'Montserrat', 
-                                    textAlign: 'center', 
-                                    width: '50vw', 
-                                    height: '20vw', 
-                                    background:'#78C3FB', 
-                                    boxShadow:'0.5px 0.5px 2px #404040',
-                                    cursor:'pointer'}}>
-                            Mecânicos
-                        </div>
-                    </a>
+                <Grid container justify='center'>
+                    <a href='/Estoque'>
+                        <Button class="action-button shadow animate blue" style={{color: 'black'}}>
+                            Estoque        
+                        </Button>  
+                    </a>          
                 </Grid>
-                <Grid item style={{paddingTop: 10}}>
-                    <a style={{textDecoration: 'none'}} href='/Estoque'>
-                        <div style={{fontSize:'5vw', 
-                                    color: 'white',
-                                    fontFamily: 'Montserrat', 
-                                    textAlign: 'center', 
-                                    width: '50vw', 
-                                    height: '20vw', 
-                                    background:'#78C3FB', 
-                                    boxShadow:'0.5px 0.5px 2px #404040',
-                                    cursor:'pointer'}}>
-                            Estoque
-                        </div>
-                    </a>
+                <Grid container justify='center'>
+                    <a href='/Cobrança'>
+                        <Button class="action-button shadow animate blue" style={{color: 'black'}}>
+                            Cobrança      
+                        </Button>   
+                    </a>           
                 </Grid>
-                <Grid item style={{paddingTop: 10}}>
-                    <a style={{textDecoration: 'none'}} href='/Cobrança'>
-                        <div style={{fontSize:'5vw', 
-                                    color: 'white',
-                                    fontFamily: 'Montserrat', 
-                                    textAlign: 'center', 
-                                    width: '50vw', 
-                                    height: '20vw', 
-                                    background:'#78C3FB', 
-                                    boxShadow:'0.5px 0.5px 2px #404040',
-                                    cursor:'pointer'}}>
-                            Cobrança
-                        </div>
-                    </a>
-                </Grid>
-                <Grid item style={{paddingTop: 10}}>
-                    <a style={{textDecoration: 'none'}} href='/Vistoria'>
-                        <div style={{fontSize:'5vw', 
-                                    color: 'white',
-                                    fontFamily: 'Montserrat', 
-                                    textAlign: 'center', 
-                                    width: '50vw', 
-                                    height: '20vw', 
-                                    background:'#78C3FB', 
-                                    boxShadow:'0.5px 0.5px 2px #404040',
-                                    cursor:'pointer'}}>
-                            Vistoria
-                        </div>
+                <Grid container justify='center'>
+                    <a href='/Vistoria'>
+                        <Button class="action-button shadow animate blue" style={{color: 'black'}}>
+                            Vistoria         
+                        </Button>
                     </a>
                 </Grid>
             </Grid>
