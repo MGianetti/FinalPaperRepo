@@ -158,8 +158,8 @@ CarEntity.defaultProps = {
     info: {
         id: -1,
         plate: "",
-        model: "model",
-        year: 2000,
+        model: "",
+        year: 0,
         is_Mercosul: false,
         obs: "",
         Client: {

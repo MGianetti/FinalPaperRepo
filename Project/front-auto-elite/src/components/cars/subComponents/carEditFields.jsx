@@ -6,7 +6,6 @@ import { Typography, Button } from '@material-ui/core';
 import { DirectionsCar } from '@material-ui/icons'
 
 const CarEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
-    const {plate, isMercosul, obs} = info;
     return (<React.Fragment>
                 <Grid style={{paddingTop:20}} container justify='center'>
                     <DirectionsCar fontSize='large'/>
@@ -23,7 +22,29 @@ const CarEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
                         style={{backgroundColor:'#efefef', width:'20%'}}    
                     />
                     <Typography style={{paddingLeft:60}} variant='h6'>Mercosul:</Typography>
-                    <Switch name='isMercosul' checked={isMercosul} onChange={onSwitchCheckChange}/>
+                    <Switch name='isMercosul' checked={info.isMercosul} onChange={onSwitchCheckChange}/>
+                </Grid>
+                <Grid container justify='center'>
+                    <TextField
+                        onChange={onFormChange}
+                        name='year'
+                        margin='normal'
+                        label="Ano"
+                        placeholder="Ano do carro do cliente"
+                        value={info.year}
+                        variant="outlined"
+                        style={{backgroundColor:'#efefef', width:'40%'}}    
+                    />
+                    <TextField
+                        onChange={onFormChange}
+                        name='model'
+                        margin='normal'
+                        label="Modelo"
+                        placeholder="Modelo do carro do cliente"
+                        value={info.model}
+                        variant="outlined"
+                        style={{backgroundColor:'#efefef', width:'40%'}}    
+                    />
                 </Grid>
                 <Grid container style={{paddingBottom:20}} alignItems='center' justify='center'>
                     <TextField
@@ -32,7 +53,7 @@ const CarEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
                         margin='normal'
                         label="Observações"
                         placeholder="Observações sobre o carro do cliente"
-                        value={obs}
+                        value={info.obs}
                         variant="outlined"
                         style={{backgroundColor:'#efefef',width:'80%'}} 
                         rowsMax='5'

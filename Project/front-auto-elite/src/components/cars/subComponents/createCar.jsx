@@ -15,7 +15,7 @@ class CreateCar extends Component {
     state = {
         info: {
             plate: "",
-            model: "model",
+            model: "",
             year: 0,
             is_Mercosul: false,
             obs: "",
@@ -101,7 +101,7 @@ class CreateCar extends Component {
         await Queries.createCar(carInfo);
         const info = {
             plate: "",
-            model: "model",
+            model: "",
             year: 0,
             is_Mercosul: false,
             obs: "",
