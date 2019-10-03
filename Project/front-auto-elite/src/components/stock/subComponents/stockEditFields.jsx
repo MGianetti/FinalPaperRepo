@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { Person, LocalMall } from '@material-ui/icons'
 
 const StockEditFields = ({info, onFormChange}) => {
-    const { code, description, quantity } = info;
+    const { code, description, totalInStock } = info;
     return ( 
         <React.Fragment>
             <Grid style={{paddingTop:50, width:'90%'}} container justify='center'>
@@ -38,11 +38,11 @@ const StockEditFields = ({info, onFormChange}) => {
                 <TextField
                     required
                     onChange={onFormChange}
-                    name='quantity'
+                    name='totalInStock'
                     margin='normal'
                     label="Descrição"
                     placeholder="Descrição do produto"
-                    value={quantity}
+                    value={totalInStock}
                     variant="outlined"
                     style={{backgroundColor:'#efefef', width:'40%'}}    
                 />

@@ -9,7 +9,7 @@ class CreateStock extends Component {
         info: {
             code: "",
             description: "",
-            quantity: "",
+            totalInStock: "",
         }
     };
 
@@ -25,7 +25,7 @@ class CreateStock extends Component {
         const info =  {
             code: "",
             description: "",
-            quantity: "",
+            totalInStock: "",
         }
         alert("Item criado com sucesso!")
         this.setState({info});*/
