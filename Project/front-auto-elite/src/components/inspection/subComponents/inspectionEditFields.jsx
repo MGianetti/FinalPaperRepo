@@ -265,6 +265,47 @@ const InspectionEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
                         <Divider style={{margin:10,width: '80%'}}/>
                     </Grid>               
                 </Grid>
+                <Grid container alignItems='center' justify='center'>
+                    <Grid container justify='center'>
+                        <Divider style={{margin:10,width: '80%'}}/>
+                    </Grid>
+                    <Grid container justify='center'>
+                        <Grid container justify='center'>
+                            <Typography style={{paddingBottom: 25}}>Chave especial:</Typography>
+                        </Grid>
+                        <Grid container justify='center'>
+                        <FormControl component="fieldset">
+                            <RadioGroup
+                                aria-label="position"
+                                name="position"
+                                value={"d"}
+                                onChange={console.log('oi')}
+                                row
+                            >
+                                <Grid container justify='center' alignItems='center'>                                
+                                    <FormControlLabel
+                                        style={{marginLeft:0, marginRight:25}}
+                                        value="reserveTank"
+                                        control={<Radio color="primary" />}
+                                        label="Sim"
+                                        labelPlacement="start"
+                                    />                     
+                                    <FormControlLabel
+                                        style={{marginLeft:0, marginRight:25}}
+                                        value="Parachoque dianteiro"
+                                        control={<Radio color="primary" />}
+                                        label="Não"
+                                        labelPlacement="start"
+                                    />                                                         
+                                </Grid>                                
+                            </RadioGroup>
+                        </FormControl>
+                        </Grid>
+                    </Grid>     
+                    <Grid container justify='center'>
+                        <Divider style={{margin:10,width: '80%'}}/>
+                    </Grid>               
+                </Grid>
             </React.Fragment> );
 }
 
