@@ -89,9 +89,9 @@ class ClosedBilling extends Component {
         );
     };
 
-    updateSearch(searchString) {
+    async updateSearch(searchString) {
         let search;
-        search = Queries.searchClosedBillings(searchString, this.state.dropDown.selected);
+        search = await Queries.searchClosedBillings(searchString, this.state.dropDown.selected);
         this.setState({ search });
     }
 };

@@ -50,9 +50,9 @@ class PendentBilling extends Component {
         )
     }
 
-    updateSearch(searchString) {
+    async updateSearch(searchString) {
         let search;
-        search = Queries.searchPendentBillings(searchString, this.state.dropDown.selected);
+        search = await Queries.searchPendentBillings(searchString, this.state.dropDown.selected);
         this.setState({ search });
     }
 }

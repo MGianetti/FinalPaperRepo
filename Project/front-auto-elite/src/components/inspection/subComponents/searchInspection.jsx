@@ -52,7 +52,7 @@ class SearchInspection extends Component {
     }
 
     async updateSearch(searchString) {
-        let search = await Queries.searchCars(searchString, this.state.dropDown.selected);
+        let search = await Queries.searchInspections(searchString, this.state.dropDown.selected);
         this.setState({ search });
     }
 }

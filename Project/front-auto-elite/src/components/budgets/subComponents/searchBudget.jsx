@@ -51,9 +51,9 @@ class SearchBudget extends Component {
         )
     }
 
-    updateSearch(searchString, searchType)
+    async updateSearch(searchString, searchType)
     {
-        const search = Queries.searchBudgets(searchString, searchType);
+        const search = await Queries.searchBudgets(searchString, searchType);
         this.setState({ search });
     }
 }

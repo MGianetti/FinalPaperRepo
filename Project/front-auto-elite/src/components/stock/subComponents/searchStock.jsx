@@ -51,9 +51,9 @@ class SearchStock extends Component {
         )
     }
 
-    updateSearch(searchString) {
+    async updateSearch(searchString) {
         let search;
-        search = Queries.searchItems(searchString, this.state.dropDown.selected);
+        search = await Queries.searchItems(searchString, this.state.dropDown.selected);
         this.setState({ search });
     }
 }

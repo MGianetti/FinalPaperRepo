@@ -6,7 +6,7 @@ import ServiceEntity from './../components/services/subComponents/serviceEntity'
 import ItemEntity from './../components/stock/subComponents/itemEntity';
 import BudgetEntity from './../components/budgets/subComponents/budgetEntity';
 import EmployeeEntity from './../components/employees/subComponents/employeeEntity';
-import InspectionEntity from './../components/inspection/subComponents/inspectionEntity';
+import InspectionEntity from './../components/inspection/subComponents/inspectionEntity'
 import BillingEntity from './../components/billing/subComponents/billingEntity';
 import BillingClosedEntity from './../components/billing/subComponents/billingClosedEntity';
 import Enums from './Enums';
@@ -101,17 +101,17 @@ export default class Queries {
     {
         //TODO: make this function search and return items
         return [
-            {'itemPlaceholder1': <ItemEntity key='itemPlaceholder1'/>},
-            {'itemPlaceholder2': <ItemEntity key='itemPlaceholder2'/>},
-            {'itemPlaceholder3': <ItemEntity key='itemPlaceholder3'/>},
+            <ItemEntity key='itemPlaceholder1'/>,
+            <ItemEntity key='itemPlaceholder2'/>,
+            <ItemEntity key='itemPlaceholder3'/>,
         ] //placeholder search
     }
 
     static async searchBudgets(searchString, searchType) {
         let searchedBudgets = [
-            {key: '5b21ca3eeb7f6fbccd471815', client:'Lucas', car:'AAA-1234', description:'Budget placeholder 1'},
-            {key: '5b21ca3eeb7f6fbccd471816', client:'Carla', car:'BBB-1234', description:'Budget placeholder 2'},
-            {key: '5b21ca3eeb7f6fbccd471817', client:'Mateus', car:'CCC-1234', description:'Budget placeholder 3'},
+            <BudgetEntity key='budgetPlaceholder1'></BudgetEntity>,
+            <BudgetEntity key='budgetPlaceholder2'></BudgetEntity>,
+            <BudgetEntity key='budgetPlaceholder3'></BudgetEntity>,
         ];//placeholder info
 
         let budgets = [];
@@ -156,28 +156,28 @@ export default class Queries {
     static async searchInspections(searchString, searchType) {
         //TODO: make this function search and return employees
         return [
-            {'6b21ca3eeb7f6fbccd471815': <InspectionEntity key='5b21ca3eeb7f6fbccd471815'/>},
-            {'6b21ca3eeb7f6fbccd471816': <InspectionEntity key='5b21ca3eeb7f6fbccd471816'/>},
-            {'6b21ca3eeb7f6fbccd471817': <InspectionEntity key='5b21ca3eeb7f6fbccd471817'/>},
-            {'6b21ca3eeb7f6fbccd471818': <InspectionEntity key='5b21ca3eeb7f6fbccd471818'/>}
+            <InspectionEntity key='5b21ca3eeb7f6fbccd471815'/>,
+            <InspectionEntity key='5b21ca3eeb7f6fbccd471816'/>,
+            <InspectionEntity key='5b21ca3eeb7f6fbccd471817'/>,
+            <InspectionEntity key='5b21ca3eeb7f6fbccd471818'/>
         ] //placeholder search
     }
 
     static async searchPendentBillings(searchString, searchType) {
         return [
-            {'1': <BillingEntity data={{date:"Vencido" , plate:"CBH-6554", name:"Gabriela Correia Santos", value:"R$596", remain:0}}/>},
-            {'2': <BillingEntity data={{date:"3 dias" , plate:"AOB-2190", name:"José Lima Alves", value:"R$923,50", remain:3}}/>},
-            {'3': <BillingEntity data={{date:"7 dias" , plate:"JUW-0295", name:"Diogo Costa Oliveira", value:"R$1000", remain:6}}/>},
-            {'4': <BillingEntity data={{date:"15 dias" , plate:"JYX-6432", name:"Victor Gomes Borges", value:"R$612", remain:15}}/>},
+            <BillingEntity data={{date:"Vencido" , plate:"CBH-6554", name:"Gabriela Correia Santos", value:"R$596", remain:0}}/>,
+            <BillingEntity data={{date:"3 dias" , plate:"AOB-2190", name:"José Lima Alves", value:"R$923,50", remain:3}}/>,
+            <BillingEntity data={{date:"7 dias" , plate:"JUW-0295", name:"Diogo Costa Oliveira", value:"R$1000", remain:6}}/>,
+            <BillingEntity data={{date:"15 dias" , plate:"JYX-6432", name:"Victor Gomes Borges", value:"R$612", remain:15}}/>,
         ]
     }
 
     static async searchClosedBillings(searchString, searchType) {
         return [
-            {'5b21ca3eeb7f6fbccd471815': <BillingClosedEntity data={{plate:"JYX-6432", service:"S0005445", value:"R$612", budget:'K0088987'}}/>},
-            {'5b21ca3eeb7f6fbccd471816': <BillingClosedEntity data={{plate:"AOB-2190", service:"S0085477", value:"R$900", budget:'K0086574'}}/>},
-            {'5b21ca3eeb7f6fbccd471817': <BillingClosedEntity data={{plate:"JUW-0295", service:"S0000411", value:"R$7350", budget:'K0046545'}}/>},
-            {'5b21ca3eeb7f6fbccd471818': <BillingClosedEntity data={{plate:"JYX-6432", service:"S0009912", value:"R$230", budget:'K0081321'}}/>}
+            <BillingClosedEntity data={{plate:"JYX-6432", service:"S0005445", value:"R$612", budget:'K0088987'}}/>,
+            <BillingClosedEntity data={{plate:"AOB-2190", service:"S0085477", value:"R$900", budget:'K0086574'}}/>,
+            <BillingClosedEntity data={{plate:"JUW-0295", service:"S0000411", value:"R$7350", budget:'K0046545'}}/>,
+            <BillingClosedEntity data={{plate:"JYX-6432", service:"S0009912", value:"R$230", budget:'K0081321'}}/>,
         ]
     }
 

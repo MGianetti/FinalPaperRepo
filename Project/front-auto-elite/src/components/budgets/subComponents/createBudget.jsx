@@ -138,19 +138,19 @@ class CreateBudget extends Component {
         );
     }
 
-    updateSearch(searchString)
+    async updateSearch(searchString)
     {
         let search;
         switch(this.state.searchType)
         {
             case Enums.SearchType.Car:
-                search = Queries.searchCars(searchString, this.state.carDropDown.selected);
+                search = await Queries.searchCars(searchString, this.state.carDropDown.selected);
                 break;
             case Enums.SearchType.Service:
-                search = Queries.searchServices(searchString, this.state.serviceDropDown.selected);
+                search = await Queries.searchServices(searchString, this.state.serviceDropDown.selected);
                 break;
             case Enums.SearchType.Item:
-                search = Queries.searchItems(searchString, this.state.itemDropDown.selected);
+                search = await Queries.searchItems(searchString, this.state.itemDropDown.selected);
                 break;
             default:
                 search = [];
