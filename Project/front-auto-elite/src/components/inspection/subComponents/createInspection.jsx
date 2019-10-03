@@ -8,14 +8,36 @@ import SearchBar from '../../common/searchBar';
 import Enums from '../../../helpers/Enums';
 import DropDown from '../../common/dropDown';
 import { Add, Close } from '@material-ui/icons'
-import ClientEntity from '../../clients/subComponents/clientEntity';
+import ServiceEntity from '../../services/subComponents/serviceEntity';
 import { Build } from '@material-ui/icons'
 
 class CreateInspection extends Component {
 
     state = {
         info: {
-
+            fuelLevel: {
+                reserveTank: false,
+                quarterTank: false,
+                halfTank: false,
+                threeQuarterTank: false,
+                fullTank: false
+            },
+            warningLights: {
+                fuelInjection: false, 
+                oilPressure: false,
+                battery: false,
+                brake: false,
+                temperature: false,
+                airBag: false,
+                ABS: false,
+                EPC: false,
+                EPS: false,
+                ESC: false,
+                TPMS: false
+            },
+            scratches:{
+                
+            }            
         },
         dropDown:{
             items: Enums.ServiceDropdown,
@@ -25,7 +47,7 @@ class CreateInspection extends Component {
         },
         searchField:'',
         search:[],
-        client: null
+        service: null
     };
 
     handleDropMenuChange = event => {
@@ -45,9 +67,9 @@ class CreateInspection extends Component {
         this.setState({search});
     }
 
-    unselectClient = () => {
-        const client = null;
-        this.setState({client});
+    unselectService = () => {
+        const service = null;
+        this.setState({service});
     }
 
     handleFormChange = (event) => {
@@ -62,29 +84,29 @@ class CreateInspection extends Component {
         this.setState({ info });
     }
 
-    selectClient = clientInfo => {
-        const client_id = clientInfo.id;
-        const client =  <Grid key={clientInfo.id} container justify='center' alignItems='center'>
-                            <Grid item style={{width:"70%"}}><ClientEntity info={clientInfo}></ClientEntity></Grid>
+    selectService = serviceInfo => {
+        const service_id = serviceInfo.id;
+        const service =  <Grid key={serviceInfo.id} container justify='center' alignItems='center'>
+                            <Grid item style={{width:"70%"}}><ServiceEntity info={serviceInfo}></ServiceEntity></Grid>
                             <Grid container style={{width:"10%"}} justify='center'>
-                                <Fab onClick={this.unselectClient} style={{backgroundColor:'#FF0000'}} size='small'><Close/></Fab>
+                                <Fab onClick={this.unselectService} style={{backgroundColor:'#FF0000'}} size='small'><Close/></Fab>
                             </Grid>
                         </Grid>
         this.clearSearch();
         let {info} = this.state;
-        info.client_id = client_id;
-        this.setState({client, info});
+        info.service_id = service_id;
+        this.setState({service, info});
     }
     
     async updateSearch(searchString) {
         let search;
-        search = await Queries.searchClients(searchString, this.state.dropDown.selected);
+        search = await Queries.searchServices(searchString, this.state.dropDown.selected);
         search = search.map(client => {
             const info = client.props.info;
             client = <Grid key={client.key} container alignItems='center'>
                         <Grid item style={{width:"90%"}}>{client}</Grid>
                         <Grid container style={{width:"10%"}} justify='center'>
-                            <Fab onClick={() => this.selectClient(info)} style={{backgroundColor:'#00FF00'}} size='small'><Add/></Fab>
+                            <Fab onClick={() => this.selectService(info)} style={{backgroundColor:'#00FF00'}} size='small'><Add/></Fab>
                         </Grid>
                     </Grid>
             return client;
@@ -92,8 +114,8 @@ class CreateInspection extends Component {
         this.setState({ search });
     }
 
-    async createCar(carInfo) {
-        await Queries.createCar(carInfo);
+    async createInspection(inspectionInfo) {
+        await Queries.createInspection(inspectionInfo);
         const info = {
             plate: "",
             model: "",
@@ -108,15 +130,15 @@ class CreateInspection extends Component {
     }
 
     render() {
-        const {search, searchField, dropDown, client} = this.state;
+        const {search, searchField, dropDown, service} = this.state;
 
         return ( 
             <React.Fragment>  
                 <Grid container justify='center' style={{paddingTop:25}}>
-                    <Paper style={{width:'90%',backgroundColor:'#e0e0e0'}}>
+                    <Paper style={{width:'90%',backgroundColor:'#e0e0e0', justify: 'center'}}>
                         <InspectionEditFields info={this.state.info} onFormChange={this.handleFormChange} onSwitchCheckChange={this.handleSwitchCheckChange}/>
-                        {!client &&
-                        <Grid container justify='center'>
+                        {!service &&
+                        <Grid container style={{paddingTop: 50}} justify='center'>
                             <Build fontSize='large'/>
                             <Grid container direction='row' justify='center'>
                                 <Grid item style={{padding:20}}> <DropDown data={{dropDown}} onChange={this.handleDropMenuChange} /> </Grid>
@@ -124,8 +146,8 @@ class CreateInspection extends Component {
                             </Grid>
                         </Grid>
                         }
-                        {client && client}
-                        <Grid container justify='center' style={{padding:10}}> <Button onClick={() => this.createCar(this.state.info)} variant="contained" color='default'>Criar</Button> </Grid>
+                        {service && service}
+                        <Grid container justify='center' style={{padding:10}}> <Button onClick={() => this.createInspection(this.state.info)} variant="contained" color='default'>Criar</Button> </Grid>
                     </Paper>
                     <Paper style={{width:'90%', marginTop:15}}>
                         <Grid container justify='center' style={{padding:10}}><Button onClick={this.clearSearch} variant="contained" color='default'>Limpar busca</Button></Grid>

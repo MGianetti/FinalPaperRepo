@@ -38,5 +38,5 @@ class Inspection extends Component {
         );
     };
 };
- 
+
 export default Inspection;
