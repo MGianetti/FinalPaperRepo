@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import ItemEntity from './itemEntity';
-=======
 import { Grid, Paper } from '@material-ui/core';
 import StockEditFields from './stockEditFields';
 import Button from '@material-ui/core/Button';
 import Queries from './../../../helpers/Queries';
->>>>>>> createStock
 
 class CreateStock extends Component {
     state = {
@@ -37,9 +33,6 @@ class CreateStock extends Component {
     }
 
     render() { 
-<<<<<<< HEAD
-        return ( <ItemEntity key='itemPlaceholder1'/>);
-=======
         return (
             <React.Fragment>
                 <Grid container justify='center' style={{paddingTop:25}}>
@@ -54,7 +47,6 @@ class CreateStock extends Component {
                 </Grid>
             </React.Fragment>
         );
->>>>>>> createStock
     };
 };
 
