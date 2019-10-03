@@ -7,7 +7,7 @@ import UiList from '../../common/uiList'
 import Enums from '../../../helpers/Enums';
 import Queries from '../../../helpers/Queries';
 
-class pendentBilling extends Component {
+class PendentBilling extends Component {
     state = {
         dropDown:{
             items: Enums.BillingDropdown,
@@ -57,4 +57,4 @@ class pendentBilling extends Component {
     }
 }
 
-export default pendentBilling;
+export default PendentBilling;

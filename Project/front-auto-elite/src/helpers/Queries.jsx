@@ -10,6 +10,10 @@ import InspectionEntity from './../components/inspection/subComponents/Inspectio
 import BillingEntity from './../components/billing/subComponents/billingEntity';
 import BillingClosedEntity from './../components/billing/subComponents/billingClosedEntity';
 import Enums from './Enums';
+import { isMobile } from 'react-device-detect';
+import ClientEntityMobile from '../components/mobile/clients/clientEntityMobile';
+import CarEntityMobile from '../components/mobile/cars/carEntityMobile';
+import EmployeeEntityMobile from '../components/mobile/employees/employeeEntityMobile';
 
 const SERVER_URL = 'http://localhost:8000';
 
@@ -42,7 +46,13 @@ export default class Queries {
         }
         let clientEntities = [];
         for (let i in clientJsons) {
-            clientEntities.push(<ClientEntity key={clientJsons[i].id} info={clientJsons[i]}/>)
+            if(isMobile)
+            {
+                clientEntities.push(<ClientEntityMobile key={clientJsons[i].id} info={clientJsons[i]}/>);
+            } else 
+            {
+                clientEntities.push(<ClientEntity key={clientJsons[i].id} info={clientJsons[i]}/>);
+            }
         }
         return clientEntities
     }
@@ -65,7 +75,13 @@ export default class Queries {
 
         let carEntities = [];
         for (let car of carJsons) {
-            carEntities.push(<CarEntity key={car.id} info={car}/>)
+            if(isMobile)
+            {
+                carEntities.push(<CarEntityMobile key={car.id} info={car}/>);
+            } else
+            {
+                carEntities.push(<CarEntity key={car.id} info={car}/>);
+            }
         }
         return carEntities;
     }
@@ -126,7 +142,13 @@ export default class Queries {
         }
         let employeeEntities = [];
         for (let i in employeeJsons) {
-            employeeEntities.push(<EmployeeEntity key={employeeJsons[i].id} info={employeeJsons[i]}/>);
+            if(isMobile)
+            {
+                employeeEntities.push(<EmployeeEntityMobile key={employeeJsons[i].id} info={employeeJsons[i]}/>);
+            } else
+            {
+                employeeEntities.push(<EmployeeEntity key={employeeJsons[i].id} info={employeeJsons[i]}/>);
+            }
         }
         return employeeEntities;
     }

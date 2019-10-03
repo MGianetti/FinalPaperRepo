@@ -6,7 +6,6 @@ import SearchBar from '../../common/searchBar';
 import CarEntity from './carEntityMobile';
 import UiList from './../../common/uiList';
 
-
 class SearchCarsMobile extends Component {
     state = {
         info: {

@@ -3,10 +3,8 @@ import { Paper } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import DropDown from '../../common/dropDown'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Avatar, Grid, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, 
-    Typography, TextField } from '@material-ui/core';
+import { Avatar, Grid, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, TextField } from '@material-ui/core';
 import { AttachMoney, Build, Assignment, Person, Phone, Smartphone, Home } from '@material-ui/icons';
-
 
 class EmployeeEntityMobile extends Component {
     state = {
@@ -16,15 +14,7 @@ class EmployeeEntityMobile extends Component {
             defaultText: "Buscar serviço...",
             selected: ''
         },
-        info: {
-            name:"João Pedro Batista Borges",
-            cpf:"464.399.448-39",
-            cellPhone:"(35) 97595-6532",
-            telephone:"(35) 3666-8954",
-            cep:"37500-013",
-            observations:"Observations about this employee",
-            bankAccount:"266559-8"
-        }
+        info: this.props.info
     };
 
     handleDropMenuChange = event => {

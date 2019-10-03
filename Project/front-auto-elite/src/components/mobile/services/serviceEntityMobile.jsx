@@ -12,16 +12,7 @@ import { RemoveRedEye, AttachMoney, Assignment, Delete, Edit, Person, DriveEta }
 
 class ServiceEntityMobile extends Component {
     state = {
-        info: {
-            obs: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-            inspection: 'Obrigatória',
-            description: 'Farol de neblina não funciona',
-            code: 'SA34F5C6',
-            employee: 'Tiago',
-            car: 'Fox City 1.0 prata 4p',
-            owner: 'João Pedro Batista Borges',
-            type: 'Corretivo'
-        },
+        info: this.props.info,
         dropDownBudgets:{
             items: ['Budget not found'],
             helpText: "Busca orçamentos de um serviço",

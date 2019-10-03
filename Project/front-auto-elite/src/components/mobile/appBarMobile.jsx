@@ -6,15 +6,16 @@ import { Typography, Grid, Button } from '@material-ui/core';
 import { Switch, Route, Redirect, Router } from 'react-router-dom'
 import HomeMobile from './homeMobile';
 import NotFound from './../notFound/notFound';
-import SearchBudgetMobile from './searchBudgetMobile';
 import '../../fonts.css'
-import SearchClientsMobile from './clients/searchClientsMobile';
-import SearchCarsMobile from './cars/searchCarsMobile';
-import SearchServicesMobile from './services/searchServicesMobile';
-import SearchEmployeesMobile from './employees/searchEmployeesMobile';
-import SearchStockMobile from './searchStockMobile';
-import SearchBillingMobile from './searchBillingMobile';
-import SearchInspectionMobile from './searchInspectionMobile';
+import SearchBudget from '../budgets/subComponents/searchBudget';
+import SearchClient from '../clients/subComponents/searchClient';
+import SearchCar from '../cars/subComponents/searchCar';
+import SearchService from '../services/subComponents/searchService';
+import SearchEmployee from '../employees/subComponents/searchEmployee';
+import SearchStock from '../stock/subComponents/searchStock';
+import ClosedBilling from '../billing/subComponents/closedBilling';
+import PendentBilling from '../billing/subComponents/pendentBilling';
+import SearchInspection from '../inspection/subComponents/searchInspection';
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -30,7 +31,6 @@ import LocalMall from "@material-ui/icons/LocalMall"
 import Payment from "@material-ui/icons/Payment"
 import Visibility from "@material-ui/icons/Visibility"
 import { Link } from "react-router-dom";
-
 
 class AppBarMobile extends Component {
     state = {
@@ -61,14 +61,15 @@ class AppBarMobile extends Component {
                     <Switch>
                         <Redirect from="/Login" exact to="/Início" />
                         <Route path="/Início" component={HomeMobile} />
-                        <Route path="/Clientes" component={SearchClientsMobile} />
-                        <Route path="/Carros" component={SearchCarsMobile} />
-                        <Route path="/Serviços" component={SearchServicesMobile} />
-                        <Route path="/Orçamentos" component={SearchBudgetMobile} />
-                        <Route path="/Mecânicos" component={SearchEmployeesMobile} />
-                        <Route path="/Estoque" component={SearchStockMobile} />
-                        <Route path="/Cobrança" component={SearchBillingMobile} />
-                        <Route path="/Vistoria" component={SearchInspectionMobile} />
+                        <Route path="/Clientes" component={SearchClient} />
+                        <Route path="/Carros" component={SearchCar} />
+                        <Route path="/Serviços" component={SearchService} />
+                        <Route path="/Orçamentos" component={SearchBudget} />
+                        <Route path="/Mecânicos" component={SearchEmployee} />
+                        <Route path="/Estoque" component={SearchStock} />
+                        <Route path="/Cobrança" component={ClosedBilling} />
+                        <Route path="/Cobrança" component={PendentBilling} />
+                        <Route path="/Vistoria" component={SearchInspection} />
                         <Route path="/not-found" component={NotFound} />
                         <Redirect from="/" exact to="/Início" />
                         <Redirect to="/not-found" />

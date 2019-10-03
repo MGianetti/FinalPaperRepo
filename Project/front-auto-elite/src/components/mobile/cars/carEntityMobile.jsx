@@ -12,20 +12,9 @@ import Face from '@material-ui/icons/Face'
 import DropDown from '../../common/dropDown';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-class CarEntity extends Component {
+class CarEntityMobile extends Component {
     state = {
-        info: {
-            id: -1,
-            plate: "JEM2446",
-            model: "Fox Prata- gasolina 2p",
-            year: 2004,
-            is_Mercosul: false,
-            obs: "Observação sobre o fox",
-            Client: {
-                name: "Mateus Gianetti de Jesus",
-                cpf: "44489977824"
-            }
-        },
+        info: this.props.info,
         dropDownServices:{
             items: ['Service not found'],
             helpText: "Busca serviços de um carro",
@@ -112,4 +101,4 @@ class CarEntity extends Component {
     }
 }
  
-export default CarEntity;
+export default CarEntityMobile;

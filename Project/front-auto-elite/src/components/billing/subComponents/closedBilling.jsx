@@ -6,7 +6,7 @@ import UiList from '../../common/uiList';
 import Enums from '../../../helpers/Enums';
 import Queries from '../../../helpers/Queries';
 
-class closedBilling extends Component {
+class ClosedBilling extends Component {
     state = {
         dropDown:{
             items: Enums.BillingDropdown,
@@ -96,4 +96,4 @@ class closedBilling extends Component {
     }
 };
 
-export default closedBilling;
+export default ClosedBilling;

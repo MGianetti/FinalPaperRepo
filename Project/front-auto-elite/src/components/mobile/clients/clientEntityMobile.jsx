@@ -14,15 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class ClientEntityMobile extends Component {
     state = {
-        info: {
-            cpf: "03501082185",
-            cellPhone: "35988552236",
-            telephone: "3539664752",
-            name: "Lucas Sevla de Laranjeira",
-            cep: "04543120",
-            plate:"",
-            is_Mercosul:true
-        },
+        info: this.props.info,
         dropDownCars:{
             items: ["Oi","OI"],
             helpText: "Busca carro de um cliente",
