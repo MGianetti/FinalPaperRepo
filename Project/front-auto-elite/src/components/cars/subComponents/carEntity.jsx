@@ -164,7 +164,6 @@ CarEntity.defaultProps = {
         obs: "",
         Client: {
             name: "",
-            cpf: ""
         }
     }
 }

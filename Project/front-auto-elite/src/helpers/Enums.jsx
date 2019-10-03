@@ -25,6 +25,12 @@ export default class Enums {
         Name: "Nome",
     }
 
+    static ServiceType = {
+        Corrective: "corrective",
+        Preventive: "preventive",
+        Eletronic: "eletronic"
+    }
+
     static ItemDropdownType = {
         Name: "Nome",
     }
@@ -92,10 +98,10 @@ export default class Enums {
     ]
 
     static EmployeeDropdown = [
-        Enums.ClientDropdownType.CPF,
-        Enums.ClientDropdownType.Name,
-        Enums.ClientDropdownType.Telephone,
-        Enums.ClientDropdownType.Cellphone,
+        Enums.EmployeeDropdownType.CPF,
+        Enums.EmployeeDropdownType.Name,
+        Enums.EmployeeDropdownType.Telephone,
+        Enums.EmployeeDropdownType.Cellphone,
     ]
 
     static StockDropdown = [

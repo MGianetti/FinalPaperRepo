@@ -19,7 +19,7 @@ class CreateCar extends Component {
             year: 0,
             is_Mercosul: false,
             obs: "",
-            client_id: ""
+            client_id: -1,
         },
         dropDown:{
             items: Enums.ClientDropdown,
@@ -36,7 +36,7 @@ class CreateCar extends Component {
         const dropDownName = event.target.name;
         let newDropDownState = this.state[dropDownName];
         newDropDownState['selected'] = event.target.value;
-        this.setState({ [dropDownName]: newDropDownState});
+        this.setState({[dropDownName]: newDropDownState});
     };
 
     handleSearchBarChange = event => {
@@ -68,10 +68,11 @@ class CreateCar extends Component {
 
     selectClient = clientInfo => {
         const client_id = clientInfo.id;
-        const client =  <Grid key={clientInfo.id} container justify='center' alignItems='center'>
-                            <Grid item style={{width:"70%"}}><ClientEntity info={clientInfo}></ClientEntity></Grid>
-                            <Grid container style={{width:"10%"}} justify='center'>
-                                <Fab onClick={this.unselectClient} style={{backgroundColor:'#FF0000'}} size='small'><Close/></Fab>
+        const client =  <Grid container justify='center'>
+                            <Person fontSize='large'/>
+                            <Grid key={clientInfo.id} container justify='center' alignItems='center' style={{padding:15}}>
+                                <Grid item style={{width:"70%"}}><ClientEntity info={clientInfo}></ClientEntity></Grid>
+                                <Grid container style={{width:"10%"}} justify='center'><Fab onClick={this.unselectClient} style={{backgroundColor:'#FF0000'}} size='small'><Close/></Fab></Grid>
                             </Grid>
                         </Grid>
         this.clearSearch();
@@ -126,8 +127,7 @@ class CreateCar extends Component {
                                 <Grid item style={{padding:20}}> <DropDown data={{dropDown}} onChange={this.handleDropMenuChange} /> </Grid>
                                 <Grid item style={{padding:20}}> <SearchBar value={searchField} onChange={this.handleSearchBarChange} /> </Grid>
                             </Grid>
-                        </Grid>
-                        }
+                        </Grid>}
                         {client && client}
                         <Grid container justify='center' style={{padding:10}}> <Button onClick={() => this.createCar(this.state.info)} variant="contained" color='default'>Criar</Button> </Grid>
                     </Paper>
