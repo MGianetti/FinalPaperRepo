@@ -54,7 +54,7 @@ class CreateClient extends Component {
                 <Grid container justify='center' style={{paddingTop:25}}>
                     <Paper style={{width:'90%', backgroundColor:'#e0e0e0'}}>
                         <Grid container justify='center' style={{width:'100%'}} >
-                            <ClientEditFields info={this.state.info} onFormChange={this.handleFormChange}></ClientEditFields>
+                            <ClientEditFields info={this.state.info} onFormChange={this.handleFormChange}/>
                             <CarEditFields info={this.state.info} onFormChange={this.handleFormChange} onSwitchCheckChange={this.handleSwitchCheckChange}></CarEditFields>
                             <Grid container style={{paddingBottom:50}} alignItems='center' justify='center'>
                                 <Button onClick={() => this.handleCreate(this.state.info)} variant="contained" color='default'>Criar</Button>
