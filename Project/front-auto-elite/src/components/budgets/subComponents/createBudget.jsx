@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Grid} from '@material-ui/core';
 import UiList from '../../common/uiList';
-import CarEntityMiniature from './../../cars/subComponents/carEntityMiniature'
 import Paper from '@material-ui/core/Paper';
 import DropDown from './../../common/dropDown';
 import SearchBar from './../../common/searchBar';

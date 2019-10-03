@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { Grid, Paper } from '@material-ui/core';
-import DropDown from './../../common/dropDown';
-import SearchBar from './../../common/searchBar';
-import UiList from './../../common/uiList';
+import DropDown from '../../common/dropDown';
+import SearchBar from '../../common/searchBar';
+import UiList from '../../common/uiList';
 import Enums from '../../../helpers/Enums';
 import Queries from '../../../helpers/Queries';
 
 class SearchInspection extends Component {
     state = {
         dropDown:{
-            items: Enums.InspectionDropdown,
-            helpText: "Busca inspeção baseada em parâmetro",
-            defaultText: "Buscar inspeção...",
+            items: Enums.CarDropdown,
+            helpText: "Busca carro baseado em parâmetro",
+            defaultText: "Buscar carro...",
             selected: ''
         },
         searchField:'',
         search: []
-    }
+    };
 
     //improve performance
     handleDropMenuChange = event => {
@@ -24,7 +24,7 @@ class SearchInspection extends Component {
         let newDropDownState = this.state[dropDownName];
         newDropDownState['selected'] = event.target.value;
         this.setState({ [dropDownName]: newDropDownState});
-    }
+    };
     
     //improve performance
     handleSearchBarChange = event => {
@@ -51,9 +51,8 @@ class SearchInspection extends Component {
         )
     }
 
-    updateSearch(searchString) {
-        let search;
-        search = Queries.searchInspections(searchString, this.state.dropDown.selected);
+    async updateSearch(searchString) {
+        let search = await Queries.searchCars(searchString, this.state.dropDown.selected);
         this.setState({ search });
     }
 }

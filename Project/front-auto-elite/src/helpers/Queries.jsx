@@ -6,7 +6,7 @@ import ServiceEntity from './../components/services/subComponents/serviceEntity'
 import ItemEntity from './../components/stock/subComponents/itemEntity';
 import BudgetEntity from './../components/budgets/subComponents/budgetEntity';
 import EmployeeEntity from './../components/employees/subComponents/employeeEntity';
-import InspectionEntity from './../components/inspection/subComponents/InspectionEntity';
+import InspectionEntity from './../components/inspection/subComponents/inspectionEntity';
 import BillingEntity from './../components/billing/subComponents/billingEntity';
 import BillingClosedEntity from './../components/billing/subComponents/billingClosedEntity';
 import Enums from './Enums';
