@@ -138,14 +138,44 @@ class CreateInspection extends Component {
     };
 
     handleFormControlChange = (event, name) => {
+        var state = this.state;
         switch(name){
             case "fuelLevel":
+                const fuelLevel = {
+                    reserveTank: false,
+                    quarterTank: false,
+                    halfTank: false,
+                    threeQuarterTank: false,
+                    fullTank: false
+                };
+                fuelLevel[event.target.value] = true;
+                state.info['fuelLevel'] = fuelLevel;
+                this.setState( {state} );
                 break;
             case "warningLights":
+                state = this.state;
+                const warningLights = this.state.info.warningLights;
+                warningLights[event.target.value] = !warningLights[event.target.value];
+                state.info['warningLights'] = warningLights;
+                this.setState( {state} );
                 break;
             case "scratches":
+                state = this.state;
+                const scratches = this.state.info.scratches;
+                scratches[event.target.value] = !scratches[event.target.value];
+                state.info['scratches'] = scratches;
+                this.setState( {state} );
                 break;
-            case "specialTireIron ":
+            case "specialTireIron":
+                state = this.state;
+                if(event.target.value === 'yes'){
+                    state.info['specialTireIron'] = true;
+                }else{
+                    state.info['specialTireIron'] = false;
+                }                
+                this.setState( {state} );
+                break;
+            default:
                 break;
         }
     };

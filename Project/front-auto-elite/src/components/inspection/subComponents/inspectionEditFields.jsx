@@ -1,8 +1,6 @@
-import { Typography, Button, Avatar } from '@material-ui/core';
-import React, { Component } from 'react';
+import { Typography, Avatar } from '@material-ui/core';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Switch from '@material-ui/core/Switch';
 import { Visibility } from '@material-ui/icons'
 import Radio from '@material-ui/core/Radio'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -13,6 +11,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 
 const InspectionEditFields = ({ info, onFormControlChange }) => {
+    const { fuelLevel, warningLights, scratches, specialTireIron } = info;
+
     return (<React.Fragment>
                 <Grid style={{paddingTop:20, paddingBottom:20}} container justify='center'>
                     <Visibility fontSize='large'/>
@@ -37,35 +37,35 @@ const InspectionEditFields = ({ info, onFormControlChange }) => {
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="reserveTank"
-                                        control={<Radio color="primary" />}
+                                        control={<Radio checked={fuelLevel.reserveTank} color="primary" />}
                                         label="Reserva"
                                         labelPlacement="start"
                                     />
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="quarterTank"
-                                        control={<Radio color="primary" />}
+                                        control={<Radio checked={fuelLevel.quarterTank} color="primary" />}
                                         label="1/4"
                                         labelPlacement="start"
                                     />
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="halfTank"
-                                        control={<Radio color="primary" />}
+                                        control={<Radio checked={fuelLevel.halfTank}  color="primary" />}
                                         label="2/4"
                                         labelPlacement="start"
                                     />
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="threeQuarterTank"
-                                        control={<Radio color="primary" />}
+                                        control={<Radio checked={fuelLevel.threeQuarterTank}  color="primary" />}
                                         label="3/4"
                                         labelPlacement="start"
                                     />
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="fullTank"
-                                        control={<Radio color="primary" />}
+                                        control={<Radio checked={fuelLevel.fullTank}  color="primary" />}
                                         label="Cheio"
                                         labelPlacement="start"
                                     />
@@ -96,35 +96,35 @@ const InspectionEditFields = ({ info, onFormControlChange }) => {
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="ABS"
-                                        control={<Checkbox color="primary" />}
+                                        control={<Checkbox checked={warningLights.ABS} color="primary" />}
                                         labelPlacement="start"
                                     />
                                     <Avatar src='https://i.ibb.co/PFvVjjs/AirBag.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="airBag"                                        
-                                        control={<Checkbox color="primary" />}
+                                        control={<Checkbox checked={warningLights.airBag} color="primary" />}
                                         labelPlacement="start"
                                     />
                                     <Avatar src='https://i.ibb.co/RYFCQyB/Bateria.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="battery"
-                                        control={<Checkbox color="primary" />}
+                                        control={<Checkbox checked={warningLights.battery} color="primary" />}
                                         labelPlacement="start"
                                     />
                                     <Avatar src='https://i.ibb.co/31dnLGC/EPC.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="EPC"
-                                        control={<Checkbox color="primary" />}
+                                        control={<Checkbox checked={warningLights.EPC} color="primary" />}
                                         labelPlacement="start"
                                     />
                                     <Avatar src='https://i.ibb.co/t8xNcFj/TMPS.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="TPMS"
-                                        control={<Checkbox color="primary" />}
+                                        control={<Checkbox checked={warningLights.TPMS} color="primary" />}
                                         labelPlacement="start"
                                     />
                                 </Grid>
@@ -133,35 +133,35 @@ const InspectionEditFields = ({ info, onFormControlChange }) => {
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="EPS"
-                                        control={<Checkbox color="primary" />}
+                                        control={<Checkbox checked={warningLights.EPS} color="primary" />}
                                         labelPlacement="start"
                                     />
                                     <Avatar src='https://i.ibb.co/X4pHYz8/ESC.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="ESC"
-                                        control={<Checkbox color="primary" />}
+                                        control={<Checkbox checked={warningLights.ESC} color="primary" />}
                                         labelPlacement="start"
                                     />
                                     <Avatar src='https://i.ibb.co/PFgH8Ld/Freio.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="brake"
-                                        control={<Checkbox color="primary" />}
+                                        control={<Checkbox checked={warningLights.brake} color="primary" />}
                                         labelPlacement="start"
                                     />                                    
                                     <Avatar src='https://i.ibb.co/djX7VpK/Inje-o-Eletronica.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="fuelInjection"
-                                        control={<Checkbox color="primary" />}
+                                        control={<Checkbox checked={warningLights.fuelInjection} color="primary" />}
                                         labelPlacement="start"
                                     />
                                     <Avatar src='https://i.ibb.co/DVjcvgQ/Press-o-De-leo.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}                            
                                         value="oilPressure"
-                                        control={<Checkbox color="primary" />}
+                                        control={<Checkbox checked={warningLights.oilPressure} color="primary" />}
                                         labelPlacement="start"
                                     />
                                 </Grid>
@@ -170,7 +170,7 @@ const InspectionEditFields = ({ info, onFormControlChange }) => {
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="temperature"
-                                        control={<Checkbox color="primary" />}
+                                        control={<Checkbox checked={warningLights.temperature} color="primary" />}
                                         labelPlacement="start"
                                     />                                    
                                 </Grid>
@@ -198,29 +198,29 @@ const InspectionEditFields = ({ info, onFormControlChange }) => {
                                 <Grid container justify='center' alignItems='center'>                                
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="reserveTank"
-                                        control={<Checkbox color="primary" />}
+                                        value="hood"
+                                        control={<Checkbox checked={scratches.hood} color="primary" />}
                                         label="Capô"
                                         labelPlacement="start"
                                     />                     
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="Parachoque dianteiro"
-                                        control={<Checkbox color="primary" />}
+                                        value="frontBumper"
+                                        control={<Checkbox checked={scratches.frontBumper} color="primary" />}
                                         label="Parachoque dianteiro"
                                         labelPlacement="start"
                                     />                     
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="Parachoque traseiro"
-                                        control={<Checkbox color="primary" />}
+                                        value="rearBumper"
+                                        control={<Checkbox checked={scratches.rearBumper} color="primary" />}
                                         label="Parachoque traseiro"
                                         labelPlacement="start"
                                     />                     
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="Porta motorista"
-                                        control={<Checkbox color="primary" />}
+                                        value="driverDoor"
+                                        control={<Checkbox checked={scratches.driverDoor} color="primary" />}
                                         label="Porta motorista"
                                         labelPlacement="start"
                                     />                     
@@ -228,29 +228,29 @@ const InspectionEditFields = ({ info, onFormControlChange }) => {
                                 <Grid container justify='center' alignItems='center'>                                 
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="Porta passageiro"
-                                        control={<Checkbox color="primary" />}
+                                        value="passengerDoor"
+                                        control={<Checkbox checked={scratches.passengerDoor} color="primary" />}
                                         label="Porta passageiro"
                                         labelPlacement="start"
                                     />                     
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="Porta traseira direita"
-                                        control={<Checkbox color="primary" />}
+                                        value="rightRearDoor"
+                                        control={<Checkbox checked={scratches.rightRearDoor} color="primary" />}
                                         label="Porta traseira direita"
                                         labelPlacement="start"
                                     />                                                         
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="Porta traseira esquerda"
-                                        control={<Checkbox color="primary" />}
+                                        value="leftRearDoor"
+                                        control={<Checkbox checked={scratches.leftRearDoor} color="primary" />}
                                         label="Porta traseira esquerda"
                                         labelPlacement="start"
                                     />                     
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="Porta malas"
-                                        control={<Checkbox color="primary" />}
+                                        value="trunk"
+                                        control={<Checkbox checked={scratches.trunk} color="primary" />}
                                         label="Porta malas"
                                         labelPlacement="start"
                                     />                     
@@ -279,15 +279,15 @@ const InspectionEditFields = ({ info, onFormControlChange }) => {
                                 <Grid container justify='center' alignItems='center'>                                
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="reserveTank"
-                                        control={<Radio color="primary" />}
+                                        value="yes"
+                                        control={<Radio checked={specialTireIron} color="primary" />}
                                         label="Sim"
                                         labelPlacement="start"
                                     />                     
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="Parachoque dianteiro"
-                                        control={<Radio color="primary" />}
+                                        value="no"
+                                        control={<Radio checked={!specialTireIron} color="primary" />}
                                         label="Não"
                                         labelPlacement="start"
                                     />                                                         
