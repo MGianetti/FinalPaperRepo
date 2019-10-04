@@ -9,9 +9,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Divider from '@material-ui/core/Divider';
+import Checkbox from '@material-ui/core/Checkbox';
 
 
-const InspectionEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
+const InspectionEditFields = ({ info, onFormControlChange }) => {
     return (<React.Fragment>
                 <Grid style={{paddingTop:20, paddingBottom:20}} container justify='center'>
                     <Visibility fontSize='large'/>
@@ -29,8 +30,7 @@ const InspectionEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
                             <RadioGroup
                                 aria-label="position"
                                 name="position"
-                                value={"d"}
-                                onChange={console.log('oi')}
+                                onChange={(e) => onFormControlChange(e, "fuelLevel")}
                                 row
                             >                                
                                 <Grid container justify='center'>
@@ -88,90 +88,89 @@ const InspectionEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
                             <RadioGroup
                                 aria-label="position"
                                 name="position"
-                                value={"d"}
-                                onChange={console.log('oi')}
+                                onChange={(e) => onFormControlChange(e, "warningLights")}
                                 row
                             >
                                 <Grid container justify='center' alignItems='center' style={{paddingBottom:10}}>
-                                    <Avatar src='https://i.ibb.co/9TnmYcd/abs.jpg'></Avatar>
+                                    <Avatar src='https://i.ibb.co/9TnmYcd/abs.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="reserveTank"
-                                        control={<Radio color="primary" />}
+                                        value="ABS"
+                                        control={<Checkbox color="primary" />}
                                         labelPlacement="start"
                                     />
-                                    <Avatar src='https://i.ibb.co/PFvVjjs/AirBag.jpg'></Avatar>
+                                    <Avatar src='https://i.ibb.co/PFvVjjs/AirBag.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="quarterTank"
-                                        control={<Radio color="primary" />}
+                                        value="airBag"                                        
+                                        control={<Checkbox color="primary" />}
                                         labelPlacement="start"
                                     />
-                                    <Avatar src='https://i.ibb.co/RYFCQyB/Bateria.jpg'></Avatar>
+                                    <Avatar src='https://i.ibb.co/RYFCQyB/Bateria.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="halfTank"
-                                        control={<Radio color="primary" />}
+                                        value="battery"
+                                        control={<Checkbox color="primary" />}
                                         labelPlacement="start"
                                     />
-                                    <Avatar src='https://i.ibb.co/31dnLGC/EPC.jpg'></Avatar>
+                                    <Avatar src='https://i.ibb.co/31dnLGC/EPC.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="threeQuarterTank"
-                                        control={<Radio color="primary" />}
+                                        value="EPC"
+                                        control={<Checkbox color="primary" />}
                                         labelPlacement="start"
                                     />
-                                    <Avatar src='https://i.ibb.co/t8xNcFj/TMPS.jpg'></Avatar>
+                                    <Avatar src='https://i.ibb.co/t8xNcFj/TMPS.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="fullTank"
-                                        control={<Radio color="primary" />}
+                                        value="TPMS"
+                                        control={<Checkbox color="primary" />}
                                         labelPlacement="start"
                                     />
                                 </Grid>
                                 <Grid container justify='center' alignItems='center' style={{paddingBottom:10}}>
-                                    <Avatar src='https://i.ibb.co/sCsQ5cL/EPS.jpg'></Avatar>
+                                    <Avatar src='https://i.ibb.co/sCsQ5cL/EPS.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="reserveTank"
-                                        control={<Radio color="primary" />}
+                                        value="EPS"
+                                        control={<Checkbox color="primary" />}
                                         labelPlacement="start"
                                     />
-                                    <Avatar src='https://i.ibb.co/X4pHYz8/ESC.jpg'></Avatar>
+                                    <Avatar src='https://i.ibb.co/X4pHYz8/ESC.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="quarterTank"
-                                        control={<Radio color="primary" />}
+                                        value="ESC"
+                                        control={<Checkbox color="primary" />}
                                         labelPlacement="start"
                                     />
-                                    <Avatar src='https://i.ibb.co/PFgH8Ld/Freio.jpg'></Avatar>
+                                    <Avatar src='https://i.ibb.co/PFgH8Ld/Freio.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="halfTank"
-                                        control={<Radio color="primary" />}
+                                        value="brake"
+                                        control={<Checkbox color="primary" />}
                                         labelPlacement="start"
                                     />                                    
-                                    <Avatar src='https://i.ibb.co/djX7VpK/Inje-o-Eletronica.jpg'></Avatar>
+                                    <Avatar src='https://i.ibb.co/djX7VpK/Inje-o-Eletronica.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="threeQuarterTank"
-                                        control={<Radio color="primary" />}
+                                        value="fuelInjection"
+                                        control={<Checkbox color="primary" />}
                                         labelPlacement="start"
                                     />
-                                    <Avatar src='https://i.ibb.co/DVjcvgQ/Press-o-De-leo.jpg'></Avatar>
+                                    <Avatar src='https://i.ibb.co/DVjcvgQ/Press-o-De-leo.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}                            
-                                        value="fullTank"
-                                        control={<Radio color="primary" />}
+                                        value="oilPressure"
+                                        control={<Checkbox color="primary" />}
                                         labelPlacement="start"
                                     />
                                 </Grid>
                                 <Grid container justify='center' alignItems='center' style={{paddingBottom:10}}>
-                                    <Avatar src='https://i.ibb.co/kH7hYYk/Temperatura.jpg'></Avatar>
+                                    <Avatar src='https://i.ibb.co/kH7hYYk/Temperatura.jpg'/>
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
-                                        value="reserveTank"
-                                        control={<Radio color="primary" />}
+                                        value="temperature"
+                                        control={<Checkbox color="primary" />}
                                         labelPlacement="start"
                                     />                                    
                                 </Grid>
@@ -193,36 +192,35 @@ const InspectionEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
                             <RadioGroup
                                 aria-label="position"
                                 name="position"
-                                value={"d"}
-                                onChange={console.log('oi')}
+                                onChange={(e) => onFormControlChange(e, "scratches")}
                                 row
                             >
                                 <Grid container justify='center' alignItems='center'>                                
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="reserveTank"
-                                        control={<Radio color="primary" />}
+                                        control={<Checkbox color="primary" />}
                                         label="Capô"
                                         labelPlacement="start"
                                     />                     
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="Parachoque dianteiro"
-                                        control={<Radio color="primary" />}
+                                        control={<Checkbox color="primary" />}
                                         label="Parachoque dianteiro"
                                         labelPlacement="start"
                                     />                     
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="Parachoque traseiro"
-                                        control={<Radio color="primary" />}
+                                        control={<Checkbox color="primary" />}
                                         label="Parachoque traseiro"
                                         labelPlacement="start"
                                     />                     
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="Porta motorista"
-                                        control={<Radio color="primary" />}
+                                        control={<Checkbox color="primary" />}
                                         label="Porta motorista"
                                         labelPlacement="start"
                                     />                     
@@ -231,28 +229,28 @@ const InspectionEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="Porta passageiro"
-                                        control={<Radio color="primary" />}
+                                        control={<Checkbox color="primary" />}
                                         label="Porta passageiro"
                                         labelPlacement="start"
                                     />                     
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="Porta traseira direita"
-                                        control={<Radio color="primary" />}
+                                        control={<Checkbox color="primary" />}
                                         label="Porta traseira direita"
                                         labelPlacement="start"
                                     />                                                         
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="Porta traseira esquerda"
-                                        control={<Radio color="primary" />}
+                                        control={<Checkbox color="primary" />}
                                         label="Porta traseira esquerda"
                                         labelPlacement="start"
                                     />                     
                                     <FormControlLabel
                                         style={{marginLeft:0, marginRight:25}}
                                         value="Porta malas"
-                                        control={<Radio color="primary" />}
+                                        control={<Checkbox color="primary" />}
                                         label="Porta malas"
                                         labelPlacement="start"
                                     />                     
@@ -260,10 +258,7 @@ const InspectionEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
                             </RadioGroup>
                         </FormControl>
                         </Grid>
-                    </Grid>     
-                    <Grid container justify='center'>
-                        <Divider style={{margin:10,width: '80%'}}/>
-                    </Grid>               
+                    </Grid>                
                 </Grid>
                 <Grid container alignItems='center' justify='center'>
                     <Grid container justify='center'>
@@ -278,8 +273,7 @@ const InspectionEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
                             <RadioGroup
                                 aria-label="position"
                                 name="position"
-                                value={"d"}
-                                onChange={console.log('oi')}
+                                onChange={(e) => onFormControlChange(e, "specialTireIron")}
                                 row
                             >
                                 <Grid container justify='center' alignItems='center'>                                

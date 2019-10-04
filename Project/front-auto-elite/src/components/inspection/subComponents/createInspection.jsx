@@ -35,9 +35,17 @@ class CreateInspection extends Component {
                 ESC: false,
                 TPMS: false
             },
-            scratches:{
-                
-            }            
+            scratches:{                
+                hood: false,
+                frontBumper:false,
+                rearBumper:false,
+                driverDoor:false,
+                passengerDoor:false,
+                rightRearDoor:false,
+                leftRearDoor:false,
+                trunk:false
+            },
+            specialTireIron: false,            
         },
         dropDown:{
             items: Enums.ServiceDropdown,
@@ -65,24 +73,24 @@ class CreateInspection extends Component {
     clearSearch = () => {
         let search = [];
         this.setState({search});
-    }
+    };
 
     unselectService = () => {
         const service = null;
         this.setState({service});
-    }
+    };
 
     handleFormChange = (event) => {
         let { info } = this.state;
         info[event.target.name] = event.target.value;
         this.setState({info})
-    }
+    };
 
     handleSwitchCheckChange = (event) => {
         let { info } = this.state;
         info.is_Mercosul = event.target.checked;
         this.setState({ info });
-    }
+    };
 
     selectService = serviceInfo => {
         const service_id = serviceInfo.id;
@@ -96,7 +104,7 @@ class CreateInspection extends Component {
         let {info} = this.state;
         info.service_id = service_id;
         this.setState({service, info});
-    }
+    };
     
     async updateSearch(searchString) {
         let search;
@@ -112,7 +120,7 @@ class CreateInspection extends Component {
             return client;
         });
         this.setState({ search });
-    }
+    };
 
     async createInspection(inspectionInfo) {
         await Queries.createInspection(inspectionInfo);
@@ -127,7 +135,20 @@ class CreateInspection extends Component {
         const client = null;
         alert("Carro criado com sucesso!")
         this.setState({client, info});
-    }
+    };
+
+    handleFormControlChange = (event, name) => {
+        switch(name){
+            case "fuelLevel":
+                break;
+            case "warningLights":
+                break;
+            case "scratches":
+                break;
+            case "specialTireIron ":
+                break;
+        }
+    };
 
     render() {
         const {search, searchField, dropDown, service} = this.state;
@@ -136,7 +157,7 @@ class CreateInspection extends Component {
             <React.Fragment>  
                 <Grid container justify='center' style={{paddingTop:25}}>
                     <Paper style={{width:'90%',backgroundColor:'#e0e0e0', justify: 'center'}}>
-                        <InspectionEditFields info={this.state.info} onFormChange={this.handleFormChange} onSwitchCheckChange={this.handleSwitchCheckChange}/>
+                        <InspectionEditFields info={this.state.info} onFormControlChange={this.handleFormControlChange}/>
                         {!service &&
                         <Grid container style={{paddingTop: 50}} justify='center'>
                             <Build fontSize='large'/>
@@ -157,7 +178,6 @@ class CreateInspection extends Component {
             </React.Fragment>
         );
     }
-
 }
 
 export default CreateInspection;
