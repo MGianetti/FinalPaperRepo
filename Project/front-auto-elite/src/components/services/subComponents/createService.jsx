@@ -153,6 +153,25 @@ class CreateService extends Component {
         const employee = null;
         this.setState({employee});
     }
+
+    async createService(serviceInfo) {
+        await Queries.createService(serviceInfo);
+        const info = {
+            id: -1,
+            observations: '',
+            obligatoryInspection: '',
+            summary: '',
+            status: '',
+            type: '',
+            price: '',
+            car_id: '',
+            employee_id: ''
+        }
+        const car = null;
+        const employee = null;
+        alert("Serviço criado com sucesso!")
+        this.setState({car, employee, info});
+    }
     
     render() {
         const {search, searchField, dropDownCar, dropDownEmployee, employee, car} = this.state;
@@ -181,7 +200,7 @@ class CreateService extends Component {
                         </Grid>}
                         {employee && employee}
                         <Grid container style={{padding:50}} alignItems='center' justify='center'>
-                            <Button variant="contained" color='default'>Criar</Button>
+                            <Button onClick={() => this.createService(this.state.info)} variant="contained" color='default'>Criar</Button>
                         </Grid>
                     </Paper>
                     <Paper style={{width:'90%', marginTop:15}}>

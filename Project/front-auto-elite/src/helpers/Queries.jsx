@@ -88,13 +88,28 @@ export default class Queries {
 
     static async searchServices(searchString, searchType)
     {
-        //TODO: make this function search and return services
-        let services = [];
-        services.push(<ServiceEntity key='servicePlaceholder1'/>);
-        services.push(<ServiceEntity key='servicePlaceholder2'/>);
-        services.push(<ServiceEntity key='servicePlaceholder3'/>);
+        let serviceJsons = [];
+        await axios.get(`${SERVER_URL}/services`).then(response => serviceJsons = response.data).catch(error => console.log(error.message));
+        switch(Enums.ServiceDropdown[searchType]) {
+            case Enums.ServiceDropdownType.Type:
+                serviceJsons = serviceJsons.filter(service => service.type.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+            case Enums.ServiceDropdownType.Summary:
+                serviceJsons = serviceJsons.filter(service => service.summary.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+        }
 
-        return services;
+        let serviceEntities = [];
+        for (let service of serviceJsons) {
+            if(isMobile)
+            {
+                // serviceEntities.push(<ServiceEntityMobile key={service.id} info={service}/>);
+            } else
+            {
+                serviceEntities.push(<ServiceEntity key={service.id} info={service}/>);
+            }
+        }
+        return serviceEntities;
     }
 
     static async searchItems(searchString, searchType)
@@ -217,6 +232,16 @@ export default class Queries {
             console.log(`Created employee ${response.data.name} succesfully`);
         }).catch(error => {
             console.log(`Fail to create ${employeeFormInfo.name} with erro: ${error}`);
+        });
+    }
+
+    static async createService(serviceFormInfo){
+        const {observations, obligatoryInspection, summary, status, type, price, car_id, employee_id} = serviceFormInfo;
+        //create employee
+        await axios.post(`${SERVER_URL}/services`, {observations, obligatoryInspection, summary, status, type, price, car_id, employee_id}).then( (response) =>{
+            console.log(`Created service ${response.data.summary} succesfully`);
+        }).catch(error => {
+            console.log(`Fail to create ${serviceFormInfo.summary} with erro: ${error}`);
         });
     }
 

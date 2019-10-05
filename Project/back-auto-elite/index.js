@@ -41,7 +41,7 @@ app.use('/clients', clientsRoute);
 app.use('/employees', employeesRoute);
 //app.use('/inspections', inspectionsRoute);
 app.use('/items', itemsRoute);
-//app.use('/services', servicesRoute);
+// app.use('/services', servicesRoute);
 app.use('/users', usersRoute);
 
 //test runnning back

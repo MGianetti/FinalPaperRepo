@@ -22,7 +22,7 @@ export default class Enums {
 
     static ServiceDropdownType = {
         Type: "Tipo",
-        Name: "Nome",
+        Summary: "Resumo",
     }
 
     static ServiceType = {
@@ -84,7 +84,7 @@ export default class Enums {
 
     static ServiceDropdown = [
         Enums.ServiceDropdownType.Type,
-        Enums.ServiceDropdownType.Name,
+        Enums.ServiceDropdownType.Summary,
     ]
 
     static ItemDropdown = [
