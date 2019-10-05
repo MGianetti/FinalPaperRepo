@@ -4,16 +4,12 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Avatar, Grid, Fab } from '@material-ui/core';
+import { Avatar, Grid, Fab, Paper } from '@material-ui/core';
+import EditInspection from './editInspection';
+import Enums from '../../../helpers/Enums';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
 import DropDown from '../../common/dropDown';
-import Button from '@material-ui/core/Button';
-import DriveEta from '@material-ui/icons/DriveEta';
-import Build from '@material-ui/icons/Build';
-import Category from '@material-ui/icons/Category';
-import EditInspection from './editInspection';
-import Enums from '../../../helpers/Enums';
 
 class InspectionEntity extends Component {
     state = {
@@ -58,7 +54,7 @@ class InspectionEntity extends Component {
         },
         searchField:'',
         search:[],
-        service: null
+        service: "Resumo do serviço"
     };
 
     handleEdit = () => {
@@ -76,7 +72,7 @@ class InspectionEntity extends Component {
     }
     
     render() {
-        const { info, dropDown, searchField, search, service} = this.state; 
+        const { info, dropDown, searchField, search, service, editingMode} = this.state; 
         const {fuelLevel, warningLights, scratches, specialTireIron} = this.state.info;
 
         return (
@@ -85,14 +81,50 @@ class InspectionEntity extends Component {
                 <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                         <Grid container justify='space-between'>
-                            <Grid item> <Typography variant='title'>{info.model}</Typography> </Grid>
+                            <Grid item> <Typography variant='title'>Serviço: {service}</Typography> </Grid>
                             <Grid item> <Typography variant='subtitle1'>{info.plate}</Typography> </Grid>
                         </Grid>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <Grid container style={{padding: 20}}>
-                            InspectionEntity
-                        </Grid>
+                        <Paper>
+                            <Grid container style={{padding: 20}}>
+                                <Grid container alignItems='center'>
+                                    <Grid container style={{width:'85%'}} alignItems='center'>
+                                        <Grid item style={{padding: 5}}>
+                                            <Avatar src="https://thesocietypages.org/socimages/files/2009/05/vimeo.jpg"/>
+                                        </Grid>
+                                        <Grid item>
+                                            <Typography variant='title'style={{paddingLeft:10}}>{"oi"}</Typography>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid container style={{width:'15%'}}>
+                                        <Grid container style={{width:'50%'}}>
+                                            <Grid item>
+                                                <Fab style={{backgroundColor:'#FA8072'}} size='small'>
+                                                    <Delete/>
+                                                </Fab>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid container style={{width:'50%'}}>
+                                            <Grid item>
+                                                <Fab onClick={this.handleEdit} style={{backgroundColor:'#00FF7F'}} size='small'>
+                                                    <Edit/>
+                                                </Fab>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                                <Grid container alignItems='center' style={{paddingTop:20}}>
+                                    
+                                </Grid>
+                                <Grid container alignItems='center' style={{paddingTop:5}}>
+                                    
+                                </Grid>
+                                <Grid container alignItems='center'>
+                                   
+                                </Grid>
+                            </Grid>
+                        </Paper>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
             </React.Fragment>

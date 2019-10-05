@@ -5,6 +5,7 @@ import SearchBar from '../../common/searchBar';
 import UiList from '../../common/uiList';
 import Enums from '../../../helpers/Enums';
 import Queries from '../../../helpers/Queries';
+import InspectionEntity from './inspectionEntity'
 
 class SearchInspection extends Component {
     state = {
@@ -44,7 +45,8 @@ class SearchInspection extends Component {
                         </Grid>
                     </Paper>
                     <Paper style={{width:'90%', marginTop:15}}>
-                        <UiList maxHeight={600} data={search} />
+                        <InspectionEntity/>
+                        {/* <UiList maxHeight={600} data={search} /> */}
                     </Paper>
                 </Grid>
             </React.Fragment> 
