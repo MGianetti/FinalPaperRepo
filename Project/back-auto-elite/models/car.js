@@ -5,7 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     is_Mercosul: DataTypes.BOOLEAN,
     model: DataTypes.STRING,
     year: DataTypes.INTEGER
-  }, {});
+  }, {
+    paranoid: true,
+  });
   Car.associate = function(models) {
     Car.belongsTo(models.Client, {
       foreignKey: 'client_id',
