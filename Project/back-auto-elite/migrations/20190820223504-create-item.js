@@ -15,7 +15,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       quantity: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
+      },
+      price: {
+        type: Sequelize.DECIMAL
       },
       createdAt: {
         allowNull: false,
@@ -23,6 +26,10 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deletedAt: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

@@ -12,16 +12,18 @@ router.get('/', budget.findAll);
 //Retrieve Budgets by 
 router.get('/byId/:id', budget.findById);
 
-router.get('/byResume/:resume', budget.findByResume);
+//router.get('/byResume/:resume', budget.findByResume);
 
-router.get('/byClient/:client', budget.findByClient);
+//router.get('/byClient/:client', budget.findByClient);
 
-router.get('/byPlate/:plate', budget.findByCar);
+//router.get('/byPlate/:plate', budget.findByCar);
+
+// router.post('/addItemToBudget/:id', budget.addItemToBudget);
 
 //Update a budget with Id
 router.put('/:budgetId', budget.update);
 
 //Delete a budget with Id
-router.delete('/:budgetId', budget.delete);
+router.delete('/:budgetId', budget.deleteBudget);
 
 module.exports = router;

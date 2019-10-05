@@ -23,9 +23,9 @@ router.get('/byTelephone/:telephone', client.findByTelephone);
 router.get('/byCEP/:cep', client.findByCEP);
 
 //Update a Client with Id
-router.put('/:clientId', client.update);
+router.put('/:client_id', client.update);
 
 //Delete a Client with Id
-router.delete('/:clientId', client.deleteClient);
+router.delete('/:client_id', client.deleteClient);
 
 module.exports = router;

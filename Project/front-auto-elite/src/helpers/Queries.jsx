@@ -247,30 +247,40 @@ export default class Queries {
 
     static async updateClient(updatedClient, successCallBack, failCallBack){
         await axios.put(`${SERVER_URL}/clients/${updatedClient.id}`, updatedClient).then( () =>{
-            console.log(`Updated client ${updatedClient.id} succesfully`)
+            console.log(`Updated client ${updatedClient.name} succesfully`)
             successCallBack();
         }).catch(error => {
-            console.log(`Fail to update client ${updatedClient.id}`);
+            console.log(`Fail to update client ${updatedClient.name}`);
             failCallBack();
         });
     }
 
     static async updateCar(updatedCar, successCallBack, failCallBack){
         await axios.put(`${SERVER_URL}/cars/${updatedCar.id}`, updatedCar).then( () =>{
-            console.log(`Updated car ${updatedCar.id} succesfully`)
+            console.log(`Updated car ${updatedCar.plate} succesfully`)
             successCallBack();
         }).catch(error => {
-            console.log(`Fail to update car ${updatedCar.id}`);
+            console.log(`Fail to update car ${updatedCar.plate}`);
+            failCallBack();
+        });
+    }
+
+    static async updateService(updatedService, successCallBack, failCallBack){
+        await axios.put(`${SERVER_URL}/services/${updatedService.id}`, updatedService).then( () =>{
+            console.log(`Updated Service ${updatedService.summary} succesfully`)
+            successCallBack();
+        }).catch(error => {
+            console.log(`Fail to update Service ${updatedService.summary}`);
             failCallBack();
         });
     }
 
     static async updateEmployee(updatedEmployee, successCallBack, failCallBack){
         await axios.put(`${SERVER_URL}/employees/${updatedEmployee.id}`, updatedEmployee).then( () =>{
-            console.log(`Updated employee ${updatedEmployee.id} succesfully`)
+            console.log(`Updated employee ${updatedEmployee.name} succesfully`)
             successCallBack();
         }).catch(error => {
-            console.log(`Fail to update employee ${updatedEmployee.id}`);
+            console.log(`Fail to update employee ${updatedEmployee.name}`);
             failCallBack();
         });
     }

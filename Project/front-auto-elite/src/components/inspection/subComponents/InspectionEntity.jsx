@@ -76,7 +76,7 @@ class InspectionEntity extends Component {
     }
     
     render() {
-        const { info, dropDown, searchField, search, service} = this.state; 
+        const { info, dropDown, searchField, search, service, editingMode} = this.state; 
         const {fuelLevel, warningLights, scratches, specialTireIron} = this.state.info;
 
         return (

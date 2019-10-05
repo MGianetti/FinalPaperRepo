@@ -28,6 +28,10 @@ module.exports = {
           model: 'Services',
           key: 'id'
         }
+      },
+      deletedAt: {
+        allowNull: true,
+        type: Sequelize.DATE
       }
     });
   },

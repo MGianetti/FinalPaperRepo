@@ -33,10 +33,10 @@ class ServiceEntity extends Component {
 
     render() {
         const { dropDownBudgets, info, editingMode} = this.state; 
-        const {id, observations, obligatoryInspection, summary, status, type, price} = this.state.info;
+        const {id, observations, obligatoryInspection, summary, status, type, price, Car, Employee} = this.state.info;
         return (
             <React.Fragment>
-                <EditService info={{id, observations, obligatoryInspection, summary, status, type, price}} sucessCallBack={this.handleEditSave} modalEnable={editingMode} onClose={this.handleModalClose} />
+                <EditService info={{id, observations, obligatoryInspection, summary, status, type, price, Car, Employee}} sucessCallBack={this.handleEditSave} modalEnable={editingMode} onClose={this.handleModalClose} />
                 <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                         <Grid container justify='space-between'>

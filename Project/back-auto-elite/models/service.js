@@ -5,8 +5,11 @@ module.exports = (sequelize, DataTypes) => {
     observations: DataTypes.STRING,
     summary: DataTypes.STRING,
     status: DataTypes.STRING,
-    type: DataTypes.STRING
-  }, {});
+    type: DataTypes.STRING,
+    totalValue: DataTypes.DECIMAL,
+  }, {
+    paranoid: true,
+  });
   Service.associate = function(models) {
     Service.belongsTo(models.Car, {
       foreignKey: 'car_id',
@@ -21,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true
     })
     Service.hasOne(models.Billing, {
-      foreignKey: "billing_id",
+      foreignKey: "service_id",
       constraints: true
     })
   };

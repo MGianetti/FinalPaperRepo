@@ -23,7 +23,7 @@ class EditService extends Component {
 
     handleSwitchCheckChange = (event) => {
         let { info } = this.state;
-        info.is_Mercosul = event.target.checked;
+        info.obligatoryInspection = event.target.checked;
         this.setState({ info });
     }
 
@@ -34,7 +34,7 @@ class EditService extends Component {
     }
 
     handleModalSave = (info) => {
-        Queries.updateCar(info, () => this.props.sucessCallBack(info), this.props.failCallBack);
+        Queries.updateService(info, () => this.props.sucessCallBack(info), this.props.failCallBack);
         this.props.onClose();
     }
 
@@ -68,7 +68,7 @@ EditService.defaultProps = {
         id: -1,
         observations: '',
         obligatoryInspection: '',
-        summary: ']',
+        summary: '',
         status: '',
         type: '',
         price: '',
