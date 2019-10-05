@@ -8,9 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     telephone: DataTypes.STRING,
     name: DataTypes.STRING,
     cep: DataTypes.STRING
-  }, {
-    paranoid: true,
-  });
+  }, {});
   Employee.associate = function(models) {
     Employee.hasOne(models.Service, {
       foreignKey:"employee_id"

@@ -4,7 +4,14 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Avatar, Grid, Fab, Paper } from '@material-ui/core';
+import { Avatar, Grid, Fab } from '@material-ui/core';
+import Delete from '@material-ui/icons/Delete';
+import Edit from '@material-ui/icons/Edit';
+import DropDown from '../../common/dropDown';
+import Button from '@material-ui/core/Button';
+import DriveEta from '@material-ui/icons/DriveEta';
+import Build from '@material-ui/icons/Build';
+import Category from '@material-ui/icons/Category';
 import EditInspection from './editInspection';
 import Enums from '../../../helpers/Enums';
 import Delete from '@material-ui/icons/Delete';
@@ -73,7 +80,7 @@ class InspectionEntity extends Component {
     }
     
     render() {
-        const { info, dropDown, searchField, search, service, editingMode} = this.state; 
+        const { info, dropDown, searchField, search, service} = this.state; 
         const {fuelLevel, warningLights, scratches, specialTireIron} = this.state.info;
 
         return (

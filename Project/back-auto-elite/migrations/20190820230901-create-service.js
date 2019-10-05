@@ -22,6 +22,13 @@ module.exports = {
           key: 'id'
         }
       },
+      // inspection_id: {
+      //   type: Sequelize.INTEGER,
+      //   references: {
+      //     model: 'Inspections',
+      //     key: 'id'
+      //   }
+      // },
       employee_id: {
         type: Sequelize.INTEGER,
         references: {
@@ -38,19 +45,12 @@ module.exports = {
       type: {
         type: Sequelize.STRING
       },
-      totalValue: {
-        type: Sequelize.DECIMAL
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      },
-      deletedAt: {
-        allowNull: true,
         type: Sequelize.DATE
       }
     });

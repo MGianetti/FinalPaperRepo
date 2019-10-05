@@ -1,27 +1,27 @@
 const express = require('express');
 const router = express.Router();
 
-const inspection = require('../controller/inspectionController');
+const Inspection = require('../controller/inspectionController');
 
 //Create a new Inspection
-router.post('/', inspection.create);
+router.post('/Inspections', inspection.create);
 
 //Find all Inspections
-router.get('/', inspection.findAll);
+router.get('/Inspections', inspection.findAll);
 
 //Retrieve Inspections by 
-router.get('/byId/:id', inspection.findById);
+router.get('/Inspections/byId/:id', inspection.findById);
 
-router.get('/byServiceResume/:serviceResume', inspection.findByServiceResume);
+router.get('/Inspections/byResume/:resume', inspection.findByResume);
 
-router.get('/byClient/:clientName', inspection.findByClient);
+router.get('/Inspections/byClientId/:clientid', inspection.findByClient);
 
-router.get('/byCar/:carPlate', inspection.findByCar);
+router.get('/Inspections/byCar/:plate', inspection.findByCar);
 
 //Update a Inspection with Id
-router.put('/:inspectionId', inspection.update);
+router.put('/Inspections/:InspectionId', inspection.update);
 
 //Delete a Inspection with Id
-router.delete('/:inspectionId', inspection.deleteInspection);
+router.delete('/Inspections/:InspectionId', inspection.delete);
 
 module.exports = router;

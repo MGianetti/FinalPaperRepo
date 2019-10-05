@@ -10,18 +10,18 @@ router.post('/', service.create);
 router.get('/', service.findAll);
 
 //Retrieve Services by 
-router.get('/:id', service.findById);
+router.get('/byID/:id', service.findByID);
 
-router.get('/bySummary/:summary', service.findBySummary);
+router.get('/byResume/:resume', service.findByResume);
 
-router.get('/byEmployee/:employeeId', service.findByEmployee);
+router.get('/byClient/:client', service.findByClient);
 
-router.get('/byCar/:carId', service.findByCar);
+router.get('/byCar/:car', service.findByCar);
 
 //Update a service with Id
 router.put('/:serviceId', service.update);
 
 //Delete a service with Id
-router.delete('/:serviceId', service.deleteService);
+router.delete('/:serviceId', service.delete);
 
 module.exports = router;

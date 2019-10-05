@@ -1,16 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Budget = sequelize.define('Budget', {
-    laborValue: DataTypes.STRING,
-    is_Active: DataTypes.BOOLEAN,
-    totalValue: DataTypes.DECIMAL
-  }, {
-    paranoid: true,
-  });
+    labor: DataTypes.STRING,
+    is_Active: DataTypes.BOOLEAN
+  }, {});
   Budget.associate = function(models) {
     // associations can be defined here
     Budget.belongsToMany(models.Item, 
-      { through: 'ItemsBudget' })
+      { through: 'Items_Budget', 
+        foreignKey: 'budgetId', 
+        otherKey: 'itemId'})
     Budget.belongsTo(models.Service, {
       foreignKey: "service_id",
       constraints: true
