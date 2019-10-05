@@ -15,7 +15,7 @@ import ClientEntityMobile from '../components/mobile/clients/clientEntityMobile'
 import CarEntityMobile from '../components/mobile/cars/carEntityMobile';
 import EmployeeEntityMobile from '../components/mobile/employees/employeeEntityMobile';
 
-const SERVER_URL = 'http://localhost:8000';
+const SERVER_URL = 'http://192.168.0.32:8000';
 
 export default class Queries {
 
