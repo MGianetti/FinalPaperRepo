@@ -22,7 +22,7 @@ const CarEditFields = ({info, onFormChange, onSwitchCheckChange}) => {
                         style={{backgroundColor:'#efefef', width:'20%'}}    
                     />
                     <Typography style={{paddingLeft:60}} variant='h6'>Mercosul:</Typography>
-                    <Switch name='isMercosul' checked={info.isMercosul} onChange={onSwitchCheckChange}/>
+                    <Switch name='isMercosul' checked={info.is_Mercosul} onChange={onSwitchCheckChange}/>
                 </Grid>
                 <Grid container justify='center'>
                     <TextField

@@ -59,12 +59,12 @@ const ServiceEditFields = ({info, onFormChange, onSwitchCheckChange, onRadioButt
             </Grid>
             <Grid container alignItems='center' justify='center'>
                 <Typography style={{marginRight:20}}> Vistoria obrigatória: </Typography>
-                <Switch name='obligatoryInspection' onChange={onSwitchCheckChange}/>
+                <Switch name='obligatoryInspection' checked={info.obligatoryInspection} onChange={onSwitchCheckChange}/>
             </Grid>
             <Grid container style={{paddingBottom:20}} alignItems='center' justify='center'>
                 <TextField
                     onChange={onFormChange}
-                    name='serviceObservations'
+                    name='observations'
                     margin='normal'
                     label="Observações"
                     placeholder="Observações detalhadas sobre o serviço"

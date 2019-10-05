@@ -12,7 +12,7 @@ router.get('/', car.findAll);
 //Retrieve Cars by 
 router.get('/byPlate/:plate', car.findByPlate);
 
-router.get('/byClient/:client', car.findByClient);
+router.get('/byClient/:clientName', car.findByClient);
 
 router.get('/byModel/:model', car.findByModel);
 

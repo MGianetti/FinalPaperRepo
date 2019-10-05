@@ -23,7 +23,6 @@ class SearchService extends Component {
         const dropDownName = event.target.name;
         let newDropDownState = this.state[dropDownName];
         newDropDownState['selected'] = event.target.value;
-        console.log(event.target.value);
         this.setState({ [dropDownName]: newDropDownState});
     };
     

@@ -8,11 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      labor: {
+      laborValue: {
         type: Sequelize.STRING
       },
-      is_Activate: {
+      is_Active: {
         type: Sequelize.BOOLEAN
+      },
+      totalValue: {
+        type: Sequelize.DECIMAL
       },
       service_id: {
         type: Sequelize.INTEGER,
@@ -28,6 +31,10 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deletedAt: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

@@ -16,7 +16,7 @@ class CreateService extends Component {
         info: {
             id: -1,
             observations: '',
-            obligatoryInspection: '',
+            obligatoryInspection: false,
             summary: '',
             status: '',
             type: '',
@@ -72,7 +72,7 @@ class CreateService extends Component {
 
     handleSwitchCheckChange = (event) => {
         let { info } = this.state;
-        info.is_Mercosul = event.target.checked;
+        info.obligatoryInspection = event.target.checked;
         this.setState({ info });
     }
 
@@ -159,7 +159,7 @@ class CreateService extends Component {
         const info = {
             id: -1,
             observations: '',
-            obligatoryInspection: '',
+            obligatoryInspection: false,
             summary: '',
             status: '',
             type: '',
