@@ -5,7 +5,8 @@ exports.create = (req, res, next) => {
     Item.create({
         idCode: req.body.idCode,
         description: req.body.description,
-        quantity: req.body.quantity 
+        quantity: req.body.quantity,
+        price: req.body.price
     }).then(ItemData => {
         res.status(201).send(ItemData);
     });
@@ -35,12 +36,23 @@ exports.findById = (req, res, next) => {
     })
 }
 
+exports.getById = (req, res, next) => {
+    Item.findAll({
+        where: {
+            id: req.params.id
+        }
+    }).then(ItemData => {
+        return ItemData
+    })
+}
+
 exports.update = (req, res, next) => {
     const values = {};
 
     if(req.body.idCode)values.idCode = req.body.idCode;
     if(req.body.description)values.description = req.body.description;
     if(req.body.quantity)values.quantity = req.body.quantity;
+    if(req.body.price)values.price = req.body.price;
 
     Item.update(values,{
         where: {

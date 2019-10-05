@@ -64,7 +64,7 @@ const ServiceEditFields = ({info, onFormChange, onSwitchCheckChange, onRadioButt
             <Grid container style={{paddingBottom:20}} alignItems='center' justify='center'>
                 <TextField
                     onChange={onFormChange}
-                    name='serviceObservations'
+                    name='observations'
                     margin='normal'
                     label="Observações"
                     placeholder="Observações detalhadas sobre o serviço"
