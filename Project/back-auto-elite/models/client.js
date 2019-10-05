@@ -6,9 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     telephone: DataTypes.STRING,
     name: DataTypes.STRING,
     cep: DataTypes.STRING
-  }, {
-    paranoid: true,
-  });
+  }, {});
   Client.associate = function(models) {
     Client.hasMany(models.Car, {
       foreignKey: 'client_id',

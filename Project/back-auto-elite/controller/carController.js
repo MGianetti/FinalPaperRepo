@@ -1,7 +1,5 @@
 const db = require('../models/index');
 const Car = db.Car;
-const Sequelize = require('sequelize')
-const Op = Sequelize.Op;
 
 exports.create = (req, res) => {
     Car.create({
@@ -13,8 +11,6 @@ exports.create = (req, res) => {
     }).then (car => {
         res.status(201).send(car);
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 };
 
 exports.findAll = (req, res) => {
@@ -23,71 +19,41 @@ exports.findAll = (req, res) => {
             model:db.Client
         }]
     }).then(Allcars => {
-        res.status(200).send(Allcars);
+        res.send(Allcars);
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 };
 
 exports.findByPlate = (req, res) => {
     Car.findAll({
         where:{
            plate: req.params.plate
-        },
-        include:[{
-            model:db.Client
-        }]
-    }).then(carData => {
-        res.status(200).send(carData);
+        }
+    }).then(car => {
+        res.send(car);
     })
-    .catch(err => res.status(500).send({"error": err}))
 };
 
-exports.findByClient = (req, res) => {
-    Car.findAll({
-        include:[{
-            model: db.Client,
-            where:{
-                name: {[Op.iLike]: '%' + req.params.clientName + '%'}
-            }
-        }]
-
-    }).then(ClientData => {
-        const CarClientData = ClientData.filter((data)=> {
-            return data != null
-        })
-        res.status(200).send(CarClientData);
-    }).catch(err => res.status(500).send({"error": err}))
-};
+exports.findByClient = (req, res) => {}
+ //Ver como fazer 
 
 exports.findByModel = (req, res) => {
    Car.findAll({
         where:{
            model: req.params.model
-        },
-        include:[{
-            model:db.Client
-        }]
+        }
     }).then(car => {
         res.send(car);
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 };
 
 exports.findByYear = (req, res) => {
     Car.findAll({
         where:{
            year: req.params.year
-        },
-        include:[{
-            model:db.Client
-        }]
+        }
     }).then(car => {
         res.send(car);
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 };
 
 exports.update = (req, res) => {
@@ -105,8 +71,6 @@ exports.update = (req, res) => {
     }).then(car=> {
         res.send(car);
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 };
 
 
@@ -120,6 +84,4 @@ exports.deleteCar= (req, res) => {
         if(car == 1)res.status(200).send('Car Deleted Successfully with ID = '+ req.params.carId);
         if(car == 0)res.send('Could Not find the Car')
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 }

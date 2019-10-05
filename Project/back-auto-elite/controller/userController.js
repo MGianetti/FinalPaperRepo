@@ -18,16 +18,13 @@ exports.create = (req, res, next) => {
         }).then(UserData => {
             //var token = jwt.sign(req.body, privateKey, { algorithm: 'RS256'});
             res.status(201).send({data:UserData});
-        })
-        .catch(err => res.status(500).send({"error": err}))
+        });
       });
     
 };
 
 exports.findAll = (req, res, next) => {
     User.findAll({}).then(AllUser => res.send(AllUser))
-    .catch(err => res.status(500).send({"error": err}))
-
 }
 
 exports.findByUsername = (req, res, next) => {
@@ -36,8 +33,6 @@ exports.findByUsername = (req, res, next) => {
             username: req.params.username
             }
     }).then(UserData => res.send(UserData))
-    .catch(err => res.status(500).send({"error": err}))
-
 }
 
 exports.update = (req, res, next) => {
@@ -55,8 +50,6 @@ exports.update = (req, res, next) => {
     }).then(UserData => {
         res.send(UserData);
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 }
 
 exports.deleteUser = (req, res, next) => {
@@ -69,8 +62,6 @@ exports.deleteUser = (req, res, next) => {
         if(UserData == 1)res.status(200).send('User Deleted Successfully with ID = '+ req.params.userId);
         if(UserData == 0)res.send('Could Not find the User')
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 }
 
 //AUTHENTICATION
@@ -96,8 +87,6 @@ exports.login = (req, res, next) => {
         //     }
         // });
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 }
 
 

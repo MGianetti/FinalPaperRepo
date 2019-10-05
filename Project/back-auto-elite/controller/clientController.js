@@ -10,9 +10,7 @@ exports.create = (req, res, next) => {
         cep: req.body.cep
     }).then(clientData => {
         res.status(201).send(clientData);
-    })
-    .catch(err => res.status(500).send({"error": err}))
-
+    });
 };
 
 exports.findAll = (req, res, next) => {
@@ -20,96 +18,60 @@ exports.findAll = (req, res, next) => {
         include:[{
             model: db.Car
         }]
-    }).then(AllClient => res.status(200).send(AllClient))
-    .catch(err => res.status(500).send({"error": err}))
-
+    }).then(AllClient => res.send(AllClient))
 }
 
 exports.findByPlate = (req, res, next) => {
-    Client.findAll({
-        include:[{
-            model: db.Car,
-            where:{
-                plate: req.params.plate
-            }
-        }]
-    }).then(ClientData => {
-        const CarClientData = ClientData.filter((data)=> {
-            return data != null
-        })
-        res.status(200).send(CarClientData);
-    }).catch(err => res.status(500).send({"error": err}))   
+    // Client.findAll
+    
 }
 
 exports.findByCPF = (req, res, next) => {
     Client.findAll({
         where: {
             cpf: req.params.cpf
-        },
-        include:[{
-            model: db.Car
-        }]
+        }
     }).then(ClientData => {
-        res.status(200).send(ClientData);
+        res.send(ClientData);
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 }
 
 exports.findByName = (req, res, next) => {
     Client.findAll({
         where: {
             name: req.params.name
-        },
-        include:[{
-            model: db.Car
-        }]
+        }
     }).then(ClientData => {
-        res.status(200).send(ClientData);
-    }).catch(err => res.status(500).send({"error": err}))
+        res.send(ClientData);
+    })
 }
 
 exports.findByCellphone = (req, res, next) => {
     Client.findAll({
         where: {
             cellPhone: req.params.cellPhone
-        },
-        include:[{
-            model: db.Car
-        }]
+        }
     }).then(ClientData => {
-        res.status(200).send(ClientData);
+        res.send(ClientData);
     })
-    .catch(err => res.status(500).send({"error": err}))
 }
-
 exports.findByTelephone = (req, res, next) => {
     Client.findAll({
         where: {
             telephone: req.params.telephone
-        },
-        include:[{
-            model: db.Car
-        }]
+        }
     }).then(ClientData => {
-        res.status(200).send(ClientData);
+        res.send(ClientData);
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 }
 exports.findByCEP = (req, res, next) => {
     Client.findAll({
         where: {
             cep: req.params.cep
-        },
-        include:[{
-            model: db.Car
-        }]
+        }
     }).then(ClientData => {
-        res.status(200).send(ClientData);
+        res.send(ClientData);
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 }
 exports.update = (req, res, next) => {
     
@@ -124,24 +86,20 @@ exports.update = (req, res, next) => {
 
     Client.update(values,{
         where: {
-            id: req.params.client_id
+            id: req.params.clientId
         }
     }).then(clientData => {
         res.send(clientData);
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 }
 exports.deleteClient = (req, res, next) => {
     Client.destroy({
         where: {
-            id: req.params.client_id
+            id: req.params.clientId
         }
     }).then(clientData => {
         console.log(clientData)
-        if(clientData == 1)res.status(200).send('Client Deleted Successfully with ID = '+ req.params.client_id);
+        if(clientData == 1)res.status(200).send('Client Deleted Successfully with ID = '+ req.params.clientId);
         if(clientData == 0)res.send('Could Not find the Client')
     })
-    .catch(err => res.status(500).send({"error": err}))
-
 }

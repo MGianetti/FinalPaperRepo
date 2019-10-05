@@ -16,9 +16,7 @@ exports.create = (req, res, next) => {
 };
 
 exports.findById = (req, res, next) => {
-    Employee.findOne({where: {
-        id: req.params.id
-    }}).then(Employee => res.send(Employee))
+    Employee.findOne({})
 }
 
 exports.findAll = (req, res, next) => {

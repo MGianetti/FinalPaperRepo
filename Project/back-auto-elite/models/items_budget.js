@@ -1,14 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Items_Budget = sequelize.define('ItemsBudget', {
+  const Items_Budget = sequelize.define('Items_Budget', {
     budgetId: DataTypes.UUID,
     itemId: DataTypes.UUID
-  }, {
-    paranoid: true,
-  });
+  }, {});
   Items_Budget.associate = function(models) {
-    Items_Budget.belongsTo(models.Item)
-    Items_Budget.belongsTo(models.Budget)
+    // associations can be defined here
   };
   return Items_Budget;
 };
