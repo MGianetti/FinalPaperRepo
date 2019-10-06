@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { Person, LocalMall } from '@material-ui/icons'
 
 const StockEditFields = ({info, onFormChange}) => {
-    const { code, description, totalInStock } = info;
+    const { idCode, description, quantity } = info;
     return ( 
         <React.Fragment>
             <Grid style={{paddingTop:50, width:'90%'}} container justify='center'>
@@ -14,22 +14,22 @@ const StockEditFields = ({info, onFormChange}) => {
                 <TextField
                     required
                     onChange={onFormChange}
-                    name='code'
+                    name='idCode'
                     margin='normal'
                     label="Código"
                     placeholder="Código do produto"
-                    value={code}
+                    value={idCode}
                     variant="outlined"
                     style={{backgroundColor:'#efefef', width:'15%'}}    
                 />
                 <TextField
                     required
                     onChange={onFormChange}
-                    name='description'
+                    name='quantity'
                     margin='normal'
                     label="Quantidade"
                     placeholder="Quantidade"
-                    value={description}
+                    value={quantity}
                     variant="outlined"
                     style={{backgroundColor:'#efefef', width:'15%'}}    
                 />
@@ -38,11 +38,11 @@ const StockEditFields = ({info, onFormChange}) => {
                 <TextField
                     required
                     onChange={onFormChange}
-                    name='totalInStock'
+                    name='description'
                     margin='normal'
                     label="Descrição"
                     placeholder="Descrição do produto"
-                    value={totalInStock}
+                    value={description}
                     variant="outlined"
                     style={{backgroundColor:'#efefef', width:'40%'}}    
                 />

@@ -9,7 +9,7 @@ import Queries from '../../../helpers/Queries';
 class SearchStock extends Component {
     state = {
         dropDown:{
-            items: Enums.StockDropdown,
+            items: Enums.ItemDropdown,
             helpText: "Busca item baseado em parâmetro",
             defaultText: "Buscar item...",
             selected: ''

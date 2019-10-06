@@ -3,17 +3,18 @@ import axios from 'axios';
 import CarEntity from './../components/cars/subComponents/carEntity';
 import ClientEntity from './../components/clients/subComponents/clientEntity';
 import ServiceEntity from './../components/services/subComponents/serviceEntity';
+import ServiceEntityMobile from '../components/mobile/services/serviceEntityMobile';
 import ItemEntity from './../components/stock/subComponents/itemEntity';
 import BudgetEntity from './../components/budgets/subComponents/budgetEntity';
 import EmployeeEntity from './../components/employees/subComponents/employeeEntity';
 import InspectionEntity from '../components/inspection/subComponents/inspectionEntity'
 import BillingEntity from './../components/billing/subComponents/billingEntity';
 import BillingClosedEntity from './../components/billing/subComponents/billingClosedEntity';
-import Enums from './Enums';
-import { isMobile } from 'react-device-detect';
 import ClientEntityMobile from '../components/mobile/clients/clientEntityMobile';
 import CarEntityMobile from '../components/mobile/cars/carEntityMobile';
 import EmployeeEntityMobile from '../components/mobile/employees/employeeEntityMobile';
+import Enums from './Enums';
+import { isMobile } from 'react-device-detect';
 
 const SERVER_URL = 'http://192.168.0.32:8000';
 
@@ -103,7 +104,7 @@ export default class Queries {
         for (let service of serviceJsons) {
             if(isMobile)
             {
-                // serviceEntities.push(<ServiceEntityMobile key={service.id} info={service}/>);
+                serviceEntities.push(<ServiceEntityMobile key={service.id} info={service}/>);
             } else
             {
                 serviceEntities.push(<ServiceEntity key={service.id} info={service}/>);
@@ -114,12 +115,28 @@ export default class Queries {
 
     static async searchItems(searchString, searchType)
     {
-        //TODO: make this function search and return items
-        return [
-            <ItemEntity key='itemPlaceholder1'/>,
-            <ItemEntity key='itemPlaceholder2'/>,
-            <ItemEntity key='itemPlaceholder3'/>,
-        ] //placeholder search
+        let itemsJsons = [];
+        await axios.get(`${SERVER_URL}/items`).then(response => itemsJsons = response.data).catch(error => console.log(error.message));
+        switch(Enums.ItemDropdown[searchType]) {
+            case Enums.ItemDropdownType.Description:
+                itemsJsons = itemsJsons.filter(item => item.description.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+            case Enums.ItemDropdownType.Code:
+                itemsJsons = itemsJsons.filter(item => item.idCode.toLowerCase().includes(searchString.toLowerCase()));
+                break;
+        }
+
+        let itemEntities = [];
+        for (let item of itemsJsons) {
+            if(isMobile)
+            {
+                // itemEntities.push(<ItemEntityMobile key={item.id} info={item}/>);
+            } else
+            {
+                itemEntities.push(<ItemEntity key={item.id} info={item}/>);
+            }
+        }
+        return itemEntities;
     }
 
     static async searchBudgets(searchString, searchType) {
@@ -200,18 +217,16 @@ export default class Queries {
         const {cpf, cellPhone, telephone, name, cep} = clientFormInfo;
         const {model, year, plate, is_Mercosul} = clientFormInfo;
         var client_id;
-        //create client
         await axios.post(`${SERVER_URL}/clients`, {cpf, cellPhone, telephone, name, cep}).then( (response) =>{
             console.log(`Created client ${response.data.name} succesfully`);
             client_id = response.data.id;
         }).catch(error => {
-            console.log(`Fail to create ${clientFormInfo.name} with erro: ${error}`);
+            console.log(`Fail to create ${clientFormInfo.name} with error: ${error}`);
         });
-        //after create client
         await axios.post(`${SERVER_URL}/cars`, {model, year, plate, is_Mercosul, client_id}).then( (response) =>{
             console.log(`Created car ${response.data.plate} succesfully`);
         }).catch(error => {
-            console.log(`Fail to create ${clientFormInfo.plate} with erro: ${error}`);
+            console.log(`Fail to create ${clientFormInfo.plate} with error: ${error}`);
         });
     }
 
@@ -221,27 +236,36 @@ export default class Queries {
         await axios.post(`${SERVER_URL}/cars`, {model, year, plate, is_Mercosul, client_id}).then( (response) =>{
             console.log(`Created car ${response.data.plate} succesfully`);
         }).catch(error => {
-            console.log(`Fail to create ${carFormInfo.plate} with erro: ${error}`);
+            console.log(`Fail to create ${carFormInfo.plate} with error: ${error}`);
         });
     }
 
     static async createEmployee(employeeFormInfo){
         const {cpf, cellPhone, telephone, name, cep, bankAccount, observation} = employeeFormInfo;
-        //create employee
         await axios.post(`${SERVER_URL}/employees`, {cpf, cellPhone, telephone, name, cep, bankAccount, observation}).then( (response) =>{
             console.log(`Created employee ${response.data.name} succesfully`);
         }).catch(error => {
-            console.log(`Fail to create ${employeeFormInfo.name} with erro: ${error}`);
+            console.log(`Fail to create ${employeeFormInfo.name} with error: ${error}`);
         });
     }
 
     static async createService(serviceFormInfo){
         const {observations, obligatoryInspection, summary, status, type, price, car_id, employee_id} = serviceFormInfo;
-        //create employee
         await axios.post(`${SERVER_URL}/services`, {observations, obligatoryInspection, summary, status, type, price, car_id, employee_id}).then( (response) =>{
             console.log(`Created service ${response.data.summary} succesfully`);
         }).catch(error => {
-            console.log(`Fail to create ${serviceFormInfo.summary} with erro: ${error}`);
+            console.log(`Fail to create ${serviceFormInfo.summary} with error: ${error}`);
+        });
+    }
+
+    static async createItem(itemFormInfo){
+        let {description, idCode, quantity} = itemFormInfo;
+        //create item
+        quantity = Number.parseInt(quantity);
+        await axios.post(`${SERVER_URL}/items`, {description, idCode, quantity}).then( (response) =>{
+            console.log(`Created item ${response.data.description} succesfully`);
+        }).catch(error => {
+            console.log(`Fail to create ${itemFormInfo.description} with error: ${error}`);
         });
     }
 
@@ -281,6 +305,16 @@ export default class Queries {
             successCallBack();
         }).catch(error => {
             console.log(`Fail to update employee ${updatedEmployee.name}`);
+            failCallBack();
+        });
+    }
+
+    static async updateItem(updatedItem, successCallBack, failCallBack){
+        await axios.put(`${SERVER_URL}/items/${updatedItem.id}`, updatedItem).then( () =>{
+            console.log(`Updated item ${updatedItem.description} succesfully`)
+            successCallBack();
+        }).catch(error => {
+            console.log(`Fail to update item ${updatedItem.description}`);
             failCallBack();
         });
     }

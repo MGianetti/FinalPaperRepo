@@ -7,9 +7,9 @@ import Queries from './../../../helpers/Queries';
 class CreateStock extends Component {
     state = {
         info: {
-            code: "",
+            idCode: "",
             description: "",
-            totalInStock: "",
+            quantity: "",
         }
     };
 
@@ -21,15 +21,14 @@ class CreateStock extends Component {
     };
 
     handleCreate = async (createInfo) => {
-        /*await Queries.createItem(createInfo);
-        const info =  {
-            code: "",
+        await Queries.createItem(createInfo);
+        const info = {
+            idCode: "",
             description: "",
-            totalInStock: "",
+            quantity: "",
         }
         alert("Item criado com sucesso!")
-        this.setState({info});*/
-        alert('Handle Item Create');
+        this.setState({info});
     }
 
     render() { 

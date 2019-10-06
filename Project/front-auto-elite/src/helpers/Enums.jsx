@@ -32,7 +32,8 @@ export default class Enums {
     }
 
     static ItemDropdownType = {
-        Name: "Nome",
+        Description: "Descrição",
+        Code: "Código"
     }
 
     static BudgetDropdownType = {
@@ -88,7 +89,8 @@ export default class Enums {
     ]
 
     static ItemDropdown = [
-        Enums.ItemDropdownType.Name,
+        Enums.ItemDropdownType.Description,
+        Enums.ItemDropdownType.Code
     ]
 
     static BudgetDropdown = [
@@ -102,11 +104,6 @@ export default class Enums {
         Enums.EmployeeDropdownType.Name,
         Enums.EmployeeDropdownType.Telephone,
         Enums.EmployeeDropdownType.Cellphone,
-    ]
-
-    static StockDropdown = [
-        Enums.StockDropdownType.Name,
-        Enums.StockDropdownType.Price,
     ]
 
     static InspectionDropdown = [
