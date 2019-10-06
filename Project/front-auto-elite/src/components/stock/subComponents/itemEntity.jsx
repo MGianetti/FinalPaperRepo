@@ -12,7 +12,7 @@ import Edit from '@material-ui/icons/Edit';
 class ItemEntity extends Component {
 
     render() { 
-        const { cost, quantity, code, name } = this.props.info;
+        const {     quantity, code, name } = this.props.info;
         return (  
             <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
@@ -27,7 +27,7 @@ class ItemEntity extends Component {
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Paper>
-                        <Grid container style={{padding: 20}}>
+                        <Grid container direction='row' style={{width:'68vw', padding: 20}}>
                             <Grid container alignItems='center' direction='row'>
                                 <Grid container style={{width:'75%'}} alignItems='center'>
                                     <Grid item style={{padding: 5}}>
@@ -54,45 +54,27 @@ class ItemEntity extends Component {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                        <Grid container alignItems="center" justify='center' direction='row' style={{padding: 10}}>
-                            <Grid item style={{padding:15}}>
-                                <Typography variant='display2' style={{fontSize: '20px'}}>
-                                    Quantidade:                                 
-                                </Typography>
-                            </Grid>
-                            <Grid item>
-                                <Button variant="contained" color='default'>
-                                    <Typography variant='h6' style={{fontSize:'20px'}}>
-                                        -
+                            <Grid container direction='row'>
+                                <Grid container alignItems="center">
+                                    <Grid item style={{padding:15}}>
+                                        <Typography variant='display2' style={{fontSize: '20px'}}>
+                                            Quantidade:                                 
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item style={{padding:15}}>
+                                        <Typography variant='display2' style={{fontSize:'20px'}} align="center">
+                                            {quantity}                                    
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                                <Grid container alignItems="center" >
+                                    <Typography style={{padding:15, fontSize: '20px'}} variant='display2'>
+                                        Código:  
                                     </Typography>
-                                </Button>
-                            </Grid>
-                            <Grid item style={{padding:15}}>
-                                <Typography variant='display2' style={{fontSize:'20px'}} align="center">
-                                    {quantity}                                    
-                                </Typography>
-                            </Grid>
-                            <Grid item>
-                                <Button variant="contained" color='default'>
-                                    <Typography variant='h6' style={{fontSize:'20px'}}>
-                                        +
-                                    </Typography>
-                                </Button>
-                            </Grid>
-                        </Grid>
-                            <Grid container style={{padding:15}} alignItems="center" justify='center'>
-                                <Typography style={{padding:5, fontSize: '20px'}} variant='display2'>
-                                    Código:  
-                                </Typography>
-                                <Typography style={{color:'#000000', padding:5, fontSize: '20px'}} variant='display2'>
-                                    {code}                           
-                                </Typography>     
-                                <Typography style={{padding:5, fontSize: '20px'}} variant='display2'>
-                                    Preço:  
-                                </Typography>
-                                <Typography style={{color:'#85bb65', padding:5, fontSize: '20px'}} variant='display2'>
-                                    {cost} R$
-                                </Typography>                         
+                                    <Typography style={{color:'#000000', padding:15, fontSize: '20px'}} variant='display2'>
+                                        {code}                           
+                                    </Typography>                            
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Paper>

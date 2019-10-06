@@ -5,6 +5,7 @@ import SearchBar from './../../common/searchBar';
 import UiList from './../../common/uiList';
 import Queries from './../../../helpers/Queries';
 import Enums from '../../../helpers/Enums';
+import BudgetEntity from './budgetEntity'
 
 class SearchBudget extends Component {
     state = {
@@ -36,7 +37,7 @@ class SearchBudget extends Component {
         const { dropDown, searchField, search } = this.state; 
         return ( 
             <React.Fragment>
-                <Grid container justify='center' style={{paddingTop:15}}>
+                {/* <Grid container justify='center' style={{paddingTop:15}}>
                     <Paper style={{width:'90%', marginTop:10, backgroundColor:'#e0e0e0'}}>
                         <Grid container direction='row' justify='center'>
                             <Grid item style={{padding:20}}> <DropDown data={{dropDown}} onChange={this.handleDropMenuChange} /> </Grid>
@@ -46,7 +47,8 @@ class SearchBudget extends Component {
                     <Paper style={{width:'90%', marginTop:15}}>
                         <UiList maxHeight={600} data={search} />
                     </Paper>
-                </Grid>
+                </Grid> */}
+                <BudgetEntity></BudgetEntity>
             </React.Fragment> 
         )
     }
