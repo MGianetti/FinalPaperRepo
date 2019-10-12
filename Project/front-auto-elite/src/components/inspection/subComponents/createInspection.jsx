@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Grid, Button, Fab} from '@material-ui/core';
+import {Grid, Button, Fab, RadioGroup, FormControlLabel, Radio} from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import InspectionEditFields from './inspectionEditFields';
 import UiList from '../../common/uiList';
@@ -45,13 +45,14 @@ class CreateInspection extends Component {
                 leftRearDoor:false,
                 trunk:false
             },
-            specialTireIron: false,            
+            specialTireIron: false,
+            service_id: -1      
         },
         dropDown:{
             items: Enums.ServiceDropdown,
             helpText: "Busca serviço baseado em parâmetro",
             defaultText: "Buscar serviço...",
-            selected: ''
+            selected: 0
         },
         searchField:'',
         search:[],
@@ -94,10 +95,13 @@ class CreateInspection extends Component {
 
     selectService = serviceInfo => {
         const service_id = serviceInfo.id;
-        const service =  <Grid key={serviceInfo.id} container justify='center' alignItems='center'>
-                            <Grid item style={{width:"70%"}}><ServiceEntity info={serviceInfo}></ServiceEntity></Grid>
-                            <Grid container style={{width:"10%"}} justify='center'>
-                                <Fab onClick={this.unselectService} style={{backgroundColor:'#FF0000'}} size='small'><Close/></Fab>
+        const service = <Grid container justify='center'>
+                            <Build fontSize='large'/>
+                            <Grid key={serviceInfo.id} container justify='center' alignItems='center' style={{padding:15}}>
+                                <Grid item style={{width:"70%"}}><ServiceEntity info={serviceInfo}></ServiceEntity></Grid>
+                                <Grid container style={{width:"10%"}} justify='center'>
+                                    <Fab onClick={this.unselectService} style={{backgroundColor:'#FF0000'}} size='small'><Close/></Fab>
+                                </Grid>
                             </Grid>
                         </Grid>
         this.clearSearch();
@@ -125,15 +129,41 @@ class CreateInspection extends Component {
     async createInspection(inspectionInfo) {
         await Queries.createInspection(inspectionInfo);
         const info = {
-            plate: "",
-            model: "",
-            year: 0,
-            is_Mercosul: false,
-            obs: "",
-            client_id: ""
+            fuelLevel: {
+                reserveTank: false,
+                quarterTank: false,
+                halfTank: false,
+                threeQuarterTank: false,
+                fullTank: false
+            },
+            warningLights: {
+                fuelInjection: false, 
+                oilPressure: false,
+                battery: false,
+                brake: false,
+                temperature: false,
+                airBag: false,
+                ABS: false,
+                EPC: false,
+                EPS: false,
+                ESC: false,
+                TPMS: false
+            },
+            scratches:{                
+                hood: false,
+                frontBumper:false,
+                rearBumper:false,
+                driverDoor:false,
+                passengerDoor:false,
+                rightRearDoor:false,
+                leftRearDoor:false,
+                trunk:false
+            },
+            specialTireIron: false,
+            service_id: -1      
         }
         const client = null;
-        alert("Carro criado com sucesso!")
+        alert("Vistoria criada com sucesso!")
         this.setState({client, info});
     };
 
@@ -180,6 +210,39 @@ class CreateInspection extends Component {
         }
     };
 
+    formatInfoForCreation(info) {
+        const formattedInfo = {
+            id: -1,
+            fuelLevel_reserveTank: info.fuelLevel.reserveTank,
+            fuelLevel_quarterTank: info.fuelLevel.quarterTank,
+            fuelLevel_halfTank: info.fuelLevel.halfTank,
+            fuelLevel_threeQuarterTank: info.fuelLevel.threeQuarterTank,
+            fuelLevel_fullTank: info.fuelLevel.fullTank,
+            warningLights_fuelInjection: info.warningLights.fuelInjection,
+            warningLights_oilPressure: info.warningLights.oilPressure,
+            warningLights_battery: info.warningLights.battery,
+            warningLights_brake: info.warningLights.brake,
+            warningLights_temperature: info.warningLights.temperature,
+            warningLights_airBag: info.warningLights.airBag,
+            warningLights_ABS: info.warningLights.ABS,
+            warningLights_EPC: info.warningLights.EPC,
+            warningLights_EPS: info.warningLights.EPS,
+            warningLights_ESC: info.warningLights.ESC,
+            warningLights_TPMS: info.warningLights.TPMS,
+            scratches_hood: info.scratches.hood,
+            scratches_frontBumper: info.scratches.frontBumper,
+            scratches_rearBumper: info.scratches.rearBumper,
+            scratches_driverDoor: info.scratches.driveDoor,
+            scratches_passengerDoor: info.scratches.passengerDoor,
+            scratches_rightRearDoor: info.scratches.rightRearDoor,
+            scratches_leftRearDoor: info.scratches.leftRearDoor,
+            scratches_trunk: info.scratches.trunk,
+            specialTireIron: info.specialTireIron,
+            service_id: info.service_id
+        }
+        return formattedInfo;
+    }
+
     render() {
         const {search, searchField, dropDown, service} = this.state;
 
@@ -193,12 +256,41 @@ class CreateInspection extends Component {
                             <Build fontSize='large'/>
                             <Grid container direction='row' justify='center'>
                                 <Grid item style={{padding:20}}> <DropDown data={{dropDown}} onChange={this.handleDropMenuChange} /> </Grid>
-                                <Grid item style={{padding:20}}> <SearchBar value={searchField} onChange={this.handleSearchBarChange} /> </Grid>
+                                {Enums.ServiceDropdown[this.state.dropDown.selected] === Enums.ServiceDropdownType.Summary && <Grid item style={{padding:20}}> <SearchBar value={searchField} onChange={this.handleSearchBarChange} /> </Grid>}
+                                {Enums.ServiceDropdown[this.state.dropDown.selected] === Enums.ServiceDropdownType.Type && 
+                                <Grid item style={{padding:20}}>
+                                    <RadioGroup
+                                        aria-label="position"
+                                        name="position"
+                                        value={this.state.searchField}
+                                        onChange={this.handleSearchBarChange}
+                                        row
+                                    >
+                                        <FormControlLabel
+                                            value={Enums.ServiceType.Corrective}
+                                            control={<Radio color="primary" />}
+                                            label="Corretivo"
+                                            labelPlacement="start"
+                                        />
+                                        <FormControlLabel
+                                            value={Enums.ServiceType.Preventive}
+                                            control={<Radio color="primary" />}
+                                            label="Preventivo"
+                                            labelPlacement="start"
+                                        />
+                                        <FormControlLabel
+                                            value={Enums.ServiceType.Eletronic}
+                                            control={<Radio color="primary" />}
+                                            label="Eletrônico"
+                                            labelPlacement="start"
+                                        />
+                                    </RadioGroup>
+                                </Grid>}
                             </Grid>
                         </Grid>
                         }
                         {service && service}
-                        <Grid container justify='center' style={{padding:10}}> <Button onClick={() => this.createInspection(this.state.info)} variant="contained" color='default'>Criar</Button> </Grid>
+                        <Grid container justify='center' style={{padding:10}}> <Button onClick={() => this.createInspection(this.formatInfoForCreation(this.state.info))} variant="contained" color='default'>Criar</Button> </Grid>
                     </Paper>
                     <Paper style={{width:'90%', marginTop:15}}>
                         <Grid container justify='center' style={{padding:10}}><Button onClick={this.clearSearch} variant="contained" color='default'>Limpar busca</Button></Grid>

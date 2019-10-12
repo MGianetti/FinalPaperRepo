@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     paranoid: true,
   });
   Item.associate = function(models) {
-    // associations can be defined here
     Item.belongsToMany(models.Budget, 
       { through: 'ItemsBudget' })
   };

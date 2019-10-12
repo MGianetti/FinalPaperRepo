@@ -16,7 +16,7 @@ import EmployeeEntityMobile from '../components/mobile/employees/employeeEntityM
 import Enums from './Enums';
 import { isMobile } from 'react-device-detect';
 
-const SERVER_URL = 'http://192.168.0.32:8000';
+const SERVER_URL = 'http://localhost:8000';
 
 export default class Queries {
 
@@ -266,6 +266,69 @@ export default class Queries {
             console.log(`Created item ${response.data.description} succesfully`);
         }).catch(error => {
             console.log(`Fail to create ${itemFormInfo.description} with error: ${error}`);
+        });
+    }
+
+    static async createInspection(inspectionFormInfo){
+        let {
+                fuelLevel_reserveTank,
+                fuelLevel_quarterTank,
+                fuelLevel_halfTank,
+                fuelLevel_threeQuarterTank,
+                fuelLevel_fullTank,
+                warningLights_fuelInjection,
+                warningLights_oilPressure,
+                warningLights_battery,
+                warningLights_brake,
+                warningLights_temperature,
+                warningLights_airBag,
+                warningLights_ABS,
+                warningLights_EPC,
+                warningLights_EPS,
+                warningLights_ESC,
+                warningLights_TPMS,
+                scratches_hood,
+                scratches_frontBumper,
+                scratches_rearBumper,
+                scratches_driverDoor,
+                scratches_passengerDoor,
+                scratches_rightRearDoor,
+                scratches_leftRearDoor,
+                scratches_trunk,
+                specialTireIron,
+                service_id,
+        } = inspectionFormInfo;
+        await axios.post(`${SERVER_URL}/inspections`, {
+            fuelLevel_reserveTank,
+            fuelLevel_quarterTank,
+            fuelLevel_halfTank,
+            fuelLevel_threeQuarterTank,
+            fuelLevel_fullTank,
+            warningLights_fuelInjection,
+            warningLights_oilPressure,
+            warningLights_battery,
+            warningLights_brake,
+            warningLights_temperature,
+            warningLights_airBag,
+            warningLights_ABS,
+            warningLights_EPC,
+            warningLights_EPS,
+            warningLights_ESC,
+            warningLights_TPMS,
+            scratches_hood,
+            scratches_frontBumper,
+            scratches_rearBumper,
+            scratches_driverDoor,
+            scratches_passengerDoor,
+            scratches_rightRearDoor,
+            scratches_leftRearDoor,
+            scratches_trunk,
+            specialTireIron,
+            service_id,
+        }).then( (response) =>{
+            console.log(`Created inspection ${response.data.id} succesfully`);
+        }).catch(error => {
+            console.log(`Fail to create ${inspectionFormInfo.id} with error: ${error}`);
         });
     }
 

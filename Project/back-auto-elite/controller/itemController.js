@@ -11,11 +11,9 @@ exports.create = (req, res, next) => {
         res.status(201).send(ItemData);
     });
 };
-
 exports.findAll = (req, res, next) => {
     Item.findAll({}).then(AllItem => res.send(AllItem))
 }
-
 exports.findByIdCode = (req, res, next) => {
     Item.findAll({
         where: {
@@ -25,7 +23,6 @@ exports.findByIdCode = (req, res, next) => {
         res.send(ItemData);
     })
 }
-
 exports.findById = (req, res, next) => {
     Item.findAll({
         where: {
@@ -35,7 +32,6 @@ exports.findById = (req, res, next) => {
         res.send(ItemData);
     })
 }
-
 exports.getById = (req, res, next) => {
     Item.findAll({
         where: {
@@ -45,7 +41,6 @@ exports.getById = (req, res, next) => {
         return ItemData
     })
 }
-
 exports.update = (req, res, next) => {
     const values = {};
 
@@ -62,7 +57,6 @@ exports.update = (req, res, next) => {
         res.send(ItemData);
     })
 }
-
 exports.deleteItem = (req, res, next) => {
     Item.destroy({
         where: {
@@ -70,7 +64,9 @@ exports.deleteItem = (req, res, next) => {
         }
     }).then(ItemData => {
         console.log(ItemData)
-        if(ItemData == 1)res.status(200).send('Item Deleted Successfully with ID = '+ req.params.itemId);
+        if(ItemData == 1)res.status(200).send(
+        'Item Deleted Successfully with ID = '
+        + req.params.itemId);
         if(ItemData == 0)res.send('Could Not find the Item')
     })
 }
